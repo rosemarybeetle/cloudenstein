@@ -4,16 +4,20 @@ from django.http import HttpResponse
 import requests
 from .models import Greeting
 
-admin=int(os.environ.get('adminURL',3))
+adminURL='https://docs.google.com/spreadsheet/pub?key=0AgTXh43j7oFVdGp1NmxJVXVHcGhIel9CNUxJUk8yYXc&output=csv'
+
 
 # Create your views here.
 def index(request):
-	times = int(os.environ.get('TIMES',3))
-	return HttpResponse('Hello! ' * times)
-	r = requests.get('http://httpbin.org/status/418')
-	print r.text
-	return HttpResponse('<pre>' + r.text + '</pre>')
-	retrieveArray(admin)
+	#times = int(os.environ.get('TIMES',3))
+	#return HttpResponse('Hello! ' * times)
+	t=requests.get(adminURL)
+	# return HttpResponse(t.text)
+	#r = requests.get('http://httpbin.org/status/418')
+	#print r.text
+	#return HttpResponse('<pre>' + r.text + '</pre>')
+	retrieveArray(adminURL)
+	return HttpResponse(results[0]+' test. swCount= '+str (swCount))
 
 def retrieveArray (url):
     try:
@@ -21,23 +25,20 @@ def retrieveArray (url):
         yy= Ws.text
         global results
         results = yy.splitlines()
-
+        global swCount
+        swCount=len(results)
         print ('stopwords ------------')
         print (results)
         return (results)
+        
         print ('--------')
-    
-        print ('full list returned raw with line breaks --------')
-        #print (yy)
-        print ('results for '+url+' --------')
-        # print (results)
-        print ('--------')
-        swCount=0
+       
         for count in results:
             swCount+=1
         print ('count  for ' + url +'-----')
         print ('count = '+str(swCount))
         print (' end retrieveArray() ----------------------')
+        return swCount
     # end retrieveArray
     except:
         print ('Can\'t connect to admin settings - no connection') 
