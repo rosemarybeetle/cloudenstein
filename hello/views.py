@@ -4,8 +4,7 @@ from django.http import HttpResponse
 import requests
 from .models import Greeting
 
-adminURL='https://docs.google.com/spreadsheet/pub?key=0AgTXh43j7oFVdGp1NmxJVXVHcGhIel9CNUxJUk8yYXc&output=csv'
-
+adminURL=str(os.environ.get('adminURL',3)) # now pulled in more securely (or at least could be...)
 
 # Create your views here.
 def index(request):
@@ -16,6 +15,7 @@ def index(request):
 	return response
 	
 def home(home):
+	times = int(os.environ.get('TIMES',3))
 	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1></body></html>'
 	home_response = HttpResponse(homeText)
 	return home_response
