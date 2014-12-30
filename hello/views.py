@@ -16,28 +16,29 @@ def index(request):
 	#r = requests.get('http://httpbin.org/status/418')
 	#print r.text
 	#return HttpResponse('<pre>' + r.text + '</pre>')
-	retrieveArray(adminURL)
-	sendText='' # initialise text sending variable
-	tt=0
-	while tt < swCount:
-		sendText+=results[tt]
-		sendText+='<br />'
-		tt+=1
-	sendText+= 'number of attributes received = '+str (swCount)
-	return HttpResponse(sendText+' !!!<br/>')
+	retrieveGoogleAdmin (adminURL)
+	return HttpResponse(sendText)
 	
 	
 
-def retrieveArray (url):
+def retrieveGoogleAdmin (url):
 	try:
 		Ws= requests.get(url)
 		yy= Ws.text
 		global results
 		results = yy.splitlines()
 		global swCount
-		swCount=len(results)       
-		return (results)
-		return swCount
+		swCount=len(results)
+		global sendText
+		sendText='' # initialise text sending variable
+		tt=0
+		while tt < swCount:
+			sendText+=results[tt]
+			sendText+='<br />'
+			tt+=1
+		sendText+= 'number of attributes received = '+str (swCount)+'<br /><br />Sent all from inside retrieveGoogleAdmin'
+		return sendText
+		# return swCount
 	# end retrieveArray
 	except:
 		print ('Can\'t connect to admin settings - no connection') 
