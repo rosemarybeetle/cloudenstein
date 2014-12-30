@@ -19,7 +19,7 @@ def index(request):
 	retrieveArray(adminURL)
     for tt in results:
         return HttpResponse(results[tt]+'<br/>')
-            #' swCount= '+str (swCount))
+        #' swCount= '+str (swCount))
 
 def retrieveArray (url):
     try:
