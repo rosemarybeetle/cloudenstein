@@ -13,6 +13,34 @@ def index(request):
 	r = requests.get('http://httpbin.org/status/418')
 	print r.text
 	return HttpResponse('<pre>' + r.text + '</pre>')
+	retrieveArray(admin)
+
+def retrieveArray (url):
+    try:
+        Ws= requests.get(url)
+        yy= Ws.text
+        global results
+        results = yy.splitlines()
+
+        print ('stopwords ------------')
+        print (results)
+        return (results)
+        print ('--------')
+    
+        print ('full list returned raw with line breaks --------')
+        #print (yy)
+        print ('results for '+url+' --------')
+        # print (results)
+        print ('--------')
+        swCount=0
+        for count in results:
+            swCount+=1
+        print ('count  for ' + url +'-----')
+        print ('count = '+str(swCount))
+        print (' end retrieveArray() ----------------------')
+    # end retrieveArray
+    except:
+        print ('Can\'t connect to admin settings - no connection') 
 
 
 
