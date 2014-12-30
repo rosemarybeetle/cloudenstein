@@ -4,7 +4,7 @@ from django.http import HttpResponse
 import requests
 from .models import Greeting
 
-admin=int(os.environ.get('adminURL'))
+admin=int(os.environ.get('adminURL',3))
 
 # Create your views here.
 def index(request):
