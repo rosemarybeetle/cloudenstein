@@ -10,18 +10,15 @@ adminURL='https://docs.google.com/spreadsheet/pub?key=0AgTXh43j7oFVdGp1NmxJVXVHc
 # Create your views here.
 def index(request):
 	#times = int(os.environ.get('TIMES',3))
-	#return HttpResponse('Hello! ' * times)
 	t=requests.get(adminURL)
-	# return HttpResponse(t.text)
-	#r = requests.get('http://httpbin.org/status/418')
-	#print r.text
-	#return HttpResponse('<pre>' + r.text + '</pre>')
 	retrieveGoogleAdmin (adminURL)
-	#return HttpResponse(sendText)
 	response = HttpResponse(sendText)
 	return response
 	
-	
+def home(home):
+	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1></body></html>'
+	home_response = HttpResponse(homeText)
+	return home_response
 
 def retrieveGoogleAdmin (url):
 	try:
