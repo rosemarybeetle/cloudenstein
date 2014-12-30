@@ -26,18 +26,8 @@ def retrieveArray (url):
         global results
         results = yy.splitlines()
         global swCount
-        swCount=len(results)
-        print ('stopwords ------------')
-        print (results)
+        swCount=len(results)       
         return (results)
-        
-        print ('--------')
-       
-        for count in results:
-            swCount+=1
-        print ('count  for ' + url +'-----')
-        print ('count = '+str(swCount))
-        print (' end retrieveArray() ----------------------')
         return swCount
     # end retrieveArray
     except:
