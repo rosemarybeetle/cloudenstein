@@ -17,7 +17,7 @@ def index(request):
 	#print r.text
 	#return HttpResponse('<pre>' + r.text + '</pre>')
 	retrieveArray(adminURL)
-    for tt in results
+    for tt in results:
         return HttpResponse(results[tt]+'<br/>')
             #' swCount= '+str (swCount))
 
