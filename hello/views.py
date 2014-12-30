@@ -5,6 +5,7 @@ import requests
 from .models import Greeting
 
 adminURL=str(os.environ.get('adminURL',3)) # now pulled in more securely (or at least could be...)
+buttogs=str(os.environ.get('buttogs',3))
 
 # Create your views here.
 def index(request):
@@ -13,6 +14,7 @@ def index(request):
 	retrieveGoogleAdmin (adminURL)
 	response = HttpResponse(sendText)
 	return response
+
 	
 def home(home):
 	times = int(os.environ.get('TIMES',3))
