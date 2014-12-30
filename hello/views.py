@@ -17,7 +17,9 @@ def index(request):
 	#print r.text
 	#return HttpResponse('<pre>' + r.text + '</pre>')
 	retrieveGoogleAdmin (adminURL)
-	return HttpResponse(sendText)
+	#return HttpResponse(sendText)
+	response = HttpResponse(sendText)
+	return response
 	
 	
 
