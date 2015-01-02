@@ -6,14 +6,13 @@ admin.autodiscover()
 import hello.views
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'gettingstarted.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+	# Examples:
+	# url(r'^$', 'gettingstarted.views.home', name='home'),
+	# url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', hello.views.index, name='index'),
-    url(r'^db', hello.views.db, name='db'),
-    url(r'^home', hello.views.home, name='home'),
-    url(r'^tweet', hello.views.search_tweets, name='tweet'),
-    url(r'^admin/', include(admin.site.urls)),
+	url(r'^$', hello.views.index, name='index'),
+	url(r'^db', hello.views.db, name='db'),
+	url(r'^home', hello.views.home, name='home'),
+	url(r'^admin/', include(admin.site.urls)),
 
 )
