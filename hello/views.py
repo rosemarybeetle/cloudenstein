@@ -6,13 +6,17 @@ import requests_oauthlib
 from requests_oauthlib import OAuth1
 from requests_oauthlib import OAuth1Session
 from .models import Greeting
+from .models import lastTweetId
+import json
 
-adminURL=str(os.environ.get('adminURL',3)) # now pulled in more securely (or at least could be...)
+# environmental variables - locally these are pulled from .env file. On Heroku, they need to be set using "Heroku config:set x=1111" etc.
+adminURL=str(os.environ.get('adminURL',3)) # google spreadsheet feed
 buttogs=str(os.environ.get('buttogs',3))
 twit_api_key=str(os.environ.get('twit_api_key',3)) #cloudenstein twitter api key
 twit_api_secret=str(os.environ.get('twit_api_secret',3)) #cloudenstein twitter api secret
 twit_api_access_token=str(os.environ.get('twit_api_access_token',3)) #cloudenstein twitter api access token
 twit_api_access_secret=str(os.environ.get('twit_api_access_secret',3)) #cloudenstein twitter api access token secret
+# ----------------------
 
 # Create your views here.
 def index(request):
@@ -29,7 +33,7 @@ def home(home):
 	# home_response = HttpResponse(homeText)
 	# return home_response
 	search_tweets('#museum','50')
-	home_response = HttpResponse(auth_response.text)
+	home_response = HttpResponse(responsetext)
 	return home_response
 
 def retrieveGoogleAdmin (url):
@@ -94,11 +98,13 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	try:
 		auth = OAuth1(twit_api_key, twit_api_secret,twit_api_access_token,twit_api_access_secret)
 		global auth_response
+		global responsetext
 		auth_response=requests.get(search_url, auth=auth)
-		responsetext=(auth_response.text)
-		return (responsetext)
+		#responsetext=(auth_response.text)
 		j = (auth_response.text)
-		# js = json.loads(j)
+		js = json.loads(j)
+		responsetext=js['statuses'][0]['id']
+		return (responsetext)
 		# c = int(count)
 		# x=0
 		# while (x<c-1):
