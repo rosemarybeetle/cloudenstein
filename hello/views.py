@@ -2,6 +2,7 @@ import os
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
+import requests_oauthlib
 from requests_oauthlib import OAuth1
 from requests_oauthlib import OAuth1Session
 from .models import Greeting
