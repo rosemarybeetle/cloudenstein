@@ -78,6 +78,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	x= term.find('#') # look to see what position the hashtag is 
 	y=term.find('@') # look to see what position the @ sign is
 	global termTXT
+	term_raw=term
 	if x==0 : #  this is checking if the first character is a hashtag (i.e it's a hashtag term search)
 		print ('searching twitter API for hashtag: '+term)
 		term2 = term.split('#')[1] # strip off the hash
@@ -99,52 +100,55 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		auth = OAuth1(twit_api_key, twit_api_secret,twit_api_access_token,twit_api_access_secret)
 		global auth_response
 		global responsetext
+		responsetext='' # initialise as string
 		auth_response=requests.get(search_url, auth=auth)
 		#responsetext=(auth_response.text)
 		j = (auth_response.text)
 		js = json.loads(j)
-		responsetext=js['statuses'][0]['id']
-		return (responsetext)
-		# c = int(count)
-		# x=0
-		# while (x<c-1):
-		#     try:
-		#         tweet_id = js['statuses'][x]['id']
-		#         testID=int(tweet_id)
-		#         print ('testID= '+str(testID))
-		#         print('-------')
-		#         print ('---------------')
-		#         if (x==0):
-		#             saveTweetId (str(tweet_id))
-		#         print ('Tweet '+str(x+1)+' of '+str(c)+'. Tweet id: '+str(tweet_id))
-		#         name = js['statuses'][x]['user']['name']
-		#         user = js['statuses'][x]['user']['screen_name']
-		#         username= '@'+user
-		#         print ('From:'+username+'('+name+')')
-		#         tweet = js['statuses'][x]['text']
-		#         # following line gets rid of Twitter line breaks...
-		#         tweet=tweet.replace("\n","")
-		#         tweet=tweet.replace("\"","'")
-		#         tweet=tweet.replace("\\","")
+		js_dict=js
+		global js_count
+		js_count=len(js_dict['statuses'])# how many tweets in thi response? - double checking that number of tweets received was same as asked for (could be less occassionally)
+		# responsetext=js['statuses'][0]['id']
+		# return (responsetext)
+		c = js_count
+		x=0
+		while (x<c):
+			try:
+				tweet_id = js['statuses'][x]['id']
+				if (x==0):
+					# saveTweetId (str(tweet_id)) this where we need to save last known highest tweet_id
+					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
+				name = js['statuses'][x]['user']['name']
+				user = js['statuses'][x]['user']['screen_name']
+				username= '@'+user
+				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+'<br />'
+				responsetext +='From:'+username+'('+name+')<br />'
+				responsetext += 'Text: "'+js['statuses'][x]['text']+'"</p>'
 				
-		#         print (tweet)
-		#         fullTweet='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } '
-		#         fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ,'
-		#         print ('WTF = x = '+str(x))
-		#         saveTweet(fullTweet)
-		#         saveTweet2(fullTweet2)
-		#         tid=int(tweet_id)
-		#         fullTweetCSV=str(tweet_id)+','+str(username)+','+str(name)+','+str(tweet)
-		#         saveTweetCSV(fullTweetCSV)                
-		#     except UnicodeEncodeError:
-		#         print ('Tweet text not available - dodgy term in tweet broke the API')
-		#         print ('---------------')
-		#     x=x+1
+				# following line gets rid of Twitter line breaks...
+				# tweet=tweet.replace("\n","")
+				# tweet=tweet.replace("\"","'")
+				# tweet=tweet.replace("\\","")
+				
+				# print (tweet)
+				# fullTweet='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } '
+				# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ,'
+				# print ('WTF = x = '+str(x))
+				# saveTweet(fullTweet)
+				# saveTweet2(fullTweet2)
+				# tid=int(tweet_id)
+				# fullTweetCSV=str(tweet_id)+','+str(username)+','+str(name)+','+str(tweet)
+				# saveTweetCSV(fullTweetCSV)
+			except UnicodeEncodeError:
+				responsetext="Something broike while polling through tweets. This msg inside search_tweets > inside while loop"
+				return (responsetext) 
+			x=x+1
+		return (responsetext)
 		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
 		# saveTweet2(fullTweet2)
 	except KeyError:
 		responsetext="Failed called to Twitter. This msg inside search_tweets"
-		return (responsetext) # - uncomment to check the text is returning as expected
+		return (responsetext) 
 	
 # ------------- end search twitter -------------------------
 # ---------------search_tweets is from older Tweetenstein - to be modded ------------------
