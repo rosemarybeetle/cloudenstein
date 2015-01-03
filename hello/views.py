@@ -117,6 +117,13 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
 					# saveTweetId (str(tweet_id)) this where we need to save last known highest tweet_id
+					try:
+						tweetcatcher=lastTweetId(last_tweet_id=int(tweet_id))
+						tweetcatcher.save()
+						responsetext+="saved tweet id - <br /><br />"
+					except:
+						responsetext="Something broke while trying to save last_tweet_id"
+						return (responsetext)
 					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
 				name = js['statuses'][x]['user']['name']
 				user = js['statuses'][x]['user']['screen_name']
