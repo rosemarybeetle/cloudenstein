@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 	url(r'^$', hello.views.index, name='index'),
 	url(r'^db', hello.views.db, name='db'),
 	url(r'^home', hello.views.home, name='home'),
+	url(r'^last',hello.views.last, name='last'),
 	url(r'^admin/', include(admin.site.urls)),
 
 )

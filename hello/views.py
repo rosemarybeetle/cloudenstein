@@ -26,7 +26,21 @@ def index(request):
 	response = HttpResponse(sendText)
 	return response
 
-	
+def last (tweet_id_loaded):
+	global p
+	global f
+	global sendTextL
+	p='last tweet model created'
+	f='last tweet model failed :('
+	try:
+		lasty = lastTweetId()
+		lasty.save()
+		sendTextL=p
+	except:
+		sendTextL=f
+	last_response = HttpResponse(sendTextL)
+	return last_response
+
 def home(home):
 	times = int(os.environ.get('TIMES',3))
 	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1></body></html>'
