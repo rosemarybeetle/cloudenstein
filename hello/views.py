@@ -27,17 +27,20 @@ def index(request):
 	return response
 
 def last (tweet_id_loaded):
-	global p
-	global f
 	global sendTextL
-	p='last tweet model created'
-	f='last tweet model failed :('
+	sendTextL="not set"
 	try:
-		lasty = lastTweetId(last_tweet_id =0000)
+		lasty = lastTweetId(last_tweet_id =0)
 		lasty.save()
-		sendTextL=p
+		sendTextL='last tweet model (test)created<br />'
 	except:
-		sendTextL=f
+		sendTextL='last tweet model (test) failed :(<br />'
+	try:
+		lasty = lastTweetId(last_tweet_id =tweet_id_loaded)
+		lasty.save()
+		sendTextL+='last tweet model created (argument)<br />'
+	except:
+		sendTextL+='last tweet model failed (argument) :(<br />'
 	last_response = HttpResponse(sendTextL)
 	return last_response
 
