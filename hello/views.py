@@ -33,7 +33,7 @@ def last (tweet_id_loaded):
 	p='last tweet model created'
 	f='last tweet model failed :('
 	try:
-		lasty = lastTweetId()
+		lasty = lastTweetId(last_tweet_id =0000)
 		lasty.save()
 		sendTextL=p
 	except:
