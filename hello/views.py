@@ -8,6 +8,8 @@ from requests_oauthlib import OAuth1Session
 from .models import Greeting
 from .models import lastTweetId
 import json
+import random
+from random import randint
 
 # environmental variables - locally these are pulled from .env file. On Heroku, they need to be set using "Heroku config:set x=1111" etc.
 adminURL=str(os.environ.get('adminURL',3)) # google spreadsheet feed
@@ -29,8 +31,9 @@ def index(request):
 def last (tweet_id_loaded):
 	global sendTextL
 	sendTextL="not set"
+	ra=randint(0,12000)
 	try:
-		lasty = lastTweetId(last_tweet_id =0)
+		lasty = lastTweetId(last_tweet_id =ra)
 		lasty.save()
 		sendTextL='last tweet model (test)created<br />'
 	except:
