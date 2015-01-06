@@ -45,8 +45,11 @@ def last (tweet_id_loaded):
 	except:
 		sendTextL+='last tweet model failed (argument) :(<br />'
 	
-	tweets = lastTweetId.objects.all()
-	sendTextL+=str("tweets in db= "+len(tweets)
+	try:
+		tweets = lastTweetId.objects.all()
+		sendTextL+=str("tweets in db= "+len(tweets))
+	except:
+		endTextL+="failed to extract tweets"
 	last_response = HttpResponse(sendTextL)
 	return last_response
 
