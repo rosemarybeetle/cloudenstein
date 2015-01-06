@@ -50,6 +50,7 @@ def last (tweet_id_loaded):
 			sendTextL+='tweet '+e.last_tweet_id+'<br />'
 	except:
 		sendTextL+="failed to extract tweets"
+	sendTextL+=tweets
 	last_response = HttpResponse(sendTextL)
 	return last_response
 
