@@ -46,7 +46,7 @@ def last (tweet_id_loaded):
 		sendTextL+='last tweet model failed (argument) :(<br />'
 	
 	tweets = lastTweetId.objects.all()
-	sendTextL+=tweets
+	sendTextL+=str(tweets)
 	last_response = HttpResponse(sendTextL)
 	return last_response
 
