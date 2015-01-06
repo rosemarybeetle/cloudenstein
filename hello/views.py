@@ -46,10 +46,9 @@ def last (tweet_id_loaded):
 		sendTextL+='last tweet model failed (argument) :(<br />'
 	
 	tweets = lastTweetId.objects.all()
-	sendTextL+=str(tweets)
-	return render(request, 'tweets.html', {'tweets': tweets})
-	#last_response = HttpResponse(sendTextL)
-	#return last_response
+	sendTextL+=str("tweets in db= "+len(tweets)
+	last_response = HttpResponse(sendTextL)
+	return last_response
 
 def home(home):
 	times = int(os.environ.get('TIMES',3))
