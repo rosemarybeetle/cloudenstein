@@ -49,7 +49,7 @@ def last (tweet_id_loaded):
 		tweets = lastTweetId.objects.all()
 		sendTextL+=str("tweets in db= "+len(tweets))
 	except:
-		endTextL+="failed to extract tweets"
+		sendTextL+="failed to extract tweets"
 	last_response = HttpResponse(sendTextL)
 	return last_response
 
