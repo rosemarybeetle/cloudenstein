@@ -47,8 +47,9 @@ def last (tweet_id_loaded):
 	
 	tweets = lastTweetId.objects.all()
 	sendTextL+=str(tweets)
-	last_response = HttpResponse(sendTextL)
-	return last_response
+	return render(request, 'tweets.html', {'tweets': tweets})
+	#last_response = HttpResponse(sendTextL)
+	#return last_response
 
 def home(home):
 	times = int(os.environ.get('TIMES',3))
