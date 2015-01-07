@@ -34,8 +34,9 @@ def saveTweetId(tid):
 	# str(tweets[0].last_tweet_id)
 
 def getLastTweetId():
-	temp_tweet = lastTweetId.objects.filter(id=7)
-	return temp_tweet
+	temp_tweet = lastTweetId.objects.all()[:0]
+	ttt=temp_tweet[0].last_tweet_id
+	return ttt
 
 def last (tweet_id_loaded):
 	global sendTextL
@@ -49,7 +50,7 @@ def last (tweet_id_loaded):
 		sendTextL='last tweet model (test) failed :(<br />'
 	try:
 		getLastTweetId()
-		sendTextL='retrieved using getLastTweetId - success. tweet 7 ='+temp_tweet +'<br />'
+		sendTextL='retrieved using getLastTweetId - success. tweet 7 ='+ttt +'<br />'
 	except:
 		sendTextL='retrieved using getLastTweetId - fail.'
 	global tweets
@@ -63,7 +64,7 @@ def last (tweet_id_loaded):
 		tweet0_val=tweet0[0].last_tweet_id
 		sendTextL='single record pulled = '+tweet0_val
 	except:
-		sendTextL='single record pulled failed'
+		sendTextL='single record pulled failed<br/>'
 	try:
 		sendTextL+=str(tweets[0].last_tweet_id)+'<br />'
 	except:
@@ -166,12 +167,12 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			try:
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
-					try:
-						lastyT = lastTweetId(id=8,last_tweet_id =int(tweet_id))
-						lastyT.save()
-						sendTextL='last tweet id saved in filed lastTweetId[0]<br />'
-					except:
-						sendTextL='last tweet id save failed :(<br />'# saveTweetId (int(tweet_id)) #this where we need to save last known highest tweet_id
+					# try:
+					# 	lastyT = lastTweetId.objects()[:10]
+					# 	lastyT.save()
+					# 	sendTextL='last tweet id saved in filed lastTweetId[0]<br />'
+					# except:
+					# 	sendTextL='last tweet id save failed :(<br />'# saveTweetId (int(tweet_id)) #this where we need to save last known highest tweet_id
 					# try:
 					# 	tweetcatcher=lastTweetId(last_tweet_id=tweet_id)
 					# 	tweetcatcher.save()
