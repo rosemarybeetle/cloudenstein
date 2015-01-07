@@ -67,12 +67,12 @@ def last (tweet_id_loaded):
 	except:
 		sendTextL+='single record pulled failed<br/>'
 	try:
-		sendTextL+='Most recent value = '+str(tweets[tt-1].last_tweet_id)+'<br />'
+		sendTextL+='Most recent value +(#'+tt-1+'= '+str(tweets[tt-1].last_tweet_id)+'<br />'
 	except:
 		sendTextL+='last tweet get failed <br />'
 	try:
 		for e in range (0,tt-1):
-			sendTextL+='tweet '+str(tweets[e].last_tweet_id)+'<br />'
+			sendTextL+='tweet '+e+' = '+str(tweets[e].last_tweet_id)+'<br />'
 	except:
 		sendTextL+='failed to extract tweets using "for" loop'
 	
