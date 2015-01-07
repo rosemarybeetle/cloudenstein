@@ -45,11 +45,12 @@ def last (tweet_id_loaded):
 	except:
 		sendTextL+='last tweet model failed (argument) :(<br />'
 	tweets = lastTweetId.objects.all()
-	sendTextL+='<br />number of stored tweets in test = '+str(len(tweets))+"<br />"
+	tt-len(tweets)
+	sendTextL+='<br />number of stored tweets in test = '+tt+"<br />"
 	#sendTextL+=str(tweets)
 	try:
-		for e in tweets:
-			sendTextL+='tweet '+str(lastTweetId.objects.get(id=0))+'<br />'
+		for e in range(0;tt) :
+			sendTextL+='tweet '+str(lastTweetId.objects.get(id=e))+'<br />'
 	except:
 		sendTextL+='failed to extract tweets using "for" loop'
 	
