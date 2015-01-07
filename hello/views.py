@@ -54,7 +54,7 @@ def last (tweet_id_loaded):
 	except:
 		sendTextL+='retrieved using getLastTweetId - fail.'
 	global tweets
-	tweets = lastTweetId.objects.all()
+	tweets = lastTweetId.objects.all()[:7]
 	global tt
 	tt=tweets.count()
 	sendTextL+='<br />number of stored tweets in test = '+str(tt)+"<br />"
