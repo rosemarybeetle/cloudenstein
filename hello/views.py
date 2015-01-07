@@ -54,7 +54,7 @@ def last (tweet_id_loaded):
 	except:
 		sendTextL+='last tweet get failed <br />'
 	try:
-		for e in range(0,tt-1):
+		for e in tweets:
 			sendTextL+='tweet '+str(lastTweetId.objects.get())+'<br />'
 	except:
 		sendTextL+='failed to extract tweets using "for" loop'
