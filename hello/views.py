@@ -45,14 +45,14 @@ def last (tweet_id_loaded):
 	try:
 		lasty = lastTweetId(last_tweet_id =ra)
 		lasty.save()
-		sendTextL='last tweet model (test)created<br />'
+		sendTextL+='last tweet model (test)created<br />'
 	except:
-		sendTextL='last tweet model (test) failed :(<br />'
+		sendTextL+='last tweet model (test) failed :(<br />'
 	try:
 		getLastTweetId()
-		sendTextL='retrieved using getLastTweetId - success. tweet 7 ='+ttt +'<br />'
+		sendTextL+='retrieved using getLastTweetId - success. tweet 7 ='+ttt +'<br />'
 	except:
-		sendTextL='retrieved using getLastTweetId - fail.'
+		sendTextL+='retrieved using getLastTweetId - fail.'
 	global tweets
 	tweets = lastTweetId.objects.all()
 	global tt
@@ -62,9 +62,9 @@ def last (tweet_id_loaded):
 	try:
 		tweet0=lastTweetId.objects.filter(id=9)
 		tweet0_val=tweet0[0].last_tweet_id
-		sendTextL='single record pulled = '+tweet0_val
+		sendTextL+='single record pulled = '+tweet0_val
 	except:
-		sendTextL='single record pulled failed<br/>'
+		sendTextL+='single record pulled failed<br/>'
 	try:
 		sendTextL+=str(tweets[0].last_tweet_id)+'<br />'
 	except:
