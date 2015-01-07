@@ -28,6 +28,15 @@ def index(request):
 	response = HttpResponse(sendText)
 	return response
 
+def saveTweetId(tid):
+	g=1
+	# temp_tweet = lastTweetId.objects.filter(id=0)
+	# str(tweets[0].last_tweet_id)
+
+def getLastTweetId():
+	temp_tweet = lastTweetId.objects.filter(id=7)
+	return temp_tweet
+
 def last (tweet_id_loaded):
 	global sendTextL
 	sendTextL="not set"
@@ -39,11 +48,10 @@ def last (tweet_id_loaded):
 	except:
 		sendTextL='last tweet model (test) failed :(<br />'
 	try:
-		lasty = lastTweetId(last_tweet_id =tweet_id_loaded)
-		lasty.save()
-		sendTextL+='last tweet model created (argument)<br />'
+		getLastTweetId()
+		sendTextL='retrieved using getLastTweetId - success. tweet 7 ='+temp_tweet +'<br />'
 	except:
-		sendTextL+='last tweet model failed (argument) :(<br />'
+		sendTextL='retrieved using getLastTweetId - fail.'
 	global tweets
 	tweets = lastTweetId.objects.all()
 	global tt
@@ -152,7 +160,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			try:
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
-					# saveTweetId (str(tweet_id)) this where we need to save last known highest tweet_id
+					saveTweetId (int(tweet_id)) #this where we need to save last known highest tweet_id
 					# try:
 					# 	tweetcatcher=lastTweetId(last_tweet_id=tweet_id)
 					# 	tweetcatcher.save()
@@ -197,5 +205,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 # ---------------search_tweets is from older Tweetenstein - to be modded ------------------
 # ----------------------------------------------------------------------------------------
 
-
+# def retrieveLastTweet():
+# 	global last_tweet_known
+# 	last_tweet_known
 
