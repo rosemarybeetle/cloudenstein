@@ -61,7 +61,7 @@ def last (tweet_id_loaded):
 	try:
 		tweet0=lastTweetId.objects.filter(id=9)
 		tweet0_val=tweet0[0].last_tweet_id
-		sendTextL='single record pulled = '+tweet)_val
+		sendTextL='single record pulled = '+tweet0_val
 	except:
 		sendTextL='single record pulled failed'
 	try:
