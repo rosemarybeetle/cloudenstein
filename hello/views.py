@@ -161,8 +161,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
 					try:
-						lasty = lastTweetId(id=0,last_tweet_id =int(tweet_id))
-						lasty.save()
+						lastyT = lastTweetId(id=8,last_tweet_id =int(tweet_id))
+						lastyT.save()
 						sendTextL='last tweet id saved in filed lastTweetId[0]<br />'
 					except:
 						sendTextL='last tweet id save failed :(<br />'# saveTweetId (int(tweet_id)) #this where we need to save last known highest tweet_id
