@@ -50,6 +50,10 @@ def last (tweet_id_loaded):
 	sendTextL+='<br />number of stored tweets in test = '+str(tt)+"<br />"
 	#sendTextL+=str(tweets)
 	try:
+		sendTextL+=str(lastTweetId.objects.get())
+	except:
+		sendTextL+='last tweet get failed <br />'
+	try:
 		for e in range(0,tt-1):
 			sendTextL+='tweet '+str(lastTweetId.objects.get())+'<br />'
 	except:
