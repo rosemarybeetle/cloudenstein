@@ -67,7 +67,7 @@ def last (tweet_id_loaded):
 	except:
 		sendTextL+='single record pulled failed<br/>'
 	try:
-		sendTextL+='Most recent value +(#'+tt-1+'= '+str(tweets[tt-1].last_tweet_id)+'<br />'
+		sendTextL+='Most recent value +(#'+str(tt-1)+'= '+str(tweets[tt-1].last_tweet_id)+'<br />'
 	except:
 		sendTextL+='last tweet get failed <br />'
 	try:
