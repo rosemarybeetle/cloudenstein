@@ -59,14 +59,15 @@ def last (tweet_id_loaded):
 	tt=tweets.count()
 	sendTextL+='<br />number of stored tweets in test = '+str(tt)+"<br />"
 	#sendTextL+=str(tweets)
+	global tweetyr
 	try:
-		tweets=lastTweetId.objects.all()
-		tweet0_val=tweets[0].last_tweet_id
+		tweetyr=lastTweetId.objects.all()
+		tweet0_val=tweetyr[tt].last_tweet_id
 		sendTextL+='single record pulled = '+tweet0_val
 	except:
 		sendTextL+='single record pulled failed<br/>'
 	try:
-		sendTextL+=str(tweets[0].last_tweet_id)+'<br />'
+		sendTextL+='Most recent value = '+str(tweets[tt].last_tweet_id)+'<br />'
 	except:
 		sendTextL+='last tweet get failed <br />'
 	try:
