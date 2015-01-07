@@ -72,7 +72,7 @@ def last (tweet_id_loaded):
 		sendTextL+='last tweet get failed <br />'
 	try:
 		for e in range (0,tt-1):
-			sendTextL+='tweet '+e+' = '+str(tweets[e].last_tweet_id)+'<br />'
+			sendTextL+='tweet '+str(e)+' = '+str(tweets[e].last_tweet_id)+'<br />'
 	except:
 		sendTextL+='failed to extract tweets using "for" loop'
 	
