@@ -47,16 +47,16 @@ def last (tweet_id_loaded):
 	global tweets
 	tweets = lastTweetId.objects.all()
 	global tt
-	tt=len(tweets)
+	tt=tweets.count()
 	sendTextL+='<br />number of stored tweets in test = '+str(tt)+"<br />"
 	#sendTextL+=str(tweets)
 	try:
-		sendTextL+=str(tweets[0])
+		sendTextL+=str(tweets[0].last_tweet_id)+'<br />'
 	except:
 		sendTextL+='last tweet get failed <br />'
 	try:
 		for e in tweets:
-			sendTextL+='tweet '+str(tweets[e])+'<br />'
+			sendTextL+='tweet '+str(tweets[e].last_tweet_id)+'<br />'
 	except:
 		sendTextL+='failed to extract tweets using "for" loop'
 	
