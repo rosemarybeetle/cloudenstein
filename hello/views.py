@@ -60,8 +60,8 @@ def last (tweet_id_loaded):
 	sendTextL+='<br />number of stored tweets in test = '+str(tt)+"<br />"
 	#sendTextL+=str(tweets)
 	try:
-		tweet0=lastTweetId.objects.all()
-		tweet0_val=tweet0[0].last_tweet_id
+		tweets=lastTweetId.objects.all()
+		tweet0_val=tweets[0].last_tweet_id
 		sendTextL+='single record pulled = '+tweet0_val
 	except:
 		sendTextL+='single record pulled failed<br/>'
