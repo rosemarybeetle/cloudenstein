@@ -46,8 +46,8 @@ def last (tweet_id_loaded):
 		sendTextL+='last tweet model failed (argument) :(<br />'
 	tweets = lastTweetId.objects.all()
 	global tt
-	tt-len(tweets)
-	sendTextL+='<br />number of stored tweets in test = '+tt+"<br />"
+	tt=len(tweets)
+	sendTextL+='<br />number of stored tweets in test = '+str(tt)+"<br />"
 	#sendTextL+=str(tweets)
 	try:
 		for e in range(0,tt) :
