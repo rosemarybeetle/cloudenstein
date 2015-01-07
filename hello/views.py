@@ -44,13 +44,14 @@ def last (tweet_id_loaded):
 		sendTextL+='last tweet model created (argument)<br />'
 	except:
 		sendTextL+='last tweet model failed (argument) :(<br />'
+	global tweets
 	tweets = lastTweetId.objects.all()
 	global tt
 	tt=len(tweets)
 	sendTextL+='<br />number of stored tweets in test = '+str(tt)+"<br />"
 	#sendTextL+=str(tweets)
 	try:
-		sendTextL+=str(lastTweetId.objects.get())
+		sendTextL+=str(tweets[0])
 	except:
 		sendTextL+='last tweet get failed <br />'
 	try:
