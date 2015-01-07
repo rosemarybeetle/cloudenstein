@@ -34,13 +34,13 @@ def saveTweetId(tid):
 	# str(tweets[0].last_tweet_id)
 
 def getLastTweetId():
-	temp_tweet = lastTweetId.objects.all()[:0]
+	temp_tweet = lastTweetId.objects.all()
 	ttt=temp_tweet[0].last_tweet_id
 	return ttt
 
 def last (tweet_id_loaded):
 	global sendTextL
-	sendTextL="not set"
+	sendTextL="default trace text <br />"
 	ra=randint(0,12000)
 	try:
 		lasty = lastTweetId(last_tweet_id =ra)
