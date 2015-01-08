@@ -178,6 +178,13 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
 					try:
+						ra=randint(0,12000)
+						lasty = lastTweetId(last_tweet_id =ra)
+						lasty.save()
+						sendTextL+='last tweet model (test)created<br />'
+					except:
+						sendTextL+='last tweet model (test) failed :(<br />'
+					try:
 						ut=int(tweet_id)
 						lass = LT(lt_id=ut,position=0)
 						lass.save()
