@@ -185,19 +185,19 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					# except:
 					# 	responsetext="Something broke while trying to save last_tweet_id"
 					# 	return (responsetext)
-					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
+				responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
 				name = js['statuses'][x]['user']['name']
 				user = js['statuses'][x]['user']['screen_name']
 				username= '@'+user
 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+'<br />'
 				responsetext +='From:'+username+'('+name+')<br />'
+				responsetext += 'Text: "'+js['statuses'][x]['text']+'"</p><hr />'
 				try:
 					checkLT=LT.objects.all()
 					lt=checkLT[0].lt_id
 					responsetext+='Retrieved last tweet id = '+lt+'<br />'
 				except:
 					responsetext+='Retrieved last tweet id FAILED<br />'
-				responsetext += 'Text: "'+js['statuses'][x]['text']+'"</p>'
 				
 				# following line gets rid of Twitter line breaks...
 				# tweet=tweet.replace("\n","")
