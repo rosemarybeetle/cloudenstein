@@ -170,8 +170,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
 					try:
-						lastyT = LT(lt_id=int(tweet_id),position=0)
-						lastyT.save()
+						lass = LT(lt_id=int(tweet_id),position=0)
+						lass.save()
 						responsetext+='<br />tweet just saved = '+tweet_id
 					except:
 						responsetext+='lastyT save failed'
@@ -192,12 +192,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+'<br />'
 				responsetext +='From:'+username+'('+name+')<br />'
 				responsetext += 'Text: "'+js['statuses'][x]['text']+'"</p><hr />'
-				try:
-					checkLT=LT.objects.all()
-					lt=checkLT[0].lt_id
-					responsetext+='Retrieved last tweet id = '+lt+'<br />'
-				except:
-					responsetext+='Retrieved last tweet id FAILED<br />'
+				
 				
 				# following line gets rid of Twitter line breaks...
 				# tweet=tweet.replace("\n","")
@@ -217,6 +212,12 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				responsetext="Something broike while polling through tweets. This msg inside search_tweets > inside while loop"
 				return (responsetext) 
 			x=x+1
+			try:
+					checkLT=LT.objects.all()
+					lt=checkLT[0].lt_id
+					responsetext+='Retrieved last tweet id = '+lt+'<br />'
+			except:
+					responsetext+='Retrieved last tweet id FAILED<br />'
 		return (responsetext)
 		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
 		# saveTweet2(fullTweet2)
