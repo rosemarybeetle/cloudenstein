@@ -7,6 +7,7 @@ from requests_oauthlib import OAuth1
 from requests_oauthlib import OAuth1Session
 from .models import Greeting
 from .models import lastTweetId
+from .models import LT
 import json
 import random
 from random import randint
@@ -67,7 +68,7 @@ def last (tweet_id_loaded):
 	except:
 		sendTextL+='single record pulled failed<br/>'
 	try:
-		sendTextL+='Most recent value +(#'+str(tt-1)+'= '+str(tweets[tt-1].last_tweet_id)+'<br />'
+		sendTextL+='Most recent value (#'+str(tt-1)+') = '+str(tweets[tt-1].last_tweet_id)+'<br />'
 	except:
 		sendTextL+='last tweet get failed <br />'
 	try:
@@ -168,9 +169,12 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			try:
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
-					# try:
-					# 	lastyT = lastTweetId.objects()[:10]
-					# 	lastyT.save()
+					try:
+						lastyT = LT(position=0,lt_id=tweet_id)
+						lastyT.save()
+						responsetext+='<br />tweet just saved = '+tweet_id
+					except:
+						responsetext+='lastyT save failed'
 					# 	sendTextL='last tweet id saved in filed lastTweetId[0]<br />'
 					# except:
 					# 	sendTextL='last tweet id save failed :(<br />'# saveTweetId (int(tweet_id)) #this where we need to save last known highest tweet_id
@@ -187,6 +191,12 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				username= '@'+user
 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+'<br />'
 				responsetext +='From:'+username+'('+name+')<br />'
+				try:
+					checkLT=LT.objects.all()
+					lt=checkLT[0].lt_id
+					responsetext+='Retrieved last tweet id = '+lt+'<br />'
+				except:
+					responsetext+='Retrieved last tweet id FAILED<br />'
 				responsetext += 'Text: "'+js['statuses'][x]['text']+'"</p>'
 				
 				# following line gets rid of Twitter line breaks...
