@@ -8,5 +8,5 @@ class lastTweetId(models.Model):
 	last_tweet_id = models.IntegerField()
 
 class LT(models.Model):
-	lt_id=models.IntegerField()
+	lt_id=models.BigIntegerField()
 	position=models.IntegerField()
