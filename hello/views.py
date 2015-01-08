@@ -89,6 +89,12 @@ def home(home):
 	# home_response = HttpResponse(homeText)
 	# return home_response
 	search_tweets('#museum','50')
+	try:
+		lass = LT(lt_id=laztwt,position=0)
+		lass.save()
+		responsetext+='<br />tweet just saved = '+str(laztwt)
+	except:
+		responsetext+='lass save failed'+str(laztwt)
 	home_response = HttpResponse(responsetext)
 	return home_response
 
@@ -178,6 +184,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			try:
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
+					global laztwt=tweet_id
 					try:
 						ra=randint(0,12000)
 						lasty = lastTweetId(last_tweet_id =ra)
@@ -185,23 +192,6 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						responsetext+='last tweet model (test)created<br />'
 					except:
 						responsetext+='last tweet model (test) failed :(<br />'
-					try:
-						ut=int(tweet_id)
-						lass = LT(lt_id=ut,position=0)
-						lass.save()
-						responsetext+='<br />tweet just saved = '+str(ut)
-					except:
-						responsetext+='lastyT save failed'+str(tweet_id)
-					# 	sendTextL='last tweet id saved in filed lastTweetId[0]<br />'
-					# except:
-					# 	sendTextL='last tweet id save failed :(<br />'# saveTweetId (int(tweet_id)) #this where we need to save last known highest tweet_id
-					# try:
-					# 	tweetcatcher=lastTweetId(last_tweet_id=tweet_id)
-					# 	tweetcatcher.save()
-					# 	responsetext+="saved tweet id - <br /><br />"
-					# except:
-					# 	responsetext="Something broke while trying to save last_tweet_id"
-					# 	return (responsetext)
 					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
 				name = js['statuses'][x]['user']['name']
 				user = js['statuses'][x]['user']['screen_name']
@@ -227,7 +217,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				# saveTweetCSV(fullTweetCSV)
 			except UnicodeEncodeError:
 				responsetext="Something broike while polling through tweets. This msg inside search_tweets > inside while loop"
-				return (responsetext) 
+				return (responsetext,laztwt) 
 			x=x+1
 		try:
 			checkLT=LT.objects.all()
