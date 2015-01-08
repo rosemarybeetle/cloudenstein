@@ -184,7 +184,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			try:
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
-					global laztwt=tweet_id
+					global laztwt
+					laztwt=tweet_id
 					try:
 						ra=randint(0,12000)
 						lasty = lastTweetId(last_tweet_id =ra)
