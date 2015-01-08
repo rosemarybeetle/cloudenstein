@@ -40,16 +40,19 @@ def getLastTweetId():
 	ttt=lasty[0].last_tweet_id
 	return ttt
 
-def last (tweet_id_loaded):
+def saveTweet (twt):
 	global sendTextL
 	sendTextL="default trace text <br />"
-	ra=randint(0,12000)
 	try:
-		lasty = lastTweetId(last_tweet_id =ra)
+		lasty = lastTweetId(last_tweet_id =twt)
 		lasty.save()
 		sendTextL+='last tweet model (test)created<br />'
 	except:
 		sendTextL+='last tweet model (test) failed :(<br />'
+
+def last (tweet_id_loaded):
+	ra=randint(0,12000)
+	saveTweet(ra)
 	try:
 		getLastTweetId()
 		sendTextL+='retrieved using getLastTweetId - success. tweet 7 ='+ttt +'<br />'
