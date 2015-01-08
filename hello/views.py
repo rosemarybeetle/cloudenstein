@@ -215,12 +215,12 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		return (responsetext)
 		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
 		# saveTweet2(fullTweet2)
-	try:
-		checkLT=LT.objects.all()
-		lt=checkLT[0].lt_id
-		responsetext+='Retrieved last tweet id = '+lt+'<br />'
-	except:
-		responsetext+='Retrieved last tweet id FAILED<br />'
+		try:
+			checkLT=LT.objects.all()
+			lt=checkLT[0].lt_id
+			responsetext+='Retrieved last tweet id = '+lt+'<br />'
+		except:
+			responsetext+='Retrieved last tweet id FAILED<br />'
 	except KeyError:
 		responsetext="Failed called to Twitter. This msg inside search_tweets"
 		return (responsetext) 
