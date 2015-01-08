@@ -19,7 +19,7 @@ twit_api_key=str(os.environ.get('twit_api_key',3)) #cloudenstein twitter api key
 twit_api_secret=str(os.environ.get('twit_api_secret',3)) #cloudenstein twitter api secret
 twit_api_access_token=str(os.environ.get('twit_api_access_token',3)) #cloudenstein twitter api access token
 twit_api_access_secret=str(os.environ.get('twit_api_access_secret',3)) #cloudenstein twitter api access token secret
-global sendTextL
+
 # ----------------------
 
 # Create your views here.
@@ -51,6 +51,7 @@ def saveTweet (twt):
 		sendTextL+='last tweet model (test) failed :(<br />'
 
 def last (tweet_id_loaded):
+	global sendTextL
 	ra=randint(0,12000)
 	saveTweet(ra)
 	try:
