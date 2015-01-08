@@ -58,6 +58,7 @@ def last (tweet_id_loaded):
 	tweets = lastTweetId.objects.all()
 	global tt
 	tt=tweets.count()
+	tweets =  lastTweetId.objects.all()[:tt-1]
 	sendTextL+='<br />number of stored tweets in test = '+str(tt-1)+"<br />"
 	#sendTextL+=str(tweets)
 	global tweetyr
