@@ -173,7 +173,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						lass = LT(lt_id=int(tweet_id),position=0)
 						lass.save()
 						responsetext+='<br />tweet just saved = '+tweet_id
-					except:
+					except (RuntimeError, TypeError, NameError):
 						responsetext+='lastyT save failed'
 					# 	sendTextL='last tweet id saved in filed lastTweetId[0]<br />'
 					# except:
