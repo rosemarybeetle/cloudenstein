@@ -170,7 +170,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
 					try:
-						lastyT = LT(position=0,lt_id=tweet_id)
+						lastyT = LT(position=0,lt_id=str(tweet_id))
 						lastyT.save()
 						responsetext+='<br />tweet just saved = '+tweet_id
 					except:
