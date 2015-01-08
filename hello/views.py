@@ -128,6 +128,12 @@ def db(request):
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
 	# 1: Get id of last tweet stored (to prevent saving multiple times)
 	# 
+	# try:
+	# 	lass = LT(lt_id=int(tweet_id),position=0)
+	# 	lass.save()
+	# 	responsetext+='<br />tweet just saved = '+str(tweet_id)
+	# except:
+	# 	responsetext+='lastyT save failed'+str(tweet_id)
 	search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=' # twitter json api query url
 	x= term.find('#') # look to see what position the hashtag is 
 	y=term.find('@') # look to see what position the @ sign is
@@ -171,9 +177,10 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
 					try:
-						lass = LT(lt_id=int(tweet_id),position=0)
+						ut=int(tweet_id)
+						lass = LT(lt_id=ut,position=0)
 						lass.save()
-						responsetext+='<br />tweet just saved = '+str(tweet_id)
+						responsetext+='<br />tweet just saved = '+str(ut)
 					except:
 						responsetext+='lastyT save failed'+str(tweet_id)
 					# 	sendTextL='last tweet id saved in filed lastTweetId[0]<br />'
