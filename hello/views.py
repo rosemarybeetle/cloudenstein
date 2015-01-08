@@ -134,6 +134,7 @@ def db(request):
 # ---------------search_tweets is from older Tweetenstein - to be modded ------------------
 # ----------------------------------------------------------------------------------------
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
+	global responsetext
 	# 1: Get id of last tweet stored (to prevent saving multiple times)
 	# 
 	# try:
@@ -167,7 +168,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	try:
 		auth = OAuth1(twit_api_key, twit_api_secret,twit_api_access_token,twit_api_access_secret)
 		global auth_response
-		global responsetext
+		
 		responsetext='' # initialise as string
 		auth_response=requests.get(search_url, auth=auth)
 		#responsetext=(auth_response.text)
