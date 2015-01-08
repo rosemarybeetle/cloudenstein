@@ -172,9 +172,9 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					try:
 						lass = LT(lt_id=int(tweet_id),position=0)
 						lass.save()
-						responsetext+='<br />tweet just saved = '+tweet_id
+						responsetext+='<br />tweet just saved = '+str(tweet_id)
 					except:
-						responsetext+='lastyT save failed'+tweet_id
+						responsetext+='lastyT save failed'+str(tweet_id)
 					# 	sendTextL='last tweet id saved in filed lastTweetId[0]<br />'
 					# except:
 					# 	sendTextL='last tweet id save failed :(<br />'# saveTweetId (int(tweet_id)) #this where we need to save last known highest tweet_id
