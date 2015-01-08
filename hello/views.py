@@ -86,9 +86,8 @@ def last (tweet_id_loaded):
 def home(home):
 	times = int(os.environ.get('TIMES',3))
 	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1></body></html>'
-	# home_response = HttpResponse(homeText)
-	# return home_response
 	search_tweets('#museum','50')
+	
 	try:
 		lass = LT(lt_id=laztwt,position=0)
 		lass.save()
