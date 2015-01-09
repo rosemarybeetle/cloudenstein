@@ -187,10 +187,10 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
 					global laztwt
-					laztwt=tweet_id
+					laztwt=int(tweet_id)
 					try:
 						ra=randint(0,12000)
-						lasty = lastTweetId(last_tweet_id =ra)
+						lasty = lastTweetId(last_tweet_id =laztwt)
 						lasty.save()
 						responsetext+='last tweet model (test)created<br />'
 					except:
