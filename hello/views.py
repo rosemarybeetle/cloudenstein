@@ -89,12 +89,12 @@ def home(home):
 	
 	search_tweets('#museum','50')
 
-	try:
-		lass = LT(lt_id=laztwt,position=0)
-		lass.save()
-		responsetext+='<br />tweet just saved = '+str(laztwt)
-	except:
-		responsetext+='lass save failed'+str(laztwt)
+	# try:
+	# 	lass = LT(lt_id=laztwt,position=0)
+	# 	lass.save()
+	# 	responsetext+='<br />tweet just saved = '+str(laztwt)
+	# except:
+	# 	responsetext+='lass save failed'+str(laztwt)
 	home_response = HttpResponse(responsetext)
 	return home_response
 
