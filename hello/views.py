@@ -135,6 +135,7 @@ def db(request):
 # ----------------------------------------------------------------------------------------
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
 	global responsetext
+	responsetext="default"
 	# 1: Get id of last tweet stored (to prevent saving multiple times)
 	# 
 	# try:
