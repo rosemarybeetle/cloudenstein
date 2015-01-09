@@ -86,8 +86,9 @@ def last (tweet_id_loaded):
 def home(home):
 	times = int(os.environ.get('TIMES',3))
 	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1></body></html>'
+	global responsetext
 	search_tweets('#museum','50')
-	
+
 	try:
 		lass = LT(lt_id=laztwt,position=0)
 		lass.save()
@@ -133,7 +134,7 @@ def db(request):
 # ---------------search_tweets is from older Tweetenstein - to be modded ------------------
 # ----------------------------------------------------------------------------------------
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
-	global responsetext
+	#global responsetext
 	# 1: Get id of last tweet stored (to prevent saving multiple times)
 	# 
 	# try:
