@@ -28,10 +28,11 @@ def tweetPackager(tid):
 	global t1_7
 	global t8_13
 	global trem
-	tl=tid.count()
+	tl=len(tid)
 	t1_7=tid[:7]
 	t8_13=tid[7:7]
-	trem=tid[14:]
+	rem=tl-13
+	trem=tid[:rem]
 	return (t1,t1_7,t8_13,trem)
 
 
