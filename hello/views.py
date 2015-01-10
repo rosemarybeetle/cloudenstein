@@ -23,6 +23,18 @@ twit_api_access_secret=str(os.environ.get('twit_api_access_secret',3)) #cloudens
 # ----------------------
 
 # Create your views here.
+def tweetPackager(tid):
+	global tl
+	global t1_7
+	global t8_13
+	global trem
+	tl=tid.count()
+	t1_7=tid[:7]
+	t8_13=tid[7:7]
+	trem=tid[14:]
+	return (t1,t1_7,t8_13,trem)
+
+
 def index(request):
 	#times = int(os.environ.get('TIMES',3))
 	t=requests.get(adminURL)
@@ -185,6 +197,16 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		while (x<c):
 			try:
 				tweet_id = js['statuses'][x]['id']
+				try:
+					tweetPackager(tweet_id)
+					responsetext+='t1_7='+t1_7+',br />'
+					responsetext+='t1_7='+t1_7+',br />'
+					responsetext+='t1_7='+t1_7+',br />'
+					responsetext+='t1_7='+t1_7+',br />'
+				except Exception as e:
+					responsetext+='Failed at rebuilding tweetPackager string because of error: '+str(e)
+
+
 				if (x==0):
 					global laztwt
 					laztwt=long(tweet_id)
