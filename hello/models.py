@@ -5,7 +5,7 @@ class Greeting(models.Model):
     when = models.DateTimeField('date created', auto_now_add=True)
 
 class lastTweetId(models.Model):
-	last_tweet_id = models.IntegerField()
+	last_tweet_id = models.IntegerField(max_length=20)
 
 class LT(models.Model):
 	lt_id=models.BigIntegerField()

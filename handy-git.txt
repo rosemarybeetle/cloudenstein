@@ -4,3 +4,5 @@ git push heroku master
 
 cd python-getting-started
 foreman start
+
+heroku run python manage.py syncdb
