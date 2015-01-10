@@ -225,7 +225,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		try:
 			checkLT=LT.objects.all()
 			lt=checkLT[0].lt_id
-			responsetext+='Retrieved last tweet id = '+lt+'<br />'
+			responsetext+='Retrieved last tweet id = '+str(lt)+'<br />'
 		except Exception as e:
 			responsetext+='Retrieved last tweet id FAILED<br />'+str(e)+'<br />'
 		return (responsetext, laztwt)
