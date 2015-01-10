@@ -3,3 +3,4 @@ git commit -m "typo"
 git push heroku master
 
 cd python-getting-started
+foreman start
