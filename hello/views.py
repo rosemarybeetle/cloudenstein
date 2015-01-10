@@ -38,7 +38,7 @@ def saveTweetId(tid):
 def getLastTweetId():
 	lasty = LT.objects.all()[:1]
 	global ttt
-	ttt=lasty[0].last_tweet_id
+	ttt=lasty[0].lt_id
 	return ttt	
 
 def last (tweet_id_loaded):
