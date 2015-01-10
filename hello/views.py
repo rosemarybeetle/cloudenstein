@@ -28,7 +28,8 @@ def tweetPackager(tid):
 	global t1_7
 	global t8_13
 	global trem
-	tl=len(tid)
+	tint=int(tid)
+	tl=tint.count()
 	t1_7=tid[:7]
 	t8_13=tid[7:7]
 	rem=tl-13
