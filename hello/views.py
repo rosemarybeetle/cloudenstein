@@ -36,7 +36,7 @@ def saveTweetId(tid):
 	# str(tweets[0].last_tweet_id)
 
 def getLastTweetId():
-	lasty = LT.objects.all()[:1]
+	lasty = LT.objects.all()
 	global ttt
 	ttt=lasty[0].lt_id
 	return ttt	
@@ -67,7 +67,7 @@ def last (tweet_id_loaded):
 	try:
 		tweetyr=lastTweetId.objects.all()
 		tweet0_val=tweetyr[tt-1].last_tweet_id
-		sendTextL+='single record pulled = '+tweet0_val
+		sendTextL+='single record pulled = '+str(tweet0_val)
 	except Exception as e:
 		sendTextL+='single record pulled failed<br/>'+str(e)+'<br />'
 	try:
