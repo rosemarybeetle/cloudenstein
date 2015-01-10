@@ -38,7 +38,7 @@ def saveTweetId(tid):
 def getLastTweetId():
 	lasty = lastTweetId.objects.all()
 	global ttt
-	ttt=lasty[7].last_tweet_id
+	ttt=lasty[0].last_tweet_id
 	return ttt	
 
 def last (tweet_id_loaded):
@@ -53,7 +53,7 @@ def last (tweet_id_loaded):
 		sendTextL+='last tweet model (test) failed :(<br />'
 	try:
 		getLastTweetId()
-		sendTextL+='retrieved using getLastTweetId - success. tweet 7 ='+ttt +'<br />'
+		sendTextL+='retrieved using getLastTweetId - success. tweet 7 ='+str(ttt) +'<br />'
 	except Exception as e:
 		sendTextL+='retrieved using getLastTweetId - fail.'+str(e)+'<br />'
 	global tweets
