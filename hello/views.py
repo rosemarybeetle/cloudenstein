@@ -194,7 +194,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						lasty.save()
 						responsetext+='last tweet model (test) xxxxx  created<br />'+str(laztwt)+'<br />'
 					except Exception as e:
-						responsetext+='last tweet model (test) xxxxx  failed :(<br />'+str(e)
+						responsetext+='last tweet model (test) xxxxx  failed :(<br />'+str(e)+' and '+str(laztwt)+'<br />'
 					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
 				name = js['statuses'][x]['user']['name']
 				user = js['statuses'][x]['user']['screen_name']
