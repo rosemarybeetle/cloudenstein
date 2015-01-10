@@ -65,7 +65,7 @@ def last (tweet_id_loaded):
 	#sendTextL+=str(tweets)
 	global tweetyr
 	try:
-		tweetyr=lastTweetId.objects.all()[tt-1:]
+		tweetyr=lastTweetId.objects.all()
 		tweet0_val=tweetyr[tt-1].last_tweet_id
 		sendTextL+='single record pulled = '+str(tweet0_val)+'<br />'
 	except Exception as e:
@@ -192,7 +192,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						ra=randint(0,12000)
 						lasty = LT(lt_id =laztwt)
 						lasty.save()
-						responsetext+='last tweet model (test) xxxxx  created<br />'
+						responsetext+='last tweet model (test) xxxxx  created<br />'+str(laztwt)+'<br />'
 					except Exception as e:
 						responsetext+='last tweet model (test) xxxxx  failed :(<br />'+str(e)
 					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
