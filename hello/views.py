@@ -28,8 +28,7 @@ def tweetPackager(tid):
 	global t1_7
 	global t8_13
 	global trem
-	tint=int(tid)
-	tl=len(tint)
+	tl=len(tid)
 	t1_7=tid[:7]
 	t8_13=tid[7:7]
 	rem=tl-13
@@ -206,7 +205,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					responsetext+='t1_7='+t1_7+',br />'
 					responsetext+='t1_7='+t1_7+',br />'
 				except Exception as e:
-					responsetext+='Failed at rebuilding tweetPackager string because of error: '+str(e)
+					responsetext+='Failed at rebuilding tweetPackager string because of error: '+str(e)+'<br /><br />'
 
 
 				if (x==0):
