@@ -190,7 +190,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					laztwt=long(tweet_id)
 					try:
 						ra=randint(0,12000)
-						lasty = LT(lt_id =ra)
+						lasty = LT(lt_id =ra,position=0)
 						lasty.save()
 						responsetext+='last tweet model (test) xxxxx  created<br />'+str(laztwt)+'<br />'
 					except Exception as e:
