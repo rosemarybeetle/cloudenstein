@@ -49,13 +49,13 @@ def last (tweet_id_loaded):
 		lasty = lastTweetId(last_tweet_id =ra)
 		lasty.save()
 		sendTextL+='last tweet model (test)created<br />'
-	except:
+	except Exception as e:
 		sendTextL+='last tweet model (test) failed :(<br />'
 	try:
 		getLastTweetId()
 		sendTextL+='retrieved using getLastTweetId - success. tweet 7 ='+ttt +'<br />'
-	except:
-		sendTextL+='retrieved using getLastTweetId - fail.'
+	except Exception as e:
+		sendTextL+='retrieved using getLastTweetId - fail.'+str(e)+'<br />'
 	global tweets
 	tweets = lastTweetId.objects.all()
 	global tt
@@ -68,17 +68,17 @@ def last (tweet_id_loaded):
 		tweetyr=lastTweetId.objects.all()
 		tweet0_val=tweetyr[tt].last_tweet_id
 		sendTextL+='single record pulled = '+tweet0_val
-	except:
-		sendTextL+='single record pulled failed<br/>'
+	except Exception as e:
+		sendTextL+='single record pulled failed<br/>'+str(e)+'<br />'
 	try:
 		sendTextL+='Most recent value (#'+str(tt-1)+') = '+str(tweets[tt-1].last_tweet_id)+'<br />'
-	except:
-		sendTextL+='last tweet get failed <br />'
+	except Exception as e:
+		sendTextL+='last tweet get failed <br />'+str(e)+'<br />'
 	try:
 		for e in range (0,tt-1):
 			sendTextL+='tweet '+str(e)+' = '+str(tweets[e].last_tweet_id)+'<br />'
-	except:
-		sendTextL+='failed to extract tweets using "for" loop'
+	except Exception as e:
+		sendTextL+='failed to extract tweets using "for" loop'+str(e)+'<br />'
 	
 	last_response = HttpResponse(sendTextL)
 	return last_response
@@ -93,7 +93,7 @@ def home(home):
 	# 	lass = LT(lt_id=laztwt,position=0)
 	# 	lass.save()
 	# 	responsetext+='<br />tweet just saved = '+str(laztwt)
-	# except:
+	# except Exception as e:
 	# 	responsetext+='lass save failed'+str(laztwt)
 	home_response = HttpResponse(responsetext)
 	return home_response
@@ -117,8 +117,8 @@ def retrieveGoogleAdmin (url):
 		return sendText
 		# return swCount
 	# end retrieveArray
-	except:
-		print ('Can\'t connect to admin settings - no connection') 
+	except Exception as e:
+		print ('Can\'t connect to admin settings - no connection') +str(e)+'<br />'
 
 
 
@@ -142,7 +142,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	# 	lass = LT(lt_id=int(tweet_id),position=0)
 	# 	lass.save()
 	# 	responsetext+='<br />tweet just saved = '+str(tweet_id)
-	# except:
+	# except Exception as e:
 	# 	responsetext+='lastyT save failed'+str(tweet_id)
 	search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=' # twitter json api query url
 	x= term.find('#') # look to see what position the hashtag is 
@@ -190,7 +190,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					laztwt=int(tweet_id)
 					try:
 						ra=randint(0,12000)
-						lasty = LT(last_tweet_id =laztwt)
+						lasty = LT(lt_id =laztwt)
 						lasty.save()
 						responsetext+='last tweet model (test)created<br />'
 					except Exception as e:
@@ -218,16 +218,16 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				# tid=int(tweet_id)
 				# fullTweetCSV=str(tweet_id)+','+str(username)+','+str(name)+','+str(tweet)
 				# saveTweetCSV(fullTweetCSV)
-			except UnicodeEncodeError:
-				responsetext="Something broike while polling through tweets. This msg inside search_tweets > inside while loop"
+			except Exception as e:
+				responsetext="Something broike while polling through tweets. This msg inside search_tweets > inside while loop"+str(e)+'<br />'
 				return (responsetext,laztwt) 
 			x=x+1
 		try:
 			checkLT=LT.objects.all()
 			lt=checkLT[0].lt_id
 			responsetext+='Retrieved last tweet id = '+lt+'<br />'
-		except:
-			responsetext+='Retrieved last tweet id FAILED<br />'
+		except Exception as e:
+			responsetext+='Retrieved last tweet id FAILED<br />'+str(e)+'<br />'
 		return (responsetext, laztwt)
 		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
 		# saveTweet2(fullTweet2)
@@ -235,10 +235,10 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			checkLT=LT.objects.all()
 			lt=checkLT[0].lt_id
 			responsetext+='Retrieved last tweet id = '+lt+'<br />'
-		except:
+		except Exception as e:
 			responsetext+='Retrieved last tweet id FAILED<br />'
-	except KeyError:
-		responsetext="Failed called to Twitter. This msg inside search_tweets"
+	except Exception as e:
+		responsetext="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
 		return (responsetext) 
 	
 # ------------- end search twitter -------------------------
