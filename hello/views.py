@@ -66,7 +66,7 @@ def last (tweet_id_loaded):
 	global tweetyr
 	try:
 		tweetyr=lastTweetId.objects.all()
-		tweet0_val=tweetyr[tt].last_tweet_id
+		tweet0_val=tweetyr[tt-1].last_tweet_id
 		sendTextL+='single record pulled = '+tweet0_val
 	except Exception as e:
 		sendTextL+='single record pulled failed<br/>'+str(e)+'<br />'
