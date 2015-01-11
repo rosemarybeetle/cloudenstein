@@ -236,25 +236,15 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 
 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+'<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
-				responsetext += js['statuses'][x]['text']+'"</p><hr />'
+				responsetext += '&nbsp'+js['statuses'][x]['text']+'"</p><hr />'
 				
 				
 				# following line gets rid of Twitter line breaks...
 				# tweet=tweet.replace("\n","")
 				# tweet=tweet.replace("\"","'")
 				# tweet=tweet.replace("\\","")
-				
-				# print (tweet)
-				# fullTweet='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } '
-				# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ,'
-				# print ('WTF = x = '+str(x))
-				# saveTweet(fullTweet)
-				# saveTweet2(fullTweet2)
-				# tid=int(tweet_id)
-				# fullTweetCSV=str(tweet_id)+','+str(username)+','+str(name)+','+str(tweet)
-				# saveTweetCSV(fullTweetCSV)
 			except Exception as e:
-				responsetext="Something broike while polling through tweets. This msg inside search_tweets > inside while loop"+str(e)+'<br />'
+				responsetext="Something broke while polling through tweets. This msg inside search_tweets > inside while loop"+str(e)+'<br />'
 				return (responsetext,laztwt) 
 			x=x+1
 		try:
