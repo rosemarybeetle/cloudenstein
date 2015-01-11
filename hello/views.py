@@ -245,8 +245,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			x=x+1
 		try:
 			checklt=lt.objects.all()
-			lt=checklt[0].lt_id
-			responsetext+='Retrieved last tweet id = '+str(lt)+'<br />'
+			lo=checklt[0].lt_id
+			responsetext+='Retrieved last tweet id = '+str(lo)+'<br />'
 		except Exception as e:
 			responsetext+='Retrieved last tweet id FAILED<br />'+str(e)+'<br />'
 		return (responsetext, laztwt)
@@ -254,8 +254,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		# saveTweet2(fullTweet2)
 		try:
 			checklt=lt.objects.all()
-			lt=checklt[0].lt_id
-			responsetext+='Retrieved last tweet id = '+str(lt)+'<br />'
+			lo=checklt[0].lt_id
+			responsetext+='Retrieved last tweet id = '+str(lo)+'<br />'
 		except Exception as e:
 			responsetext+='Retrieved last tweet id FAILED<br />'
 	except Exception as e:
