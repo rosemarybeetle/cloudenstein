@@ -250,20 +250,14 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				return (responsetext,laztwt) 
 			x=x+1
 		try:
-			checklt=lt.objects.all()
-			lo=checklt[0].lt_id
-			responsetext+='Retrieved last tweet id = '+str(lo)+'<br />'
+			getLastTweetId()
+			responsetext+='sUCCESSFULLY retrieved last lt_id FROM getLastTweetId(). = '+ttt+'<br />'
 		except Exception as e:
-			responsetext+='Retrieved last tweet id FAILED<br />'+str(e)+'<br />'
+			responsetext+='Retrieved last tweet id FAILED FROM getLastTweetId()<br />'+str(e)+'<br />'
 		return (responsetext, laztwt)
 		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
 		# saveTweet2(fullTweet2)
-		try:
-			checklt=lt.objects.all()
-			lo=checklt[0].lt_id
-			responsetext+='Retrieved last tweet id = '+str(lo)+'<br />'
-		except Exception as e:
-			responsetext+='Retrieved last tweet id FAILED<br />'
+		
 	except Exception as e:
 		responsetext="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
 		return (responsetext) 
