@@ -211,7 +211,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					try:
 						ra=randint(0,12000)
 						#lasty = lt(lt_1_7=t1_7,lt_8_14=t8_14,lt_rem=trem,position=0)
-						lasty = lt(lt1_7=1,lt_8_14=2,lt_rem=3,position=0)
+						lasty = lt(lt1_7=1,lt_8_14=2,lt_rem=3)
 						lasty.save()
 						responsetext+='last tweet model (test) xxxxx  created<br />'+tweet_id+'<br />'
 					except Exception as e:
