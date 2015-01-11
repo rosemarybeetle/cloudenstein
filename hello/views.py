@@ -233,8 +233,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						hashtags+=ht_list[xx]
 						if ht_len-xx>1:
 							hashtags+=','
-				except:
-					hashtags='failed to retrieve hashtags'
+				except Exception as e:
+					hashtags='failed to retrieve hashtags because: '+str(e)
 
 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+'('+hashtags+')<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
