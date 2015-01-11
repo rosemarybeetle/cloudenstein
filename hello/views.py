@@ -26,7 +26,7 @@ twit_api_access_secret=str(os.environ.get('twit_api_access_secret',3)) #cloudens
 def tweetPackager(tid):
 	global tl
 	global t1_7
-	global t8_13
+	global t8_14
 	global trem
 	strtid=str(tid)
 	tl=len(strtid)
@@ -203,7 +203,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					try:
 						tweetPackager(tweet_id)
 						responsetext+='t1_7='+t1_7+'<br />'
-						responsetext+='t8_15='+t8_15+'<br />'
+						responsetext+='t8_14='+t8_14+'<br />'
 						responsetext+='trem='+trem+'<br /><br />'
 					except Exception as e:
 						responsetext+='Failed at rebuilding tweetPackager string because of error: '+str(e)+'<br /><br />'
