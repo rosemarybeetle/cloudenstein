@@ -9,6 +9,6 @@ class lastTweetId(models.Model):
 
 class LT(models.Model):
 	lt_1_7=models.IntegerField()
-	lt_8_15=models.IntegerField()
+	lt_8_14=models.IntegerField()
 	lt_rem=models.IntegerField()
 	position=models.IntegerField()

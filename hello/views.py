@@ -33,7 +33,7 @@ def tweetPackager(tid):
 	t1_7=strtid[:7]
 	t8_14=strtid[7:14]
 	trem=strtid[14:tl]
-	return (tl,t1_7,t8_14,trem)
+	return (int(tl),int(t1_7),int(t8_14),int(trem))
 
 
 def index(request):
@@ -210,7 +210,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					laztwt=long(tweet_id)
 					try:
 						ra=randint(0,12000)
-						lasty = LT(lt_id =laztwt,position=0)
+						lasty = LT(lt_1_7=t1_7,t8_14=t8_14,trem=trem,position=0)
 						lasty.save()
 						responsetext+='last tweet model (test) xxxxx  created<br />'+tweet_id+'<br />'
 					except Exception as e:
