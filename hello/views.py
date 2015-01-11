@@ -219,11 +219,11 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						responsetext+='Failed at saveTweetId() string because of error: '+str(e)+'<br /><br />'
 					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
 				name = js['statuses'][x]['user']['name']
-				avatar = js['statuses'][x]['user']['name'].['profile_image_url']
+				avatar = js['statuses'][x]['user']['profile_image_url']
 				user = js['statuses'][x]['user']['screen_name']
 				username= '@'+user
 				try:
-					ht_list=js['statuses'][x]['entities'].['hashtags']
+					ht_list=js['statuses'][x]['entities']['hashtags']
 					ht_len=len(hashtags)
 					xx=0
 					while (xx<ht_len):
