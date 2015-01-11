@@ -89,7 +89,7 @@ def last (tweet_id_loaded):
 	global tweets
 	tweets = lt_st.objects.all()
 	t_ct=tweets.count()
-	t_last=tweets[t_ct-1]
+	t_last=tweets[t_ct-1].lt_id
 	global tt
 	tt=tweets.count()
 	#
