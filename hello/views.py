@@ -8,6 +8,7 @@ from requests_oauthlib import OAuth1Session
 from .models import Greeting
 from .models import lastTweetId
 from .models import lt
+from .models import lt_st
 import json
 import random
 from random import randint
@@ -44,7 +45,16 @@ def index(request):
 	return response
 
 def saveTweetId(tid):
-	g=1
+	global lt_text
+	try:
+		t_id=lt_st(lt_id=tid, position=0)
+		t_id.save()
+		lt_text="tweet id saved successfully from saveTweetId()"
+		return lt_text
+	except Exception as e:
+		lt_text="tweet id not saved from saveTweetId() with error: "+e
+		return lt_text
+
 	# temp_tweet = lastTweetId.objects.filter(id=0)
 	# str(tweets[0].last_tweet_id)
 
@@ -200,22 +210,10 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				tweet_id = js['statuses'][x]['id']
 				if (x==0):
 					try:
-						tweetPackager(tweet_id)
-						responsetext+='t1_7='+str(t1_7)+'<br />'
-						responsetext+='t8_14='+str(t8_14)+'<br />'
-						responsetext+='trem='+str(trem)+'<br /><br />'
+						saveTweetId(tweet_id)
+						responsetext+=lt_text
 					except Exception as e:
-						responsetext+='Failed at rebuilding tweetPackager string because of error: '+str(e)+'<br /><br />'
-					global laztwt
-					laztwt=long(tweet_id)
-					try:
-						ra=randint(0,12000)
-						#lasty = lt(lt_1_7=t1_7,lt_8_14=t8_14,lt_rem=trem,position=0)
-						lasty = lt(lt1_7=1,lt_8_14=2,lt_rem=3)
-						lasty.save()
-						responsetext+='last tweet model (test) xxxxx  created<br />'+tweet_id+'<br />'
-					except Exception as e:
-						responsetext+='last tweet model (test) xxxxx  failed :(<br />'+str(e)+' and '+str(laztwt)+'<br />'
+						responsetext+='Failed at saveTweetId() string because of error: '+str(e)+'<br /><br />'
 					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
 				name = js['statuses'][x]['user']['name']
 				user = js['statuses'][x]['user']['screen_name']
