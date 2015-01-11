@@ -228,6 +228,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				hashtags=''
 				try:
 					ht_list=js['statuses'][x]['entities']['hashtags']['text']
+					global ht_len
 					ht_len=len(ht_list)
 					for xx in range(0,ht_len):
 						hashtags+=str(ht_list[xx])
