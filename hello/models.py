@@ -28,4 +28,11 @@ class tweet(models.Model):
 	mention_list=models.CharField(max_length=140)
 	url_ct=models.CharField(max_length=20)
 	url_list=models.CharField(max_length=140)
+
+class cloud_admin(models.Model):
+	search_term=models.CharField(max_length=20) # what the api is searching for
+	tweet_num=models.CharField(max_length=3) # max value = 100
+	harvest_period=models.CharField(max_length=60) # in seconds
+	intro_text=models.CharField(max_length=300)
+	sub_text=models.CharField(max_length=300)
 	
