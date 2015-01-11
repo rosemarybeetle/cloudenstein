@@ -87,19 +87,12 @@ def last (tweet_id_loaded):
 	except Exception as e:
 		sendTextL+='retrieved using getLastTweetId - fail.'+str(e)+'<br />'
 	global tweets
-	tweets = lastTweetId.objects.all()
+	tweets = lt_st.objects.all()
 	global tt
 	tt=tweets.count()
 	#
 	sendTextL+='<br />number of stored tweets in test = '+str(tt-1)+"<br />"
 	#sendTextL+=str(tweets)
-	global tweetyr
-	try:
-		tweetyr=lastTweetId.objects.all()
-		tweet0_val=tweetyr[tt-1].last_tweet_id
-		sendTextL+='single record pulled = '+str(tweet0_val)+'<br />'
-	except Exception as e:
-		sendTextL+='single record pulled failed<br/>'+str(e)+'<br />'
 	try:
 		sendTextL+='Most recent value (#'+str(tt-1)+') = '+str(tweets[tt-1].last_tweet_id)+'<br />'
 	except Exception as e:
