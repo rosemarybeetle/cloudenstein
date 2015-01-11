@@ -61,7 +61,7 @@ def saveTweetId(tid):
 def getLastTweetId():
 	global lt_rtext
 	try:
-		lasty = lt_st.objects.all()
+		lasty = lt_st.objects.all()[:1]
 		global ttt
 		ttt=lasty[0].lt_id
 		lt_rtext='Successfully saved tweet_id as string using lt_st'
