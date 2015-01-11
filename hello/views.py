@@ -7,7 +7,7 @@ from requests_oauthlib import OAuth1
 from requests_oauthlib import OAuth1Session
 from .models import Greeting
 from .models import lastTweetId
-from .models import LT
+from .models import lt
 import json
 import random
 from random import randint
@@ -49,7 +49,7 @@ def saveTweetId(tid):
 	# str(tweets[0].last_tweet_id)
 
 def getLastTweetId():
-	lasty = LT.objects.all()
+	lasty = lt.objects.all()
 	global ttt
 	ttt=lasty[0].lt_id
 	return ttt	
@@ -103,7 +103,7 @@ def home(home):
 	search_tweets('#museum','50')
 
 	# try:
-	# 	lass = LT(lt_id=laztwt,position=0)
+	# 	lass = lt(lt_id=laztwt,position=0)
 	# 	lass.save()
 	# 	responsetext+='<br />tweet just saved = '+str(laztwt)
 	# except Exception as e:
@@ -152,7 +152,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	# 1: Get id of last tweet stored (to prevent saving multiple times)
 	# 
 	# try:
-	# 	lass = LT(lt_id=int(tweet_id),position=0)
+	# 	lass = lt(lt_id=int(tweet_id),position=0)
 	# 	lass.save()
 	# 	responsetext+='<br />tweet just saved = '+str(tweet_id)
 	# except Exception as e:
@@ -210,8 +210,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					laztwt=long(tweet_id)
 					try:
 						ra=randint(0,12000)
-						#lasty = LT(lt_1_7=t1_7,lt_8_14=t8_14,lt_rem=trem,position=0)
-						lasty = LT(lt1_7=1,lt_8_14=2,lt_rem=3,position=0)
+						#lasty = lt(lt_1_7=t1_7,lt_8_14=t8_14,lt_rem=trem,position=0)
+						lasty = lt(lt1_7=1,lt_8_14=2,lt_rem=3,position=0)
 						lasty.save()
 						responsetext+='last tweet model (test) xxxxx  created<br />'+tweet_id+'<br />'
 					except Exception as e:
@@ -244,8 +244,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				return (responsetext,laztwt) 
 			x=x+1
 		try:
-			checkLT=LT.objects.all()
-			lt=checkLT[0].lt_id
+			checklt=lt.objects.all()
+			lt=checklt[0].lt_id
 			responsetext+='Retrieved last tweet id = '+str(lt)+'<br />'
 		except Exception as e:
 			responsetext+='Retrieved last tweet id FAILED<br />'+str(e)+'<br />'
@@ -253,8 +253,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
 		# saveTweet2(fullTweet2)
 		try:
-			checkLT=LT.objects.all()
-			lt=checkLT[0].lt_id
+			checklt=lt.objects.all()
+			lt=checklt[0].lt_id
 			responsetext+='Retrieved last tweet id = '+str(lt)+'<br />'
 		except Exception as e:
 			responsetext+='Retrieved last tweet id FAILED<br />'

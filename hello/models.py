@@ -7,7 +7,7 @@ class Greeting(models.Model):
 class lastTweetId(models.Model):
 	last_tweet_id = models.BigIntegerField(max_length=20)
 
-class LT(models.Model):
+class lt(models.Model):
 	lt1_7=models.IntegerField()
 	lt_8_14=models.IntegerField()
 	lt_rem=models.IntegerField()
