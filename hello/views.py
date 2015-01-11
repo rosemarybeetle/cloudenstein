@@ -45,24 +45,26 @@ def index(request):
 	return response
 
 def saveTweetId(tid):
-	global lt_text
+	global lt_stext
 	try:
 		t_id=lt_st(lt_id=tid, position=0)
 		t_id.save()
-		lt_text="tweet id saved successfully from saveTweetId()"
-		return lt_text
+		lt_stext="tweet id saved successfully from saveTweetId()"
+		return lt_stext
 	except Exception as e:
-		lt_text="tweet id not saved from saveTweetId() with error: "+e
-		return lt_text
+		lt_stext="tweet id not saved from saveTweetId() with error: "+e
+		return lt_stext
 
 	# temp_tweet = lastTweetId.objects.filter(id=0)
 	# str(tweets[0].last_tweet_id)
 
 def getLastTweetId():
-	lasty = lt.objects.all()
-	global ttt
-	ttt=lasty[0].lt_id
-	return ttt	
+	global lt_rtext
+	try:
+		lasty = lt_st.objects.all()
+		global ttt
+		ttt=lasty[0].lt_id
+		return (lt_rtext,ttt)
 
 def last (tweet_id_loaded):
 	global sendTextL
@@ -76,7 +78,7 @@ def last (tweet_id_loaded):
 		sendTextL+='last tweet model (test) failed :(<br />'
 	try:
 		getLastTweetId()
-		sendTextL+='retrieved using getLastTweetId - success. tweet 7 ='+str(ttt) +'<br />'
+		sendTextL+='retrieved using getLastTweetId - success. tweet[0].id ='+str(ttt) +'<br />'
 	except Exception as e:
 		sendTextL+='retrieved using getLastTweetId - fail.'+str(e)+'<br />'
 	global tweets
@@ -212,7 +214,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				if (x==0):
 					try:
 						saveTweetId(tweet_id)
-						responsetext+=lt_text
+						responsetext+=lt_stext
 					except Exception as e:
 						responsetext+='Failed at saveTweetId() string because of error: '+str(e)+'<br /><br />'
 					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
