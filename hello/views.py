@@ -31,9 +31,9 @@ def tweetPackager(tid):
 	strtid=str(tid)
 	tl=len(strtid)
 	t1_7=strtid[:7]
-	t8_13=strtid[7:13]
-	rem=tl-13
-	trem=strtid[rem:]
+	t8_14=strtid[8:15]
+	rem=tl-14
+	trem=strtid[rem:tl]
 	return (tl,t1_7,t8_13,trem)
 
 
@@ -203,7 +203,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					try:
 						tweetPackager(tweet_id)
 						responsetext+='t1_7='+t1_7+'<br />'
-						responsetext+='t8_13='+t8_13+'<br />'
+						responsetext+='t8_15='+t8_15+'<br />'
 						responsetext+='trem='+trem+'<br /><br />'
 					except Exception as e:
 						responsetext+='Failed at rebuilding tweetPackager string because of error: '+str(e)+'<br /><br />'
