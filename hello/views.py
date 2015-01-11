@@ -227,11 +227,11 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				global hashtags
 				hashtags=''
 				try:
-					ht_list=js['statuses'][x]['entities']['hashtags']
+					ht_list=list(js['statuses'][x]['entities']['hashtags'])
 					ht_len=len(ht_list)
-					for xx in range (0,ht_len):
+					for xx in ht_len:
 						hashtags+=ht_list[xx]
-						if xlen-xx>1:
+						if ht_len-xx>1:
 							hashtags+=','
 				except:
 					hashtags='failed to retrieve hashtags'
