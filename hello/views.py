@@ -199,18 +199,14 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		while (x<c):
 			try:
 				tweet_id = js['statuses'][x]['id']
-				try:
-					tweetPackager(tweet_id)
-					responsetext+='t1_7='+t1_7+',br />'
-					responsetext+='t1_7='+t1_7+',br />'
-					responsetext+='t1_7='+t1_7+',br />'
-					responsetext+='t1_7='+t1_7+',br />'
-				except Exception as e:
-					responsetext+='Failed at rebuilding tweetPackager string because of error: '+str(e)+'<br /><br />'
-
-
 				if (x==0):
-					global laztwt
+					try:
+						tweetPackager(tweet_id)
+						responsetext+='t1_7='+t1_7+'<br />'
+						responsetext+='t8_13='+t8_13+'<br />'
+						responsetext+='trem='+trem+'<br /><br />'
+					except Exception as e:
+						responsetext+='Failed at rebuilding tweetPackager string because of error: '+str(e)+'<br /><br />'global laztwt
 					laztwt=long(tweet_id)
 					try:
 						ra=randint(0,12000)
