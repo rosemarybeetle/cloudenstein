@@ -67,6 +67,8 @@ def getLastTweetId():
 		lt_rtext='Successfully saved tweet_id as string using lt_st'
 		return (lt_rtext,ttt)
 	except Exception as e:
+		lt_rtext='Failed via getLastTweetId() using lt_st model'
+		return lt_rtext 
 
 
 def last (tweet_id_loaded):
