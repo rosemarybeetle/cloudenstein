@@ -208,6 +208,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		while (x<c):
 			try:
 				tweet_id = js['statuses'][x]['id']
+				laztwt=tweet_id
 				if (x==0):
 					try:
 						saveTweetId(tweet_id)
