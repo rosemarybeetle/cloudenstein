@@ -230,7 +230,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					ht_list=js['statuses'][x]['entities']['hashtags']
 					ht_len=len(ht_list)
 					for xx in range(0,ht_len):
-						hashtags+=ht_list[xx]
+						hashtags+=str(ht_list[xx])
 						if (ht_len-xx)>1:
 							hashtags+=','
 				except Exception as e:
