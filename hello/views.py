@@ -31,9 +31,9 @@ def tweetPackager(tid):
 	strtid=str(tid)
 	tl=len(strtid)
 	t1_7=strtid[:7]
-	t8_13=strtid[7:7]
+	t8_13=strtid[7:13]
 	rem=tl-13
-	trem=strtid[:rem]
+	trem=strtid[rem:]
 	return (tl,t1_7,t8_13,trem)
 
 
