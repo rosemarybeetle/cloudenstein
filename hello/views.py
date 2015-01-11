@@ -201,16 +201,16 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				if (x==0):
 					try:
 						tweetPackager(tweet_id)
-						responsetext+='t1_7='+t1_7+'<br />'
-						responsetext+='t8_14='+t8_14+'<br />'
-						responsetext+='trem='+trem+'<br /><br />'
+						responsetext+='t1_7='+str(t1_7)+'<br />'
+						responsetext+='t8_14='+str(t8_14)+'<br />'
+						responsetext+='trem='+str(trem)+'<br /><br />'
 					except Exception as e:
 						responsetext+='Failed at rebuilding tweetPackager string because of error: '+str(e)+'<br /><br />'
 					global laztwt
 					laztwt=long(tweet_id)
 					try:
 						ra=randint(0,12000)
-						lasty = LT(lt_1_7=t1_7,t8_14=t8_14,trem=trem,position=0)
+						lasty = LT(lt_1_7=t1_7,t8_14=t8_14,lt_rem=trem,position=0)
 						lasty.save()
 						responsetext+='last tweet model (test) xxxxx  created<br />'+tweet_id+'<br />'
 					except Exception as e:
