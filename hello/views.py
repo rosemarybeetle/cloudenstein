@@ -229,16 +229,14 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				try:
 					ht_list=js['statuses'][x]['entities']['hashtags']
 					ht_len=len(ht_list)
-					
-					xx=0
-					while (xx<ht_len):
+					for xx in range (0,ht_len):
 						hashtags+=ht_list[xx]
 						if xlen-xx>1:
 							hashtags+=','
 				except:
-					hashtags=''
+					hashtags='failed to retrieve hashtags'
 
-				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+'('+hashtags+'<br />'
+				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+'('+hashtags+')<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
 				responsetext += '&nbsp'+js['statuses'][x]['text']+'"</p><hr />'
 				
