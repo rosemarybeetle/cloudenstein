@@ -234,8 +234,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					hashtags=''
 
 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+'<br />'
-				responsetext +='<img src="'+avatar+'"/ >&nbsp'+username+'('+name+')<br />'
-				responsetext += 'Text: "'+js['statuses'][x]['text']+'"</p><hr />'
+				responsetext +='<img src="'+avatar+'" style="float:right;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
+				responsetext += js['statuses'][x]['text']+'"</p><hr />'
 				
 				
 				# following line gets rid of Twitter line breaks...
