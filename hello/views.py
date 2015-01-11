@@ -94,12 +94,12 @@ def last (tweet_id_loaded):
 	sendTextL+='<br />number of stored tweets in test = '+str(tt-1)+"<br />"
 	#sendTextL+=str(tweets)
 	try:
-		sendTextL+='Most recent value (#'+str(tt-1)+') = '+str(tweets[tt-1].last_tweet_id)+'<br />'
+		sendTextL+='Most recent value (#'+str(tt-1)+') = '+str(tweets[tt-1].lt_id)+'<br />'
 	except Exception as e:
 		sendTextL+='last tweet get failed <br />'+str(e)+'<br />'
 	try:
 		for e in range (0,tt-1):
-			sendTextL+='tweet '+str(e)+' = '+str(tweets[e].last_tweet_id)+'<br />'
+			sendTextL+='tweet '+str(e)+' = '+str(tweets[e].lt_id)+'<br />'
 	except Exception as e:
 		sendTextL+='failed to extract tweets using "for" loop'+str(e)+'<br />'
 	
