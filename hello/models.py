@@ -10,7 +10,7 @@ class lastTweetId(models.Model):
 class lt(models.Model):
 	lt1_7=models.IntegerField()
 	lt_8_14=models.IntegerField()
-	lt_rem=models.IntegerField()
+	lt_rem=models.IntegerField(max_length=200)
 
 class lt_st(models.Model):
 	position=models.IntegerField()
