@@ -9,6 +9,7 @@ from .models import Greeting
 from .models import lastTweetId
 from .models import lt
 from .models import lt_st
+from .models import tweet
 import json
 import random
 from random import randint
@@ -234,7 +235,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					hashtags=''
 
 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+'<br />'
-				responsetext +='<img src="'+avatar+'" style="float:right;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
+				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
 				responsetext += js['statuses'][x]['text']+'"</p><hr />'
 				
 				
