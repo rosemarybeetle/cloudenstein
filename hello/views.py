@@ -21,6 +21,7 @@ twit_api_key=str(os.environ.get('twit_api_key',3)) #cloudenstein twitter api key
 twit_api_secret=str(os.environ.get('twit_api_secret',3)) #cloudenstein twitter api secret
 twit_api_access_token=str(os.environ.get('twit_api_access_token',3)) #cloudenstein twitter api access token
 twit_api_access_secret=str(os.environ.get('twit_api_access_secret',3)) #cloudenstein twitter api access token secret
+debug=yes # use this to turn on and off daft error messages
 
 # ----------------------
 
@@ -223,9 +224,12 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				avatar = js['statuses'][x]['user']['profile_image_url']
 				user = js['statuses'][x]['user']['screen_name']
 				username= '@'+user
+				global hashtags
+				hashtags=''
 				try:
 					ht_list=js['statuses'][x]['entities']['hashtags']
-					ht_len=len(hashtags)
+					ht_len=len(ht_list)
+					
 					xx=0
 					while (xx<ht_len):
 						hashtags+=ht_list[xx]
@@ -234,7 +238,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				except:
 					hashtags=''
 
-				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+'<br />'
+				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+ht_len+'('+hashtags+'<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
 				responsetext += '&nbsp'+js['statuses'][x]['text']+'"</p><hr />'
 				
