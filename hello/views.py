@@ -88,13 +88,15 @@ def last (tweet_id_loaded):
 		sendTextL+='retrieved using getLastTweetId - fail.'+str(e)+'<br />'
 	global tweets
 	tweets = lt_st.objects.all()
+	t_ct=tweets.count()
+	t_last=tweets[t_ct-1]
 	global tt
 	tt=tweets.count()
 	#
 	sendTextL+='<br />number of stored tweets in test = '+str(tt-1)+"<br />"
 	#sendTextL+=str(tweets)
 	try:
-		sendTextL+='Most recent value (#'+str(tt-1)+') = '+str(tweets[tt-1].lt_id)+'<br />'
+		sendTextL+='Most recent value via t_last = #'+str(t_last)+'<br />'
 	except Exception as e:
 		sendTextL+='last tweet get failed <br />'+str(e)+'<br />'
 	try:
