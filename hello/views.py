@@ -54,7 +54,7 @@ def saveTweetId(tid):
 		lt_stext="tweet id saved successfully from saveTweetId()"
 		return lt_stext
 	except Exception as e:
-		lt_stext="tweet id not saved from saveTweetId() with error: "+e
+		lt_stext="tweet id not saved from saveTweetId() with error: "+str(e)
 		return lt_stext
 
 	# temp_tweet = lastTweetId.objects.filter(id=0)
