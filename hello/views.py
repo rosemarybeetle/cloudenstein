@@ -49,7 +49,7 @@ def index(request):
 def saveTweetId(tid):
 	global lt_stext
 	try:
-		t_id=lt_st(lt_id=tid, position=0)
+		t_id=lt_st(lt_id=tid, position=3)
 		t_id.save(force_update=True)
 		lt_stext="tweet id saved successfully from saveTweetId()"
 		return lt_stext
