@@ -66,7 +66,7 @@ def getLastTweetId():
 	ttt='ttt not set'
 	try:
 		lasty = lt_st.objects.all()
-		ttt=lasty[1].td_id
+		ttt=lasty[1].lt_id
 		try:
 			ttt+=' and id ='+lasty[1].id
 		except Exception as e:
