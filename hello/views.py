@@ -57,7 +57,7 @@ def saveTweetId(tid):
 		try:
 			lasty = lt_st.objects.all()
 			yyy=lasty[21].lt_id
-			lt_stext+=' and id ='+str(lasty[21].id)' and lt_id ='+str(lasty[21].lt_id)
+			lt_stext+=' and id ='+str(lasty[21].id)+' and lt_id ='+str(lasty[21].lt_id)
 		except Exception as e:
 			#lt_stext='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]'
 			lt_stext+='nope failed get lats tweet coz : '+str(e)
