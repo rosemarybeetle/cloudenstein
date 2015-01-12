@@ -73,7 +73,7 @@ def saveTweetId(tid):
 
 def getLastTweetId():
 	global lt_rtext
-	lt lt_rtext="default"
+	lt_rtext="default"
 	global ttt
 	ttt='ttt not set'
 	try:
