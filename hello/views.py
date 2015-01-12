@@ -71,7 +71,7 @@ def getLastTweetId():
 			ttt+=' and id ='+lasty[1].id
 		except Exception as e:
 			ttt+='nope failed get lats tweet coz : '+str(e)
-		lt_rtext='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]'
+			lt_rtext='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]'
 		return (lt_rtext,ttt)
 	except Exception as e:
 		lt_rtext='Failed via getLastTweetId() using lt_st model'
