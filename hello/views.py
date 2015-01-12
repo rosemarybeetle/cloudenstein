@@ -62,9 +62,9 @@ def saveTweetId(tid):
 
 def getLastTweetId():
 	global lt_rtext
+	global ttt
 	try:
 		lasty = lt_st.objects.all()
-		global ttt
 		ttt=lasty[0].td_id
 		try:
 			ttt+=' and id ='+lasty[0].id
