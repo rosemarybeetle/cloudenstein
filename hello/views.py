@@ -55,7 +55,7 @@ def saveTweetId(tid):
 		lt_stext="tweet id saved successfully from saveTweetId()"
 		#--
 		try:
-			lasty = lt_st.objects.all()
+			tweets = lt_st.objects.all()
 			yyy=lasty[13].lt_id
 			lt_stext+=' and id ='+str(lasty[13].id)+' and lt_id ='+str(lasty[13].lt_id)
 		except Exception as e:
@@ -73,19 +73,20 @@ def saveTweetId(tid):
 
 def getLastTweetId():
 	global lt_rtext
+	lt lt_rtext="default"
 	global ttt
 	ttt='ttt not set'
 	try:
-		lasty = lt_st.objects.all()
-		ttt=lasty[11].lt_id
+		tweets = lt_st.objects.all()
+		ttt=lasty[13].lt_id
 		try:
-			ttt+=' and id ='+str(lasty[11].id)
+			ttt+=' and id ='+str(lasty[13].id)
 		except Exception as e:
 			ttt+='nope failed get lats tweet coz : '+str(e)
-			lt_rtext='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]'
+			lt_rtext+='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]<br />'
 		return (lt_rtext,ttt)
 	except Exception as e:
-		lt_rtext='Failed via getLastTweetId() using lt_st model'+ str(e)
+		lt_rtext='Failed via getLastTweetId() using lt_st model'+ str(e)+'<br />'
 		return lt_rtext 
 
 
