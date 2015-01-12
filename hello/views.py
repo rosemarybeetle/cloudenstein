@@ -56,8 +56,8 @@ def saveTweetId(tid):
 		#--
 		try:
 			tweets = lt_st.objects.all()
-			yyy=lasty[13].lt_id
-			lt_stext+=' and id ='+str(lasty[13].id)+' and lt_id ='+str(lasty[13].lt_id)
+			yyy=tweets[13].lt_id
+			lt_stext+=' and id ='+str(tweets[13].id)+' and lt_id ='+str(tweets[13].lt_id)
 		except Exception as e:
 			#lt_stext='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]'
 			lt_stext+='nope failed get lats tweet coz : '+str(e)
@@ -78,9 +78,9 @@ def getLastTweetId():
 	ttt='ttt not set'
 	try:
 		tweets = lt_st.objects.all()
-		ttt=lasty[13].lt_id
+		ttt=tweets[13].lt_id
 		try:
-			ttt+=' and id ='+str(lasty[13].id)
+			ttt+=' and id ='+str(tweets[13].id)
 		except Exception as e:
 			ttt+='nope failed get lats tweet coz : '+str(e)
 			lt_rtext+='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]<br />'
@@ -95,8 +95,8 @@ def last (tweet_id_loaded):
 	ra=randint(0,12000)
 	sendTextL="default trace text <br />"
 	try:
-		lasty = lastTweetId(last_tweet_id =ra)
-		lasty.save()
+		tweets = lastTweetId(last_tweet_id =ra)
+		tweets.save()
 		sendTextL+='last tweet model (test)created<br />'
 	except Exception as e:
 		sendTextL+='last tweet model (test) failed :(<br />'
@@ -187,7 +187,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	# 	lass.save()
 	# 	responsetext+='<br />tweet just saved = '+str(tweet_id)
 	# except Exception as e:
-	# 	responsetext+='lastyT save failed'+str(tweet_id)
+	# 	responsetext+='tweetsT save failed'+str(tweet_id)
 	search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=' # twitter json api query url
 	x= term.find('#') # look to see what position the hashtag is 
 	y=term.find('@') # look to see what position the @ sign is
