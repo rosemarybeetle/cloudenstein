@@ -66,7 +66,7 @@ def getLastTweetId():
 		lasty = lt_st.objects.all()[:1]
 		global ttt
 		ttt=lasty[0].lt_id
-		lt_rtext='Successfully saved tweet_id as string using lt_st'
+		lt_rtext='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]'
 		return (lt_rtext,ttt)
 	except Exception as e:
 		lt_rtext='Failed via getLastTweetId() using lt_st model'
