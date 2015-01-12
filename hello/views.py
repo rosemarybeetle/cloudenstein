@@ -49,7 +49,7 @@ def index(request):
 def saveTweetId(tid):
 	global lt_stext
 	try:
-		t_id=lt_st(lt_id=tid, position=12, id=0)
+		t_id=lt_st(lt_id=tid, position=0, id=0)
 		t_id.save(force_update=True)
 		lt_stext="tweet id saved successfully from saveTweetId()"
 		return lt_stext
@@ -63,7 +63,7 @@ def saveTweetId(tid):
 def getLastTweetId():
 	global lt_rtext
 	try:
-		lasty = lt_st.objects.all()[:1]
+		lasty = lt_st.objects.all()
 		global ttt
 		ttt=lasty[0].lt_id
 		lt_rtext='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]'
