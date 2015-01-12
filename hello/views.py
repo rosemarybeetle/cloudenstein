@@ -22,6 +22,7 @@ twit_api_secret=str(os.environ.get('twit_api_secret',3)) #cloudenstein twitter a
 twit_api_access_token=str(os.environ.get('twit_api_access_token',3)) #cloudenstein twitter api access token
 twit_api_access_secret=str(os.environ.get('twit_api_access_secret',3)) #cloudenstein twitter api access token secret
 debug='yes' # use this to turn on and off daft error messages
+tweets='global default'
 
 # ----------------------
 
@@ -105,7 +106,7 @@ def last (tweet_id_loaded):
 		sendTextL+=lt_rtext+'|| -- success. tweet[0].id =||'+str(ttt) +'<br />'
 	except Exception as e:
 		sendTextL+='retrieved using getLastTweetId - fail.||'+' lt_rtext = '+lt_rtext+' || error = '+str(e)+'<br />'
-	global tweets
+	
 	tweets = lt_st.objects.all()
 	t_ct=tweets.count()
 	t_last=tweets[t_ct-1].lt_id
