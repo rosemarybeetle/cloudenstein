@@ -48,10 +48,21 @@ def index(request):
 
 def saveTweetId(tid):
 	global lt_stext
+	global yyy
 	try:
-		t_id=lt_st(lt_id=tid, position=0, id=2)
+		t_id=lt_st(lt_id=tid, position=0, id=17)
 		t_id.save(force_update=True)
 		lt_stext="tweet id saved successfully from saveTweetId()"
+		#--
+		try:
+			lasty = lt_st.objects.all()
+			yyy=lasty[17].lt_id
+			lt_stext+=' and id ='+str(lasty[17].id)
+		except Exception as e:
+			lt_stext='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]'
+			lt_stext+='nope failed get lats tweet coz : '+str(e)
+			return (lt_stext)
+		#--
 		return lt_stext
 	except Exception as e:
 		lt_stext="tweet id not saved from saveTweetId() with error: "+str(e)
