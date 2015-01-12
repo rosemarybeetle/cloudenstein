@@ -65,8 +65,11 @@ def getLastTweetId():
 	try:
 		lasty = lt_st.objects.all()
 		global ttt
-		ttt=lasty[0].id
-		ttt+=' and id ='+lasty[0].id
+		ttt=lasty[0].td_id
+		try:
+			ttt+=' and id ='+lasty[0].id
+		except Exception as e:
+			ttt+='nope failed get lats tweet coz : '+str(e)
 		lt_rtext='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]'
 		return (lt_rtext,ttt)
 	except Exception as e:
