@@ -56,9 +56,9 @@ def saveTweetId(tid):
 		lt_stext="tweet id saved successfully from saveTweetId()"
 		#--
 		try:
-			tweets = lt_st.objects.all()
-			yyy=tweets[13].lt_id
-			lt_stext+=' and id ='+str(tweets[13].id)+' and lt_id ='+str(tweets[13].lt_id)
+			tweets = lt_st.objects.filter(id=17)
+			yyy=tweets[0].lt_id
+			lt_stext+=' and id ='+str(tweets[0].id)+' and lt_id ='+str(tweets[0].lt_id)+'<br />'
 		except Exception as e:
 			#lt_stext='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]'
 			lt_stext+='nope failed get lats tweet coz : '+str(e)
