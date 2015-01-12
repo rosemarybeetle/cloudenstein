@@ -91,7 +91,7 @@ def last (tweet_id_loaded):
 		getLastTweetId()
 		sendTextL+=lt_rtext+' -- success. tweet[0].id ='+str(ttt) +'<br />'
 	except Exception as e:
-		sendTextL+='retrieved using getLastTweetId - fail.'+str(e)+'<br />'
+		sendTextL+='retrieved using getLastTweetId - fail.'+'lt_rtext = '+lt_rtext+'error = '+str(e)+'<br />'
 	global tweets
 	tweets = lt_st.objects.all()
 	t_ct=tweets.count()
