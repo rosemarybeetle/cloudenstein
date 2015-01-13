@@ -51,7 +51,7 @@ def saveTweetId(tid):
 	global lt_stext
 	global yyy
 	try:
-		t_id=lt_st(lt_id=tid, position=0, id=17)
+		t_id=lt_st(lt_id=tid, position=0, id=16)
 		t_id.save(force_update=True)
 		lt_stext="tweet id saved successfully from saveTweetId()"
 		#--
