@@ -79,9 +79,9 @@ def getLastTweetId():
 	ttt='ttt not set'
 	try:
 		tweets = lt_st.objects.all()
-		ttt=tweets[13].lt_id
+		ttt=tweets[10].lt_id
 		try:
-			ttt+=' and id ='+str(tweets[13].id)
+			ttt+=' and id ='+str(tweets[10].id)
 		except Exception as e:
 			ttt+='nope failed get lats tweet coz : '+str(e)
 			lt_rtext+='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]<br />'
