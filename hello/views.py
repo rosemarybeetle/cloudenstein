@@ -74,14 +74,14 @@ def saveTweetId(tid):
 
 def getLastTweetId():
 	global lt_rtext
-	lt_rtext="default"
+	lt_rtext="default inside getLastTweetId || "
 	global ttt
 	ttt='ttt not set'
 	try:
-		tweets = lt_st.objects.all()
-		ttt=tweets[10].lt_id
+		tweets = lt_st.objects.all(id=10)
+		ttt=tweets[0].lt_id
 		try:
-			ttt+=' and id ='+str(tweets[10].id)
+			ttt+=' and id ='+str(tweets[0].id)
 		except Exception as e:
 			ttt+='nope failed get lats tweet coz : '+str(e)
 			lt_rtext+='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]<br />'
@@ -95,12 +95,12 @@ def last (tweet_id_loaded):
 	global sendTextL
 	ra=randint(0,12000)
 	sendTextL="default trace text <br />"
-	try:
-		tweets = lastTweetId(last_tweet_id =ra)
-		tweets.save()
-		sendTextL+='last tweet model (test)created<br />'
-	except Exception as e:
-		sendTextL+='last tweet model (test) failed :(<br />'
+	# try:
+	# 	tweets = lastTweetId(last_tweet_id =ra)
+	# 	tweets.save()
+	# 	sendTextL+='last tweet model (test)created<br />'
+	# except Exception as e:
+	# 	sendTextL+='last tweet model (test) failed :(<br />'
 	try:
 		getLastTweetId()
 		sendTextL+=lt_rtext+'|| -- success. tweet[xxx].id =||'+str(ttt) +'<br />'
