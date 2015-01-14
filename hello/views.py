@@ -52,15 +52,13 @@ def tweet_admin(request):
 	sendText="<p>Hello. Initialising...</p>"
 	
 	try:
-		init=cloud_admin.objects.all()
+		init=cloud_admin.objects.all(id=1)
 		sendText+="Hey, actually there is data stored"
 		init_ct = init.count()
-		h=0
-		while (h<init_ct):
-			try: 
-				sendText+='saved admin so far ='+init[h].id+'. Search_term= '+init[h].search_term
-			except Exception as e:
-				sendText+='oops it broke inside tweet_admin test retrieve with error: '+str(e)
+		try: 
+			sendText+='saved admin so far ='+init[0].id+'. Search_term= '+init[0].search_term
+		except Exception as e:
+			sendText+='oops it broke inside tweet_admin test retrieve with error: '+str(e)
 	except:
 		sendText+="<p>Oh, nothing created yet...</p>"
 		init=cloud_admin(id=0,search_term='pug', tweet_num='100', harvest_period='60', intro_text='I am loaded', sub_text='That is not a euphemism')
