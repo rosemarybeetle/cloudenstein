@@ -50,7 +50,7 @@ def index(request):
 
 def tweet_admin(request):
 	sendText="<p>Hello. Initialising...</p>"
-	response = HttpResponse(sendText)
+	global responseT = HttpResponse(sendText)
 	try:
 		init=cloud_admin.objects.all()
 		sendText+="Hey, actually there is data stored"
@@ -59,16 +59,16 @@ def tweet_admin(request):
 		while (h<init_ct):
 			try: 
 				sendText+='saved admin so far ='+init[h].id+'. Search_term= '+init[h].search_term
-				return response
+				return responseT
 			except Exception as e:
 				sendText+='oops it broke inside tweet_admin test retrieve with error: '+str(e)
-				return response
+				return responseT
 	except:
 		sendText+="<p>Oh, nothing created yet...</p>"
 		init=cloud_admin(id=0,search_term='pug', tweet_num='100', harvest_period='60', intro_text='I am loaded', sub_text='That is not a euphemism')
 		init.save()
 		sendText+='<p>Now saved default sttings in line, id=0)'
-		return response
+		return responseT
 
 
 def saveTweetId(tid):
