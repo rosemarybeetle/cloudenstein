@@ -52,7 +52,7 @@ def tweet_admin(request):
 	sendText="<p>Hello. Initialising...</p>"
 	
 	try:
-		init=cloud_admin.objects.all(id=1)
+		init=cloud_admin.objects.all(id=0)
 		sendText+="Hey, actually there is data stored"
 		init_ct = init.count()
 		try: 
