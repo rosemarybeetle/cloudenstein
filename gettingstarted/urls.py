@@ -13,7 +13,7 @@ urlpatterns = patterns('',
 	url(r'^$', hello.views.index, name='index'),
 	url(r'^db', hello.views.db, name='db'),
 	url(r'^home', hello.views.home, name='home'),
-	url(r'^tweet_admin',hello.views.tweet_admin, name='tweet_admin'),
+	url(r'^tweetadmin',hello.views.tweet_admin, name='tweetadmin'),
 	url(r'^last',hello.views.last, name='last'),
 	url(r'^admin/', include(admin.site.urls)),
 

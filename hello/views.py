@@ -49,8 +49,8 @@ def index(request):
 	return response
 
 def tweet_admin(request):
-	response = HttpResponse(sendText)
 	sendText="<p>Hello. Initialising...</p>"
+	response = HttpResponse(sendText)
 	try:
 		init=cloud_admin.objects.all()
 		sendText+="Hey, actually there is data stored"
