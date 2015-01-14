@@ -24,7 +24,18 @@ twit_api_access_token=str(os.environ.get('twit_api_access_token',3)) #cloudenste
 twit_api_access_secret=str(os.environ.get('twit_api_access_secret',3)) #cloudenstein twitter api access token secret
 debug='yes' # use this to turn on and off daft error messages
 tweets='global default'
-
+# ----------------------
+# Twitter search admin settings
+global t_st # tweet search term
+global t_sn # tweet search number (how many tweets to return)
+global t_hp # tweet harvet period. How frequently to check
+global t_it # tweet intro text
+global t_ot # tweet outro text
+t_st='#pugs' # random default value
+t_sn=100 # MAX limit on search results per call
+t_hp=60 # repeat every 60 seconds
+t_it = 'Hello from the cloud. I can read your collective thoughts.'
+t_ot = 'I wonder what the future holds.'
 # ----------------------
 
 # Create your views here.
@@ -48,17 +59,23 @@ def index(request):
 	response = HttpResponse(sendText)
 	return response
 
+def loadAdminSettings ():
+	try:
+		adminSettings = lt_st.objects.filter(id=10)
+		t_st=adminSettings[0].search_term
+		t_sn=adminSettings[0].tweet_num
+
 def tweet_admin(request):
 	sendText="<div><h1>Cloud Tweetenstein</h1></p>"
 	
 	try:
 		init=cloud_admin.objects.filter(id=0)
-		sendText+='<p>Currently pondering the collected thoughts within tweets grouped with the term: '
+		sendText+='<p>Currently pondering the collected thoughts within tweets grouped with the term: "'
 		init_ct = init.count()
 		try: 
-			sendText+=str(init[0].search_term)+'</p>'
+			sendText+=str(init[0].search_term)+'"</p>'
 		except Exception as e:
-			sendText+='Brainache caused by : '+str(e)
+			sendText+='Brainache caused by: "'+str(e)+'."'
 	except:
 		sendText+="<p>Oh, nothing created yet...</p>"
 		init=cloud_admin(id=0,search_term='pug', tweet_num='100', harvest_period='60', intro_text='I am loaded', sub_text='That is not a euphemism')
@@ -153,7 +170,7 @@ def home(home):
 	times = int(os.environ.get('TIMES',3))
 	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1></body></html>'
 	
-	search_tweets('#museum','50')
+	search_tweets(t_st,t_sn)
 
 	# try:
 	# 	lass = lt(lt_id=laztwt,position=0)
