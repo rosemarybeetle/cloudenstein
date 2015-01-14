@@ -61,9 +61,9 @@ def index(request):
 
 def loadAdminSettings ():
 	adminSettings = cloud_admin.objects.filter(id=0)
-	t_st=adminSettings[0].search_term
-	t_sn=adminSettings[0].tweet_num
-	return (t_st,t_sn)
+	t_st_ad=adminSettings[0].search_term
+	t_sn_ad=adminSettings[0].tweet_num
+	return (t_st_ad,t_sn_ad)
 
 def tweet_admin(request):
 	sendText="<div><h1>Cloud Tweetenstein</h1></p>"
@@ -170,6 +170,8 @@ def home(home):
 	times = int(os.environ.get('TIMES',3))
 	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1></body></html>'
 	loadAdminSettings ()
+	t_st=t_st_ad
+	t_sn=t_sn_ad
 	search_tweets(t_st,t_sn)
 
 	# try:
