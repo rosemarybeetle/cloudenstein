@@ -52,11 +52,11 @@ def tweet_admin(request):
 	sendText="<p>Hello. Initialising...</p>"
 	
 	try:
-		init=cloud_admin.objects.all(id=0)
+		init=cloud_admin.objects.filter(id=0)
 		sendText+="Hey, actually there is data stored"
 		init_ct = init.count()
 		try: 
-			sendText+='saved admin so far ='+init[0].id+'. Search_term= '+init[0].search_term
+			sendText+='saved admin so far ='+str(init[0].id)+'. Search_term= '+str(init[0].search_term)
 		except Exception as e:
 			sendText+='oops it broke inside tweet_admin test retrieve with error: '+str(e)
 	except:
