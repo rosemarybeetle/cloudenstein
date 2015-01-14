@@ -63,6 +63,7 @@ def loadAdminSettings ():
 	adminSettings = cloud_admin.objects.filter(id=0)
 	t_st=adminSettings[0].search_term
 	t_sn=adminSettings[0].tweet_num
+	return (t_st,t_sn)
 
 def tweet_admin(request):
 	sendText="<div><h1>Cloud Tweetenstein</h1></p>"
