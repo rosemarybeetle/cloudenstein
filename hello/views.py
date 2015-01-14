@@ -245,7 +245,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		else:
 			print ('searching for term: '+term) # or just search!
 			termTXT= term # allows the search term to be passed as a parameter
-	search_url=str(search_url_root+term+'&count='+str(count) # create the full search url from search term and admin setting for number of results
+	search_url=str(search_url_root+term+'&count='+str(count)) # create the full search url from search term and admin setting for number of results
 	print ('---------------------------')
 	print ()
 	try:
