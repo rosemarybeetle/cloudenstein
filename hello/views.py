@@ -57,10 +57,11 @@ def tweet_admin(request):
 		init_ct = init.count()
 		h=0
 		while (h<init_ct):
-			try: sendText+='saved admin so far ='+init[h].id+'. Search_term= '+init[h].search_term
-			return response
-		except Exception as e:
-			sendText+='oops it broke inside tweet_admin test retrieve'
+			try: 
+				sendText+='saved admin so far ='+init[h].id+'. Search_term= '+init[h].search_term
+				return response
+			except Exception as e:
+			sendText+='oops it broke inside tweet_admin test retrieve with error: '+str(e)
 			return response
 	except:
 		sendText+="<p>Oh, nothing created yet...</p>"
