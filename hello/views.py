@@ -49,16 +49,16 @@ def index(request):
 	return response
 
 def tweet_admin(request):
-	sendText="<p>Hello. Initialising...</p>"
+	sendText="<div><h1>Cloud Tweetenstein</h1></p>"
 	
 	try:
 		init=cloud_admin.objects.filter(id=0)
-		sendText+="Hey, actually there is data stored"
+		sendText+='<p>Currently pondering the collected thoughts within tweets grouped with the term: '
 		init_ct = init.count()
 		try: 
-			sendText+='saved admin so far ='+str(init[0].id)+'. Search_term= '+str(init[0].search_term)
+			sendText+=str(init[0].search_term)+'</p>'
 		except Exception as e:
-			sendText+='oops it broke inside tweet_admin test retrieve with error: '+str(e)
+			sendText+='Brainache caused by : '+str(e)
 	except:
 		sendText+="<p>Oh, nothing created yet...</p>"
 		init=cloud_admin(id=0,search_term='pug', tweet_num='100', harvest_period='60', intro_text='I am loaded', sub_text='That is not a euphemism')
