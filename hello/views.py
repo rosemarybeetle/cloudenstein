@@ -302,7 +302,9 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				urls=''
 				try: # poll throuh tweet's status.entities to look for urls
 					url_list=js['statuses'][x]['entities']['urls']
-					for xu in range(0,ht_len):
+					global url_len
+					url_len=len(url_list)
+					for xu in range(0,url_len):
 						url_list_txt=js['statuses'][x]['entities']['urls'][xu]['expanded_url']
 						urls+=url_list_txt
 						if (ht_len-xu)>1:
@@ -310,7 +312,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				except Exception as e:
 					hashtags='failed to retrieve mentions because: '+str(e)
 
-				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+hashtags+'<br />'
+				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+hashtags+' urls cited: '+urls+'<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
 				responsetext += '&nbsp'+js['statuses'][x]['text']+'"</p><hr />'
 				
