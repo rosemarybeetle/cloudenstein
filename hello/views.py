@@ -305,9 +305,9 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					global url_len
 					url_len=len(url_list)
 					for xu in range(0,url_len):
-						url_list_txt=js['statuses'][x]['entities']['urls'][xu]['display_url']
-						urle_list_txt=js['statuses'][x]['entities']['urls'][xu]['expanded_url']
-						url_list_txt='<a href="expanded_url">display_url</a>'
+						url_d_txt=js['statuses'][x]['entities']['urls'][xu]['display_url']
+						url_e_txt=js['statuses'][x]['entities']['urls'][xu]['expanded_url']
+						url_list_txt='<a href="'+url_e_txt+'">'+url_d_txt+'</a>'
 						urls+=url_list_txt
 						if (ht_len-xu)>0:
 							urls+=','
