@@ -63,7 +63,7 @@ def loadAdminSettings ():
 	global t_st_ad
 	global t_sn_ad
 	try:
-		adminSettings = cloud_admin.objects.filter(id=0)
+		adminSettings = cloud_admin.objects.filter(id=2)
 		t_st_ad=adminSettings[0].search_term
 		t_sn_ad=adminSettings[0].tweet_num
 	except Exception as e:
