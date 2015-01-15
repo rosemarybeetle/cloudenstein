@@ -35,6 +35,6 @@ class cloud_admin(models.Model):
 	harvest_period=models.CharField(max_length=60) # in seconds
 	intro_text=models.CharField(max_length=300)
 	sub_text=models.CharField(max_length=300)
-	tdb_max=models.CharField(max_length=4)
-	tdb_last_added=models.CharField(max_length=100)
+	#tdb_max=models.CharField(max_length=4)
+	#tdb_last_added=models.CharField(max_length=100)
 
