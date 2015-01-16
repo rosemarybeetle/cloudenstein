@@ -99,7 +99,8 @@ def tweet_admin(request):
 
 def weight_items(ww):
 	global count_items # declares a container object to return a list in 
-	count_items=[] # defines it as an empty list. This function is intended to be used for any list 
+	count_items=[]
+	#test_list=[]
 	try: # need this in case list argument is borked . Also .index() would throw an error if the list was empty
 		u=len(ww) # get length of list
 		for l in range (0,u): # for all items in list object, increment through index values from 0 to length of list
@@ -111,7 +112,12 @@ def weight_items(ww):
 				count_items.append(str(ll)) # (add count of occurrences of this value)
 	except Exception as e:
 		count_items=[e] # if it fails, send the error message instead 
-	return count_items # return list of distinct values
+	return count_items# return count_items
+
+def sort_pairs(tt):
+	global sorted_items 
+	sorted_items=[]
+	return 'flip' # this function is NOT YET FINISHED
 
 
 def saveTweetId(tid):
@@ -382,6 +388,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			urlc=', '.join(count_items)
 			weight_items(mega_mentions)
 			menc=', '.join(count_items)
+			sort_pairs(count_items)
 			mens=', '.join(mega_mentions)
 			responsetext+='All hashtags in this session were: '+hts+'<br /><hr />'
 			responsetext+='All hashtags by count in this session were: '+htc+'<br /><hr />'
