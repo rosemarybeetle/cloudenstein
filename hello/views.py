@@ -347,15 +347,14 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				try: # poll throuh tweet's status.entities to look for mentions
 					men_list=js['statuses'][x]['entities']['mentions']
 					global men_len
-					url_len=len(men_list)
-					for xm in range(0,url_len):
+					men_len=len(men_list)
+					for xm in range(0,men_len):
 						men_n_txt=js['statuses'][x]['entities']['mentions'][xm]['name']
 						men_sn_txt=js['statuses'][x]['entities']['mentions'][xm]['screen_name']
 						men_list_txt=men_n_txt+': <a href="http://twitter.com/'+men_sn_txt+'">@'+men_sn_txt+'</a>'
 						mega_mentions.append(men_list_txt)
-						mega_mentions.append(men_list_txt)
 						mentions+=men_list_txt
-						if (url_len-xm)>0:
+						if (men_len-xm)>0:
 							mentions+=','
 				except Exception as e:
 					mentions='failed to retrieve mentions because: '+str(e)
