@@ -344,13 +344,13 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				except Exception as e:
 					urls='failed to retrieve urls because: '+str(e)
 				mentions=''
-				try: # poll throuh tweet's status.entities to look for mentions
-					men_list=js['statuses'][x]['entities']['mentions']
+				try: # poll through tweet's status.entities to look for mentions
+					men_list=js['statuses'][x]['entities']['user_mentions']
 					global men_len
 					men_len=len(men_list)
 					for xm in range(0,men_len):
-						men_n_txt=js['statuses'][x]['entities']['mentions'][xm]['name']
-						men_sn_txt=js['statuses'][x]['entities']['mentions'][xm]['screen_name']
+						men_n_txt=js['statuses'][x]['entities']['user_mentions'][xm]['name']
+						men_sn_txt=js['statuses'][x]['entities']['user_mentions'][xm]['screen_name']
 						men_list_txt=men_n_txt+': <a href="http://twitter.com/'+men_sn_txt+'">@'+men_sn_txt+'</a>'
 						mega_mentions.append(men_list_txt)
 						mentions+=men_list_txt
@@ -382,9 +382,11 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			urlc=', '.join(count_items)
 			weight_items(mega_mentions)
 			menc=', '.join(count_items)
+			mens=', '.join(mega_mentions)
 			responsetext+='All hashtags in this session were: '+hts+'<br /><hr />'
 			responsetext+='All hashtags by count in this session were: '+htc+'<br /><hr />'
 			responsetext+='All urls by count in this session were: '+urlc+'<br /><hr />'
+			responsetext+='All mentions in this session were: '+mens+'<br /><hr />'
 			responsetext+='All mentions by count in this session were: '+menc+'<br /><hr />'
 		except Exception as e:
 			responsetext+='Retrieved last tweet id FAILED FROM getLastTweetId()<br />'+str(e)+'<br />'
