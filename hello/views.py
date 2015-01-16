@@ -98,21 +98,20 @@ def tweet_admin(request):
 	return responseT
 
 def weight_items(ww):
-	global count_items
-	count_items=[]
-	try:
-		u=len(ww)
-		for l in range (0,u):
-			m=ww[l]
-			#mm=
-			ll=ww.count(m)
-			li=ww.index(ww[l])
-			if l==li:
-				count_items.append(m)
-				count_items.append(str(ll))
+	global count_items # declares a container object to return a list in 
+	count_items=[] # defines it as an empty list. This function is intended to be used for any list 
+	try: # need this in case list argument is borked . Also .index() would throw an error if the list was empty
+		u=len(ww) # get length of list
+		for l in range (0,u): # for all items in list object, increment through index values from 0 to length of list
+			m=ww[l] # value of item
+			ll=ww.count(m) # count of occurrances of this value in whole list
+			li=ww.index(ww[l]) # "position" index value of this specific instance of the value
+			if l==li: # if value of this item's index is same as index of first occurence (to create just one item in new list per distinct value)
+				count_items.append(m) # ( add value of this one)
+				count_items.append(str(ll)) # (add count of occurrences of this value)
 	except Exception as e:
-		count_items=[e]
-	return count_items
+		count_items=[e] # if it fails, send the error message instead 
+	return count_items # return list of distinct values
 
 
 def saveTweetId(tid):
@@ -338,11 +337,28 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						url_d_txt=js['statuses'][x]['entities']['urls'][xu]['display_url']
 						url_e_txt=js['statuses'][x]['entities']['urls'][xu]['expanded_url']
 						url_list_txt='<a href="'+url_e_txt+'">'+url_d_txt+'</a>'
+						mega_urls.append(url_list_txt)
 						urls+=url_list_txt
 						if (ht_len-xu)>0:
 							urls+=','
 				except Exception as e:
-					hashtags='failed to retrieve mentions because: '+str(e)
+					urls='failed to retrieve urls because: '+str(e)
+				mentions=''
+				try: # poll throuh tweet's status.entities to look for mentions
+					men_list=js['statuses'][x]['entities']['mentions']
+					global men_len
+					url_len=len(men_list)
+					for xm in range(0,url_len):
+						men_n_txt=js['statuses'][x]['entities']['mentions'][xm]['name']
+						men_sn_txt=js['statuses'][x]['entities']['mentions'][xm]['screen_name']
+						men_list_txt=men_n_txt+': <a href="http://twitter.com/'+men_sn_txt+'">@'+men_sn_txt+'</a>'
+						mega_mentions.append(men_list_txt)
+						mega_mentions.append(men_list_txt)
+						mentions+=men_list_txt
+						if (url_len-xm)>0:
+							mentions+=','
+				except Exception as e:
+					mentions='failed to retrieve mentions because: '+str(e)
 
 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+hashtags+' urls cited: '+urls+'<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
@@ -360,11 +376,17 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		try:
 			getLastTweetId()
 			responsetext+='sUCCESSFULLY retrieved last lt_id FROM getLastTweetId(). = '+ttt+'<br />'
+			hts=', '.join(mega_hashtags) # .join() turns a list into a string, it gets the items and returns them separated by what's between the ''
 			weight_items(mega_hashtags)
-			hts=', '.join(mega_hashtags)
 			htc=', '.join(count_items)
+			weight_items(mega_urls)
+			urlc=', '.join(count_items)
+			weight_items(mega_mentions)
+			menc=', '.join(count_items)
 			responsetext+='All hashtags in this session were: '+hts+'<br /><hr />'
-			responsetext+='All hashtags in this session were: '+htc+'<br /><hr />'
+			responsetext+='All hashtags by count in this session were: '+htc+'<br /><hr />'
+			responsetext+='All urls by count in this session were: '+urlc+'<br /><hr />'
+			responsetext+='All mentions by count in this session were: '+menc+'<br /><hr />'
 		except Exception as e:
 			responsetext+='Retrieved last tweet id FAILED FROM getLastTweetId()<br />'+str(e)+'<br />'
 		return (responsetext, laztwt)
