@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+<html>
+<head>
+<!-- link to google-hosted jquery 
+<script src="jquery-1.11.0.js" ></script>
+<!--[if lt IE 9]>
+	<script src="jquery-1.11.0.js"></script>
+<![endif]    <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+<script src="{% static "jquery-1.11.0.js" %}" ></script>
+
+<link rel="stylesheet" href="{% static "face.css" %}">
+<link rel="stylesheet" href="{% static "styler.css" %}">
+  <title>face</title>
+   <script src="modernizr.min.js"></script>
+
+<script src="{% static "tweetenstein-cut.js" %}" ></script> 
+ 
+</head>
+<body>
+
+<div class="face" id="facechunk">
+<iframe class="hideFrame" id="framer" src=""></iframe>
+<div class="eyes">
+<img id="eye-left" src="{% static "eye-left.png" %}" />
+<img id="eye-right" src="{% static "eye-right.png" %}" />  
+</div>
+<div class="mouth" id="mouthchunk">
+<img id="mouthy" src="{% static "mouth-1.jpg" %}" />
+</div>
+<div class="nose" id="nosechunk">
+<img id="nosey" src="{% static "nose.png" %}" />
+</div>
+</div>
+<script>
+
+</script>
+
+	
+  
+</body>
+</html>

@@ -251,6 +251,11 @@ def db(request):
 
 	return render(request, 'db.html', {'greetings': greetings})
 
+def cloudenstein (argy):
+	return render (argy, 'face-off.html')
+
+
+
 # ---------------search_tweets is from older Tweetenstein - to be modded ------------------
 # ----------------------------------------------------------------------------------------
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
