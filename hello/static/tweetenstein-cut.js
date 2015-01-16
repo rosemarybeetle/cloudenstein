@@ -126,7 +126,7 @@ $( document ).ready(function() {
 
 // ------------------ adds touch sensitivity -------------
 window.addEventListener('load', function(){ // on page load
-document.body.addEventListener('touchend', function(e){
+document.body.addEventListener('touchstart', function(e){
   keyup();
  }, false)
  }, false)
