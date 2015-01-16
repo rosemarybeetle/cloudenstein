@@ -7,3 +7,8 @@ cd python-getting-started
 foreman start
 
 heroku run python manage.py syncdb
+
+##------------
+tdb_max=models.Charfield(max_length=4)
+tdb_last_added=models.Charfield(max_length=100)
+

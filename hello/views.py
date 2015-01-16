@@ -37,7 +37,14 @@ t_hp=60 # repeat every 60 seconds
 t_it = 'Hello from the cloud. I can read your collective thoughts.'
 t_ot = 'I wonder what the future holds.'
 # ----------------------
-
+# mega lists for containing stripped data from tweets
+global mega_hashtags # list of hashtags 
+global mega_urls #list of urls
+global mega_mentions # list of mentions
+mega_hashtags=[]
+mega_urls=[]
+mega_mentions=[]
+# ----------------------
 # Create your views here.
 def tweetPackager(tid):
 	global tl
@@ -89,6 +96,23 @@ def tweet_admin(request):
 		sendText+='<p>Now saved default sttings in line, id=0)'
 	responseT = HttpResponse(sendText)
 	return responseT
+
+def weight_items(ww):
+	global count_items
+	count_items=[]
+	try:
+		u=len(ww)
+		for l in range (0,u):
+			m=ww[l]
+			#mm=
+			ll=ww.count(m)
+			li=ww.index(ww[l])
+			if l==li:
+				count_items.append(m)
+				count_items.append(str(ll))
+	except Exception as e:
+		count_items=[e]
+	return count_items
 
 
 def saveTweetId(tid):
@@ -297,6 +321,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					ht_len=len(ht_list)
 					for xx in range(0,ht_len):
 						ht_list_txt=js['statuses'][x]['entities']['hashtags'][xx]['text']
+						# some code to add to hashtag list, checking for existing and counting if needed
+						mega_hashtags.append(ht_list_txt)
 						hashtags+='#'+ht_list_txt
 						if (ht_len-xx)>0:
 							hashtags+=','
@@ -334,6 +360,11 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		try:
 			getLastTweetId()
 			responsetext+='sUCCESSFULLY retrieved last lt_id FROM getLastTweetId(). = '+ttt+'<br />'
+			weight_items(mega_hashtags)
+			hts=', '.join(mega_hashtags)
+			htc=', '.join(count_items)
+			responsetext+='All hashtags in this session were: '+hts+'<br /><hr />'
+			responsetext+='All hashtags in this session were: '+htc+'<br /><hr />'
 		except Exception as e:
 			responsetext+='Retrieved last tweet id FAILED FROM getLastTweetId()<br />'+str(e)+'<br />'
 		return (responsetext, laztwt)
