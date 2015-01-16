@@ -6,6 +6,8 @@ console.log('test alert')
 //var gurl= Trim('http://translate.google.com/translate_tts?ie=UTF-8&q='+speech);
 console.log(speech);
 //console.log(gurl);
+
+
 document.getElementById('framer').src = 'http://translate.google.com/translate_tts?&tl=en-US&ie=UTF-8&q='+speech;
 mouthoff(leng);
 //----------------
@@ -111,6 +113,7 @@ console.log('inside harvestTweets call to tweetstore.json');
  
 }
 function setUp() {
+  
 
 /* optional checking for html5 file apis, needed to read data
 if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -187,7 +190,7 @@ function keyup()
 window.ran= Math.floor((Math.random()*l)+1);
 console.log ('random number = '+ran)
 console.log('inside keyup detection ');
-window.g='Itsssssssssssss Monty Pythons. Flying Circusssssssssss.'
+window.g='Day-zee. Day-zee. Give me. your answer. do'
 //screenames[ran];
 window.leng=g.length;
 if (window.lock==0) {
