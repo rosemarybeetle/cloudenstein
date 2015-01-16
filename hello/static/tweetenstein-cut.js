@@ -123,6 +123,14 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 }*/
 // +++
 $( document ).ready(function() {
+
+// ------------------ adds touch sensitivity -------------
+window.addEventListener('load', function(){ // on page load
+document.body.addEventListener('touchend', function(e){
+  keyup();
+ }, false)
+ }, false)
+// ------------------- end touch sensitivity --------------
 window.leng=1;
 window.lock=0; // stop multiple mouth triggers on mouse down
 window.mouthStop=0; // counter needed by swapMouth
