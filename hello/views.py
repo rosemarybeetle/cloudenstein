@@ -246,13 +246,13 @@ def api (request):
 	global gt
 	gt=get_stuff.count()
 	global api_text
-	api_text='"{"metadata":{"record_count":'+str(gt)+'},"responses":['
+	api_text='{"metadata":{"record_count":'+str(gt)+'},"responses":['
 	try:
 		for e in range (0,gt-1):
 			api_text+='{"id":"'+str(get_stuff[e].id)+'","tweet_id":"'+str(get_stuff[e].lt_id)+'"}'
 			if e!=gt-1:
 				api_text+=','
-			api_text+="]}"
+		api_text+="]}"
 	except Exception as e:
 		api_text='failed to respond - Returned error: '+str(e)
 	api_response = HttpResponse(api_text)
