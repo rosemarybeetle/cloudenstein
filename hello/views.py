@@ -250,7 +250,7 @@ def api (request):
 	try:
 		for e in range (0,gt-1):
 			api_text+='{"id":"'+str(get_stuff[e].id)+'","tweet_id":"'+str(get_stuff[e].lt_id)+'"}'
-			if ((gt-1)-e)>0:
+			if ((gt-2)-e)>0:
 				api_text+=','
 		api_text+="]}"
 	except Exception as e:
