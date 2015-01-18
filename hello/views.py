@@ -221,9 +221,13 @@ def home(request):
 	# 	responsetext+='<br />tweet just saved = '+str(laztwt)
 	# except Exception as e:
 	# 	responsetext+='lass save failed'+str(laztwt)
-	t=tweet.objects.all()
-	ht=str(t[0].status)
-	responsetext+='<br /><hr />Saved tweet ='+str(ht)
+	try:
+		t=tweet.objects.all()
+		ht=str(t[0].status)
+		responsetext+='<br /><hr />Saved tweet ='+str(ht)
+	except Exception as e:
+		responsetext+='<br /><hr /> error = '+str(e)
+	
 	home_response = HttpResponse(responsetext)
 	return home_response
 
