@@ -22,12 +22,13 @@ class tweet(models.Model):
 	username=models.CharField(max_length=12)
 	status=models.CharField(max_length=140)
 	avatar=models.CharField(max_length=140)
-	hashtag_ct=models.CharField(max_length=20)
-	hashtag_list=models.CharField(max_length=140)
-	mention_ct=models.CharField(max_length=20)
-	mention_list=models.CharField(max_length=140)
-	url_ct=models.CharField(max_length=20)
-	url_list=models.CharField(max_length=140)
+
+	# hashtag_ct=models.CharField(max_length=20)
+	# hashtag_list=models.CharField(max_length=140)
+	# mention_ct=models.CharField(max_length=20)
+	# mention_list=models.CharField(max_length=140)
+	# url_ct=models.CharField(max_length=20)
+	# url_list=models.CharField(max_length=140)
 
 class cloud_admin(models.Model):
 	search_term=models.CharField(max_length=20) # what the api is searching for

@@ -441,7 +441,22 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 # ---------------search_tweets is from older Tweetenstein - to be modded ------------------
 # ----------------------------------------------------------------------------------------
 
-# def retrieveLastTweet():
-# 	global last_tweet_known
-# 	last_tweet_known
+def create_batch():
+	test=0
+	# pseudo code 
+	# search twitter to creat new temp_batch of tweets, based on cloud_admin() settings
+	# retrieve most recent saved tweet id using functionx()
+	# for each tweet in temp_batch:
+	# 	if tweet_id > last_saved_tweet_id
+	# 	save tweet() which means:
+	# 		if current_batch.size > batch_limit from process_setting()
+	# 		delete oldest tweet in batch
+	# 		add new tweet to end 
+	# 	process tweet()
+	# 		harvest_usernames()
+	# 		harvest_urls
+	# 		harvest_hashtags
+	# 	increment batch.count
+	# once all processed, update last_saved_tweet_id 
+
 
