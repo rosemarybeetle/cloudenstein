@@ -35,3 +35,16 @@ class cloud_admin(models.Model):
 	harvest_period=models.CharField(max_length=60) # in seconds
 	intro_text=models.CharField(max_length=300)
 	sub_text=models.CharField(max_length=300)
+
+class process_settings(models.Model): # settings for records in sub-content tables
+	st_date=models.DateTimeField()
+	end_date=models.DateTimeField()
+	max_tweets=models.CharField(max_length=3)
+	max_tags=models.CharField(max_length=4)
+	max_mens=models.CharField(max_length=4)
+	max_words=models.CharField(max_length=4)
+	cnt_type=models.CharField(max_length=20)
+	st=models.CharField(max_length=140)
+
+class stop_words(models.Model): #words not to bother saving
+	sw=models.CharField(max_length=20)
