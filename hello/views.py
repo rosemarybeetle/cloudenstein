@@ -221,6 +221,9 @@ def home(request):
 	# 	responsetext+='<br />tweet just saved = '+str(laztwt)
 	# except Exception as e:
 	# 	responsetext+='lass save failed'+str(laztwt)
+	t=tweet.objects.all()
+	ht=str(t[0].status)
+	responsetext+='<br /><hr />Saved tweet ='+str(ht)
 	home_response = HttpResponse(responsetext)
 	return home_response
 
@@ -349,6 +352,10 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				avatar = js['statuses'][x]['user']['profile_image_url']
 				user = js['statuses'][x]['user']['screen_name']
 				username= '@'+user
+				tweet_text=js['statuses'][x]['text']
+				saveTweet(tweet_id,name,user,avatar,text)
+				
+				# V---------------------do sub content-------------------V
 				global hashtags
 				hashtags=''
 				try: # poll throuh tweet's status.entities to look for hashtags
@@ -395,7 +402,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 							mentions+=','
 				except Exception as e:
 					mentions='failed to retrieve mentions because: '+str(e)
-
+				# ^------------------------end sub content ----------------------------^
 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+hashtags+' urls cited: '+urls+'<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
 				responsetext += '&nbsp'+js['statuses'][x]['text']+'"</p><hr />'
@@ -437,9 +444,9 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		return (responsetext) 
 	
 
-# ------------- end search twitter -------------------------
-# ---------------search_tweets is from older Tweetenstein - to be modded ------------------
-# ----------------------------------------------------------------------------------------
+def saveTweet(tweet_id,name,user,avatar,text):
+	saved_tweet=tweet(tid=tweet_id,name=name,username=user,avatar=avatar,status=text)
+	saved_tweet.save()
 
 def create_batch():
 	test=0
