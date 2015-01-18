@@ -169,7 +169,7 @@ def getLastTweetId():
 def last (request):
 	global sendTextL
 	global tt
-	
+	tt=0
 	ra=randint(0,12000)
 	sendTextL="default trace text <br />"
 	# try:
@@ -456,7 +456,7 @@ def create_batch():
 	# for each tweet in temp_batch:
 	# 	if tweet_id > last_saved_tweet_id
 	# 	save tweet() which means:
-	# 		if current_batch.size > batch_limit from process_setting()
+	# 		if currebatch.size > batch_limit from process_setting()
 	# 		delete oldest tweet in batch
 	# 		add new tweet to end 
 	# 	process tweet()
