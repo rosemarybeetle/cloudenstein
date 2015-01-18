@@ -243,11 +243,10 @@ def retrieveGoogleAdmin (url):
 def api (request):
 	cont=100	
 	get_stuff = lt_st.objects.all()[:cont]
-	api_text+=str(get_stuff)
 	global gt
 	gt=get_stuff.count()
 	global api_text
-	api_text='"{"metadata":{"record_count":'+gs_ct+'},"responses":['
+	api_text='"{"metadata":{"record_count":'+gt+'},"responses":['
 	try:
 		for e in range (0,gt-1):
 			api_text+='{"id":"'+str(get_stuff[e].id)+'","tweet_id":"'+str(get_stuff[e].lt_id)+'"}'
