@@ -246,7 +246,7 @@ def api (request):
 	global gt
 	gt=get_stuff.count()
 	global api_text
-	api_text='"{"metadata":{"record_count":'+gt+'},"responses":['
+	api_text='"{"metadata":{"record_count":'+str(gt)+'},"responses":['
 	try:
 		for e in range (0,gt-1):
 			api_text+='{"id":"'+str(get_stuff[e].id)+'","tweet_id":"'+str(get_stuff[e].lt_id)+'"}'
