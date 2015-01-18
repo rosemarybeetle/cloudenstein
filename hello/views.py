@@ -168,6 +168,8 @@ def getLastTweetId():
 
 def last (request):
 	global sendTextL
+	global tt
+	
 	ra=randint(0,12000)
 	sendTextL="default trace text <br />"
 	# try:
@@ -181,12 +183,14 @@ def last (request):
 		sendTextL+=lt_rtext+'|| -- success. tweet[xxx].id =||'+str(ttt) +'<br />'
 	except Exception as e:
 		sendTextL+='retrieved using getLastTweetId - fail.||'+' lt_rtext = '+lt_rtext+' || error = '+str(e)+'<br />'
+	try:
+		tweety = lt_st.objects.all()
+		t_ct=tweety.count()
+		t_last=tweety[t_ct-1].lt_id
+		tt=tweety.count()
 	
-	tweets = lt_st.objects.all()
-	t_ct=tweets.count()
-	t_last=tweets[t_ct-1].lt_id
-	global tt
-	tt=tweets.count()
+	except Exception as e:
+		sendTextL+='error creating tweety'+str(e)
 	#
 	sendTextL+='<br />number of stored tweets in test = '+str(tt-1)+"<br />"
 	#sendTextL+=str(tweets)
@@ -196,7 +200,7 @@ def last (request):
 		sendTextL+='last tweet get failed <br />'+str(e)+'<br />'
 	try:
 		for e in range (0,tt-1):
-			sendTextL+='tweet '+str(e)+' = '+str(tweets[e].lt_id)+' tweet id = '+str(tweets[e].id)+'<br />'
+			sendTextL+='tweet '+str(e)+' = '+str(tweety[e].lt_id)+' tweet id = '+str(tweety[e].id)+'<br />'
 	except Exception as e:
 		sendTextL+='failed to extract tweets using "for" loop'+str(e)+'<br />'
 	
