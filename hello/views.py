@@ -214,7 +214,7 @@ def home(request):
 	t_st=t_st_ad
 	t_sn=t_sn_ad
 	search_tweets(t_st,t_sn)
-
+	responsetext=''
 	# try:
 	# 	lass = lt(lt_id=laztwt,position=0)
 	# 	lass.save()
