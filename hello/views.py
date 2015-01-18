@@ -164,7 +164,7 @@ def getLastTweetId():
 		return lt_rtext 
 
 
-def last (tweet_id_loaded):
+def last (request):
 	global sendTextL
 	ra=randint(0,12000)
 	sendTextL="default trace text <br />"
@@ -201,7 +201,7 @@ def last (tweet_id_loaded):
 	last_response = HttpResponse(sendTextL)
 	return last_response
 
-def home(home):
+def home(request):
 	times = int(os.environ.get('TIMES',3))
 	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1></body></html>'
 	loadAdminSettings ()
@@ -240,7 +240,25 @@ def retrieveGoogleAdmin (url):
 	except Exception as e:
 		print ('Can\'t connect to admin settings - no connection') +str(e)+'<br />'
 
-
+def api (request):
+	cont=100	
+	get_stuff = lt_st.objects.all()[:cont]
+	api_text+=str(get_stuff)
+	global gt
+	gt=get_stuff.count()
+	global api_text
+	api_text='"{"metadata":{"record_count":'+gs_ct+'},"responses":['
+	try:
+		for e in range (0,gt-1):
+			api_text+='{"id":"'+str(get_stuff[e].id)+'","tweet_id":"'+str(get_stuff[e].lt_id)+'"}'
+			if e!=gt-1:
+				api_text+=','
+			api_text+="]}"
+	except Exception as e:
+		api_text='failed to respond - Returned error: '+str(e)
+	api_response = HttpResponse(api_text)
+	return api_response
+	
 
 def db(request):
 
@@ -251,16 +269,19 @@ def db(request):
 
 	return render(request, 'db.html', {'greetings': greetings})
 
-def cloudenstein (argy):
-	return render (argy, 'face-off.html')
+def cloudenstein (request):
+	return render (request, 'face-off.html')
+
+def oculus (request):
+	return render (request, 'oculus.html')
 
 
 
 # ---------------search_tweets is from older Tweetenstein - to be modded ------------------
 # ----------------------------------------------------------------------------------------
+	responsetext="default"
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
 	global responsetext
-	responsetext="default"
 	# 1: Get id of last tweet stored (to prevent saving multiple times)
 	# 
 	# try:
@@ -410,6 +431,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		responsetext="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
 		return (responsetext) 
 	
+
 # ------------- end search twitter -------------------------
 # ---------------search_tweets is from older Tweetenstein - to be modded ------------------
 # ----------------------------------------------------------------------------------------

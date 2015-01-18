@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+<html>
+<head>
+	<title>oculus</title>
+<!-- link to google-hosted jquery 
+<script src="jquery-1.11.0.js" ></script>
+<!--[if lt IE 9]>
+	<script src="jquery-1.11.0.js"></script>
+<![endif]    <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+<script src="{% static "jquery-1.11.0.js" %}" ></script>
+
+<!-- <link rel="stylesheet" href="{% static "face.css" %}" />
+ -->
+ <link rel="stylesheet" href="{% static "oculus.css" %}" />
+  <title>face</title>
+  <!--  // <script src="modernizr.min.js"></script> -->
+
+<script src="{% static "eyeball.js" %}" ></script> 
+
+</head>
+<body>
+<img src="/static/pupil.png" class="centered" id="pupil">
+<img src="/static/white.png" class="centered" id="white">
+<img src="/static/iris.png" class="centered" id="iris">
+<!-- <canvas id="eye-centre"></canvas> -->
+</div>
+
+<script>
+
+</script>
+<link rel="stylesheet" href="{% static "static/oculus.css" %}" /> 
+  <title>Hello Web - Processing.js Test</title>
+  
+<!--   // <script src="tweetenstein.js"></script>   -->
+</head>
+<body>
+<script>
+
+</script>
+<!--  <div id="canvases">
+	<canvas  class="canvases" id="myCanvas"  ></canvas>
+	<canvas  class="canvases" id="myCanvas2"  ></canvas>
+	
+	</div> -->
+	<script>
+
+// Get drawing context for the Canvas
+var myCanvasContext = myCanvas.getContext('2d');
+  
+// Load up our image.
+var source = new Image();
+source.src = 'static/white.svg';
+source.width = '90%';
+source.height = '80%';
+// Render our SVG image to the canvas once it loads.
+source.onload = function(){
+    myCanvasContext.drawImage(source,800,450);
+}
+
+ </script> 
+  <script>
+ setUp();
+</script>
+	
+  
+</body>
+</html>
