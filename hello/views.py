@@ -213,7 +213,7 @@ def home(request):
 	loadAdminSettings ()
 	t_st=t_st_ad
 	t_sn=t_sn_ad
-	responsetext=''
+	#responsetext=''
 	
 	search_tweets(t_st,t_sn)
 	# try:
@@ -353,7 +353,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				user = js['statuses'][x]['user']['screen_name']
 				username= '@'+user
 				tweet_text=js['statuses'][x]['text']
-				saveTweet(tweet_id,name,user,avatar,text)
+				saveTweet(tweet_id,name,user,avatar,tweet_text)
 				try:
 					twts=tweeter.objects.all()
 					twt_len=twts.count()
