@@ -221,12 +221,7 @@ def home(request):
 	# 	responsetext+='<br />tweet just saved = '+str(laztwt)
 	# except Exception as e:
 	# 	responsetext+='lass save failed'+str(laztwt)
-	try:
-		t=tweeter.objects.all()
-		ht=str(t[0].status)
-		responsetext+='<br /><hr />Saved tweet ='+str(ht)
-	except Exception as e:
-		responsetext+='<br /><hr /> error = '+str(e)
+	
 	
 	home_response = HttpResponse(responsetext)
 	return home_response
@@ -358,6 +353,12 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				username= '@'+user
 				tweet_text=js['statuses'][x]['text']
 				saveTweet(tweet_id,name,user,avatar,text)
+				try:
+					twts=tweeter.objects.all()
+					twt_len=twts.count()
+					responsetext+='retrieved saved tweets = '
+				except Exception as e:
+					responsetext+='error retrieving saved tweets = '+str(twts)+'length = '+strt(twt_len)
 				
 				# V---------------------do sub content-------------------V
 				global hashtags
@@ -449,7 +450,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	
 
 def saveTweet(tweet_id,name,user,avatar,text):
-	saved_tweet=tweeter(tid=tweet_id,name=name,username=user,avatar=avatar,status=text)
+	saved_tweet=tweeter(tid=tweet_id,name=name,username=user,status=text,avatar=avatar)
 	saved_tweet.save()
 
 def create_batch():
