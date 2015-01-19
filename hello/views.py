@@ -419,7 +419,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				# tweet=tweet.replace("\"","'")
 				# tweet=tweet.replace("\\","")
 			except Exception as e:
-				responsetext="Something broke while polling through tweets. This msg inside search_tweets > inside while loop: "+str(e)+'<br />'
+				responsetext+="Something broke while polling through tweets. This msg inside search_tweets > inside while loop: "+str(e)+'<br />'
 				return (responsetext,laztwt) 
 			x=x+1
 		try:
@@ -446,7 +446,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		# saveTweet2(fullTweet2)
 		
 	except Exception as e:
-		responsetext="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
+		responsetext+="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
 		return (responsetext) 
 	
 
