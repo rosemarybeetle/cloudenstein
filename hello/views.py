@@ -12,7 +12,7 @@ from .models import lt_st
 from .models import stop_words
 from .models import process_settings
 from .models import cloud_admin
-from .models import tweet
+from .models import tweeter
 import json
 import random
 from random import randint
@@ -208,7 +208,7 @@ def last (request):
 	return last_response
 
 def home(request):
-	times = int(os.environ.get('TIMES',3))
+	# times = int(os.environ.get('TIMES',3))
 	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1></body></html>'
 	loadAdminSettings ()
 	t_st=t_st_ad
@@ -222,7 +222,7 @@ def home(request):
 	# except Exception as e:
 	# 	responsetext+='lass save failed'+str(laztwt)
 	try:
-		t=tweet.objects.all()
+		t=tweeter.objects.all()
 		ht=str(t[0].status)
 		responsetext+='<br /><hr />Saved tweet ='+str(ht)
 	except Exception as e:
@@ -449,7 +449,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	
 
 def saveTweet(tweet_id,name,user,avatar,text):
-	saved_tweet=tweet(tid=tweet_id,name=name,username=user,avatar=avatar,status=text)
+	saved_tweet=tweeter(tid=tweet_id,name=name,username=user,avatar=avatar,status=text)
 	saved_tweet.save()
 
 def create_batch():
