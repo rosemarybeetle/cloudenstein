@@ -213,8 +213,9 @@ def home(request):
 	loadAdminSettings ()
 	t_st=t_st_ad
 	t_sn=t_sn_ad
-	search_tweets(t_st,t_sn)
 	responsetext=''
+	
+	search_tweets(t_st,t_sn)
 	# try:
 	# 	lass = lt(lt_id=laztwt,position=0)
 	# 	lass.save()
