@@ -17,7 +17,7 @@ class lt_st(models.Model):
 	lt_id=models.CharField(max_length=200)
 
 class tweeter(models.Model):
-	tid=models.CharField(max_length=20)
+	tid=models.CharField(max_length=140)
 	name=models.CharField(max_length=140)
 	username=models.CharField(max_length=100)
 	status=models.CharField(max_length=140)
