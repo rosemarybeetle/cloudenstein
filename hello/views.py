@@ -209,7 +209,7 @@ def last (request):
 
 def home(request):
 	# times = int(os.environ.get('TIMES',3))
-	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1></body></html>'
+	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1>'
 	loadAdminSettings ()
 	t_st=t_st_ad
 	t_sn=t_sn_ad
@@ -353,13 +353,13 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				user = js['statuses'][x]['user']['screen_name']
 				username= '@'+user
 				tweet_text=js['statuses'][x]['text']
-				saveTweet(tweet_id,name,user,avatar,tweet_text)
+				# saveTweet(tweet_id,name,user,avatar,tweet_text)
 				try:
 					twts=tweeter.objects.all()
 					twt_len=twts.count()
 					responsetext+='retrieved saved tweets = '
 				except Exception as e:
-					responsetext+='error retrieving saved tweets = '+str(twts)+'length = '+str(twt_len)
+					responsetext+='error retrieving saved tweets = '+str(twts)+' <<  length = '+str(twt_len)
 				
 				# V---------------------do sub content-------------------V
 				global hashtags
