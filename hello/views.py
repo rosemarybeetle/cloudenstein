@@ -451,7 +451,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	
 
 def saveTweet(tweet_id,name,user,avatar,text):
-	saved_tweet=tweeter(tid=tweet_id,name=name,username=user,status=text,avatar=avatar)
+	saved_tweet=tweeter(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
 	saved_tweet.save()
 
 def create_batch():
