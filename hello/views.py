@@ -359,7 +359,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					twt_len=twts.count()
 					responsetext+='retrieved saved tweets = '
 				except Exception as e:
-					responsetext+='error retrieving saved tweets = '+str(twts)+'length = '+strt(twt_len)
+					responsetext+='error retrieving saved tweets = '+str(twts)+'length = '+str(twt_len)
 				
 				# V---------------------do sub content-------------------V
 				global hashtags
@@ -419,7 +419,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				# tweet=tweet.replace("\"","'")
 				# tweet=tweet.replace("\\","")
 			except Exception as e:
-				responsetext="Something broke while polling through tweets. This msg inside search_tweets > inside while loop"+str(e)+'<br />'
+				responsetext="Something broke while polling through tweets. This msg inside search_tweets > inside while loop: "+str(e)+'<br />'
 				return (responsetext,laztwt) 
 			x=x+1
 		try:
