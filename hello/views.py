@@ -339,13 +339,14 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		# return (responsetext)
 		c = js_count
 		x=0
-		tweet_temp=''
 		while (x<c):
 			try:
 				tweet_id = js['statuses'][x]['id']
 				global laztwt
 				laztwt=tweet_id
 				if (x==0):
+					global temp_tweet
+					temp_tweet=tweet_id
 					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
 				name = js['statuses'][x]['user']['name']
 				avatar = js['statuses'][x]['user']['profile_image_url']
