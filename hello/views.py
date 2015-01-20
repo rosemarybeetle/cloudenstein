@@ -359,12 +359,12 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					responsetext+="SUCCESS - real  RECORD CREATED<br />"
 				except Exception as e:
 					responsetext+="FAILED - real RECORD NOT CREATED BECAUsE OF ERROR: "+str(e)+'<br />'
-				try:
-					twts=tweeten.objects.all()
-					twt_len=twts.count()
-					responsetext+='retrieved saved tweets = '+str(twts)+' <<  length = '+str(twt_len)
-				except Exception as e:
-					responsetext+='error retrieving saved tweets = ' +str(e)
+				# try:
+				# 	twts=tweeten.objects.all()
+				# 	twt_len=twts.count()
+				# 	responsetext+='retrieved saved tweets = '+str(twts)+' <<  length = '+str(twt_len)
+				# except Exception as e:
+				# 	responsetext+='error retrieving saved tweets = ' +str(e)
 				
 				# V---------------------do sub content-------------------V
 				global hashtags
