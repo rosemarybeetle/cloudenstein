@@ -353,12 +353,12 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				user = js['statuses'][x]['user']['screen_name']
 				username= '@'+user
 				tweet_text=js['statuses'][x]['text']
-				#saveTweet(tweet_id,name,user,avatar,tweet_text)
+				#
 				try:
-					saveTweet('test_id','test_name','test_username','test_avatar','test_tweet_text')
-					responsetext+="SUCCESS - PSEUDO RECORD CREATED<br />"
+					saveTweet(tweet_id,name,user,avatar,tweet_text)
+					responsetext+="SUCCESS - real  RECORD CREATED<br />"
 				except Exception as e:
-					responsetext+="FAILED - PSEUDO RECORD NOT CREATED BECAUE OF ERROR: "+str(e)+'<br />'
+					responsetext+="FAILED - real RECORD NOT CREATED BECAUsE OF ERROR: "+str(e)+'<br />'
 				try:
 					twts=tweeten.objects.all()
 					twt_len=twts.count()
