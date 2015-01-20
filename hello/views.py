@@ -354,13 +354,15 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				username= '@'+user
 				tweet_text=js['statuses'][x]['text']
 				#saveTweet(tweet_id,name,user,avatar,tweet_text)
-				saveTweet('test_id','test_name','test_username','test_avatar','test_tweet_text')
+				try:
+					saveTweet('test_id','test_name','test_username','test_avatar','test_tweet_text')
+					responsetext+="SUCCESS - PSEUDO RECORD CREATED<br />"
 				try:
 					twts=tweeter.objects.all()
 					twt_len=twts.count()
-					responsetext+='retrieved saved tweets = '
+					responsetext+='retrieved saved tweets = '+str(twts)+' <<  length = '+str(twt_len)
 				except Exception as e:
-					responsetext+='error retrieving saved tweets = '+str(twts)+' <<  length = '+str(twt_len)
+					responsetext+='error retrieving saved tweets = ' +str(e)
 				
 				# V---------------------do sub content-------------------V
 				global hashtags
