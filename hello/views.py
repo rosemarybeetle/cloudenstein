@@ -12,7 +12,7 @@ from .models import lt_st
 from .models import stop_words
 from .models import process_settings
 from .models import cloud_admin
-from .models import tweeter
+from .models import tweeten
 import json
 import random
 from random import randint
@@ -360,7 +360,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				except Exception as e:
 					responsetext+="FAILED - PSEUDO RECORD NOT CREATED BECAUE OF ERROR: "+str(e)+'<br />'
 				try:
-					twts=tweeter.objects.all()
+					twts=tweeten.objects.all()
 					twt_len=twts.count()
 					responsetext+='retrieved saved tweets = '+str(twts)+' <<  length = '+str(twt_len)
 				except Exception as e:
@@ -456,7 +456,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	
 
 def saveTweet(tweet_id,name,user,avatar,text):
-	saved_tweet=tweeter(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
+	saved_tweet=tweeten(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
 	saved_tweet.save()
 
 def create_batch():
