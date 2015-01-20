@@ -155,12 +155,14 @@ def getLastTweetId():
 	try:
 		tweets = lt_st.objects.filter(id=10)
 		ttt=tweets[0].lt_id
+		global last_tweet
+		last_tweet=ttt
 		try:
 			ttt+=' and id ='+str(tweets[0].id)
 		except Exception as e:
 			ttt+='nope failed get last tweet coz : '+str(e)
 			lt_rtext+='Successfully retrieved tweet_id as string from lt_st.objects.all()[:1]<br />'
-		return (lt_rtext,ttt)
+		return (lt_rtext,ttt,last_tweet)
 	except Exception as e:
 		lt_rtext='Failed via getLastTweetId() using lt_st model'+ str(e)+'<br />'
 		return lt_rtext 
@@ -289,6 +291,7 @@ def oculus (request):
 # ----------------------------------------------------------------------------------------
 	responsetext="default"
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
+	getLastTweetId()
 	global responsetext
 	# 1: Get id of last tweet stored (to prevent saving multiple times)
 	# 
@@ -336,27 +339,27 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		# return (responsetext)
 		c = js_count
 		x=0
+		tweet_temp=''
 		while (x<c):
 			try:
 				tweet_id = js['statuses'][x]['id']
 				global laztwt
 				laztwt=tweet_id
 				if (x==0):
-					try:
-						saveTweetId(tweet_id)
-						responsetext+=lt_stext
-					except Exception as e:
-						responsetext+='Failed at saveTweetId() string because of error: '+str(e)+'<br /><br />'
 					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
 				name = js['statuses'][x]['user']['name']
 				avatar = js['statuses'][x]['user']['profile_image_url']
 				user = js['statuses'][x]['user']['screen_name']
 				username= '@'+user
 				tweet_text=js['statuses'][x]['text']
-				#
+				t1 =int(tweet_id)
+				t2=int(last_tweet)
 				try:
-					saveTweet(tweet_id,name,user,avatar,tweet_text)
-					responsetext+="SUCCESS - real  RECORD CREATED<br />"
+					if t1>t2:
+						saveTweet(tweet_id,name,user,avatar,tweet_text)
+						responsetext+="SUCCESS - real  RECORD CREATED<br />"
+					else:
+						responsetext+="this tweet already in database - no need to save"
 				except Exception as e:
 					responsetext+="FAILED - real RECORD NOT CREATED BECAUsE OF ERROR: "+str(e)+'<br />'
 				# try:
@@ -428,8 +431,6 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				return (responsetext,laztwt) 
 			x=x+1
 		try:
-			getLastTweetId()
-			responsetext+='sUCCESSFULLY retrieved last lt_id FROM getLastTweetId(). = '+ttt+'<br />'
 			hts=', '.join(mega_hashtags) # .join() turns a list into a string, it gets the items and returns them separated by what's between the ''
 			weight_items(mega_hashtags)
 			htc=', '.join(count_items)
@@ -449,7 +450,11 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		return (responsetext, laztwt)
 		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
 		# saveTweet2(fullTweet2)
-		
+		try:
+			saveTweetId(temp_tweet)
+			responsetext+=lt_stext
+		except Exception as e:
+			responsetext+='Failed at saveTweetId() string because of error: '+str(e)+'<br /><br />'
 	except Exception as e:
 		responsetext+="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
 		return (responsetext) 
