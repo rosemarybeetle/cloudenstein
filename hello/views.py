@@ -12,7 +12,7 @@ from .models import lt_st
 from .models import stop_words
 from .models import process_settings
 from .models import cloud_admin
-#from .models import tweeter
+from .models import tweeter
 import json
 import random
 from random import randint

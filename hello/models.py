@@ -16,7 +16,7 @@ class lt_st(models.Model):
 	position=models.IntegerField()
 	lt_id=models.CharField(max_length=200)
 
-class tweeter(models.Model):
+class tweeten(models.Model):
 	tid=models.CharField(max_length=140)
 	t_name=models.CharField(max_length=140)
 	t_username=models.CharField(max_length=140)
