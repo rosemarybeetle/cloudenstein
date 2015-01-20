@@ -353,7 +353,8 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				user = js['statuses'][x]['user']['screen_name']
 				username= '@'+user
 				tweet_text=js['statuses'][x]['text']
-				saveTweet(tweet_id,name,user,avatar,tweet_text)
+				#saveTweet(tweet_id,name,user,avatar,tweet_text)
+				saveTweet('test_id','test_name','test_username','test_avatar','test_tweet_text')
 				try:
 					twts=tweeter.objects.all()
 					twt_len=twts.count()
