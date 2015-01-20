@@ -358,7 +358,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					saveTweet('test_id','test_name','test_username','test_avatar','test_tweet_text')
 					responsetext+="SUCCESS - PSEUDO RECORD CREATED<br />"
 				except Exception as e:
-					responsetext+="FAILED - PSEUDO RECORD NOT CREATED BECAUE OF ERROR<br />"+str(e)
+					responsetext+="FAILED - PSEUDO RECORD NOT CREATED BECAUE OF ERROR: "+str(e)+'<br />'
 				try:
 					twts=tweeter.objects.all()
 					twt_len=twts.count()
