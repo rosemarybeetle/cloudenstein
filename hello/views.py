@@ -448,14 +448,14 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			responsetext+='All mentions by count in this session were: '+menc+'<br /><hr />'
 		except Exception as e:
 			responsetext+='Retrieved last tweet id FAILED FROM getLastTweetId()<br />'+str(e)+'<br />'
-		return (responsetext, laztwt)
-		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
-		# saveTweet2(fullTweet2)
 		try:
 			saveTweetId(temp_tweet)
 			responsetext+='text from inside saveTweetId = '+str(lt_stext)
 		except Exception as e:
 			responsetext+='Failed at saveTweetId() string because of error: '+str(e)+'<br /><br />'
+		return (responsetext, laztwt)
+		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
+		# saveTweet2(fullTweet2)
 	except Exception as e:
 		responsetext+="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
 		return (responsetext) 
