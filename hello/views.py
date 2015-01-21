@@ -453,7 +453,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		# saveTweet2(fullTweet2)
 		try:
 			saveTweetId(temp_tweet)
-			responsetext+=lt_stext
+			responsetext+='text from inside saveTweetId = '+str(lt_stext)
 		except Exception as e:
 			responsetext+='Failed at saveTweetId() string because of error: '+str(e)+'<br /><br />'
 	except Exception as e:
