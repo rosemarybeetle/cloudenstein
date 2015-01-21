@@ -20,7 +20,7 @@ class tweeten(models.Model):
 	tid=models.CharField(max_length=140)
 	t_name=models.CharField(max_length=140)
 	t_username=models.CharField(max_length=140)
-	t_status=models.CharField(max_length=140)
+	t_status=models.CharField(max_length=240)
 	t_avatar=models.CharField(max_length=140)
 
 	# hashtag_ct=models.CharField(max_length=20)

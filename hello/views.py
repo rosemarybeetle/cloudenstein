@@ -450,7 +450,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			responsetext+='Retrieved last tweet id FAILED FROM getLastTweetId()<br />'+str(e)+'<br />'
 		try:
 			saveTweetId(temp_tweet)
-			responsetext+='text from inside saveTweetId = '+str(lt_stext)
+			#responsetext+='text from inside saveTweetId = '+str(lt_stext)
 		except Exception as e:
 			responsetext+='Failed at saveTweetId() string because of error: '+str(e)+'<br /><br />'
 		return (responsetext, laztwt)
