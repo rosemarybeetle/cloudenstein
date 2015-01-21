@@ -358,7 +358,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				try:
 					if t1>t2:
 						saveTweet(tweet_id,name,user,avatar,tweet_text)
-						responsetext+="SUCCESS - real  RECORD CREATED<br />"
+						responsetext+="SUCCESS - real  RECORD CREATED<br /> t1= "+str(t1)+", t2 = "+str(t2)
 					else:
 						responsetext+="this tweet already in database - no need to save"
 				except Exception as e:
