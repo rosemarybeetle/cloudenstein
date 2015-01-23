@@ -473,8 +473,8 @@ def saveTweet(tweet_id,name,user,avatar,text):
 		tweeten_all=tweeten.objects.all() 
 		tweeten_l=len(tweeten_all)# retrieve number in tweet store
 		if tweeten_l >tweeten_max:
-			popper=tweeten.objects.all()
-			popper[0].delete()
+			#popper=tweeten.objects.all()
+			tweeten_all[0].delete()
 			saved_tweet=tweeten(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
 			saved_tweet.save()
 			ff = 'tweeten_l= '+str(tweeten_l)+'tweeten_max = '+str(tweeten_max)
