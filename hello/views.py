@@ -469,7 +469,7 @@ def saveTweet(tweet_id,name,user,avatar,text):
 		retrieveProcessSettings()
 		tweeten_max=p_max_tweets
 		tweeten_all=tweeten.objects.all() 
-		tweeten_l=tweeten_all.count()# retrieve number in tweet store
+		tweeten_l=len(tweeten_all)# retrieve number in tweet store
 		if tweeten_l >tweeten_max:
 			popper=tweeten.objects.all()[0]
 			popper.delete()
