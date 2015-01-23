@@ -478,7 +478,7 @@ def saveTweet(tweet_id,name,user,avatar,text):
 			saved_tweet=tweeten(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
 			saved_tweet.save()
 	except Exception as e :
-		return ('failed on : 'str(e)) # random
+		return ('failed on : '+str(e)) # random
 	
 	
 
