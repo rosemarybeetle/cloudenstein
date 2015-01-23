@@ -486,7 +486,7 @@ def saveTweet(tweet_id,name,user,avatar,text):
 	
 
 def retrieveProcessSettings():
-	p_setts=process_settings.filter(id=1)
+	p_setts=process_settings.objects.filter(id=1)
 	p_max_tweets=p_setts[0].max_tweets
 	p_st_date=p_setts[0].st_date
 	p_end_date=end_date
