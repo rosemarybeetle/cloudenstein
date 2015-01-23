@@ -359,7 +359,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				try:
 					if t1>t2:
 						saveTweet(tweet_id,name,user,avatar,tweet_text)
-						responsetext+="SUCCESS - real  RECORD CREATED<br /> t1= "+str(t1)+", t2 = "+str(t2)+'  although'+ff
+						responsetext+="SUCCESS - real  RECORD CREATED<br /> t1= "+str(t1)+", t2 = "+str(t2)+'  although'+str(ff)
 					else:
 						responsetext+="this tweet already in database - no need to save"
 				except Exception as e:
@@ -466,6 +466,7 @@ def saveTweet(tweet_id,name,user,avatar,text):
 	global twt_n_id
 	global twt_0_id
 	global ff
+	ff='default'
 	try:
 		retrieveProcessSettings()
 		tweeten_max=p_max_tweets
