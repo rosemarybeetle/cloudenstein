@@ -489,7 +489,7 @@ def retrieveProcessSettings():
 	p_setts=process_settings.objects.filter(id=1)
 	p_max_tweets=p_setts[0].max_tweets
 	p_st_date=p_setts[0].st_date
-	p_end_date=end_date
+	p_end_date=p_setts[0].end_date
 	p_max_tags=p_setts[0].max_tags
 	p_max_mens=p_setts[0].max_mens
 	p_max_words=p_setts[0].max_words
