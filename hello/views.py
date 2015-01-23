@@ -475,8 +475,8 @@ def saveTweet(tweet_id,name,user,avatar,text):
 		if tweeten_l >tweeten_max:
 			#popper=tweeten.objects.all()
 			xid=tweeten_all[0].id
-			saved_tweet=tweeten(id=xid,tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
-			saved_tweet.save()
+			saved_tweet=tweeten(id=int(xid),tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
+			saved_tweet.save(force_update=True)
 			ff = 'tweeten_l= '+str(tweeten_l)+'tweeten_max = '+str(tweeten_max)
 			return ff
 		else:
