@@ -13,6 +13,7 @@ from .models import stop_words
 from .models import process_settings
 from .models import cloud_admin
 from .models import tweeten
+from .models import process_settings
 import json
 import random
 from random import randint
@@ -462,8 +463,36 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	
 
 def saveTweet(tweet_id,name,user,avatar,text):
-	saved_tweet=tweeten(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
-	saved_tweet.save()
+	global twt_n_id
+	global twt_0_id
+	try:
+		retrieveProcessSettings()
+		tweeten_max=p_max_tweets
+		tweeten_l=tweeten.objects.count() # retrieve number in tweet store
+		if tweeten_l >tweeten_max:
+			popper=tweeten.objects.all[0]
+			popper.delete()
+			saved_tweet=tweeten(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
+			saved_tweet.save()
+		else:
+			saved_tweet=tweeten(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
+			saved_tweet.save()
+	except Exception as e :
+		return ('failed on : 'str(e)) # random
+	
+	
+
+def retrieveProcessSettings():
+	p_setts=process_settings.filter(id=1)
+	p_max_tweets=p_setts[0].max_tweets
+	p_st_date=p_setts[0].st_date
+	p_end_date=end_date
+	p_max_tags=p_setts[0].max_tags
+	p_max_mens=p_setts[0].max_mens
+	p_max_words=p_setts[0].max_words
+	p_cnt_type=p_setts[0].cnt_type
+	p_st=p_setts[0].st
+	return(p_max_tweets,p_st_date, p_end_date,p_max_tags,p_max_mens,p_max_words,p_cnt_type,p_st )
 
 def create_batch():
 	test=0
