@@ -476,9 +476,11 @@ def saveTweet(tweet_id,name,user,avatar,text):
 			popper[0].delete()
 			saved_tweet=tweeten(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
 			saved_tweet.save()
+			return ff
 		else:
 			saved_tweet=tweeten(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
 			saved_tweet.save()
+			return ff
 	except Exception as e :
 		ff ='failed on : '+str(e)
 		return ff # random
