@@ -359,7 +359,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				try:
 					if t1>t2:
 						saveTweet(tweet_id,name,user,avatar,tweet_text)
-						responsetext+="SUCCESS - real  RECORD CREATED<br /> t1= "+str(t1)+", t2 = "+str(t2)
+						responsetext+="SUCCESS - real  RECORD CREATED<br /> t1= "+str(t1)+", t2 = "+str(t2)+'  although'+ff
 					else:
 						responsetext+="this tweet already in database - no need to save"
 				except Exception as e:
@@ -478,7 +478,9 @@ def saveTweet(tweet_id,name,user,avatar,text):
 			saved_tweet=tweeten(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
 			saved_tweet.save()
 	except Exception as e :
-		return ('failed on : '+str(e)) # random
+		global ff
+		ff ='failed on : '+str(e)
+		return ff # random
 	
 	
 
