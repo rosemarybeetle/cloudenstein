@@ -486,6 +486,14 @@ def saveTweet(tweet_id,name,user,avatar,text):
 	
 
 def retrieveProcessSettings():
+	global p_max_tweets
+	global p_st_date
+	global p_end_date
+	global p_max_tags
+	global p_max_mens
+	global p_max_words
+	global p_cnt_type
+	global p_st
 	p_setts=process_settings.objects.filter(id=1)
 	p_max_tweets=p_setts[0].max_tweets
 	p_st_date=p_setts[0].st_date
