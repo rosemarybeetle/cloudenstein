@@ -465,6 +465,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 def saveTweet(tweet_id,name,user,avatar,text):
 	global twt_n_id
 	global twt_0_id
+	global ff
 	try:
 		retrieveProcessSettings()
 		tweeten_max=p_max_tweets
@@ -479,7 +480,6 @@ def saveTweet(tweet_id,name,user,avatar,text):
 			saved_tweet=tweeten(tid=tweet_id,t_name=name,t_username=user,t_status=text,t_avatar=avatar)
 			saved_tweet.save()
 	except Exception as e :
-		global ff
 		ff ='failed on : '+str(e)
 		return ff # random
 	
