@@ -271,7 +271,7 @@ def api (request):
 	api_response = HttpResponse(api_text)
 	return api_response
 	
-def api-ht (request):
+def ht (request):
 	cont=100	
 	get_stuff = hashtags.objects.all()[:cont]
 	global g_tags
