@@ -501,7 +501,7 @@ def saveHashtags(hash_list_arg):
 	temp_tags=hashtag.objects.all()
 	hash_len=len(temp_tags)
 	arg_len=len(hash_list_arg)
-	hh='argument received in hastag saver = '+str(arg_len)' in length'
+	hh='argument received in hashtag saver = '+str(arg_len)+' in length'
 	for t in range (0,arg_len):
 		if hash_len > hash_max :
 			temp_tags[0].delete()
