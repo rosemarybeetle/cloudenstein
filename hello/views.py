@@ -500,17 +500,19 @@ def saveHashtags(hash_list_arg):
 	temp_tags=hashtags.objects.all()
 	hash_len=len(temp_tags)
 	hh='argument received in hashtag saver . '
-	if hash_len > hash_max :
-		temp_tags[0].delete()
-		s_ht_term=str(hash_list_arg)
-		saved_hashtag=hashtags(ht_term=s_ht_term, ht_st=t_st_ad)
-		saved_hashtag.save()
-		hh+='hashtag saved = '+str (s_ht_term)
+	s_ht_term=hash_list_arg
+	if s_ht_term!=t_st_ad:
+		if hash_len > hash_max :
+			temp_tags[0].delete()
+			saved_hashtag=hashtags(ht_term=s_ht_term, ht_st=t_st_ad)
+			saved_hashtag.save()
+			hh+='hashtag saved = '+str (s_ht_term)
+		else:
+			saved_hashtag=hashtags(ht_term=s_ht_term, ht_st=t_st_ad)
+			saved_hashtag.save()
+			hh+='hashtag savedddddddddddddd = '+str (s_ht_term)
 	else:
-		s_ht_term=hash_list_arg
-		saved_hashtag=hashtags(ht_term=s_ht_term, ht_st=t_st_ad)
-		saved_hashtag.save()
-		hh+='hashtag savedddddddddddddd = '+str (s_ht_term)
+		hh+='hastag matches search term. Not saved'
 	return hh
 
 def retrieveProcessSettings():
