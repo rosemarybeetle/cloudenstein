@@ -381,7 +381,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					ht_len=len(ht_list)
 					for xx in range(0,ht_len):
 						ht_list_txt=js['statuses'][x]['entities']['hashtags'][xx]['text']
-						saveHashtags('#'+ht_list_txt)
+						saveHashtags('#'+str(ht_list_txt)
 						# some code to add to hashtag list, checking for existing and counting if needed
 						mega_hashtags.append(ht_list_txt)
 						hashtags_t+='#'+ht_list_txt
