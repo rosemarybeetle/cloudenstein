@@ -503,12 +503,12 @@ def saveHashtags(hash_list_arg):
 	if hash_len > hash_max :
 		temp_tags[0].delete()
 		s_ht_term=str(hash_list_arg)
-		saved_hashtag=hashtag(ht_term=s_ht_term, ht_st=t_st_ad)
+		saved_hashtag=hashtags(ht_term=s_ht_term, ht_st=t_st_ad)
 		saved_hashtag.save()
 		hh+='hashtag saved = '+str (s_ht_term)
 	else:
 		s_ht_term=hash_list_arg
-		saved_hashtag=hashtag(ht_term=s_ht_term, ht_st=t_st_ad)
+		saved_hashtag=hashtags(ht_term=s_ht_term, ht_st=t_st_ad)
 		saved_hashtag.save()
 		hh+='hashtag savedddddddddddddd = '+str (s_ht_term)
 	return hh
