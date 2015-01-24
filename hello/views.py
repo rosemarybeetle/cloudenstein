@@ -386,6 +386,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						hashtags+='#'+ht_list_txt
 						if (ht_len-xx)>0:
 							hashtags+=','
+					saveHashtagTermPairs(mega_hashtags) # return the comma-separated string
 				except Exception as e:
 					hashtags='failed to retrieve hashtags because: '+str(e)
 				global urls
@@ -489,7 +490,31 @@ def saveTweet(tweet_id,name,user,avatar,text):
 		ff ='failed on : '+str(e)
 		return ff # random
 	
-	
+def saveHashtagTermPairs(hash_list_arg):
+	retrieveProcessSettings()
+	hash_max=p_max_tags
+	global s_ht_ct
+	global s_ht_term
+	global s_ht_st
+	temp_tags=hashtag.objects.all()
+	hash_len=len(temp_tags)
+	arg_len=len(hash_list_arg)
+	for t in range (0,arg_len):
+		if hash_len > hash_max :
+			temp_tags[0].delete()
+			s_ht_term=hash_list_arg[t]
+			weight_items(s_ht_term)
+			s_ht_ct=count_items
+			s_ht_st=t_st_ad
+			saved_hashtag=hashtag(ht_ct=s_ht_ct, ht_term=s_ht_term, ht_st=s_ht_st)
+			saved_hashtag.save()
+		else:
+			s_ht_term=hash_list_arg[t]
+			weight_items(s_ht_term)
+			s_ht_ct=count_items
+			s_ht_st=t_st_ad
+			saved_hashtag=hashtag(ht_ct=s_ht_ct, ht_term=s_ht_term, ht_st=s_ht_st)
+			saved_hashtag.save()
 
 def retrieveProcessSettings():
 	global p_max_tweets
