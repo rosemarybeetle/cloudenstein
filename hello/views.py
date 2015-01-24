@@ -14,6 +14,7 @@ from .models import process_settings
 from .models import cloud_admin
 from .models import tweeten
 from .models import process_settings
+from .models import hashtag
 import json
 import random
 from random import randint

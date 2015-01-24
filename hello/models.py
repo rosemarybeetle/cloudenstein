@@ -23,8 +23,11 @@ class tweeten(models.Model):
 	t_status=models.CharField(max_length=240)
 	t_avatar=models.CharField(max_length=140)
 
-	# hashtag_ct=models.CharField(max_length=20)
-	# hashtag_list=models.CharField(max_length=140)
+class hashtag(models.Model):
+	ht_ct=models.CharField(max_length=20) # count of occurrences
+	ht_term=models.CharField(max_length=140) # actual hashtag
+	ht_st=models.CharField(max_length=140) # search term used to revtrieve this hashtag originally
+
 	# mention_ct=models.CharField(max_length=20)
 	# mention_list=models.CharField(max_length=140)
 	# url_ct=models.CharField(max_length=20)
