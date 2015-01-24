@@ -277,17 +277,17 @@ def ht (request):
 	global g_tags
 	g_tags=get_stuff.count()
 	global api_text_ht
-	api_text_ht='{"metadata":{"record_count":'+str(g_tags)+',"Search term":"'+str(get_stuff[e].ht_st)+'"},"responses":['
+	api_text_ht='{"metadata":{"record_count":'+str(g_tags)+',"Search term":"'+str(t_st_ad)+'"},"responses":['
 	try:
-		for e in range (0,g_tags-1):
-			api_text_ht+='{"tag":"'+str(get_stuff[e].ht_term)+'"}'
-			if ((g_tags-2)-e)>0:
+		for t in range (0,g_tags-1):
+			api_text_ht+='{"tag":"'+str(get_stuff[t].ht_term)+'"}'
+			if ((g_tags-2)-t)>0:
 				api_text_ht+=','
 		api_text_ht+="]}"
 	except Exception as e:
 		api_text_ht='failed to respond - Returned error: '+str(e)
-	api_response = HttpResponse(api_text_ht)
-	return api_response
+	api_response_ht = HttpResponse(api_text_ht)
+	return api_response_ht
 
 def db(request):
 
