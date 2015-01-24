@@ -373,22 +373,22 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				# 	responsetext+='error retrieving saved tweets = ' +str(e)
 				
 				# V---------------------do sub content-------------------V
-				global hashtags
-				hashtags=''
+				global hashtags_t
+				hashtags_t=''
 				try: # poll throuh tweet's status.entities to look for hashtags
 					ht_list=js['statuses'][x]['entities']['hashtags']
 					global ht_len
 					ht_len=len(ht_list)
 					for xx in range(0,ht_len):
 						ht_list_txt=js['statuses'][x]['entities']['hashtags'][xx]['text']
+						saveHashtags('#'+ht_list_txt)
 						# some code to add to hashtag list, checking for existing and counting if needed
 						mega_hashtags.append(ht_list_txt)
-						hashtags+='#'+ht_list_txt
+						hashtags_t+='#'+ht_list_txt
 						if (ht_len-xx)>0:
-							hashtags+=','
-					saveHashtags(mega_hashtags) # return the comma-separated string
+							hashtags_t+=','
 				except Exception as e:
-					hashtags='failed to retrieve hashtags because: '+str(e)
+					hashtags_t='failed to retrieve hashtags because: '+str(e)
 				responsetext+=hh
 				global urls
 				urls=''
@@ -495,26 +495,22 @@ def saveHashtags(hash_list_arg):
 	retrieveProcessSettings()
 	hash_max=p_max_tags
 	global s_ht_term
-	global s_ht_st
 	global hh
 	hh='default'
-	temp_tags=hashtag.objects.all()
+	temp_tags=hashtags.objects.all()
 	hash_len=len(temp_tags)
-	arg_len=len(hash_list_arg)
-	hh='argument received in hashtag saver = '+str(arg_len)+' in length'
-	for t in range (0,arg_len):
-		if hash_len > hash_max :
-			temp_tags[0].delete()
-			s_ht_term=hash_list_arg[t]
-			saved_hashtag=hashtag(ht_term=s_ht_term, ht_st=t_st_ad)
-			saved_hashtag.save()
-			hh+='hashtag saved = '+str (s_ht_term)
-		else:
-			s_ht_term=hash_list_arg[t]
-			weight_items(s_ht_term)
-			saved_hashtag=hashtag(ht_term=s_ht_term, ht_st=t_st_ad)
-			saved_hashtag.save()
-			hh+='hashtag saved = '+str (s_ht_term)
+	hh='argument received in hashtag saver . '
+	if hash_len > hash_max :
+		temp_tags[0].delete()
+		s_ht_term=hash_list_arg
+		saved_hashtag=hashtag(ht_term=s_ht_term, ht_st=t_st_ad)
+		saved_hashtag.save()
+		hh+='hashtag saved = '+str (s_ht_term)
+	else:
+		s_ht_term=hash_list_arg
+		saved_hashtag=hashtag(ht_term=s_ht_term, ht_st=t_st_ad)
+		saved_hashtag.save()
+		hh+='hashtag savedddddddddddddd = '+str (s_ht_term)
 	return hh
 
 def retrieveProcessSettings():
