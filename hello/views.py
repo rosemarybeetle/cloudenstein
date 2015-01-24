@@ -271,6 +271,23 @@ def api (request):
 	api_response = HttpResponse(api_text)
 	return api_response
 	
+def hashtags (request):
+	cont=100	
+	get_stuff = hashtags.objects.all()[:cont]
+	global g_tags
+	g_tags=get_stuff.count()
+	global api_text_ht
+	api_text_ht='{"metadata":{"record_count":'+str(g_tags)+',"Search term":"'+str(get_stuff[e].ht_st)+'"},"responses":['
+	try:
+		for e in range (0,g_tags-1):
+			api_text_ht+='{"tag":"'+str(get_stuff[e].ht_term)+'"}'
+			if ((g_tags-2)-e)>0:
+				api_text_ht+=','
+		api_text_ht+="]}"
+	except Exception as e:
+		api_text_ht='failed to respond - Returned error: '+str(e)
+	api_response = HttpResponse(api_text_ht)
+	return api_response
 
 def db(request):
 
