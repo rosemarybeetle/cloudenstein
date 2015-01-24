@@ -272,7 +272,7 @@ def api (request):
 	return api_response
 	
 def ht (request):
-	cont=100
+	#cont=100
 	loadAdminSettings()
 	get_stuff = hashtags.objects.all()[:cont]
 	global g_tags
