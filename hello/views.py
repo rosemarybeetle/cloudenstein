@@ -519,7 +519,9 @@ def saveHashtags(hash_list_arg):
 	hash_len=len(temp_tags)
 	hh='argument received in hashtag saver . '
 	s_ht_term=hash_list_arg
-	if str.lower(s_ht_term)!=str.lower(t_st_ad):
+	uu=str(s_ht_term)
+	vv=str(t_st_ad)
+	if str.lower(uu)!=str.lower(vv):
 		if hash_len > hash_max :
 			temp_tags[0].delete()
 			saved_hashtag=hashtags(ht_term=s_ht_term, ht_st=t_st_ad)
