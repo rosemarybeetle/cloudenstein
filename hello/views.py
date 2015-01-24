@@ -278,10 +278,10 @@ def ht (request):
 	global g_tags
 	g_tags=get_stuff.count()
 	global api_text_ht
-	api_text_ht='{"metadata":{"record_count":'+str(g_tags)+',"Search term":"'+str(t_st_ad)+'"},"responses":['
+	api_text_ht='{"metadata":{"record_count":'+str(g_tags)+'"},"responses":['
 	try:
 		for t in range (0,g_tags-1):
-			api_text_ht+='{"tag":"'+str(get_stuff[t].ht_term)+'"}'
+			api_text_ht+='{"tag":"'+str(get_stuff[t].ht_term)+'","Search term":"'+str(t_st_ad)+'"}'
 			if ((g_tags-2)-t)>0:
 				api_text_ht+=','
 		api_text_ht+="]}"
@@ -519,7 +519,7 @@ def saveHashtags(hash_list_arg):
 	hash_len=len(temp_tags)
 	hh='argument received in hashtag saver . '
 	s_ht_term=hash_list_arg
-	if s_ht_term!=t_st_ad:
+	if str.lower(s_ht_term)!=str.lower(t_st_ad):
 		if hash_len > hash_max :
 			temp_tags[0].delete()
 			saved_hashtag=hashtags(ht_term=s_ht_term, ht_st=t_st_ad)
