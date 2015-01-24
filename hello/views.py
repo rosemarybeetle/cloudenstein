@@ -389,7 +389,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 							hashtags_t+=','
 				except Exception as e:
 					hashtags_t='failed to retrieve hashtags because: '+str(e)
-				responsetext+=hh
+				#responsetext+=hh
 				global urls
 				urls=''
 				try: # poll throuh tweet's status.entities to look for urls
@@ -502,7 +502,7 @@ def saveHashtags(hash_list_arg):
 	hh='argument received in hashtag saver . '
 	if hash_len > hash_max :
 		temp_tags[0].delete()
-		s_ht_term=hash_list_arg
+		s_ht_term=str(hash_list_arg)
 		saved_hashtag=hashtag(ht_term=s_ht_term, ht_st=t_st_ad)
 		saved_hashtag.save()
 		hh+='hashtag saved = '+str (s_ht_term)
