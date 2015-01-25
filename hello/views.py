@@ -300,8 +300,8 @@ def oculus (request):
 def search_tweets () : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
 	getLastTweetId()
 	loadAdminSettings ()
-	t_st=t_st_ad
-	t_sn=t_sn_ad
+	term=t_st_ad
+	count=t_sn_ad
 	search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=' # twitter json api query url
 	x= term.find('#') # look to see what position the hashtag is 
 	y=term.find('@') # look to see what position the @ sign is
