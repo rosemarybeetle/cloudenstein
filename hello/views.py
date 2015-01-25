@@ -300,6 +300,8 @@ def oculus (request):
 def search_tweets () : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
 	getLastTweetId()
 	loadAdminSettings ()
+	global responsetext
+	responsetext=''
 	term=t_st_ad
 	count=t_sn_ad
 	search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=' # twitter json api query url
