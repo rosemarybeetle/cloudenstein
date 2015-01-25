@@ -214,20 +214,7 @@ def last (request):
 def home(request):
 	# times = int(os.environ.get('TIMES',3))
 	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1>'
-	loadAdminSettings ()
-	t_st=t_st_ad
-	t_sn=t_sn_ad
-	#responsetext=''
-	
-	search_tweets(t_st,t_sn)
-	# try:
-	# 	lass = lt(lt_id=laztwt,position=0)
-	# 	lass.save()
-	# 	responsetext+='<br />tweet just saved = '+str(laztwt)
-	# except Exception as e:
-	# 	responsetext+='lass save failed'+str(laztwt)
-	
-	
+	search_tweets(t_st,t_sn)	
 	home_response = HttpResponse(responsetext)
 	return home_response
 
@@ -312,6 +299,9 @@ def oculus (request):
 	responsetext="default"
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
 	getLastTweetId()
+	loadAdminSettings ()
+	t_st=t_st_ad
+	t_sn=t_sn_ad
 	global responsetext
 	# 1: Get id of last tweet stored (to prevent saving multiple times)
 	# 
