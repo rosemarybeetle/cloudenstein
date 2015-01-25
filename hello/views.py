@@ -216,7 +216,7 @@ def last (request):
 def home(request):
 	homeText='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
 	search_tweets()	
-	homeText=responsetext+"</body></html>"
+	homeText+=responsetext+"</body></html>"
 	home_response = HttpResponse(homeText)
 	return home_response
 
