@@ -35,6 +35,8 @@ global t_sn # tweet search number (how many tweets to return)
 global t_hp # tweet harvet period. How frequently to check
 global t_it # tweet intro text
 global t_ot # tweet outro text
+global responsetext # used to collect text for httpRseponse returns
+responsetext='' # initialise as string
 t_st='#pugs' # random default value
 t_sn=100 # MAX limit on search results per call
 t_hp=60 # repeat every 60 seconds
@@ -212,9 +214,10 @@ def last (request):
 	return last_response
 
 def home(request):
-	# times = int(os.environ.get('TIMES',3))
-	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1>'
-	search_tweets(t_st,t_sn)	
+	
+	responsetext='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
+	search_tweets()	
+	responsetext+="</body></html>"
 	home_response = HttpResponse(responsetext)
 	return home_response
 
@@ -292,25 +295,13 @@ def cloudenstein (request):
 def oculus (request):
 	return render (request, 'oculus.html')
 
-
-
-# ---------------search_tweets is from older Tweetenstein - to be modded ------------------
 # ----------------------------------------------------------------------------------------
-	responsetext="default"
-def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
+	
+def search_tweets () : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
 	getLastTweetId()
 	loadAdminSettings ()
 	t_st=t_st_ad
 	t_sn=t_sn_ad
-	global responsetext
-	# 1: Get id of last tweet stored (to prevent saving multiple times)
-	# 
-	# try:
-	# 	lass = lt(lt_id=int(tweet_id),position=0)
-	# 	lass.save()
-	# 	responsetext+='<br />tweet just saved = '+str(tweet_id)
-	# except Exception as e:
-	# 	responsetext+='tweetsT save failed'+str(tweet_id)
 	search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=' # twitter json api query url
 	x= term.find('#') # look to see what position the hashtag is 
 	y=term.find('@') # look to see what position the @ sign is
@@ -336,17 +327,12 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	try:
 		auth = OAuth1(twit_api_key, twit_api_secret,twit_api_access_token,twit_api_access_secret)
 		global auth_response
-		
-		responsetext='' # initialise as string
 		auth_response=requests.get(search_url, auth=auth)
-		#responsetext=(auth_response.text)
 		j = (auth_response.text)
 		js = json.loads(j)
 		js_dict=js
 		global js_count
 		js_count=len(js_dict['statuses'])# how many tweets in thi response? - double checking that number of tweets received was same as asked for (could be less occassionally)
-		# responsetext=js['statuses'][0]['id']
-		# return (responsetext)
 		c = js_count
 		x=0
 		while (x<c):
@@ -373,14 +359,6 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						responsetext+="this tweet already in database - no need to save"
 				except Exception as e:
 					responsetext+="FAILED - real RECORD NOT CREATED BECAUsE OF ERROR: "+str(e)+'<br />'
-				# try:
-				# 	twts=tweeten.objects.all()
-				# 	twt_len=twts.count()
-				# 	responsetext+='retrieved saved tweets = '+str(twts)+' <<  length = '+str(twt_len)
-				# except Exception as e:
-				# 	responsetext+='error retrieving saved tweets = ' +str(e)
-				
-				# V---------------------do sub content-------------------V
 				global hashtags_t
 				hashtags_t=''
 				try: # poll throuh tweet's status.entities to look for hashtags
@@ -433,12 +411,6 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+hashtags_t+' urls cited: '+urls+'<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
 				responsetext += '&nbsp'+js['statuses'][x]['text']+'"</p><hr />'
-				
-				
-				# following line gets rid of Twitter line breaks...
-				# tweet=tweet.replace("\n","")
-				# tweet=tweet.replace("\"","'")
-				# tweet=tweet.replace("\\","")
 			except Exception as e:
 				responsetext+="Something broke while polling through tweets. This msg inside search_tweets > inside while loop: "+str(e)+'<br />'
 				return (responsetext,laztwt) 
@@ -466,8 +438,6 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 		except Exception as e:
 			responsetext+='Failed at saveTweetId() string because of error: '+str(e)+'<br /><br />'
 		return (responsetext, laztwt)
-		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
-		# saveTweet2(fullTweet2)
 	except Exception as e:
 		responsetext+="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
 		return (responsetext) 
@@ -563,4 +533,4 @@ def create_batch():
 	# 	increment batch.count
 	# once all processed, update last_saved_tweet_id 
 
-
+# -
