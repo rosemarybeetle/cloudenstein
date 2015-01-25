@@ -213,7 +213,23 @@ def last (request):
 	last_response = HttpResponse(sendTextL)
 	return last_response
 
+	# ------------------
+def keeplooping():  # define the loop and what it executes (rate is set by loaded setting: 'harvestPeriod' 
+	harvestPeriod=60
+    Timer(int(harvestPeriod), keeplooping).start()
+    Timer(int(harvestPeriod)*.3, home).start()
+   
+
 def home(request):
+	keeplooping() # initiates the loop
+
+	# ------------------
+
+def home(request):
+	global loop_flag
+	if loop_flag!=True:
+		loop_flag=True
+		keeplooping()
 	homeText='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
 	search_tweets()	
 	homeText+=responsetext+"</body></html>"
