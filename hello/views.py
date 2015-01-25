@@ -216,9 +216,8 @@ def last (request):
 	# ------------------
 def keeplooping():  # define the loop and what it executes (rate is set by loaded setting: 'harvestPeriod' 
 	harvestPeriod=60
-    Timer(int(harvestPeriod), keeplooping).start()
-    Timer(int(harvestPeriod)*.3, home).start()
-   
+	Timer(int(harvestPeriod), keeplooping).start()
+	Timer(int(harvestPeriod)*.3, home).start()
 
 def home(request):
 	keeplooping() # initiates the loop
