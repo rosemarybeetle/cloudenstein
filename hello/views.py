@@ -214,11 +214,10 @@ def last (request):
 	return last_response
 
 def home(request):
-	global responsetext
-	responsetext='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
+	homeText='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
 	search_tweets()	
-	responsetext+="</body></html>"
-	home_response = HttpResponse(responsetext)
+	homeText=responsetext+"</body></html>"
+	home_response = HttpResponse(homeText)
 	return home_response
 
 def retrieveGoogleAdmin (url):
