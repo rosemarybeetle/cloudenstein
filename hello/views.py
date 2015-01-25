@@ -263,7 +263,7 @@ def api (request):
 def ht (request):
 	#cont=100
 	loadAdminSettings()
-	get_stuff = hashtags.objects.all()[:cont]
+	get_stuff = hashtags.objects.all()#[:cont]
 	global g_tags
 	g_tags=get_stuff.count()
 	global api_text_ht
