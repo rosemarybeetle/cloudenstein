@@ -214,7 +214,7 @@ def last (request):
 	return last_response
 
 def home(request):
-	
+	global responsetext
 	responsetext='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
 	search_tweets()	
 	responsetext+="</body></html>"
