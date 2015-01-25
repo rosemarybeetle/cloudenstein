@@ -50,6 +50,7 @@ global mega_mentions # list of mentions
 mega_hashtags=[]
 mega_urls=[]
 mega_mentions=[]
+loop_flag=True
 # ----------------------
 # Create your views here.
 def tweetPackager(tid):
@@ -219,15 +220,11 @@ def keeplooping():  # define the loop and what it executes (rate is set by loade
 	Timer(int(harvestPeriod), keeplooping).start()
 	Timer(int(harvestPeriod)*.3, home).start()
 
-def home(request):
-	keeplooping() # initiates the loop
-
 	# ------------------
 
 def home(request):
-	global loop_flag
 	if loop_flag!=True:
-		loop_flag=True
+		loop_flag=False
 		keeplooping()
 	homeText='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
 	search_tweets()	
