@@ -223,6 +223,7 @@ def keeplooping():  # define the loop and what it executes (rate is set by loade
 	# ------------------
 
 def home(request):
+	
 	homeText='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
 	search_tweets()	
 	homeText+=responsetext+"</body></html>"
@@ -279,7 +280,7 @@ def ht (request):
 	api_text_ht='{"metadata":{"record_count":'+str(g_tags)+'"},"responses":['
 	try:
 		for t in range (0,g_tags-1):
-			api_text_ht+='{"tag":"'+str(get_stuff[t].ht_term)+'","Search term":"'+str(t_st_ad)+'"}'
+			api_text_ht+='{"tag":"'+str(get_stuff[t].ht_term)+'","Search term":"'+str(get_stuff[t].ht_st)+'"}'
 			if ((g_tags-2)-t)>0:
 				api_text_ht+=','
 		api_text_ht+="]}"
