@@ -223,14 +223,6 @@ def keeplooping():  # define the loop and what it executes (rate is set by loade
 	# ------------------
 
 def home(request):
-
-	try:
-		if loop_flag!=True:
-			loop_flag=False		
-	except:
-		global loop_flag
-		loop_flag=True
-		keeplooping()
 	homeText='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
 	search_tweets()	
 	homeText+=responsetext+"</body></html>"
