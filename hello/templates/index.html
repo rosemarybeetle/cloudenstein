@@ -9,18 +9,18 @@
 
 <body>
 
-<div class="banner"><div class="left-40"><h1>RBeetlelabs - cloudenstein</h1></div>
-<div class="right-60">
+<div id="banner"><h1>RBeetlelabs - cloudenstein</h1>
+
 <p>Cloudenstein: miscellaneous variations on collective twitter activity.<br/>
 Cloudenstein: Tweetenstein seeped out onto the cloud.</p>
 </div>
-</div>
+<div id="main">
 
 {% for tweeting in tweetings %}
     <img src=" {{ tweeting.t_avatar }} "/>
 {% endfor %}
 
-	
+	</div>
   
 </body>
 </html>

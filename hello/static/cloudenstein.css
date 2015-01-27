@@ -18,22 +18,8 @@ border:1px solid #ccffcc;
 margin:0px;
 }
 
-.left-40  {
-width:40%;
-position absolute;
-left: 0%;
-}
 
-
-.right-60  {
-width:60%;
-position absolute;
-left: 40%;
-}
-
-
-}
-.banner {
+#banner {
 font-family: arial,verdana,_sans;
 h1.line-height: 10%;
 position: absolute;
@@ -44,6 +30,11 @@ padding: 2px ;
 background-color: #A9D0F5;
 }
 
+#main {
+float:bottom;
+
+}
+}
 .centered{
 position:absolute;
 margin-left: auto;
