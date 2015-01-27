@@ -67,15 +67,16 @@ def tweetPackager(tid):
 
 
 def index(request):
-	page_builder='<html><head><link rel="stylesheet" href=" {% static "cloudenstein.css" %}" /><title>Cloudenstein, from RBeetleLabs</title></head><body><div class="banner"><h1>RBeetlelabs - cloudenstein</h1>'
-	page_builder+='<p>Cloudenstein: miscellaneous variations on collective twitter activity.</p>'
-	page_builder+='<p>Cloudenstein is Tweetenstein migrated onto the cloud.</p></div>'
-	# -------------- some code here ------------ 
+	tweetings = tweeten.objects.all()
+	return render(request, 'index.html', {'tweetings': tweetings})
 
-	# ------------------------------------------
-	page_builder+="</body></html>"
-	response = HttpResponse(page_builder)
-	return response
+def db(request):
+	greeting = Greeting()
+	greeting.save()
+	greetings = Greeting.objects.all()
+
+	return render(request, 'db.html', {'greetings': greetings})
+	
 
 def loadAdminSettings ():
 	global t_st_ad
@@ -293,14 +294,7 @@ def ht (request):
 	api_response_ht = HttpResponse(api_text_ht)
 	return api_response_ht
 
-def db(request):
 
-	greeting = Greeting()
-	greeting.save()
-
-	greetings = Greeting.objects.all()
-
-	return render(request, 'db.html', {'greetings': greetings})
 
 def cloudenstein (request):
 	return render (request, 'face-off.html')
