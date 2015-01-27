@@ -309,7 +309,8 @@ def oculus (request):
 			hashtag_destroyer[i].delete()
 		except:
 			conter+=1
-	return ('Failed to destroy all rows. '+ str(conter)+' rows of 500 failed' )
+	mein='Failed to destroy all rows. '+ str(conter)+' rows of 500 failed'
+	return mein
 
 
 	return render (request, 'oculus.html')
