@@ -1,0 +1,15 @@
+C:\Users\winmobile\python-getting-started>heroku addons:add heroku-postgresql:ho
+bby-basic
+C:/Users/winmobile/.heroku/plugins/heroku-pg-extras/lib/heroku/client/heroku_pos
+tgresql_backups.rb:6: warning: already initialized constant Version
+C:/Users/winmobile/.heroku/plugins/heroku-pg-extras/lib/heroku/command/pg_backup
+s.rb:64: warning: already initialized constant MaybeAttachment
+Adding heroku-postgresql:hobby-basic on immense-bayou-1102... done, v429 ($9/mo)
+
+Attached as HEROKU_POSTGRESQL_GREEN_URL
+Database has been created and is available
+ ! This database is empty. If upgrading, you can transfer
+ ! data from another database with pgbackups:restore.
+Use `heroku addons:docs heroku-postgresql` to view documentation.
+
+C:\Users\winmobile\python-getting-started>
