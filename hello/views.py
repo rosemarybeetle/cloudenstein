@@ -302,6 +302,16 @@ def cloudenstein (request):
 	return render (request, 'face-off.html')
 
 def oculus (request):
+	hashtag_destroyer=hashtags.objects.all()
+	conter=0
+	for i in range (0,500):
+		try:
+			hashtag_destroyer[i].delete()
+		except:
+			counter+=1
+	return ('Failed to destroy all rows. '+ conter+' rows of 500 failed' )
+
+
 	return render (request, 'oculus.html')
 
 # ----------------------------------------------------------------------------------------
