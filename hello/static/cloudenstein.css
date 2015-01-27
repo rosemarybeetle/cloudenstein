@@ -35,7 +35,7 @@ left: 40%;
 }
 .banner {
 font-family: arial,verdana,_sans;
-h1 {line-height: 20%;}
+h1.line-height: 10%;
 position: absolute;
 left:0px;
 top: 0px;
