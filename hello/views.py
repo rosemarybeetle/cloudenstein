@@ -310,7 +310,7 @@ def oculus (request):
 		except:
 			conter+=1
 	mein='Failed to destroy all rows. '+ str(conter)+' rows of 500 failed'
-	return mein
+	return = HttpResponse()mein
 
 
 	return render (request, 'oculus.html')
