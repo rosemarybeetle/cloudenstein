@@ -67,10 +67,14 @@ def tweetPackager(tid):
 
 
 def index(request):
-	#times = int(os.environ.get('TIMES',3))
-	t=requests.get(adminURL)
-	retrieveGoogleAdmin (adminURL)
-	response = HttpResponse(sendText)
+	page_builder='<html><head><link rel="stylesheet" href=" {% static "cloudenstein.css" %}" /><title>Cloudenstein, from RBeetleLabs</title></head><body><div class="banner"><h1>RBeetlelabs - cloudenstein</h1>'
+	page_builder='<p>Cloudenstein: miscellaneous variations on collective twitter activity.</p>'
+	page_builder='<p>Cloudenstein is Tweetenstein migrated onto the cloud.</p></div>'
+	# -------------- some code here ------------ 
+
+	# ------------------------------------------
+	page_builder+="</body></html>"
+	response = HttpResponse(page_builder)
 	return response
 
 def loadAdminSettings ():
