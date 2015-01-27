@@ -313,7 +313,7 @@ def oculus (request):
 			conter+=1
 			mein+='hashtag '+str(i)+' of 500 failed to be destroyed <br />'
 	mein+='Failed to destroy all rows. '+ str(conter)+' rows of 500 failed'
-	go=httpResponse(mein)
+	go= HttpResponse(mein)
 	return go
 
 
