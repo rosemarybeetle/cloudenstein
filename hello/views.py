@@ -308,7 +308,7 @@ def oculus (request):
 		try:
 			hashtag_destroyer[i].delete()
 		except:
-			counter+=1
+			conter+=1
 	return ('Failed to destroy all rows. '+ conter+' rows of 500 failed' )
 
 
