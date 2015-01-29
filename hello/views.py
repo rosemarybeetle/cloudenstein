@@ -1,4 +1,5 @@
 import os
+import time
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
@@ -70,6 +71,33 @@ def index(request):
 	tweetings = tweeten.objects.all()
 	return render(request, 'index.html', {'tweetings': tweetings})
 
+def visualiser (request):
+	#twaatings = tweeten.objects.all()
+	return render (request, 'visualiser.html')#, {'twaatings': twaatings})
+
+
+def oculus (request):
+	twaatings = tweeten.objects.all()
+	return render (request, 'oculus.html', {'twaatings': twaatings})
+
+def checkAdmin():
+	t1=time.time()
+	t2=time.time()
+	x=0
+	loadAdminSettings()
+	period=harvest_period
+	textCA='elapsed'
+	while x>0:
+		if (t1-t2)<period:
+			y=0
+		else:
+			t1=time.time()
+			t2=time.time()
+			x+=1
+			textCA='elpased '+str(x)
+			responsCA = HttpResponse(textCA)
+			return responseCA
+
 def db(request):
 	greeting = Greeting()
 	greeting.save()
@@ -85,6 +113,7 @@ def loadAdminSettings ():
 		adminSettings = cloud_admin.objects.filter(id=2)
 		t_st_ad=adminSettings[0].search_term
 		t_sn_ad=adminSettings[0].tweet_num
+		t_hp_ad=adminSettings[0].harvest_period
 	except Exception as e:
 		t_st_ad=t_st
 		t_sn_ad=t_sn
@@ -325,9 +354,6 @@ def ht (request):
 def cloudenstein (request):
 	return render (request, 'face-off.html')
 
-def oculus (request):
-	twaatings = tweeten.objects.all()
-	return render (request, 'oculus.html', {'twaatings': twaatings})
 
 #----------------------------------------------------------------------------------------
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
