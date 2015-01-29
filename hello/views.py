@@ -80,7 +80,7 @@ def oculus (request):
 	twaatings = tweeten.objects.all()
 	return render (request, 'oculus.html', {'twaatings': twaatings})
 
-def admin_clock():
+def admin_clock(request):
 	t1=time.time()
 	t2=time.time()
 	x=0
