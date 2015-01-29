@@ -109,6 +109,7 @@ def db(request):
 def loadAdminSettings ():
 	global t_st_ad
 	global t_sn_ad
+	global t_hp_ad
 	try:
 		adminSettings = cloud_admin.objects.filter(id=2)
 		t_st_ad=adminSettings[0].search_term
