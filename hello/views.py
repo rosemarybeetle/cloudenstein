@@ -238,7 +238,7 @@ def home(request):
 		homeText=' failed in Home, because... ' + str(e)
 	# homeText='hellow home world'
 	# home_response = HttpResponse(homeText)
-	# return home_response
+		return home_response
 
 
 def retrieveGoogleAdmin (url):
