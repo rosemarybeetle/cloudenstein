@@ -85,7 +85,7 @@ def admin_clock(request):
 	t2=time.time()
 	x=0
 	loadAdminSettings()
-	period=harvest_period
+	period=t_hp_ad
 	textCA='elapsed'
 	while x>0:
 		if (t1-t2)<period:
