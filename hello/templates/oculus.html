@@ -24,6 +24,13 @@
 <img src="/static/pupil.png" class="centered" id="pupil">
 <img src="/static/white.png" class="centered" id="white">
 <img src="/static/iris.png" class="centered" id="iris">
+<div id="main">
+
+{% for twaating in twaatings %}
+    <img src=" {{ twaating.t_avatar }} "/>
+{% endfor %}
+
+	</div>
 <!-- <canvas id="eye-centre"></canvas> -->
 </div>
 

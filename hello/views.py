@@ -326,22 +326,8 @@ def cloudenstein (request):
 	return render (request, 'face-off.html')
 
 def oculus (request):
-	# hashtag_destroyer=hashtags.objects.all()
-	# conter=0
-	# mein=''
-	# for i in range (0,500):
-	# 	try:
-	# 		hashtag_destroyer[i].delete()
-	# 		mein+='hashtag '+str(i)+' of 500 destroyed <br />'
-	# 	except:
-	# 		conter+=1
-	# 		mein+='hashtag '+str(i)+' of 500 failed to be destroyed <br />'
-	# mein+='Failed to destroy all rows. '+ str(conter)+' rows of 500 failed'
-	# go= HttpResponse(mein)
-	# return go
-
-
-	return render (request, 'oculus.html')
+	twaatings = tweeten.objects.all()
+	return render (request, 'oculus.html', {'twaatings': twaatings})
 
 #----------------------------------------------------------------------------------------
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
