@@ -228,16 +228,17 @@ def keeplooping():  # define the loop and what it executes (rate is set by loade
 	# ------------------
 
 def home(request):
-	try:
-		homeText='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
-		search_tweets()	
-		homeText+=responsetext+'</body></html>'
-		home_response = HttpResponse(homeText)
-		return home_response
-	except Exception as e:
-		homeText=' failed in Home, because... ' + str(e)
-		home_response = HttpResponse(homeText)
-		return home_response
+	# try:
+	# 	homeText='<html><head><title>Home</title></head><body><h1>Hello World, Home</h1>'
+	# 	search_tweets()	
+	# 	homeText+=responsetext+'</body></html>'
+	# 	home_response = HttpResponse(homeText)
+	# 	return home_response
+	# except Exception as e:
+	# homeText=' failed in Home, because... ' + str(e)
+	homeText='hellow home world'
+	home_response = HttpResponse(homeText)
+	return home_response
 
 
 def retrieveGoogleAdmin (url):
