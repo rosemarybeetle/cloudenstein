@@ -18,6 +18,9 @@ border:1px solid #ccffcc;
 margin:0px;
 }
 
+img {
+	padding: 0%;
+}
 
 #banner {
 font-family: arial,verdana,_sans;
