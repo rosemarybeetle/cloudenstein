@@ -89,7 +89,7 @@ def admin_clock(request):
 	textCA='elapsed'
 	while x>0:
 		if (t1-t2)<period:
-			y=0
+			t1=time.time()
 		else:
 			t1=time.time()
 			t2=time.time()
