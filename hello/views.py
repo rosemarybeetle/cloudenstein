@@ -272,7 +272,7 @@ def keeplooping():  # define the loop and what it executes (rate is set by loade
  #----------------------
 def home(request):
 	# times = int(os.environ.get('TIMES',3))
-	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1>'
+	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World after rename</h1>'
 	loadAdminSettings ()
 	t_st=t_st_ad
 	t_sn=t_sn_ad
