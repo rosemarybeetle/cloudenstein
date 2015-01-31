@@ -272,7 +272,7 @@ def keeplooping():  # define the loop and what it executes (rate is set by loade
  #----------------------
 def home(request):
 	# times = int(os.environ.get('TIMES',3))
-	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World after rename</h1>'
+	homeText='<html><head><title>Cloudenstein</title></head><body><h1>Hello Home World</h1>'
 	loadAdminSettings ()
 	t_st=t_st_ad
 	t_sn=t_sn_ad
@@ -430,6 +430,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 					for xx in range(0,ht_len):
 						ht_list_txt=js['statuses'][x]['entities']['hashtags'][xx]['text']
 						# some code to add to hashtag list, checking for existing and counting if needed
+						saveHashtags('#'+str(ht_list_txt))
 						mega_hashtags.append(ht_list_txt)
 						tip_hashtags+='#'+ht_list_txt
 						if (ht_len-xx)>0:
@@ -547,7 +548,7 @@ def saveHashtags(hash_list_arg):
 	s_ht_term=hash_list_arg
 	uu=str(s_ht_term)
 	vv=str(t_st_ad)
-	if str.lower(uu)!=str.lower(vv):
+	if str.lower(uu)!=str.lower(vv): # stops search term hashtags being saved and swamping weighting
 		if hash_len > hash_max :
 			temp_tags[0].delete()
 			saved_hashtag=hashtags(ht_term=s_ht_term, ht_st=t_st_ad)
