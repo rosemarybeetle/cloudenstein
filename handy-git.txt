@@ -2,7 +2,7 @@ git add --all
 git commit -m "typo"
 git push heroku master
 
-
+t6,ww)p.l/nrggh
 cd python-getting-started
 foreman start
 
