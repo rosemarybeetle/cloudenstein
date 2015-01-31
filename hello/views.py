@@ -286,8 +286,9 @@ def home(request):
 	# except Exception as e:
 	# 	responsetext+='lass save failed'+str(laztwt)
 	
+	homeText+=responsetext+'</body></html>'
 	
-	home_response = HttpResponse(responsetext)
+	home_response = HttpResponse(homeText)
 	return home_response
  #----------------------
 
