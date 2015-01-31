@@ -421,9 +421,9 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				except Exception as e:
 					responsetext+="FAILED - real RECORD NOT CREATED BECAUsE OF ERROR: "+str(e)+'<br />'
 					# V---------------------do sub content-------------------V
-				global hashtags
-				hashtags=''
-				try: # poll throuh tweet's status.entities to look for hashtags
+				global tip_hashtags
+				tip_hashtags=''
+				try: # poll throuh tweet's status.entities to look for tip_hashtags
 					ht_list=js['statuses'][x]['entities']['hashtags']
 					global ht_len
 					ht_len=len(ht_list)
@@ -431,11 +431,11 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						ht_list_txt=js['statuses'][x]['entities']['hashtags'][xx]['text']
 						# some code to add to hashtag list, checking for existing and counting if needed
 						mega_hashtags.append(ht_list_txt)
-						hashtags+='#'+ht_list_txt
+						tip_hashtags+='#'+ht_list_txt
 						if (ht_len-xx)>0:
-							hashtags+=','
+							tip_hashtags+=','
 				except Exception as e:
-					hashtags='failed to retrieve hashtags because: '+str(e)
+					tip_hashtags='failed to retrieve hashtags because: '+str(e)
 				global urls
 				urls=''
 				try: # poll throuh tweet's status.entities to look for urls
@@ -468,7 +468,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				except Exception as e:
 					mentions='failed to retrieve mentions because: '+str(e)
 				# ^------------------------end sub content ----------------------------^
-				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+hashtags+' urls cited: '+urls+'<br />'
+				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+tip_hashtags+' urls cited: '+urls+'<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
 				responsetext += '&nbsp'+js['statuses'][x]['text']+'"</p><hr />'
 				
