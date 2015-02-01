@@ -332,9 +332,22 @@ def api (request):
 	api_response = HttpResponse(api_text)
 	return api_response
 
-def htc (request):
+def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
-	htc_text='default htc'
+	get_stuff = hashtags.objects.all()#[:cont]
+	global hts_count
+	hts_count=get_stuff.count()
+	htc_text='{"metadata":{"record_count":'+str(hts_count)+'"},"responses":['
+	try:
+		for t in range (0,hts_count-1): # make a comma seaparted list of all the stored hashtags
+			tag_str=str(get_stuff[t].ht_term) # get next tag 
+			if ((hts_count-2)-t)>0: # add a comma as long as not the last value
+				tag_str+=','
+		weight_items(tag_str) # call the weighting function
+		htc_text+=str(count_items)
+		#htc_text+='{"tag":"'+str(get_stuff[t].ht_term)+'","Search term":"'+str(get_stuff[t].ht_st)+'"}'
+	except Exception as e:
+		htc_text+=str(e)
 	htc_response = HttpResponse(htc_text)
 	return htc_response
 
