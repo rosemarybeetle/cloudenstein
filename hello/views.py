@@ -150,7 +150,7 @@ def weight_items(ww):
 			ll=ww.count(m) # count of occurrances of this value in whole list
 			li=ww.index(ww[l]) # "position" index value of this specific instance of the value
 			if l==li: # if value of this item's index is same as index of first occurence (to create just one item in new list per distinct value)
-				count_items.append(m) # ( add value of this one)
+				count_items.append(str(m)) # ( add value of this one)
 				count_items.append(str(ll)) # (add count of occurrences of this value)
 	except Exception as e:
 		count_items=[e] # if it fails, send the error message instead 
