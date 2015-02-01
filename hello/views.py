@@ -334,7 +334,8 @@ def api (request):
 
 def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
-	global htc_ary=[]
+	global htc_ary
+	htc_ary=[]
 	get_stuff = hashtags.objects.all()#[:cont]
 	global hts_count
 	hts_count=get_stuff.count()
