@@ -345,7 +345,7 @@ def ht_c (request): # api end point for counted + weighted tags
 			if ((hts_count-2)-t)>0: # add a comma as long as not the last value
 				tag_str+=','
 			tag_str_all+=' '+tag_str
-		weight_items(tag_str) # call the weighting function
+		weight_items(tag_str_all) # call the weighting function
 		htc_text+=str(count_items)+ ' All = ' +str(tag_str_all)
 		#htc_text+='{"tag":"'+str(get_stuff[t].ht_term)+'","Search term":"'+str(get_stuff[t].ht_st)+'"}'
 	except Exception as e:
