@@ -334,6 +334,7 @@ def api (request):
 
 def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
+	global htc_ary=[]
 	get_stuff = hashtags.objects.all()#[:cont]
 	global hts_count
 	hts_count=get_stuff.count()
@@ -344,9 +345,14 @@ def ht_c (request): # api end point for counted + weighted tags
 			tag_str=str(get_stuff[t].ht_term) # get next tag 
 			if ((hts_count-2)-t)>0: # add a comma as long as not the last value
 				tag_str+=','
-			tag_str_all+=tag_str
+			tag_str_all+=' '+tag_str
+			htc_ary.append(tag_str)
+		hts=', '.join(htc_ary)
 		weight_items(tag_str_all) # call the weighting function
-		htc_text+=str(count_items)+ ' All = ' +str(tag_str_all)
+		xxx=count_items
+		weight_items(hts)
+		yyy=count_items
+		htc_text+=str(xxx)+ ' All = ' +str(tag_str_all) + ' and also'+ str(yyy)
 		#htc_text+='{"tag":"'+str(get_stuff[t].ht_term)+'","Search term":"'+str(get_stuff[t].ht_st)+'"}'
 	except Exception as e:
 		htc_text+=str(e)
