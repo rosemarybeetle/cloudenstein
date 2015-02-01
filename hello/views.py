@@ -331,6 +331,13 @@ def api (request):
 		api_text='failed to respond - Returned error: '+str(e)
 	api_response = HttpResponse(api_text)
 	return api_response
+
+def htc (request):
+	loadAdminSettings()
+	htc_text='default htc'
+	htc_response = HttpResponse(htc_text)
+	return htc_response
+
 	
 def ht (request):
 	#cont=100

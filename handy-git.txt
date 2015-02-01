@@ -2,11 +2,17 @@ git add --all
 git commit -m "typo"
 git push heroku master
 
+git push rbeetle master
+
+heroku apps:rename newname --app oldname
+
 t6,ww)p.l/nrggh
 cd python-getting-started
 foreman start
 
 heroku run python manage.py syncdb
+
+https://git.heroku.com/cloudenstein.git
 
 ##------------
 tdb_max=models.Charfield(max_length=4)
