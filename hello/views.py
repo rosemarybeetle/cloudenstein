@@ -340,7 +340,7 @@ def send_tweet(tw_st):
 def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
 	tweet_st_text='hmm... @rbeetlelabs has been snoozing for months. Awakening with Cloudenstein: http://cloudenstein.rosemarybeetle.org'
-	send_tweet(tweet_tst_text)
+	send_tweet(tweet_st_text)
 	global htc_ary
 	htc_ary=[]
 	get_stuff = hashtags.objects.all()#[:cont]
