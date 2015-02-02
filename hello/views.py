@@ -339,14 +339,17 @@ def send_tweet(tw_st):
 
 def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
-	tweet_st_text='hmm... @rbeetlelabs has been snoozing for months. Awakening with Cloudenstein: http://cloudenstein.rosemarybeetle.org'
-	send_tweet(tweet_st_text)
+	try:
+		tweet_st_text=str(math.random(11))+'hmm... @rbeetlelabs has been snoozing for months. Awakening with Cloudenstein: http://cloudenstein.rosemarybeetle.org'
+		send_tweet(tweet_st_text)
+	except Exception as e:
+		bo='tweeting not playing'
 	global htc_ary
 	htc_ary=[]
 	get_stuff = hashtags.objects.all()#[:cont]
 	global hts_count
 	hts_count=get_stuff.count()
-	htc_text='<html><head><title>ht_c</title></head><body>{"metadata":{"record_count":'+str(hts_count)+'"},"responses":['
+	htc_text='<html><head><title>ht_c</title></head><body><p>'+bo+'{"metadata":{"record_count":'+str(hts_count)+'"},"responses":['
 	try:
 		tag_str_all=''
 		for t in range (0,hts_count-1): # make a comma seaparted list of all the stored hashtags
