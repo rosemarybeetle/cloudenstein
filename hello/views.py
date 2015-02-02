@@ -1,5 +1,6 @@
 import os
 import time
+import twitter
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
@@ -331,15 +332,21 @@ def api (request):
 		api_text='failed to respond - Returned error: '+str(e)
 	api_response = HttpResponse(api_text)
 	return api_response
+def send_tweet(tw_st):
+	my_auth = twitter.OAuth(twit_api_access_token,twit_api_access_secret,twit_api_key,twit_api_secret)
+	twit = twitter.Twitter(auth=my_auth)
+	twit.statuses.update(status=tw_st)
 
 def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
+	tweet_st_text='hmm... @rbeetlelabs has been snoozing for months. Awakening with Cloudenstein: http://cloudenstein.rosemarybeetle.org'
+	send_tweet(tweet_tst_text)
 	global htc_ary
 	htc_ary=[]
 	get_stuff = hashtags.objects.all()#[:cont]
 	global hts_count
 	hts_count=get_stuff.count()
-	htc_text='{"metadata":{"record_count":'+str(hts_count)+'"},"responses":['
+	htc_text='<html><head><title>ht_c</title></head><body>{"metadata":{"record_count":'+str(hts_count)+'"},"responses":['
 	try:
 		tag_str_all=''
 		for t in range (0,hts_count-1): # make a comma seaparted list of all the stored hashtags
@@ -354,6 +361,7 @@ def ht_c (request): # api end point for counted + weighted tags
 		weight_items(hts)
 		yyy=count_items
 		htc_text+=str(xxx)+ ' All = ' +str(tag_str_all) + ' and also'+ str(yyy)
+		htc_text+='<br /></body></html>'
 		#htc_text+='{"tag":"'+str(get_stuff[t].ht_term)+'","Search term":"'+str(get_stuff[t].ht_st)+'"}'
 	except Exception as e:
 		htc_text+=str(e)
