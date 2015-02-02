@@ -339,8 +339,9 @@ def send_tweet(tw_st):
 
 def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
+	ss=0
 	try:
-		ss=random(22)
+		ss=math.random(22)
 		tweet_st_text=str(ss)+'pmm... @rbeetlelabs has been snoozing for months. Awakening with Cloudenstein: http://cloudenstein.rosemarybeetle.org'
 		send_tweet(tweet_st_text)
 	except Exception as e:
