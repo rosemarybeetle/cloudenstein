@@ -340,10 +340,11 @@ def send_tweet(tw_st):
 def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
 	try:
-		tweet_st_text=str(math.random(11))+'hmm... @rbeetlelabs has been snoozing for months. Awakening with Cloudenstein: http://cloudenstein.rosemarybeetle.org'
+		ss=random(22)
+		tweet_st_text=str(ss)+'pmm... @rbeetlelabs has been snoozing for months. Awakening with Cloudenstein: http://cloudenstein.rosemarybeetle.org'
 		send_tweet(tweet_st_text)
 	except Exception as e:
-		bo='tweeting not playing'
+		bo='tweeting not playing: '+str(ss)
 	global htc_ary
 	htc_ary=[]
 	get_stuff = hashtags.objects.all()#[:cont]
