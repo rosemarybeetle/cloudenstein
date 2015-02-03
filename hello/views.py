@@ -341,8 +341,8 @@ def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
 	ss=0
 	try:
-		ss=math.random(22)
-		tweet_st_text=str(int(10000*ss))+'pmm... @rbeetlelabs has been snoozing for months. Awakening with Cloudenstein: http://cloudenstein.rosemarybeetle.org'
+		ss=math.random()*100
+		tweet_st_text='test spout_tweet() @rbeetlelabs - Cloudenstein: http://cloudenstein.rosemarybeetle.org'
 		send_tweet(tweet_st_text)
 	except Exception as e:
 		bo='tweeting not playing: '+str(ss)
