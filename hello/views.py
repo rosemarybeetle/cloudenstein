@@ -105,6 +105,10 @@ def db(request):
 	greetings = Greeting.objects.all()
 
 	return render(request, 'db.html', {'greetings': greetings})
+
+def spiraliser(request):
+	return render(request, 'spiraliser.html')
+
 	
 
 def loadAdminSettings ():
@@ -341,7 +345,7 @@ def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
 	ss=0
 	try:
-		#ss=math.random()*100
+		ss=randint(1,1000)
 		tweet_st_text='test spout_tweet() @rbeetlelabs - Cloudenstein: http://cloudenstein.rosemarybeetle.org'
 		send_tweet(tweet_st_text)
 	except Exception as e:
