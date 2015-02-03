@@ -8,7 +8,7 @@ heroku apps:rename newname --app oldname
 
 t6,ww)p.l/nrggh
 
-cd python-getting-started
+
 foreman start
 
 heroku run python manage.py syncdb
