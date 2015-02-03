@@ -351,7 +351,10 @@ def ht_c (request): # api end point for counted + weighted tags
 	get_stuff = hashtags.objects.all()#[:cont]
 	global hts_count
 	hts_count=get_stuff.count()
-	htc_text='<html><head><title>ht_c</title></head><body><p>'+bo+'{"metadata":{"record_count":'+str(hts_count)+'"},"responses":['
+	try:
+		htc_text='<html><head><title>ht_c</title></head><body><p>'+bo+'{"metadata":{"record_count":'+str(hts_count)+'"},"responses":['
+	except:
+		htc_text='<html><head><title>ht_c</title></head><body><p>{"metadata":{"record_count":'+str(hts_count)+'"},"responses":['
 	try:
 		tag_str_all=''
 		for t in range (0,hts_count-1): # make a comma seaparted list of all the stored hashtags
