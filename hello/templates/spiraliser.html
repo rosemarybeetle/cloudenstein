@@ -4,11 +4,38 @@
 <title>spiraliser</title>
 
 <script src="../keep_going.js" ></script>
-  
+<script type="text/javascript">
+window.periody={{period}};
+window.toggler=0;
+function harvest {
+	document.getElementById("framer").src = "http://cloudenstein.rosemarybeetle.org/home";}
+}
+function toggle_harvesting {
+	if (window.toggler==1;){
+			var vari = setInterval(function(){ harvest()},window.periody);
+			window.toggler=0;
+		}
+	else if 		(window.toggler==0;)
+		{
+			window.toggler=1;
+			clearInterval(vari);
+		}
+		else 
+} 
+
+</script>  
+
 </head>
 <body>
 <h1>spiralising...</h1>
-<p>{{period}}</p>
+<iframe id="framer" src=""></iframe>
+<button onClick="toggle_harvesting()">Go</button>;
+"
+<p>
+
+
+
+</p>
 
 </body>
 </html>
