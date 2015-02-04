@@ -7,7 +7,7 @@ git push rbeetle master
 heroku apps:rename newname --app oldname
 
 t6,ww)p.l/nrggh
-
+cd python-getting-started
 
 foreman start
 

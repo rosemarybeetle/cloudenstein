@@ -107,7 +107,8 @@ def db(request):
 	return render(request, 'db.html', {'greetings': greetings})
 
 def spiraliser(request):
-	return render(request, 'spiraliser.html')
+	loadAdminSettings ()
+	return render(request, 'spiraliser.html', {'period':t_hp_ad})
 
 	
 
