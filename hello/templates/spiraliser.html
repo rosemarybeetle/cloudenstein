@@ -7,10 +7,10 @@
 <script type="text/javascript">
 window.periody={{period}};
 window.toggler=0;
-function harvest {
+function harvest (){
 	document.getElementById("framer").src = "http://cloudenstein.rosemarybeetle.org/home";}
 }
-function toggle_harvesting {
+function toggle_harvesting (){
 	if (window.toggler==1;){
 			var vari = setInterval(function(){ harvest()},window.periody);
 			window.toggler=0;
@@ -28,9 +28,9 @@ function toggle_harvesting {
 </head>
 <body>
 <h1>spiralising...</h1>
-<iframe id="framer" src=""></iframe>
+<iframe id="framer" src="" width=100%></iframe>
 <button onClick="toggle_harvesting()">Go</button>;
-"
+
 <p>
 
 
