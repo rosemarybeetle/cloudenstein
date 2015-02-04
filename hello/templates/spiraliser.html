@@ -8,14 +8,17 @@ window.periody={{period}}*1000;
 window.toggler=0;
 function harvest (){
 	document.getElementById("framer").src = "http://cloudenstein.rosemarybeetle.org/home";
+	console.log('inside harvest')
 }
 function toggle_harvesting (){
 	if (window.toggler==1){
+		console.log('inside toggle_harvesting() toggler=1')
 			var vari = setInterval(function(){ harvest()},window.periody);
 			window.toggler=0;
 		}
 	else if (window.toggler==0)
 		{
+			console.log('inside toggle_harvesting() toggler=0')
 			window.toggler=1;
 			clearInterval(vari);
 		}
