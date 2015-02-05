@@ -10,17 +10,20 @@ function harvest (){
 	document.getElementById("framer").src = "http://cloudenstein.rosemarybeetle.org/home";
 	console.log('inside harvest')
 }
+var vari; // global variable
 function toggle_harvesting (){
+
 	if (window.toggler==1){
 		console.log('inside toggle_harvesting() toggler=1')
-			var vari = setInterval(function(){ harvest()},window.periody);
+			vari = setInterval(function(){ harvest()},window.periody);
 			window.toggler=0;
 		}
 	else if (window.toggler==0)
 		{
+			clearInterval(vari);
 			console.log('inside toggle_harvesting() toggler=0')
 			window.toggler=1;
-			clearInterval(vari);
+			
 		}
 
 } 
