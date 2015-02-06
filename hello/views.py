@@ -162,6 +162,8 @@ def weight_items(ww):
 		count_items=[e] # if it fails, send the error message instead 
 	return count_items# return count_items
 
+
+
 def sort_pairs(tt):
 	global sorted_items 
 	sorted_items=[]
@@ -429,8 +431,8 @@ def ht (request):
 def cloudenstein (request):
 	return render (request, 'face-off.html')
 
+# {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 
-#----------------------------------------------------------------------------------------
 def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
 	getLastTweetId()
 	global responsetext
@@ -494,22 +496,21 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				except Exception as e:
 					responsetext+="FAILED - real RECORD NOT CREATED BECAUsE OF ERROR: "+str(e)+'<br />'
 					# V---------------------do sub content-------------------V
-				global tip_hashtags
-				tip_hashtags=''
-				try: # poll throuh tweet's status.entities to look for tip_hashtags
+				global hashtags
+				hashtags=''
+				try: # poll throuh tweet's status.entities to look for hashtags
 					ht_list=js['statuses'][x]['entities']['hashtags']
 					global ht_len
 					ht_len=len(ht_list)
 					for xx in range(0,ht_len):
 						ht_list_txt=js['statuses'][x]['entities']['hashtags'][xx]['text']
 						# some code to add to hashtag list, checking for existing and counting if needed
-						saveHashtags('#'+str(ht_list_txt))
 						mega_hashtags.append(ht_list_txt)
-						tip_hashtags+='#'+ht_list_txt
+						hashtags+='#'+ht_list_txt
 						if (ht_len-xx)>0:
-							tip_hashtags+=','
+							hashtags+=','
 				except Exception as e:
-					tip_hashtags='failed to retrieve hashtags because: '+str(e)
+					hashtags='failed to retrieve hashtags because: '+str(e)
 				global urls
 				urls=''
 				try: # poll throuh tweet's status.entities to look for urls
@@ -542,7 +543,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				except Exception as e:
 					mentions='failed to retrieve mentions because: '+str(e)
 				# ^------------------------end sub content ----------------------------^
-				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+tip_hashtags+' urls cited: '+urls+'<br />'
+				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+hashtags+' urls cited: '+urls+'<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
 				responsetext += '&nbsp'+js['statuses'][x]['text']+'"</p><hr />'
 				
@@ -579,6 +580,159 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	except Exception as e:
 		responsetext+="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
 		return (responsetext) 
+	
+# [[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+
+#----------------------------------------------------------------------------------------
+# def search_tweets (term,count) : # params: term= 'what to search for' type = 'how to search' Count = 'number of tweets' (max 100)
+# 	getLastTweetId()
+# 	global responsetext
+# 	search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=' # twitter json api query url
+# 	x= term.find('#') # look to see what position the hashtag is 
+# 	y=term.find('@') # look to see what position the @ sign is
+# 	global termTXT
+# 	term_raw=term
+# 	if x==0 : #  this is checking if the first character is a hashtag (i.e it's a hashtag term search)
+# 		print ('searching twitter API for hashtag: '+term)
+# 		term2 = term.split('#')[1] # strip off the hash
+# 		termTXT= term2 # allows the search term to be passed as a parameter
+# 		term='%23'+term2 # add unicode for # sign (%23) if a hashtag search term
+# 	else:
+# 		if y==0: # next - check if @ is the first character (i.e. it is a username term)
+# 			print ('searching twitter API for username: @'+term)
+# 			term3 = term.split('@')[1] # strip off the @
+# 			termTXT= term3 # allows the search term to be passed as a parameter
+# 			term='%40'+term3 # add unicode for @ sign (%40) if a username search
+# 		else:
+# 			print ('searching for term: '+term) # or just search!
+# 			termTXT= term # allows the search term to be passed as a parameter
+# 	search_url=str(search_url_root+term+'&count='+str(count)) # create the full search url from search term and admin setting for number of results
+# 	print ('---------------------------')
+# 	print ()
+# 	try:
+# 		auth = OAuth1(twit_api_key, twit_api_secret,twit_api_access_token,twit_api_access_secret)
+# 		global auth_response
+		
+# 		responsetext='' # initialise as string
+# 		auth_response=requests.get(search_url, auth=auth)
+# 		j = (auth_response.text)
+# 		js = json.loads(j)
+# 		js_dict=js
+# 		global js_count
+# 		js_count=len(js_dict['statuses'])# how many tweets in thi response? - double checking that number of tweets received was same as asked for (could be less occassionally)
+# 		c = js_count
+# 		x=0
+# 		while (x<c):
+# 			try:
+# 				tweet_id = js['statuses'][x]['id']
+# 				global laztwt
+# 				laztwt=tweet_id
+# 				if (x==0):
+# 					global temp_tweet
+# 					temp_tweet=tweet_id
+# 					responsetext+='<h1>Results for search on term: '+term_raw+'</h1><p>'+str(c)+' tweets returned. Most recent tweet received has status id: '+str(tweet_id)+'</p>'
+# 				name = js['statuses'][x]['user']['name']
+# 				avatar = js['statuses'][x]['user']['profile_image_url']
+# 				user = js['statuses'][x]['user']['screen_name']
+# 				username= '@'+user
+# 				tweet_text=js['statuses'][x]['text']
+# 				t1 =int(tweet_id)
+# 				t2=int(last_tweet)
+# 				try:
+# 					if t1>t2:
+# 						saveTweet(tweet_id,name,user,avatar,tweet_text)
+# 						responsetext+="SUCCESS - real  RECORD CREATED<br /> t1= "+str(t1)+", t2 = "+str(t2)+'  although'+str(ff)
+# 					else:
+# 						responsetext+="this tweet already in database - no need to save"
+# 				except Exception as e:
+# 					responsetext+="FAILED - real RECORD NOT CREATED BECAUsE OF ERROR: "+str(e)+'<br />'
+# 					# V---------------------do sub content-------------------V
+# 				global tip_hashtags
+# 				tip_hashtags=''
+# 				try: # poll throuh tweet's status.entities to look for tip_hashtags
+# 					ht_list=js['statuses'][x]['entities']['hashtags']
+# 					global ht_len
+# 					ht_len=len(ht_list)
+# 					for xx in range(0,ht_len):
+# 						ht_list_txt=js['statuses'][x]['entities']['hashtags'][xx]['text']
+# 						# some code to add to hashtag list, checking for existing and counting if needed
+# 						saveHashtags('#'+str(ht_list_txt))
+# 						mega_hashtags.append(ht_list_txt)
+# 						tip_hashtags+='#'+ht_list_txt
+# 						if (ht_len-xx)>0:
+# 							tip_hashtags+=','
+# 				except Exception as e:
+# 					tip_hashtags='failed to retrieve hashtags because: '+str(e)
+# 				global urls
+# 				urls=''
+# 				try: # poll throuh tweet's status.entities to look for urls
+# 					url_list=js['statuses'][x]['entities']['urls']
+# 					global url_len
+# 					url_len=len(url_list)
+# 					for xu in range(0,url_len):
+# 						url_d_txt=js['statuses'][x]['entities']['urls'][xu]['display_url']
+# 						url_e_txt=js['statuses'][x]['entities']['urls'][xu]['expanded_url']
+# 						url_list_txt='<a href="'+url_e_txt+'">'+url_d_txt+'</a>'
+# 						mega_urls.append(url_list_txt)
+# 						urls+=url_list_txt
+# 						if (ht_len-xu)>0:
+# 							urls+=','
+# 				except Exception as e:
+# 					urls='failed to retrieve urls because: '+str(e)
+# 				mentions=''
+# 				try: # poll through tweet's status.entities to look for mentions
+# 					men_list=js['statuses'][x]['entities']['user_mentions']
+# 					global men_len
+# 					men_len=len(men_list)
+# 					for xm in range(0,men_len):
+# 						men_n_txt=js['statuses'][x]['entities']['user_mentions'][xm]['name']
+# 						men_sn_txt=js['statuses'][x]['entities']['user_mentions'][xm]['screen_name']
+# 						men_list_txt=men_n_txt+': <a href="http://twitter.com/'+men_sn_txt+'">@'+men_sn_txt+'</a>'
+# 						mega_mentions.append(men_list_txt)
+# 						mentions+=men_list_txt
+# 						if (men_len-xm)>0:
+# 							mentions+=','
+# 				except Exception as e:
+# 					mentions='failed to retrieve mentions because: '+str(e)
+# 				# ^------------------------end sub content ----------------------------^
+# 				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+tip_hashtags+' urls cited: '+urls+'<br />'
+# 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
+# 				responsetext += '&nbsp'+js['statuses'][x]['text']+'"</p><hr />'
+				
+				
+# 			except Exception as e:
+# 				responsetext+="Something broke while polling through tweets. This msg inside search_tweets > inside while loop: "+str(e)+'<br />'
+# 				return (responsetext,laztwt) 
+# 			x=x+1
+# 		try:
+# 			hts=', '.join(mega_hashtags) # .join() turns a list into a string, it gets the items and returns them separated by what's between the ''
+# 			weight_items(mega_hashtags)
+# 			htc=', '.join(count_items)
+# 			weight_items(mega_urls)
+# 			urlc=', '.join(count_items)
+# 			weight_items(mega_mentions)
+# 			menc=', '.join(count_items)
+# 			sort_pairs(count_items)
+# 			mens=', '.join(mega_mentions)
+# 			responsetext+='All hashtags in this session were: '+hts+'<br /><hr />'
+# 			responsetext+='All hashtags by count in this session were: '+htc+'<br /><hr />'
+# 			responsetext+='All urls by count in this session were: '+urlc+'<br /><hr />'
+# 			responsetext+='All mentions in this session were: '+mens+'<br /><hr />'
+# 			responsetext+='All mentions by count in this session were: '+menc+'<br /><hr />'
+# 		except Exception as e:
+# 			responsetext+='Retrieved last tweet id FAILED FROM getLastTweetId()<br />'+str(e)+'<br />'
+# 		try:
+# 			saveTweetId(temp_tweet)
+# 			#responsetext+='text from inside saveTweetId = '+str(lt_stext)
+# 		except Exception as e:
+# 			responsetext+='Failed at saveTweetId() string because of error: '+str(e)+'<br /><br />'
+# 		return (responsetext, laztwt)
+# 		# fullTweet2='{"tweet_id": "'+str(tweet_id)+'","username": "'+str(username)+'","screen_name": "'+str(name)+'","tweet_text": "'+str(tweet)+'" } ]}'
+# 		# saveTweet2(fullTweet2)
+# 	except Exception as e:
+# 		responsetext+="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
+# 		return (responsetext) 
 	
 
 
