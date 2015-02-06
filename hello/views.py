@@ -284,7 +284,10 @@ def home(request):
 	t_sn=t_sn_ad
 	#responsetext=''
 	
-	search_tweets(t_st,t_sn)
+	try:
+		search_tweets(t_st,t_sn)
+	except Exception as e:
+		homeText+='Uh-oh. Something broke = '+str(e)
 	# try:
 	# 	lass = lt(lt_id=laztwt,position=0)
 	# 	lass.save()
