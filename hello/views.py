@@ -347,7 +347,7 @@ def ht_c (request): # api end point for counted + weighted tags
 	ss=0
 	try:
 		ss=randint(1,1000)
-		tweet_st_text=str(22)+'test spout_tweet() @rbeetlelabs - Cloudenstein: http://cloudenstein.rosemarybeetle.org'
+		tweet_st_text='troika test spout_tweet() @rbeetlelabs - Cloudenstein: http://cloudenstein.rosemarybeetle.org'
 		send_tweet(tweet_st_text)
 	except Exception as e:
 		bo='tweeting not playing: '+str(e)
@@ -369,7 +369,7 @@ def ht_c (request): # api end point for counted + weighted tags
 			tag_str_all+=' '+tag_str
 			htc_ary.append(tag_str)
 		hts=', '.join(htc_ary)
-		weight_items(hts) # call the weighting function
+		weight_items(tag_str_all) # call the weighting function
 		xxx=count_items
 		weight_items(hts)
 		yyy=count_items
@@ -381,6 +381,7 @@ def ht_c (request): # api end point for counted + weighted tags
 	htc_response = HttpResponse(htc_text)
 	return htc_response
 
+	
 	
 def ht (request):
 	#cont=100
