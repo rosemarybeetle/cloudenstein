@@ -342,6 +342,23 @@ def send_tweet(tw_st):
 	twit = twitter.Twitter(auth=my_auth)
 	twit.statuses.update(status=tw_st)
 
+def twt(request):
+	bo=''
+	twt_send_txt='nought'
+	try:
+		ss=randint(1,1000)
+		tweet_st_text=str(ss)+'twt test spout_tweet() @rbeetlelabs - Cloudenstein: http://cloudenstein.rosemarybeetle.org'
+		send_tweet(tweet_st_text)
+	except Exception as e:
+		bo='tweeting not playing: '+str(e)
+	try:
+		twt_send_txt='<html><head><title>twt</title></head><body><p>'+str(bo)+'.<br />Attempting to send tweet: <br />'+str(tweet_st_text)
+	except:
+		twt_send_txt='<html><head><title>twt</title></head><body><p><br />. Attempting to send tweet: <br />'+str(tweet_st_text)
+	twt_send_txt+='</p></body></html>'
+	twt_response = HttpResponse(twt_send_txt)
+	return twt_response
+
 def ht_c (request): # api end point for counted + weighted tags
 	loadAdminSettings()
 	ss=0
@@ -356,6 +373,7 @@ def ht_c (request): # api end point for counted + weighted tags
 	get_stuff = hashtags.objects.all()#[:cont]
 	global hts_count
 	hts_count=get_stuff.count()
+	htc_text='oh'
 	try:
 		htc_text='<html><head><title>ht_c</title></head><body><p>'+bo+'{"metadata":{"record_count":'+str(hts_count)+'"},"responses":['
 	except:
