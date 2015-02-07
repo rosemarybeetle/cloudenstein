@@ -366,7 +366,7 @@ def send_tweet(tw_st):
 
 def recent_mentions(request):
 	loadAdminSettings ()
-	men_auth = OAuth1(twit_api_access_token,twit_api_access_secret,twit_api_key,twit_api_secret)
+	men_oauth = OAuth1(twit_api_access_token,twit_api_access_secret,twit_api_key,twit_api_secret)
 	global men_auth_response
 	responsetext='' # initialise as string
 	#search_url='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
