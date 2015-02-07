@@ -365,12 +365,15 @@ def send_tweet(tw_st):
 	twit.statuses.update(status=tw_st)
 
 def recent_mentions(request):
+	loadAdminSettings ()
 	men_auth = OAuth1(twit_api_access_token,twit_api_access_secret,twit_api_key,twit_api_secret)
 	global men_auth_response
 	responsetext='' # initialise as string
 	search_url='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
 	men_auth_response=requests.get(search_url, auth=men_auth)
-	responsetext=men_auth_response
+	j = (men_auth_response.text)
+	
+	responsetext=men_auth_response+j
 	men_response = HttpResponse(responsetext)
 	return men_response
 		
