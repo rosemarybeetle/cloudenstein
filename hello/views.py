@@ -372,7 +372,7 @@ def recent_mentions(request):
 	#search_url='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
 	#men_auth_response=requests.get(search_url, auth=men_auth)
 	search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=%40rbeetlelabs' # twitter json api query url
-	men_auth_response = requests.get(search_url_root, men_oauth)
+	men_auth_response = requests.get(search_url_root, auth=men_oauth)
 	
 	j = (men_auth_response.text)
 	
