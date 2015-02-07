@@ -369,8 +369,10 @@ def recent_mentions(request):
 	men_auth = OAuth1(twit_api_access_token,twit_api_access_secret,twit_api_key,twit_api_secret)
 	global men_auth_response
 	responsetext='' # initialise as string
-	search_url='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
-	men_auth_response=requests.get(search_url, auth=men_auth)
+	#search_url='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
+	#men_auth_response=requests.get(search_url, auth=men_auth)
+	men_auth_response = requests.get(url="https://api.twitter.com/1.1/statuses/mentions_timeline.json", auth=men_oauth)
+      
 	j = (men_auth_response.text)
 	
 	responsetext=men_auth_response+j
