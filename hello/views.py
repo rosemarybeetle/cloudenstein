@@ -375,7 +375,7 @@ def recent_mentions(request):
       
 	j = (men_auth_response.text)
 	
-	responsetext=men_auth_response+j
+	responsetext=j
 	men_response = HttpResponse(responsetext)
 	return men_response
 		
