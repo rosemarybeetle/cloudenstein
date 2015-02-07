@@ -28,6 +28,7 @@ h1.line-height: 10%;
 position: absolute;
 left:0px;
 top: 0px;
+bottom:90%;
 width:100%;
 padding: 2px ;
 background-color: #A9D0F5;
@@ -35,6 +36,10 @@ background-color: #A9D0F5;
 
 #main {
 float:bottom;
+position: absolute;
+left:0px;
+top: 10%;
+bottom:0px;
 
 }
 }
