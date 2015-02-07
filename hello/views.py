@@ -215,7 +215,7 @@ def getLastTweetId():
 		lt_rtext='Failed via getLastTweetId() using lt_st model'+ str(e)+'<br />'
 		return lt_rtext 
 
-def last_tweet_json ():
+def last_tweet_json (request):
 	textual='{"last_tweet_id":'
 	getLastTweetId() # find id of last saved tweet 
 	textual+=str(last_tweet)+'}' # pass returned value to lovcal variable
