@@ -364,15 +364,16 @@ def send_tweet(tw_st):
 	twit = twitter.Twitter(auth=my_auth)
 	twit.statuses.update(status=tw_st)
 
+
 def recent_mentions(request):
-	loadAdminSettings ()
 	men_oauth = twitter.OAuth(twit_api_access_token,twit_api_access_secret,twit_api_key,twit_api_secret)
 	global men_auth_response
 	responsetext='' # initialise as string
 	#search_url='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
 	#men_auth_response=requests.get(search_url, auth=men_auth)
-	men_auth_response = requests.get(url="https://api.twitter.com/1.1/statuses/mentions_timeline.json", auth=men_oauth)
-      
+	search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=%40rbeetlelabs' # twitter json api query url
+	men_auth_response = requests.get(search_url_root, men_oauth)
+	
 	j = (men_auth_response.text)
 	
 	responsetext=j
