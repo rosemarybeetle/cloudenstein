@@ -27,5 +27,4 @@ urlpatterns = patterns('',
 	url(r'^htc/', hello.views.ht_c, name='api_htc'), 
 	url(r'^last', hello.views.last, name='last'),
 	url(r'^admin/', include(admin.site.urls)),
-
 )
