@@ -364,6 +364,18 @@ def send_tweet(tw_st):
 	twit = twitter.Twitter(auth=my_auth)
 	twit.statuses.update(status=tw_st)
 
+def recent_mentions(request):
+	men_auth = twitter.OAuth(twit_api_access_token,twit_api_access_secret,twit_api_key,twit_api_secret)
+	global men_auth_response
+	responsetext='' # initialise as string
+	search_url='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
+	men_auth_response=requests.get(search_url, auth=auth)
+	responsetext=men_auth_response
+	men_response = HttpResponse(responsetext)
+	return men_response
+		
+	
+
 def twt(request):
 	bo=''
 	twt_send_txt='nought'
