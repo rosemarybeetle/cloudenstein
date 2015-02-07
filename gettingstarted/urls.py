@@ -24,7 +24,7 @@ urlpatterns = patterns('',
 	url(r'^ltj/',hello.views.last_tweet_json, name='ltj'),
 	url(r'^ht/', hello.views.ht, name='api_ht'), 
 	url(r'^htc/', hello.views.ht_c, name='api_htc'), 
-	url(r'^api/(?P<cont>\d{1,3})/$', hello.views.api), 
+	url(r'^api/(?P<coont>\d+)/$', hello.views.api), 
 	url(r'^last', hello.views.last, name='last'),
 	url(r'^admin/', include(admin.site.urls)),
 
