@@ -391,7 +391,7 @@ def ht_c (request): # api end point for counted + weighted tags
 				tag_str+=','
 			tag_str_all+=' '+tag_str
 			htc_ary.append(tag_str)
-		hts=', '.join(hts)
+		hts=', '.join(htc_ary)
 		weight_items(tag_str_all) # call the weighting function
 		xxx=count_items
 		weight_items(hts)
