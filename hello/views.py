@@ -369,7 +369,7 @@ def recent_mentions(request):
 	global men_auth_response
 	responsetext='' # initialise as string
 	search_url='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
-	men_auth_response=requests.get(search_url, auth=auth)
+	men_auth_response=requests.get(search_url, auth=men_auth)
 	responsetext=men_auth_response
 	men_response = HttpResponse(responsetext)
 	return men_response
