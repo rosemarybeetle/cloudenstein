@@ -325,13 +325,22 @@ def retrieveGoogleAdmin (url):
 	except Exception as e:
 		print ('Can\'t connect to admin settings - no connection') +str(e)+'<br />'
 
-def api (request, coont=1):
-	cont=int(coont)
+def api (request ):
+	#coont=1
+	global api_text
+	api_text=''
+	try:
+		coont=request.GET.get('coont','')
+		cont=int(coont)
+	except Exception as e:
+		api_text+='failed to pull in get argument. Use defauly 'cont' instead'
+		cont=100
+	
 	get_stuff = lt_st.objects.all()[:cont]
 	global gt
 	gt=get_stuff.count()
-	global api_text
-	api_text='{"metadata":{"record_count":'+str(gt)+'},"responses":['
+	
+	api_text+='{"metadata":{"record_count":'+str(gt)+'},"responses":['
 	try:
 		for e in range (0,gt-1):
 			api_text+='{"id":"'+str(get_stuff[e].id)+'","tweet_id":"'+str(get_stuff[e].lt_id)+'"}'
