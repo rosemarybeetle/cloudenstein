@@ -333,7 +333,7 @@ def api (request ):
 		coont=request.GET.get('coont','')
 		cont=int(coont)
 	except Exception as e:
-		api_text+='failed to pull in get argument. Use defauly 'cont' instead'
+		api_text+='failed to pull in get argument. Use defauly "cont" instead'
 		cont=100
 	
 	get_stuff = lt_st.objects.all()[:cont]
