@@ -496,9 +496,9 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				except Exception as e:
 					responsetext+="FAILED - real RECORD NOT CREATED BECAUsE OF ERROR: "+str(e)+'<br />'
 					# V---------------------do sub content-------------------V
-				global hashtags
-				hashtags=''
-				try: # poll throuh tweet's status.entities to look for hashtags
+				global hashtagss
+				hashtagss=''
+				try: # poll throuh tweet's status.entities to look for hashtagss
 					ht_list=js['statuses'][x]['entities']['hashtags']
 					global ht_len
 					ht_len=len(ht_list)
@@ -506,11 +506,11 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 						ht_list_txt=js['statuses'][x]['entities']['hashtags'][xx]['text']
 						# some code to add to hashtag list, checking for existing and counting if needed
 						mega_hashtags.append(ht_list_txt)
-						hashtags+='#'+ht_list_txt
+						hashtagss+='#'+ht_list_txt
 						if (ht_len-xx)>0:
-							hashtags+=','
+							hashtagss+=','
 				except Exception as e:
-					hashtags='failed to retrieve hashtags because: '+str(e)
+					hashtagss='failed to retrieve hashtags because: '+str(e)
 				global urls
 				urls=''
 				try: # poll throuh tweet's status.entities to look for urls
@@ -543,7 +543,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 				except Exception as e:
 					mentions='failed to retrieve mentions because: '+str(e)
 				# ^------------------------end sub content ----------------------------^
-				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+hashtags+' urls cited: '+urls+'<br />'
+				responsetext +='<p>Tweet: #'+str(x+1)+', status_id: '+ str(tweet_id)+', hashtags used: '+str(ht_len)+': '+hashtagss+' urls cited: '+urls+'<br />'
 				responsetext +='<img src="'+avatar+'" style="float:left;" />&nbsp<strong>'+name+'</strong>: '+username+')<br />'
 				responsetext += '&nbsp'+js['statuses'][x]['text']+'"</p><hr />'
 				
@@ -554,7 +554,7 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 			x=x+1
 		try:
 			hts=', '.join(mega_hashtags) # .join() turns a list into a string, it gets the items and returns them separated by what's between the ''
-			weight_items(mega_hashtags)
+			weight_items(mega_hashtagss)
 			htc=', '.join(count_items)
 			weight_items(mega_urls)
 			urlc=', '.join(count_items)
