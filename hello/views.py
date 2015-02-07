@@ -215,6 +215,14 @@ def getLastTweetId():
 		lt_rtext='Failed via getLastTweetId() using lt_st model'+ str(e)+'<br />'
 		return lt_rtext 
 
+def last_tweet_json ():
+	textual='{"last_tweet_id":'
+	getLastTweetId() # find id of last saved tweet 
+	textual+=str(last_tweet)+'}' # pass returned value to lovcal variable
+	js_lt_response = HttpResponse(textual)
+	return js_lt_response
+
+
 
 def last (request):
 	global sendTextL
@@ -333,7 +341,7 @@ def api (request ):
 		coont=request.GET.get('coont','')
 		cont=int(coont)
 	except Exception as e:
-		api_text+='failed to pull in get argument. Use defauly "cont" instead'
+		#api_text+='failed to pull in get argument. Use defauly "cont" instead'
 		cont=100
 	
 	get_stuff = lt_st.objects.all()[:cont]
