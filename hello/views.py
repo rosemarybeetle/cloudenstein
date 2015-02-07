@@ -325,8 +325,8 @@ def retrieveGoogleAdmin (url):
 	except Exception as e:
 		print ('Can\'t connect to admin settings - no connection') +str(e)+'<br />'
 
-def api (request):
-	cont=100	
+def api (request, coont='100'):
+	cont=int(coont)
 	get_stuff = lt_st.objects.all()[:cont]
 	global gt
 	gt=get_stuff.count()
