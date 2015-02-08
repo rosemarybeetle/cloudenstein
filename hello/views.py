@@ -394,7 +394,7 @@ def recent_mentions(request):
 	last_mention_now=int(ting[0]['id'])
 	# --
 	getLastMentionId()
-	lt_mn_id=last_mention_id
+	lt_mn_id=int(last_mention_id)
 	if last_mention_now > lt_mn_id:
 		save_last_mention(ting[0]['id'], ting[0]['user']['screen_name'])
 		responsetext='[{"message":"'+str(ting_len)+' new mentions retrieved."{'
@@ -403,6 +403,8 @@ def recent_mentions(request):
 			if ting_len-t>0:
 				responsetext+="'"
 		responsetext+='}}]'
+	else:
+		responsetext='"if last_mention_now > lt_mn_id:"" failed'
 
 	# --responsetext=j
 	men_response = HttpResponse(responsetext)
