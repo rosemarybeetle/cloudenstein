@@ -376,8 +376,8 @@ def recent_mentions(request):
 	
 	j = (men_auth_response.text)
 	usernames='[{'
-	for t in range (0,hts_count-1):
-		usernames+='"un":"'+str(j[t].user.screen_name)+'"' # get next tag 
+	for t in j:
+		usernames+='"un":"'+str(t.user.screen_name)+'"' # get next tag 
 	usernames+='{]'
 	responsetext=usernames
 	responsetext=j
