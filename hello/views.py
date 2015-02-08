@@ -402,7 +402,7 @@ def recent_mentions(request):
 			responsetext+='"status_id":"'+strt(ting[t]['id'])+'","name":"'+str(ting[t]['user'])+'","screen_name":"'+str(ting[t]['screen_name'])+'"'
 			if ting_len-t>0:
 				responsetext+="'"
-		responsetext+=}}]
+		responsetext+='}}]'
 
 	# --responsetext=j
 	men_response = HttpResponse(responsetext)
