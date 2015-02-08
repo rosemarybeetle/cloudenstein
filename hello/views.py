@@ -216,6 +216,20 @@ def getLastTweetId():
 		lt_rtext='Failed via getLastTweetId() using lt_st model'+ str(e)+'<br />'
 		return lt_rtext 
 
+def getLastMentionId():
+	global last_mention_text
+	global last_mention_id
+	last_mention_id='last_mention_id not set'
+	try:
+		mentionss=last_men.objects.filter(id=0)
+		last_mention_id= mentionss[0].men_id
+		last_mention_text='Successfully retrieved last mention id'
+	except Exception as e:
+		last_mention_text='something broke retrieving last mention id'+str(e)
+		return (last_mention_id,last_mention_text)
+
+	
+
 def last_tweet_json (request):
 	textual='{"last_tweet_id":'
 	getLastTweetId() # find id of last saved tweet 
@@ -374,11 +388,23 @@ def recent_mentions(request):
 	#men_auth_response=requests.get(search_url, auth=men_auth)
 	#search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=%40rbeetlelabs' # twitter json api query url
 	men_auth_response = requests.get(search_url_root, auth=men_oauth)
-	
 	j = (men_auth_response.text)
 	ting=json.loads(j)
-	save_last_mention(ting[0]['id'], ting[0]['user']['screen_name'])
-	responsetext=j
+	ting_len=len(ting)
+	last_mention_now=int(ting[0]['id'])
+	# --
+	getLastMentionId()
+	lt_mn_id=last_mention_id
+	if last_mention_now > lt_mn_id:
+		save_last_mention(ting[0]['id'], ting[0]['user']['screen_name'])
+		responsetext='[{"message":"'+str(ting_len+' new mentions retrieved."{'
+		for t in range (0,ting_len):
+			responsetext+='"status_id":"'+strt(ting[t]['id'])+'","name":"'+str(ting[t]['user'])+'","screen_name":"'+str(ting[t]['screen_name'])+'"'
+			if ting_len-t>0:
+				responsetext+="'"
+		responsetext+=}}]
+
+	# --responsetext=j
 	men_response = HttpResponse(responsetext)
 	return men_response
 		
