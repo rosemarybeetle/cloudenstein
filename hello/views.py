@@ -377,7 +377,7 @@ def recent_mentions(request):
 	
 	j = (men_auth_response.text)
 	ting=json.loads(j)
-	save_last_mention(ting[0].id, ting[0].user.screen_name)
+	save_last_mention(ting[0]['id'], ting[0]['user']['screen_name'])
 	responsetext=j
 	men_response = HttpResponse(responsetext)
 	return men_response
