@@ -17,6 +17,7 @@ from .models import cloud_admin
 from .models import tweeten
 from .models import process_settings
 from .models import hashtags
+from .models import last_men
 import json
 import random
 from random import randint
@@ -375,7 +376,8 @@ def recent_mentions(request):
 	men_auth_response = requests.get(search_url_root, auth=men_oauth)
 	
 	j = (men_auth_response.text)
-	
+	ting=json.loads(j)
+	save_last_mention(ting[0].id, ting[0].user.screen_name)
 	responsetext=j
 	men_response = HttpResponse(responsetext)
 	return men_response
@@ -632,7 +634,10 @@ def search_tweets (term,count) : # params: term= 'what to search for' type = 'ho
 	except Exception as e:
 		responsetext+="Failed called to Twitter. This msg inside search_tweets"+str(e)+'<br />'
 		return (responsetext) 
-	
+
+def save_last_mention(idi,un):
+	mention=last_men(men_id=idi,men_un=un, id=0)
+	mention.save()
 
 def saveTweet(tweet_id,name,user,avatar,text):
 	global twt_n_id

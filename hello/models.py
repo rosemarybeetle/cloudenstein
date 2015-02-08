@@ -16,6 +16,10 @@ class lt_st(models.Model):
 	position=models.IntegerField()
 	lt_id=models.CharField(max_length=200)
 
+class last_men(models.Model):
+	men_id=models.CharField(max_length=140)
+	men_un=models.CharField(max_length=140)
+
 class tweeten(models.Model):
 	tid=models.CharField(max_length=140)
 	t_name=models.CharField(max_length=140)
