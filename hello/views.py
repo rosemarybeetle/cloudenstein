@@ -400,11 +400,11 @@ def recent_mentions(request):
 		responsetext='[{"message":"'+str(ting_len)+' new mentions retrieved."{'
 		for y in range (0 , ting_len):
 			responsetext+='"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"'
-			if ting_len-t>0:
+			if ting_len-y>0:
 				responsetext+="'"
 		responsetext+='}}]'
 	else:
-		responsetext='"if last_mention_now > lt_mn_id:"" failed'
+		responsetext='[{"message":"if last_mention_now > lt_mn_id: FAILED"}]'
 
 	# --responsetext=j
 	men_response = HttpResponse(responsetext)
