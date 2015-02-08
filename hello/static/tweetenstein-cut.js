@@ -21,6 +21,9 @@ function mentions()
     $.getJSON( "http://cloudenstein.rosemarybeetle.org/recent_mentions", function(mens) {
 try {
   console.log('l = '+mens[0].user.screen_name);
+  textu=mens[0].text;
+  speakTest(textu);
+  
     }
 catch (err){
   console.log('error on loading JSON = '+err)
@@ -32,7 +35,8 @@ function last_tweet()
   {
     $.getJSON( "http://cloudenstein.rosemarybeetle.org/ltj", function(ltj) {
 try {
-  console.log('l = '+ltj.last_tweet_id);
+  ttid=String(ltj.last_tweet_id);
+  console.log('l = '+ttid);
     }
 catch (err){
   console.log('error on loading JSON = '+err)
