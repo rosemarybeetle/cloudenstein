@@ -20,7 +20,7 @@ function mentions()
   {
     $.getJSON( "http://cloudenstein.rosemarybeetle.org/recent_mentions", function(ltj) {
 try {
-  console.log('l = '+ltj.last_tweet_id);
+  console.log('l = '+ltj);
     }
 catch (err){
   console.log('error on loading JSON = '+err)
