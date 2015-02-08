@@ -398,8 +398,8 @@ def recent_mentions(request):
 	if last_mention_now > lt_mn_id:
 		save_last_mention(ting[0]['id'], ting[0]['user']['screen_name'])
 		responsetext='[{"message":"'+str(ting_len+' new mentions retrieved."{'
-		for t in range (0,ting_len):
-			responsetext+='"status_id":"'+str(ting[t]['id'])+'","name":"'+str(ting[t]['user'])+'","screen_name":"'+str(ting[t]['screen_name'])+'"'
+		for y in range (0 , ting_len):
+			responsetext+='"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user'])+'","screen_name":"'+str(ting[y]['screen_name'])+'"'
 			if ting_len-t>0:
 				responsetext+="'"
 		responsetext+='}}]'
