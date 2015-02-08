@@ -375,11 +375,7 @@ def recent_mentions(request):
 	men_auth_response = requests.get(search_url_root, auth=men_oauth)
 	
 	j = (men_auth_response.text)
-	usernames='[{'
-	for t in j:
-		usernames+='"un":"'+str(t.user.screen_name)+'"' # get next tag 
-	usernames+='{]'
-	responsetext=usernames
+	
 	responsetext=j
 	men_response = HttpResponse(responsetext)
 	return men_response
