@@ -375,11 +375,32 @@ def recent_mentions(request):
 	men_auth_response = requests.get(search_url_root, auth=men_oauth)
 	
 	j = (men_auth_response.text)
-	
+	usernames='[{'
+	for t in range (0,hts_count-1):
+		usernames+='"un":"'+str(j[t].user.screen_name)+'"' # get next tag 
+	usernames+='{]'
+	responsetext=usernames
 	responsetext=j
 	men_response = HttpResponse(responsetext)
 	return men_response
 		
+# =============================================
+
+# def recent_mentions(request):
+# 	men_oauth = OAuth1(twit_api_key, twit_api_secret,twit_api_access_token,twit_api_access_secret)
+# 	global men_auth_response
+# 	responsetext='' # initialise as string
+# 	search_url_root='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
+# 	#men_auth_response=requests.get(search_url, auth=men_auth)
+# 	#search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=%40rbeetlelabs' # twitter json api query url
+# 	men_auth_response = requests.get(search_url_root, auth=men_oauth)
+	
+# 	j = (men_auth_response.text)
+	
+# 	responsetext=j
+# 	men_response = HttpResponse(responsetext)
+# 	return men_response
+# =============================================
 	
 
 def twt(request):
