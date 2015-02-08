@@ -18,9 +18,9 @@ mouthoff(leng);
 
 function mentions() 
   {
-    $.getJSON( "http://cloudenstein.rosemarybeetle.org/recent_mentions", function(ltj) {
+    $.getJSON( "http://cloudenstein.rosemarybeetle.org/ltj", function(ltj) {
 try {
-  console.log('l = '+ltj);
+  console.log('l = '+ltj.last_tweet_id);
     }
 catch (err){
   console.log('error on loading JSON = '+err)
