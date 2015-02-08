@@ -18,6 +18,18 @@ mouthoff(leng);
 
 function mentions() 
   {
+    $.getJSON( "http://cloudenstein.rosemarybeetle.org/recent_mentions", function(mens) {
+try {
+  console.log('l = '+mens[0].user.screen_name);
+    }
+catch (err){
+  console.log('error on loading JSON = '+err)
+    }
+  });
+}
+
+function last_tweet() 
+  {
     $.getJSON( "http://cloudenstein.rosemarybeetle.org/ltj", function(ltj) {
 try {
   console.log('l = '+ltj.last_tweet_id);
@@ -27,6 +39,7 @@ catch (err){
     }
   });
 }
+
 function screenSize()
 {
 window.W=document.body.clientWidth;
