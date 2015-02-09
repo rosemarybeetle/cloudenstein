@@ -397,13 +397,13 @@ def recent_mentions(request):
 	lt_mn_id=int(last_mention_id)
 	if last_mention_now > lt_mn_id:
 		save_last_mention(ting[0]['id'], ting[0]['user']['screen_name'])
-		responsetext='[{"message":"'+str(ting_len)+' new mentions retrieved.",{'
 		for y in range (0 , ting_len):
 			if lt_mn_id < int(ting[y]['id']):
-				responsetext+='"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"'
+				temptext+='"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"'
 				if ting_len-y>0:
-					responsetext+=","
-		responsetext+='}}]'
+					temptext+=","
+			responsetext='[{"message":"'+str(y+1)+' new mentions retrieved.",{'
+		responsetext+=temptext+'}}]'
 	else:
 		responsetext='[{"message":"No new mentions since last check."}]'
 
@@ -411,24 +411,41 @@ def recent_mentions(request):
 	men_response = HttpResponse(responsetext)
 	return men_response
 		
-# =============================================
-
+# =======================================	
 # def recent_mentions(request):
 # 	men_oauth = OAuth1(twit_api_key, twit_api_secret,twit_api_access_token,twit_api_access_secret)
 # 	global men_auth_response
-# 	responsetext='' # initialise as string
+# 	responsetext='[{"message":"No new mentions"}]' # initialise as string
 # 	search_url_root='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
 # 	#men_auth_response=requests.get(search_url, auth=men_auth)
 # 	#search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=%40rbeetlelabs' # twitter json api query url
 # 	men_auth_response = requests.get(search_url_root, auth=men_oauth)
-	
 # 	j = (men_auth_response.text)
-	
-# 	responsetext=j
+# 	ting=json.loads(j)
+# 	ting_len=len(ting)
+# 	last_mention_now=int(ting[0]['id'])
+# 	# --
+# 	getLastMentionId()
+# 	lt_mn_id=int(last_mention_id)
+# 	if last_mention_now > lt_mn_id:
+# 		save_last_mention(ting[0]['id'], ting[0]['user']['screen_name'])
+# 		responsetext='[{"message":"'+str(ting_len)+' new mentions retrieved.",{'
+# 		for y in range (0 , ting_len):
+# 			if lt_mn_id < int(ting[y]['id']):
+# 				responsetext+='"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"'
+# 				if ting_len-y>0:
+# 					responsetext+=","
+# 		responsetext+='}}]'
+# 	else:
+# 		responsetext='[{"message":"No new mentions since last check."}]'
+
+# 	# --responsetext=j
 # 	men_response = HttpResponse(responsetext)
 # 	return men_response
-# =============================================
-	
+
+
+
+# =======================================
 
 def twt(request):
 	bo=''
