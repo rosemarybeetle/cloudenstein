@@ -402,10 +402,10 @@ def recent_mentions(request):
 			if lt_mn_id > int(ting[y]['id']):
 				responsetext+='"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"'
 				if ting_len-y>0:
-					responsetext+="'"
+					responsetext+=","
 		responsetext+='}}]'
 	else:
-		responsetext='[{"message":"if last_mention_now > lt_mn_id: FAILED"}]'
+		responsetext='[{"message":"No new mentions since last check."}]'
 
 	# --responsetext=j
 	men_response = HttpResponse(responsetext)
