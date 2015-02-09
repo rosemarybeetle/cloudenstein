@@ -384,6 +384,7 @@ def recent_mentions(request):
 	men_oauth = OAuth1(twit_api_key, twit_api_secret,twit_api_access_token,twit_api_access_secret)
 	global men_auth_response
 	responsetext='[{"message":"No new mentions"}]' # initialise as string
+	temptext=''
 	search_url_root='https://api.twitter.com/1.1/statuses/mentions_timeline.json'
 	#men_auth_response=requests.get(search_url, auth=men_auth)
 	#search_url_root='https://api.twitter.com/1.1/search/tweets.json?q=%40rbeetlelabs' # twitter json api query url
