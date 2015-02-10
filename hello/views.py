@@ -403,7 +403,7 @@ def recent_mentions(request):
 			if lt_mn_id < int(ting[k]['id']):
 				h+=1
 		for y in range (0 , h): 
-			if lt_mn_id < int(ting[y]['id']):
+			if lt_mn_id < int(ting[y]['id']): #ting[y]['text']
 				temptext+='{"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"}'
 				if h>y+1:
 					temptext+=","

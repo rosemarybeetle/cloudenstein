@@ -20,8 +20,15 @@ function mentions()
   {
     $.getJSON( "http://cloudenstein.rosemarybeetle.org/recent_mentions", function(mens) {
 try {
-  console.log('l = '+mens[0].user.screen_name);
-  textu=mens[0].text;
+  var cont=mens.count
+  for ( var i = 0; i < cont; i++ ) {
+  console.log('username '+String(i)+ '= '+mens.mentions[0].screen_name);
+  console.log('id '+String(i)+ '= '+mens.mentions[0].status_id);
+  console.log('name '+String(i)+ '= '+mens.mentions[0].name);
+  
+  
+  }
+  
   speakTest(textu);
   
     }
