@@ -406,7 +406,7 @@ def recent_mentions(request):
 				responsetext='{"message":"'+str(y+1)+' new mentions retrieved.","mentions":['
 		responsetext+=temptext+'}]}'
 	else:
-		responsetext='[{"message":"No new mentions since last check."}]'
+		responsetext='{"message":"No new mentions since last check."}'
 
 	# --responsetext=j
 	men_response = HttpResponse(responsetext)
