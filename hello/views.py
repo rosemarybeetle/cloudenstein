@@ -407,10 +407,10 @@ def recent_mentions(request):
 				temptext+='{"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"}'
 				if h>y+1:
 					temptext+=","
-				responsetext='{"message":"'+str(y+1)+' new mentions retrieved.","count":"'+str(y+1)+'","mentions":['
+				responsetext='{"message":"New mentions retrieved since last check.","count":"'+str(y+1)+'","mentions":['
 		responsetext+=temptext+']}'
 	else:
-		responsetext='{"message":"No new mentions since last check.","results":"0"}'
+		responsetext='{"message":"No new mentions since last check.","count":"0"}'
 
 	# --responsetext=j
 	men_response = HttpResponse(responsetext)
