@@ -401,7 +401,7 @@ def recent_mentions(request):
 		for y in range (0 , ting_len-1):
 			if lt_mn_id < int(ting[y]['id']):
 				temptext+='{"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"}'
-				if ting_len-y>1:
+				if y!=(ting_len-1):
 					temptext+=","
 				responsetext='{"message":"'+str(y+1)+' new mentions retrieved.","mentions":['
 		responsetext+=temptext+']}'
