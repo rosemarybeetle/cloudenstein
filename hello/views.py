@@ -398,10 +398,14 @@ def recent_mentions(request):
 	lt_mn_id=int(last_mention_id)
 	if last_mention_now > lt_mn_id:
 		save_last_mention(ting[0]['id'], ting[0]['user']['screen_name'])
-		for y in range (0 , ting_len-1):
+		h=0
+		for k in range (0 , ting_len): # this is incrementing, but not actually catching the clause ting_len is always 20!
+			if lt_mn_id < int(ting[k]['id']):
+				h+=1
+		for y in range (0 , h): 
 			if lt_mn_id < int(ting[y]['id']):
 				temptext+='{"y":"'+str(y)+'","ting_len":"'+str(ting_len)+'","status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"}'
-				if y!=(ting_len-1):
+				if h>y:
 					temptext+=","
 				responsetext='{"message":"'+str(y+1)+' new mentions retrieved.","mentions":['
 		responsetext+=temptext+']}'
