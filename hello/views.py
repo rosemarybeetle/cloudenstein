@@ -403,7 +403,7 @@ def recent_mentions(request):
 				temptext+='{"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"}'
 				if ting_len-y>0:
 					temptext+=","
-				responsetext='{"message":"'+str(y+1)+' new mentions retrieved.","mentions":[{'
+				responsetext='{"message":"'+str(y+1)+' new mentions retrieved.","mentions":['
 		responsetext+=temptext+'}]}'
 	else:
 		responsetext='[{"message":"No new mentions since last check."}]'
