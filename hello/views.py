@@ -398,7 +398,7 @@ def recent_mentions(request):
 	lt_mn_id=int(last_mention_id)
 	if last_mention_now > lt_mn_id:
 		save_last_mention(ting[0]['id'], ting[0]['user']['screen_name'])
-		for y in range (0 , ting_len):
+		for y in range (0 , ting_len-1):
 			if lt_mn_id < int(ting[y]['id']):
 				temptext+='{"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"}'
 				if ting_len-y>1:
