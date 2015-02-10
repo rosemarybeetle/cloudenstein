@@ -111,6 +111,9 @@ def spiraliser(request):
 	loadAdminSettings ()
 	return render(request, 'spiraliser.html', {'period':t_hp_ad})
 
+def mentioniser(request):
+	loadAdminSettings ()
+	return render(request, 'mentioniser.html', {'period':t_hp_ad})
 	
 
 def loadAdminSettings ():
