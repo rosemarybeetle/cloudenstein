@@ -10,7 +10,7 @@ var mention_text;
 function fill_foam()
 {
 var wordy = document.getElementById("entry").value;
-  document.getElementById("foam").innerHTML='inside fill_framer - passed argument = '+wordy; 
+  document.getElementById("foam").innerHTML='inside fill_framer - passed argument = '+=wordy; 
 
 }
 function mentions() 
@@ -22,8 +22,15 @@ try {
     mention_text=''; // clear mention_text
 
   for ( var i = 0; i < cont; i++ ) {
-mention_text='New mention number '+String(i)+ 'with id:'+mens.mentions[0].status_id+' from user: @'+mens.mentions[0].screen_name+'('+mens.mentions[0].name+').<br />';
-document.getElementById("foam").innerHTML=mention_text;
+    var currentdate = new Date(); 
+var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+mention_text=datetime+': - New mention number '+String(i)+ 'with id:'+mens.mentions[0].status_id+' from user: @'+mens.mentions[0].screen_name+'('+mens.mentions[0].name+').<br />';
+document.getElementById("foam").innerHTML+=mention_text;
   console.log('username '+String(i)+ '= '+mens.mentions[0].screen_name);
   console.log('id '+String(i)+ '= '+mens.mentions[0].status_id);
   console.log('name '+String(i)+ '= '+mens.mentions[0].name);
@@ -32,7 +39,7 @@ document.getElementById("foam").innerHTML=mention_text;
    }
   } else {
     mention_text=''; // clear mention_text
-    document.getElementById("foam").innerHTML='no new mentions';
+    document.getElementById("foam").innerHTML+='no new mentions';
     console.log('no new mentions')
   }
   
