@@ -7,10 +7,10 @@
 
 <script type="text/javascript">
 
-function fill_framer(passer)
+function fill_foam(passer)
 {
-
-  document.getElementById("foam").innerHTML='inside fill_framer - passed argument = '+passer; 
+var word = document.getElementById("entry").value;
+  document.getElementById("foam").innerHTML='inside fill_framer - passed argument = '+wordy; 
 
 }
 function mentions() 
@@ -69,13 +69,16 @@ function toggle_harvesting (){
 </head>
 <body>
 <h1>Mentionising...</h1>
+<input id="entry" type="text" value="default">
+<button onClick="toggle_harvesting()">Go</button><br />
+<button onClick="fill_foam()">test</button>
 <div id="foam">toad</div>
   <div><p>hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p>
     <p>  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p></div>
-<iframe id="framer" src="" style="border: none:" width=100%></iframe>
-<button onClick="toggle_harvesting()">Go</button><br />
-<button onClick="fill_framer('test')">test</button>
 
+
+
+<iframe id="framer" src="" style="border: none;" width=100%></iframe>
 
 <p>
 
