@@ -6,7 +6,7 @@
 <title>Mentioniser</title>
 
 <script type="text/javascript">
-
+var mention_text;
 function fill_foam()
 {
 var wordy = document.getElementById("entry").value;
@@ -20,6 +20,9 @@ try {
   var cont=mens.count
   if (cont>0){
   for ( var i = 0; i < cont; i++ ) {
+mention_text=''; // clear mention_text
+mention_text='New mention number '+String(i)+ 'with id:'+mens.mentions[0].status_id+' from user: @'+mens.mentions[0].screen_name+'('+mens.mentions[0].name+').';
+document.getElementById("foam").innerHTML=mention_text;
   console.log('username '+String(i)+ '= '+mens.mentions[0].screen_name);
   console.log('id '+String(i)+ '= '+mens.mentions[0].status_id);
   console.log('name '+String(i)+ '= '+mens.mentions[0].name);
@@ -27,6 +30,8 @@ try {
   
    }
   } else {
+    mention_text=''; // clear mention_text
+    document.getElementById("foam").innerHTML='no new mentions';
     console.log('no new mentions')
   }
   
