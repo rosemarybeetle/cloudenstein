@@ -11,6 +11,8 @@ cd python-getting-started
 
 foreman start
 
+@rbeetlelabs
+
 heroku run python manage.py syncdb
 
 https://git.heroku.com/cloudenstein.git

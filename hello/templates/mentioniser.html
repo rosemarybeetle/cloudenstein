@@ -6,6 +6,13 @@
 <title>Mentioniser</title>
 
 <script type="text/javascript">
+
+function fill_framer(passer)
+{
+
+  document.getElementById("framer").innerHTML='inside fill_framer - passed argument = '+passer; 
+
+}
 function mentions() 
   {
     $.getJSON( "http://cloudenstein.rosemarybeetle.org/recent_mentions", function(mens) {
@@ -61,9 +68,11 @@ function toggle_harvesting (){
 
 </head>
 <body>
-<h1>spiralising...</h1>
-<iframe id="framer" src="" width=100%></iframe>
-<button onClick="toggle_harvesting()">Go</button>;
+<h1>Mentionising...</h1>
+<iframe id="framer" src="" style="border: none:" width=100%></iframe>
+<button onClick="toggle_harvesting()">Go</button><br />
+<button onClick=fill_framer('test')>test</button>
+
 
 <p>
 
