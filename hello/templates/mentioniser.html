@@ -10,7 +10,7 @@
 function fill_framer(passer)
 {
 
-  document.getElementById("framer").innerHTML='inside fill_framer - passed argument = '+passer; 
+  document.getElementById("foam").innerHTML='inside fill_framer - passed argument = '+passer; 
 
 }
 function mentions() 
@@ -69,6 +69,7 @@ function toggle_harvesting (){
 </head>
 <body>
 <h1>Mentionising...</h1>
+<div id="foam">toad<div>
 <iframe id="framer" src="" style="border: none:" width=100%></iframe>
 <button onClick="toggle_harvesting()">Go</button><br />
 <button onClick="fill_framer('test')">test</button>
