@@ -7,6 +7,7 @@
 
 <script type="text/javascript">
 var mention_text;
+var datetime;
 function fill_foam()
 {
 var wordy = document.getElementById("entry").value;
@@ -17,7 +18,7 @@ var wordy = document.getElementById("entry").value;
 function getDate()
 {
   var currentdate = new Date(); 
-var datetime = "Last Sync: " + currentdate.getDate() + "/"
+datetime = "Last Sync: " + currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
                 + currentdate.getFullYear() + " @ "  
                 + currentdate.getHours() + ":"  
