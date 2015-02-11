@@ -35,7 +35,7 @@ try {
 
   for ( var i = 0; i < cont; i++ ) {
     getDate()
-mention_text=datetime+': - New mention number '+String(i)+ 'with id:'+mens.mentions[0].status_id+' from user: @'+mens.mentions[0].screen_name+'('+mens.mentions[0].name+').<br />';
+mention_text=datetime+': - New mention number '+String(i)+ 'with id:'+mens.mentions[i].status_id+' from user: @'+mens.mentions[i].screen_name+'('+mens.mentions[i].name+').<br />';
 document.getElementById("foam").innerHTML+=mention_text;
   console.log('username '+String(i)+ '= '+mens.mentions[0].screen_name);
   console.log('id '+String(i)+ '= '+mens.mentions[0].status_id);
@@ -92,7 +92,7 @@ function toggle_harvesting (){
 <input id="entry" type="text" value="default"> <button onClick="fill_foam()">test</button>
 <button onClick="toggle_harvesting()">Go</button><br />
 
-<div id="foam">toad</div>
+<div id="foam">toad<br /></div>
   <div><p>hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p>
     <p>  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p></div>
 
