@@ -534,7 +534,8 @@ def ht (request):
 	api_response_ht = HttpResponse(api_text_ht)
 	return api_response_ht
 
-
+def logon (request):
+	return render (request, 'logon.html')
 
 def cloudenstein (request):
 	return render (request, 'face-off.html')
