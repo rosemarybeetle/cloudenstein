@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-{% load staticfiles %}
-{% load static %}
 <html>
 <head>
-<link rel="stylesheet" href="{% static "cloudenstein.css" %} " />
+	<script src="/static/jquery-1.11.0.js" ></script>
+
+<title>Mentioniser</title>
+
 <script type="text/javascript">
 var mention_text;
 var datetime;
 
-function checkAuth() 
+
+function getDate()
+{
+  var currentdate = new Date(); 
+datetime = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+}
+function mentions() 
   {
     $.getJSON( "http://cloudenstein.rosemarybeetle.org/recent_mentions", function(mens) {
 try {
@@ -19,7 +31,7 @@ try {
   for ( var i = 0; i < cont; i++ ) {
     getDate()
 mention_text=datetime+': - New mention number '+String(i)+ 'with id:'+mens.mentions[i].status_id+' from user: @'+mens.mentions[i].screen_name+'('+mens.mentions[i].name+').<br />';
-document.getElementById("stage").innerHTML+=mention_text;
+document.getElementById("foam").innerHTML+=mention_text;
   console.log('username '+String(i)+ '= '+mens.mentions[0].screen_name);
   console.log('id '+String(i)+ '= '+mens.mentions[0].status_id);
   console.log('name '+String(i)+ '= '+mens.mentions[0].name);
@@ -29,8 +41,8 @@ document.getElementById("stage").innerHTML+=mention_text;
   } else {
     getDate()
     mention_text=''; // clear mention_text
-    document.getElementById("stage").innerHTML+=datetime+': '+mens.message+'<br />';
-    console.log('no new mentions')
+    document.getElementById("foam").innerHTML+=datetime+': '+mens.message+'<br />';
+   console.log('no new mentions')
   }
   
   //speakTest(textu);
@@ -41,34 +53,36 @@ catch (err){
     }
   });
 }
-// $(document).ready(function() {
-//       $("#launch").click(function(event){
-//           $.getJSON('http://cloudenstein.rosemarybeetle.org/ltj/', function(jd) {
-//           	var un = document.getElementById("unam").value;
-// 			var pw = document.getElementById("pawd").value;
-// 			console.log('un='+un+' and pw='+pw)
-//              $('#stage').html('<p> Name: ' + jd.name + '</p>');
-//              $('#stage').append('<p>Age : ' + jd.age+ '</p>');
-//              $('#stage').append('<p> Sex: ' + jd.sex+ '</p>');
-//           });
-//       });
-//    });
 
-</script>
-<title>rbeetlelabs</title>
+
+
+
+
+</script>  
+
 </head>
-
 <body>
+<h1>Mentionising...</h1>
+<!-- <input id="entry" type="text" value="default"> <button onClick="fill_foam()">test</button>
+ -->
+ <button onClick="mentions()">Go</button><br />
+<input type="text" id="unam"><br>
+  <input type="text" id="pawd">
 
-<div id="banner"><h1>rbeetlelabs</h1>
-	<div id="stage"></div>
-	<input type="text" id="unam"><br>
-	<input type="text" id="pawd">
-	<button id="launch" value="go" onRelease="checkAuth()">
 
-<p>Cloudenstein: miscellaneous variations on collective twitter activity.<br/>
-Cloudenstein: Tweetenstein seeped out onto the cloud.</p>
-</div>
+<div id="foam">toad<br /></div>
+  <div><p>hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p>
+    <p>  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p></div>
+
+
+
+<iframe id="framer" src="" style="border: none;" width=100%></iframe>
+
+<p>
+
+
+
+</p>
 
 </body>
 </html>
