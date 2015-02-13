@@ -5,18 +5,52 @@
 <head>
 <link rel="stylesheet" href="{% static "cloudenstein.css" %} " />
 <script type="text/javascript">
-$(document).ready(function() {
-      $("#launch").click(function(event){
-          $.getJSON('http://cloudenstein.rosemarybeetle.org/ltj/', function(jd) {
-          	var un = document.getElementById("unam").value;
-			var pw = document.getElementById("pawd").value;
-			console.log('un='+un+' and pw='+pw)
-             $('#stage').html('<p> Name: ' + jd.name + '</p>');
-             $('#stage').append('<p>Age : ' + jd.age+ '</p>');
-             $('#stage').append('<p> Sex: ' + jd.sex+ '</p>');
-          });
-      });
-   });
+
+function mentions() 
+  {
+    $.getJSON( "http://cloudenstein.rosemarybeetle.org/recent_mentions", function(mens) {
+try {
+  var cont=mens.count
+  if (cont>0){
+    mention_text=''; // clear mention_text
+
+  for ( var i = 0; i < cont; i++ ) {
+    getDate()
+mention_text=datetime+': - New mention number '+String(i)+ 'with id:'+mens.mentions[i].status_id+' from user: @'+mens.mentions[i].screen_name+'('+mens.mentions[i].name+').<br />';
+document.getElementById("foam").innerHTML+=mention_text;
+  console.log('username '+String(i)+ '= '+mens.mentions[0].screen_name);
+  console.log('id '+String(i)+ '= '+mens.mentions[0].status_id);
+  console.log('name '+String(i)+ '= '+mens.mentions[0].name);
+  
+  
+   }
+  } else {
+    getDate()
+    mention_text=''; // clear mention_text
+    document.getElementById("stage").innerHTML+=datetime+': - no new mentions<br />';
+    console.log('no new mentions')
+  }
+  
+  //speakTest(textu);
+  
+    }
+catch (err){
+  console.log('error on loading JSON = '+err)
+    }
+  });
+}
+// $(document).ready(function() {
+//       $("#launch").click(function(event){
+//           $.getJSON('http://cloudenstein.rosemarybeetle.org/ltj/', function(jd) {
+//           	var un = document.getElementById("unam").value;
+// 			var pw = document.getElementById("pawd").value;
+// 			console.log('un='+un+' and pw='+pw)
+//              $('#stage').html('<p> Name: ' + jd.name + '</p>');
+//              $('#stage').append('<p>Age : ' + jd.age+ '</p>');
+//              $('#stage').append('<p> Sex: ' + jd.sex+ '</p>');
+//           });
+//       });
+//    });
 
 </script>
 <title>rbeetlelabs</title>
