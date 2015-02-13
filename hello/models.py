@@ -2,10 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Greeting(models.Model):
-    when = models.DateTimeField('date created', auto_now_add=True)
+	when = models.DateTimeField('date created', auto_now_add=True)
 
 class authed(models.Model):
-    un=models.CharField(max_length=20)
+	un=models.CharField(max_length=20)
 	pw=models.CharField(max_length=20)
 
 
