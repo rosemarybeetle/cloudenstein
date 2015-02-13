@@ -7,6 +7,7 @@ from .models import tweeten
 from .models import lt_st
 from .models import hashtags
 from .models import last_men
+from .models import authed
 
 admin.site.register(cloud_admin)
 admin.site.register(process_settings)
@@ -15,5 +16,7 @@ admin.site.register(tweeten)
 admin.site.register(lt_st)
 admin.site.register(hashtags)
 admin.site.register(last_men)
+admin.site.register(authed)
+
 # Register your models here.
 

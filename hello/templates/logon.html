@@ -13,38 +13,31 @@ var datetime;
 function getDate()
 {
   var currentdate = new Date(); 
-datetime = "Last Sync: " + currentdate.getDate() + "/"
+datetime =  currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
                 + currentdate.getFullYear() + " @ "  
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
 }
-function mentions() 
+function getAuthed() 
   {
+    var un = document.getElementById("unam").value;
+var pw = document.getElementById("pwd").value;
+
     $.getJSON( "http://cloudenstein.rosemarybeetle.org/ltj", function(mens) {
 try {
   
     getDate();
 mention_text=datetime+': last tweet received had id:'+mens.last_tweet_id+'.<br />';
 document.getElementById("foam").innerHTML+=mention_text;
-  
  
-    
-
-  
-  //speakTest(textu);
-  
     }
 catch (err){
   console.log('error on loading JSON = '+err)
     }
   });
 }
-
-
-
-
 
 </script>  
 
@@ -53,9 +46,9 @@ catch (err){
 <h1>log... on...</h1>
 <!-- <input id="entry" type="text" value="default"> <button onClick="fill_foam()">test</button>
  -->
- <button onClick="mentions()">Go</button><br />
+ 
 <input type="text" id="unam"><br>
-  <input type="text" id="pawd">
+  <input type="text" id="pawd"><button onClick="getAuthed()">Go</button><br />
 
 
 <div id="foam">toad<br /></div>

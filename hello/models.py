@@ -4,6 +4,11 @@ from django.db import models
 class Greeting(models.Model):
     when = models.DateTimeField('date created', auto_now_add=True)
 
+class authed(models.Model):
+    un=models.CharField(max_length=20)
+	pw=models.CharField(max_length=20)
+
+
 class lastTweetId(models.Model):
 	last_tweet_id = models.BigIntegerField(max_length=20)
 

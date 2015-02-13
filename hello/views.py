@@ -18,6 +18,7 @@ from .models import tweeten
 from .models import process_settings
 from .models import hashtags
 from .models import last_men
+from .models import authed
 import json
 import random
 from random import randint
