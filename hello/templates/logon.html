@@ -17,7 +17,7 @@ try {
   for ( var i = 0; i < cont; i++ ) {
     getDate()
 mention_text=datetime+': - New mention number '+String(i)+ 'with id:'+mens.mentions[i].status_id+' from user: @'+mens.mentions[i].screen_name+'('+mens.mentions[i].name+').<br />';
-document.getElementById("foam").innerHTML+=mention_text;
+document.getElementById("stage").innerHTML+=mention_text;
   console.log('username '+String(i)+ '= '+mens.mentions[0].screen_name);
   console.log('id '+String(i)+ '= '+mens.mentions[0].status_id);
   console.log('name '+String(i)+ '= '+mens.mentions[0].name);
@@ -27,7 +27,7 @@ document.getElementById("foam").innerHTML+=mention_text;
   } else {
     getDate()
     mention_text=''; // clear mention_text
-    document.getElementById("stage").innerHTML+=datetime+': - no new mentions<br />';
+    document.getElementById("stage").innerHTML+=datetime+': '+mens.message+'<br />';
     console.log('no new mentions')
   }
   

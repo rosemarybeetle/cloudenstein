@@ -46,8 +46,8 @@ document.getElementById("foam").innerHTML+=mention_text;
   } else {
     getDate()
     mention_text=''; // clear mention_text
-    document.getElementById("foam").innerHTML+=datetime+': - no new mentions<br />';
-    console.log('no new mentions')
+    document.getElementById("foam").innerHTML+=datetime+': '+mens.message+'<br />';
+   console.log('no new mentions')
   }
   
   //speakTest(textu);
