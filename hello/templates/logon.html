@@ -31,6 +31,7 @@ try {
     getDate();
 mention_text=datetime+'response = '+mens.response+'.<br />';
 document.getElementById("contentarea").innerHTML+=mention_text;
+document.getElementById("auth_status").innerHTML+='logged on';
  
     }
 catch (err){
@@ -45,7 +46,7 @@ catch (err){
 <body>
 <div id="logonbanner" >
 <div >
-  <div class="righten">log... on... <input type="text" id="unam"> <input type="password" id="pawd"><button onClick="getAuthed()">Go</button></div>
+  <div class="righten"><span id="auth_status">log... on... </span><input type="text" id="unam"> <input type="password" id="pawd"><button onClick="getAuthed()">Go</button></div>
 </div>
 <div id="contentarea"></div>
 </div>
