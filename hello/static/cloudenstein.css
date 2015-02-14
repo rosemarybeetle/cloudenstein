@@ -33,6 +33,14 @@ width:100%;
 padding: 2px ;
 background-color: #A9D0F5;
 }
+#logon{
+
+text-align: center;
+font-size: 140%
+.input{
+	padding:5px;
+}
+}
 
 #main {
 float:bottom;

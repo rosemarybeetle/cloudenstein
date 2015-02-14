@@ -4,7 +4,7 @@
 	<script src="/static/jquery-1.11.0.js" ></script>
 
 <title>rbeetlelabs</title>
-
+<link rel="stylesheet" href="cloudenstein.css">
 <script type="text/javascript">
 var mention_text;
 var datetime;
@@ -29,7 +29,7 @@ urly='http://cloudenstein.rosemarybeetle.org/autho/?un='+un+'&pw='+pw
 try {
   
     getDate();
-mention_text=datetime+'response'+mens.response+'.<br />';
+mention_text=datetime+'response = '+mens.response+'.<br />';
 document.getElementById("foam").innerHTML+=mention_text;
  
     }
@@ -46,13 +46,13 @@ catch (err){
 <h1>log... on...</h1>
 <!-- <input id="entry" type="text" value="default"> <button onClick="fill_foam()">test</button>
  -->
- 
+ <div id="logon">
 <input type="text" id="unam"><br>
   <input type="text" id="pawd"><button onClick="getAuthed()">Go</button><br />
 
 
 <div id="foam">toad<br /></div>
-
+</div>
 
 </body>
 </html>
