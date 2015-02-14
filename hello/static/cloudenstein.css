@@ -50,9 +50,7 @@ padding: 2px ;
 	height: 30px;
 	width: 100%;
 	background-color: #A9E2F3;
-	padding: 0px ;
-
-	
+	padding: 2px ;
 }
 
 #main {
@@ -68,6 +66,11 @@ bottom:0px;
 position:absolute;
 margin-left: auto;
 margin-right: auto;
+}
+
+.righten{
+	position:absolute;
+	float: right;
 }
 
 #pupil{
