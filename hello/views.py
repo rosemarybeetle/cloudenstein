@@ -368,9 +368,9 @@ def autho (request):
 	pw_st=auths[0].pw
 	try:
 		if uni==un_st and pwi==pw_st:
-			auth_text='{"response":"bingo"}'
+			auth_text='{"response":"logged on","bodey":"<p>Hello World</p>"}'
 		else:
-			auth_text='{"response":"bungle"}'
+			auth_text='{"response":"log on failed","bodey":"<p>Incorrect username or password</p>"}'
 	except Exception as e:
 		auth_text='{"response":"broken"}'
 
