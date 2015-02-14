@@ -367,9 +367,10 @@ def autho (request):
 	un_st=auths[0].un
 	pw_st=auths[0].pw
 	getMentioniser()
+	x=ment_text
 	try:
 		if uni==un_st and pwi==pw_st:
-			auth_text='{"response":"logged on","bodey":'+ment_text+'}'
+			auth_text='{"response":"logged on","bodey":"'+ment_text+'"}'
 		else:
 			auth_text='{"response":"log on failed","bodey":"<p>Incorrect username or password</p>"}'
 	except Exception as e:
