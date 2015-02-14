@@ -566,7 +566,10 @@ def ht (request):
 	return api_response_ht
 
 def logon (request):
-	return render (request, 'logon.html')
+	loadAdminSettings()
+	return render (request, 'logon.html',{'period':t_hp_ad})
+	return render(request, 'mentioniser.html')
+	
 
 def cloudenstein (request):
 	return render (request, 'face-off.html')
