@@ -368,11 +368,11 @@ def autho (request):
 	pw_st=auths[0].pw
 	try:
 		if uni==un_st and pwi==pw_st:
-			auth_response='bingo'
+			auth_text='bingo'
 		else:
-			auth_response='bungle'
+			auth_text='bungle'
 	except Exception as e:
-		auth_response='broken'
+		auth_text='broken'
 
 	auth_response = HttpResponse(auth_text)
 	return auth_response
