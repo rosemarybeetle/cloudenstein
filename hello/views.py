@@ -352,6 +352,33 @@ def retrieveGoogleAdmin (url):
 	except Exception as e:
 		print ('Can\'t connect to admin settings - no connection') +str(e)+'<br />'
 
+def autho (request):
+	uni=''
+	pwi=''
+	auth_text=''
+	try:
+		uni=request.GET.get('un','')
+		pwi=request.GET.get('pw','')
+	except Exception as e:
+		#api_text+='failed to pull in get argument. Use defauly "cont" instead'
+		uni=''
+		pwi=''
+	auths=authed.objects.filter(id=1)
+	un_st=auths.un
+	pw_st=auths.pw
+	try:
+		if uni==un_st and pwi==pw_st:
+			auth_response='bingo'
+		else:
+			auth_response='bungle'
+	except Exception as e:
+		auth_response='broken'
+
+	auth_response = HttpResponse(auth_text)
+	return auth_response
+	
+
+
 def api (request ):
 	#coont=1
 	global api_text
