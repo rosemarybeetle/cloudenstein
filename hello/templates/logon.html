@@ -5,21 +5,13 @@
 
 <title>rbeetlelabs</title>
 <link rel="stylesheet" href="/static/cloudenstein.css" />
+<script src='/static/entionise.js' ></script>
 <script type="text/javascript">
 var mention_text;
 var datetime;
 var urly
 
-function getDate()
-{
-  var currentdate = new Date(); 
-datetime =  currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
-}
+
 function getAuthed() 
   {
     var un = document.getElementById("unam").value;
