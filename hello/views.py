@@ -380,6 +380,7 @@ def autho (request):
 	return auth_response
 	
 def getMentioniser():
+	global ment_text
 	ment_text='<script type="text/javascript">'
 	ment_text+='var mention_text;'
 	ment_text+='var datetime;'
