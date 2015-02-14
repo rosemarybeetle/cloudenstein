@@ -33,11 +33,14 @@ width:100%;
 padding: 2px ;
 background-color: #A9D0F5;
 }
-#logon{
-
-position: absolute;
-left:50%;
-font-size: 140%
+#logonbanner {
+	position: absolute;
+	left:0%;
+	height: 80px;
+	background-color: #A9E2F3;
+	input, button , p {
+	font-size: 140%
+	}
 }
 
 #main {

@@ -30,7 +30,7 @@ try {
   
     getDate();
 mention_text=datetime+'response = '+mens.response+'.<br />';
-document.getElementById("foam").innerHTML+=mention_text;
+document.getElementById("contentarea").innerHTML+=mention_text;
  
     }
 catch (err){
@@ -44,14 +44,10 @@ catch (err){
 </head>
 <body>
 <h1>log... on...</h1>
-<!-- <input id="entry" type="text" value="default"> <button onClick="fill_foam()">test</button>
- -->
- <div id="logon">
-<input type="text" id="unam"><br>
-  <input type="password" id="pawd"><button onClick="getAuthed()">Go</button><br />
 
-
-<div id="foam">toad<br /></div>
+ <div id="logonbanner" >
+<input type="text" id="unam">   <input type="password" id="pawd"><button onClick="getAuthed()">Go</button><br />
+<div id="contentarea"></div>
 </div>
 
 </body>
