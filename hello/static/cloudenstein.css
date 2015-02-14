@@ -45,6 +45,7 @@ padding: 5px ;
 }
 
 #logonbanner {
+	font-family: arial,verdana,_sans;
 
 	position: absolute;
 	right:0%;
