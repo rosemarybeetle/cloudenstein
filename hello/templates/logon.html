@@ -4,7 +4,7 @@
 	<script src="/static/jquery-1.11.0.js" ></script>
 
 <title>rbeetlelabs</title>
-<link rel="stylesheet" href="cloudenstein.css">
+<link rel="stylesheet" href="{% static "cloudenstein.css" %} " />
 <script type="text/javascript">
 var mention_text;
 var datetime;
@@ -46,9 +46,9 @@ catch (err){
 <h1>log... on...</h1>
 <!-- <input id="entry" type="text" value="default"> <button onClick="fill_foam()">test</button>
  -->
- <div id="logon">
+ <div class="logon">
 <input type="text" id="unam"><br>
-  <input type="text" id="pawd"><button onClick="getAuthed()">Go</button><br />
+  <input type="password" id="pawd"><button onClick="getAuthed()">Go</button><br />
 
 
 <div id="foam">toad<br /></div>
