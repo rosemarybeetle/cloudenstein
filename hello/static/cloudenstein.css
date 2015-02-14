@@ -50,10 +50,10 @@ padding: 2px ;
 	height: 30px;
 	width: 100%;
 	background-color: #A9E2F3;
-	padding: 5px ;
+	padding-top: 5px ;
 }
 .righten{
-	margin-right: 5px;
+	padding-right: 5px;
 }
 
 #main {
