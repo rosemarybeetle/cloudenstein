@@ -52,6 +52,10 @@ padding: 2px ;
 	background-color: #A9E2F3;
 	padding: 2px ;
 }
+.righten{
+	position:absolute;
+	float: right;
+}
 
 #main {
 float:bottom;
@@ -68,10 +72,7 @@ margin-left: auto;
 margin-right: auto;
 }
 
-.righten{
-	position:absolute;
-	float: right;
-}
+
 
 #pupil{
 	z-index: 4;
