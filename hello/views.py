@@ -364,8 +364,8 @@ def autho (request):
 		uni=''
 		pwi=''
 	auths=authed.objects.filter(id=1)
-	un_st=auths.un
-	pw_st=auths.pw
+	un_st=auths[0].un
+	pw_st=auths[0].pw
 	try:
 		if uni==un_st and pwi==pw_st:
 			auth_response='bingo'
