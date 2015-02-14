@@ -367,7 +367,7 @@ def autho (request):
 	un_st=auths[0].un
 	pw_st=auths[0].pw
 
-	ment_text="<h1>Mentionising...</h1><input id='entry' type='text' value='default'> <button onClick='fill_foam()'>test</button><button onClick='toggle_harvesting()'>Go</button><br /><div id='foam'>toad<br /></div><div><p>hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p><p>  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p></div><iframe id='framer' src='' style='border: none;' width=100%></iframe><p></p>"
+	ment_text="<h1>Mentionising...</h1><input id='entry' type='text' value='default'> <button onClick='fill_foam()'>test</button><button onClick='toggle_harvesting()'>Go</button><br /><div id='foam'>toad<br /></div><iframe id='framer' src='' style='border: none;' width=100%></iframe><p></p>"
 	try:
 		if uni==un_st and pwi==pw_st:
 			auth_text='{"response":"logged on","bodey":"'+ment_text+'"}'
@@ -568,7 +568,6 @@ def ht (request):
 def logon (request):
 	loadAdminSettings()
 	return render (request, 'logon.html',{'period':t_hp_ad})
-	return render(request, 'mentioniser.html')
 	
 
 def cloudenstein (request):
