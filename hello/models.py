@@ -4,7 +4,7 @@ from django.db import models
 class Greeting(models.Model):
 	when = models.DateTimeField('date created', auto_now_add=True)
 
-class authed(models.Model):
+class autha(models.Model):
 	un=models.CharField(max_length=20)
 	pw=models.CharField(max_length=20)
 	token=models.CharField(max_length=20)

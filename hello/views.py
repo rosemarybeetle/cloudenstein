@@ -18,7 +18,7 @@ from .models import tweeten
 from .models import process_settings
 from .models import hashtags
 from .models import last_men
-from .models import authed
+from .models import autha
 import json
 import random
 from random import randint
@@ -363,7 +363,7 @@ def autho (request):
 		#api_text+='failed to pull in get argument. Use defauly "cont" instead'
 		uni=''
 		pwi=''
-	auths=authed.objects.filter(id=1)
+	auths=autha.objects.filter(id=1)
 	un_st=auths[0].un
 	pw_st=auths[0].pw
 	try:
