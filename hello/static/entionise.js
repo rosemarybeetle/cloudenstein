@@ -1,4 +1,3 @@
-
 var mention_text;
 var datetime;
 function fill_foam()
@@ -11,23 +10,23 @@ var wordy = document.getElementById("entry").value;
 function getDate()
 {
   var currentdate = new Date(); 
-datetime = "Last Sync: " + currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
+datetime = "Last Sync: " + currentdate.getDate() + "/";
+datetime += (currentdate.getMonth()+1)  + "/";
+datetime += currentdate.getFullYear() + " @ ";
+datetime += currentdate.getHours() + ":";
+datetime += currentdate.getMinutes() + ":" ;
+datetime += currentdate.getSeconds();
 }
 function mentions() 
   {
     $.getJSON( "http://cloudenstein.rosemarybeetle.org/recent_mentions", function(mens) {
 try {
-  var cont=mens.count
+  var cont=mens.count;
   if (cont>0){
     mention_text=''; // clear mention_text
 
   for ( var i = 0; i < cont; i++ ) {
-    getDate()
+    getDate();
 mention_text=datetime+': - New mention number '+String(i)+ 'with id:'+mens.mentions[i].status_id+' from user: @'+mens.mentions[i].screen_name+'('+mens.mentions[i].name+').<br />';
 document.getElementById("foam").innerHTML+=mention_text;
   console.log('username '+String(i)+ '= '+mens.mentions[0].screen_name);
@@ -37,17 +36,17 @@ document.getElementById("foam").innerHTML+=mention_text;
   
    }
   } else {
-    getDate()
+    getDate();
     mention_text=''; // clear mention_text
     document.getElementById("foam").innerHTML+=datetime+': '+mens.message+'<br />';
-   console.log('no new mentions')
+   console.log('no new mentions');
   }
   
   //speakTest(textu);
   
     }
 catch (err){
-  console.log('error on loading JSON = '+err)
+  console.log('error on loading JSON = '+err);
     }
   });
 }
