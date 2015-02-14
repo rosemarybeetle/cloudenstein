@@ -43,10 +43,13 @@ top: 30px;
 margin-top: 5px;
 padding: 5px ;
 }
+input {
+	font-family: arial,verdana,_sans;
+	width:100px;
+}
 
 #logonbanner {
 	font-family: arial,verdana,_sans;
-
 	position: absolute;
 	right:0%;
 	top:0%;
