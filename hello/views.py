@@ -367,7 +367,7 @@ def autho (request):
 	un_st=auths[0].un
 	pw_st=auths[0].pw
 	getMentioniser()
-	#ment_text="<h1>Mentionising...</h1><input id='entry' type='text' value='default'> <button onClick='fill_foam()'>test</button><button onClick='toggle_harvesting()'>Go</button><br /><div id='foam'>toad<br /></div><div><p>hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p><p>  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p></div><iframe id='framer' src='' style='border: none;' width=100%></iframe><p></p>"
+	ment_text="<h1>Mentionising...</h1><input id='entry' type='text' value='default'> <button onClick='fill_foam()'>test</button><button onClick='toggle_harvesting()'>Go</button><br /><div id='foam'>toad<br /></div><div><p>hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p><p>  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p></div><iframe id='framer' src='' style='border: none;' width=100%></iframe><p></p>"
 	try:
 		if uni==un_st and pwi==pw_st:
 			auth_text='{"response":"logged on","bodey":"'+ment_text+'"}'
@@ -379,18 +379,7 @@ def autho (request):
 	auth_response = HttpResponse(auth_text)
 	return auth_response
 	
-def getMentioniser():
-	global ment_text
-	ment_text+="<h1>Mentionising...</h1>"
-	ment_text+="<input id='entry' type='text' value='default'> <button onClick='fill_foam()'>test</button>"
-	ment_text+="<button onClick='toggle_harvesting()'>Go</button><br />"
-	ment_text+="<div id='foam'>toad<br /></div>"
-	ment_text+="<div><p>hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p>"
-	ment_text+="<p>  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world..  hello world hello world.. </p></div>"
-	ment_text+="<iframe id='framer' src='' style='border: none;' width=100%></iframe>"
-	ment_text+="<p>"
-	ment_text+="</p>"
-	return ment_text
+
 
 
 def api (request ):
