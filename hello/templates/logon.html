@@ -8,7 +8,7 @@
 <script type="text/javascript">
 var mention_text;
 var datetime;
-
+var urly
 
 function getDate()
 {
@@ -24,12 +24,12 @@ function getAuthed()
   {
     var un = document.getElementById("unam").value;
 var pw = document.getElementById("pwd").value;
-
-    $.getJSON( "http://cloudenstein.rosemarybeetle.org/ltj", function(mens) {
+urly='http://cloudenstein.rosemarybeetle.org/autho/?un='+un+'&pw='+pw
+    $.getJSON( urly, function(mens) {
 try {
   
     getDate();
-mention_text=datetime+': last tweet received had id:'+mens.last_tweet_id+'.<br />';
+mention_text=datetime+'response'+mens.response+'.<br />';
 document.getElementById("foam").innerHTML+=mention_text;
  
     }
