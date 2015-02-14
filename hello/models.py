@@ -7,6 +7,7 @@ class Greeting(models.Model):
 class authed(models.Model):
 	un=models.CharField(max_length=20)
 	pw=models.CharField(max_length=20)
+	token=models.CharField(max_length=20)
 
 
 class lastTweetId(models.Model):
