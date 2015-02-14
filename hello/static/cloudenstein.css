@@ -45,11 +45,11 @@ padding: 2px ;
 #logonbanner {
 	position: absolute;
 	left:0%;
+	top:0%;
 	height: 30px;
+	width: 100%;
 	background-color: #A9E2F3;
-	input, button , p {
-	font-size: 180%
-	}
+	
 }
 
 #main {
