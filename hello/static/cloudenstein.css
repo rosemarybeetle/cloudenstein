@@ -47,6 +47,9 @@ input {
 	font-family: arial,verdana,_sans;
 	width:100px;
 }
+#entry{
+	width:40%;
+}
 
 #logonbanner {
 	font-family: arial,verdana,_sans;
