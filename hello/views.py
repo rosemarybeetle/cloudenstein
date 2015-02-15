@@ -367,7 +367,7 @@ def autho (request):
 	un_st=auths[0].un
 	pw_st=auths[0].pw
 
-	ment_text="<h1 id='heado'>Mentionise?</h1><input id='entry' type='text' placeholder='comment if need be'> <button onClick='fill_foam()'>comment</button><button onClick='toggle_harvesting()'>Go</button><br /><div id='foam'></div><iframe id='framer' src='' style='border: none;' width=100%></iframe><p></p>"
+	ment_text="<h1 id='heado'>Mentionise?</h1><input id='entry' type='text' placeholder='comment if need be'> <button onClick='fill_foam()'>comment</button><button onClick='toggle_harvesting()'>toggle mentioniser</button><br /><div id='foam'></div><iframe id='framer' src='' style='border: none;' width=100%></iframe><p></p>"
 	try:
 		if uni==un_st and pwi==pw_st:
 			auth_text='{"response":"logged on","bodey":"'+ment_text+'"}'

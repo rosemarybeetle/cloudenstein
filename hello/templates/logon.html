@@ -100,7 +100,7 @@ function toggle_harvesting (){
       vari = setInterval(function(){ mentions()},window.periody);
       document.getElementById("heado").innerHTML='Mentionising...';
       getDate();
-      document.getElementById("foam").innerHTML+=datetime+': Logs started...';
+      document.getElementById("foam").innerHTML+=datetime+': Logs started...<br />';
 
 
       //vari = setInterval(function(){ mentions()},window.periody);
@@ -110,7 +110,7 @@ function toggle_harvesting (){
     {
       clearInterval(vari);
       console.log('inside toggle_harvesting() toggler=0')
-      document.getElementById("heado").innerHTML='Mentionising paused';
+      document.getElementById("heado").innerHTML='Mentionising paused<br />';
       getDate();
       document.getElementById("foam").innerHTML+=datetime+': Logs paused...';
 
