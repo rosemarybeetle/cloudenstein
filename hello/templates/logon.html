@@ -97,6 +97,8 @@ function toggle_harvesting (){
   if (window.toggler==1){
     console.log('inside toggle_harvesting() toggler=1')
       vari = setInterval(function(){ mentions()},window.periody);
+      document.getElementById("heado").innerHTML='Mentionising...';
+
       //vari = setInterval(function(){ mentions()},window.periody);
       window.toggler=0;
     }
@@ -104,6 +106,8 @@ function toggle_harvesting (){
     {
       clearInterval(vari);
       console.log('inside toggle_harvesting() toggler=0')
+      document.getElementById("heado").innerHTML='Mentionising paused';
+
       window.toggler=1;
       
     }
