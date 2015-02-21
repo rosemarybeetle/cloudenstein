@@ -98,7 +98,7 @@ function eye_blink_right (){
 for (x=0;x<window.fade_inc;x++) {
 
 delay=(1+x)*window.fade_t;
-fade0 =window.setTimeout(function(){document.getElementById('eye_right_0').style.opacity-=window.fade_f;},delay);
+fade0r =window.setTimeout(function(){document.getElementById('eye_right_0').style.opacity-=window.fade_f;},delay);
 coont++;
 console.log('delay0= '+delay)
 }
@@ -106,7 +106,7 @@ console.log('delay0= '+delay)
 document.getElementById('eye_right_2').style.opacity=1;
 for (x=0;x<window.fade_inc;x++) {
 delay=(1+x)*window.fade_t;
-fade1 =window.setTimeout(function(){document.getElementById('eye_right_1').style.opacity-=window.fade_f;},delay);
+fade1r =window.setTimeout(function(){document.getElementById('eye_right_1').style.opacity-=window.fade_f;},delay);
 coont++;
 console.log('delay1= '+delay)
 }
@@ -114,7 +114,7 @@ document.getElementById('eye_right_3').style.opacity=1;
 for (x=0;x<window.fade_t;x++) {
 
 delay=(1+x)*window.fade_t;
-fade2 =window.setTimeout(function(){document.getElementById('eye_right_2').style.opacity-=window.fade_f;},delay);
+fade2r =window.setTimeout(function(){document.getElementById('eye_right_2').style.opacity-=window.fade_f;},delay);
 coont++;
 console.log('delay2= '+delay)
 
@@ -125,9 +125,12 @@ console.log('delayfinal= '+delay)
 //window.setTimeout(function(){document.getElementById('eye_right_0').style.opacity=1},delay);
 window.setTimeout(function(){document.getElementById('eye_right_0').style.opacity=1;document.getElementById('eye_right_3').style.opacity=0;},delay);
 
-} 
+} // =================end blink right 
 
-
+function eye_blink_both () {
+eye_blink_left ();
+eye_blink_right ();
+}
 //==========================  backup  ======================================
 
 function toggle_harvesting (){

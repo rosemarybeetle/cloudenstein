@@ -555,6 +555,9 @@ def logon (request):
 	return render (request, 'logon.html',{'period':t_hp_ad})
 	
 
+def fpi (request):
+	return render (request, 'fpi.html')
+
 def cloudenstein (request):
 	return render (request, 'face-off.html')
 
