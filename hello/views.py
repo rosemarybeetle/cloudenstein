@@ -83,23 +83,6 @@ def oculus (request):
 	twaatings = tweeten.objects.all()
 	return render (request, 'oculus.html', {'twaatings': twaatings})
 
-def admin_clock(request):
-	t1=time.time()
-	t2=time.time()
-	x=0
-	loadAdminSettings()
-	period=t_hp_ad
-	textCA='elapsed'
-	while x>0:
-		if (t1-t2)<period:
-			t1=time.time()
-		else:
-			t1=time.time()
-			t2=time.time()
-			x+=1
-			textCA='elpased '+str(x)
-			responsCA = HttpResponse(textCA)
-			return responseCA
 
 def db(request):
 	greeting = Greeting()
@@ -439,6 +422,8 @@ def recent_mentions(request):
 		for y in range (0 , h): 
 			if lt_mn_id < int(ting[y]['id']): #ting[y]['text']
 				temptext+='{"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"}'
+				tobbo='@'+str(ting[y]['user']['screen_name'])+' hey, hello world@'
+				send_tweet()
 				if h>y+1:
 					temptext+=","
 				responsetext='{"message":"New mentions retrieved since last check.","count":"'+str(y+1)+'","mentions":['

@@ -1,0 +1,198 @@
+p, body,h1,h2,h3,h4,h5, input,button {
+	font-family: arial,verdana,_sans;
+}
+body{
+	padding:5px;
+}
+h1{
+	font-size: 100%;
+	font-weight: 120%;
+
+}
+/*============================*/
+.pupil{
+	z-index: 0;
+	float:left;
+	
+	top:50%;
+	width:10%;
+	height:100%;
+}
+
+#pupil_left{
+	position: absolute;
+	left:25%;
+}
+#pupil_right{
+	
+	position: absolute;
+	left:65%;
+}
+ .eyesocket {
+ 	z-index: 1;
+
+
+	width:50%;
+	float:left;
+}
+
+.eye_left {
+	position: absolute;
+	left:0%;
+	top:2%;
+}
+.eye_right {
+	position: absolute;
+	left:50%;
+	top:2%;
+}
+
+.eyes{
+	padding:5%;
+	/*background-color: blue;*/
+	position: relative;
+	top:5%;
+	margin-top: 5%;
+}
+@media only screen and (min-width: 800px)  { 
+
+
+/*#eyes{
+
+	padding:0%;
+	position: relative;
+	top:70px;
+	margin-left:50px;
+	float: top; 
+}*/
+#nose{
+ 	width:40%;
+ 	
+position: absolute;
+top:150px;
+padding:0%;
+margin-left:30%;
+height: 90%;
+ }
+
+ #mouth{
+ 	width:70%;
+ 	float: center;
+position: absolute;
+top:350px;
+margin-left:15%;
+height: 90%;
+
+ }
+
+ body {
+    /*background-color: orange;*/
+    padding: 0%;
+    margin:0%;
+}
+ 
+}
+
+
+/*============================ screens with width less than 800px*/
+@media only screen and (max-width: 799px)  {
+/*#face{
+	position: absolute;
+	margin-top: 10%;
+	margin-left:15%;
+	margin-bottom: 20%;
+	width: auto;
+	height: 70%;
+	background-color: yellow;
+}*/
+
+body {
+    /*background-color: lightblue;*/
+    padding: 0%;
+    margin:0%;
+}
+
+
+/*#eyes{
+	
+	padding:0%;
+	position: absolute;
+	top: 0%;
+	margin-top:10%;
+	margin-left:0%;
+	width:100%;
+	
+}*/
+#nose{
+ 	width:250px;
+ 	float: center;
+position: absolute;
+top:25%;
+padding-top:5%;
+margin-left:8%;
+height: 150px;
+ }
+
+ #mouth{
+ 	width:60%;
+ 	float: center;
+position: relative;
+top:25%;
+margin-left:20%;
+height: 90%;
+
+ }
+}
+/*============================*/
+ #eyeleft {
+ width:50%;
+ float: left;
+ }
+ /*============================*/
+ #eyeright {
+ width:50%;
+ float: right;
+
+ }
+ /*============================*/
+/*#ln-h-eyes{
+	position: relative;
+	margin-top:15%;
+	height:2px;
+}*/
+/*============================*/
+/*#ln-v-cen{
+ 	width:2px;
+ 	float: center;
+position: relative;
+margin:0%;
+top:0%;
+left:50%;
+height: 200%;
+
+ }*/
+ /*============================*/
+/*svg {
+	height:50%;
+ 	margin:0%;
+ 	width:100%;
+ 	position: relative;
+ }*/
+ /*============================*/
+ 
+ /*============================*/
+/* #ln-v-cen{
+width:2px;
+float: center;
+position: absolute;
+margin:0%;
+top:0%;
+left:50%;
+height: 100%;
+
+ }*/
+ /*============================*/
+ 
+ /*============================*/
+
+ 

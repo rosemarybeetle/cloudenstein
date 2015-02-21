@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- {% load staticfiles %}
+{% load static %} -->
+<html>
+<head>
+<link rel="stylesheet" href="../static/fpi.css" type="text/css"/>
+
+<script src="../static/jquery-1.11.0.js" ></script>
+<script src="../static/fpi.js" ></script>
+
+<title>fapi</title>
+
+ <style type="text/css">
+ 
+
+</style>
+</head>
+<body>
+	<h1>fpi: face programming interface</h1>Interactions upon an SVG face. 
+<button onClick="blink2('eye_left')">blink2</button>
+<button onClick="eye_blink_left('eye_left_',3)">blink left</button>
+<button onClick="eye_blink_right('eye_right_',3)">blink right</button>
+<button onClick="cycle_n('eye_left_',3,'True')">blink reveal</button>
+
+<div id="eyes" class="eyes" >
+<embed id="pupil_left" class="pupil" src="../static/pupil_left.svg" >
+<embed id="eye_left_3" class="eyesocket eye_left" src="../static/eyeball-left-3.svg" >
+<embed id="eye_left_2" class="eyesocket eye_left" src="../static/eyeball-left-2.svg" >
+<embed id="eye_left_1" class="eyesocket eye_left" src="../static/eyeball-left-1.svg" >
+<embed id="eye_left_0" class="eyesocket eye_left" src="../static/eyeball-left-0.svg" >
+<embed id="pupil_right" class="pupil" src="../static/pupil_right.svg" >
+<embed id="eye_right_3" class="eyesocket eye_right" src="../static/eyeball-right-3.svg" >
+<embed id="eye_right_2" class="eyesocket eye_right" src="../static/eyeball-right-2.svg" >
+<embed id="eye_right_1" class="eyesocket eye_right" src="../static/eyeball-right-1.svg" >
+<embed id="eye_right_0" class="eyesocket eye_right" src="../static/eyeball-right-0.svg" >
+
+<!-- <embed id="eye_right" class="eyesocket eye_right" src="../static/eyeball-right.svg" > -->
+	<script type="text/javascript">
+	eye_open();
+	</script>
+</div>  <!-- end of eyeballs -->
+
+</body>
+</html>

@@ -21,78 +21,7 @@ function screenSize()
 window.W=document.body.clientWidth;
 window.H=document.body.clientHeight;
 }
-//-------------------------------Set Up------------------------
-// function yep() {
-//  console.log ('yep');
-// }
-// function loadLastTweet ()
-// {
-// $.getJSON( "lastTweet.json", function( data ) {
-//  console.log('start lastTweet');
-//   //console.log(data.lasttweetID);
-//   window.lasttweetID=data.lasttweetID;
-//   console.log(lasttweetID);
-//   console.log('Success from inside getJson call to lastTweet.json');
-//  });
-// }
 
-// function swapMouth(le)
-// {
-
-// console.log ('le- '+le)
-// console.log ('mouthStop = '+mouthStop);
-// if (le > mouthStop)
-// {
-// console.log('if is working'); 
-// window.ran2= Math.floor((Math.random()*mouthNumber)+1);
-// console.log ('random number = '+ran2)
-// //console.log(leng);
-// imger = '/static/mouth-'+ran2+'.jpg'; //"{% static "eye-right.png" %}"
-// window.mouthy.src=imger;
-// mouthStop+=1;
-// } else { 
-// console.log('if ELSE is working ');
-// mouthStop=0; // reset timer
-// clearInterval(gobo)
-// window.lock=0; //reset lock variable
-// }
-// console.log('inside swapMouth');
-
-
-// }
-// function mouthoff(le)
-// {
-// window.mouthTimer=80;
-// window.gobo = setInterval(function(){swapMouth(le)},mouthTimer); //redraws a backgound to make the text visible
-// //swapMouth(le);
-// }
-// function harvestTweets ()
-// {
-// while(usernames.length > 0) {
-//     usernames.pop();
-// }
-// console.log('usernames reset');
-
-// while(screenames.length > 0) {
-//     screenames.pop();
-// }
-// console.log('screenames reset');
-// harvestNum++;
-// console.log('start harvestTweets');
-
-// $.getJSON( "/static/tweetstore2.json", function(adata) {
-// try{
-//   console.log('l = '+adata.store.length);
-// }
-// catch (err){
-//   console.log('error on loading JSON = '+err)
-// }
-// l=adata.store.length; // set max 'l' based on length of imported array
-
-// $.each( adata.store, function(key,val) {
-// 	//console.log('key= '+key,val.username,val.screen_name);
-// 	usernames.push (val.username);
-// 	screenames.push (val.screen_name)
 
 function spit() {
   console.log('periodic spit:'+String(window.spit_num))
