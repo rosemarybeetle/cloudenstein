@@ -7,9 +7,102 @@ body{
 h1{
 	font-size: 100%;
 	font-weight: 120%;
+}
+
+.slidey {
+	cursor: pointer;
+	color:black;
 
 }
-/*============================*/
+/* ====================  range sliders - respect to http://danielstern.ca/range.css/#/ ===============*/
+input[type=range] {
+  -webkit-appearance: none;
+  width: 15%;
+  margin: 13.65px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 15%;
+  height: 10.7px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0px;
+  border: 0.7px solid #000101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid #000000;
+  height: 38px;
+  width: 47px;
+  border-radius: 18px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14.35px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: rgba(255, 255, 255, 0);
+}
+input[type=range]::-moz-range-track {
+  width: 15%;
+  height: 10.7px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0px;
+  border: 0.7px solid #000101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid #000000;
+  height: 38px;
+  width: 47px;
+  border-radius: 18px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 15%;
+  height: 10.7px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: rgba(242, 242, 242, 0);
+  border: 0.7px solid #000101;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: rgba(255, 255, 255, 0);
+  border: 0.7px solid #000101;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid #000000;
+  height: 38px;
+  width: 47px;
+  border-radius: 18px;
+  background: #ffffff;
+  cursor: pointer;
+  height: 10.7px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: rgba(255, 255, 255, 0);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: rgba(255, 255, 255, 0);
+}
+
+
+/*============================ eyes vvvvvvvvvvvvv ======================*/
 .pupil{
 	z-index: 0;
 	float:left;
@@ -51,29 +144,30 @@ h1{
 	padding:5%;
 	/*background-color: blue;*/
 	position: relative;
-	top:5%;
-	margin-top: 5%;
+	top:0%;
+	margin-top: 0%;
 }
+
+#nose{
+ 	width:40%;
+ 	z-index: 4;
+position: relative;
+top:15%;
+padding:0%;
+margin-left:30%;
+height: 60%;
+float: left;
+ }
+
+ .nose {
+ 	position: absolute;
+ 	width: 100%;
+ }
 @media only screen and (min-width: 800px)  { 
 
 
-/*#eyes{
 
-	padding:0%;
-	position: relative;
-	top:70px;
-	margin-left:50px;
-	float: top; 
-}*/
-#nose{
- 	width:40%;
- 	
-position: absolute;
-top:150px;
-padding:0%;
-margin-left:30%;
-height: 90%;
- }
+
 
  #mouth{
  	width:70%;
@@ -123,15 +217,7 @@ body {
 	width:100%;
 	
 }*/
-#nose{
- 	width:250px;
- 	float: center;
-position: absolute;
-top:25%;
-padding-top:5%;
-margin-left:8%;
-height: 150px;
- }
+
 
  #mouth{
  	width:60%;

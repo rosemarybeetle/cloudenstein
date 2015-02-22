@@ -16,13 +16,15 @@
 </style>
 </head>
 <body>
-	<h1>fpi: face programming interface</h1>Interactions upon an SVG face. 
+	<h1>fpi: face programming interface -  an interactive SVG face. </h1> 
 <button onClick="eye_blink_left()">blink left</button>
-<button onClick="eye_blink_right()">blink right</button>
 <button onClick="eye_blink_both()">wink both</button>
+<button onClick="eye_blink_right()">blink right</button>
+
+<input id="eye_slider" class="slidey" type="range" value=50 min=-10 max=110 oninput=" move_eyes()" ><!-- (add in mirror();to oninput for testing)<span id="output"></span> -->
 
 <div id="eyes" class="eyes" >
-<embed id="pupil_left" class="pupil" src="../static/pupil_left.svg" >
+<embed id="pupil_left" class="pupil pupil_left" src="../static/pupil_left.svg" >
 <embed id="eye_left_3" class="eyesocket eye_left" src="../static/eyeball-left-3.svg" >
 <embed id="eye_left_2" class="eyesocket eye_left" src="../static/eyeball-left-2.svg" >
 <embed id="eye_left_1" class="eyesocket eye_left" src="../static/eyeball-left-1.svg" >
@@ -32,12 +34,16 @@
 <embed id="eye_right_2" class="eyesocket eye_right" src="../static/eyeball-right-2.svg" >
 <embed id="eye_right_1" class="eyesocket eye_right" src="../static/eyeball-right-1.svg" >
 <embed id="eye_right_0" class="eyesocket eye_right" src="../static/eyeball-right-0.svg" >
-
 <!-- <embed id="eye_right" class="eyesocket eye_right" src="../static/eyeball-right.svg" > -->
 	<script type="text/javascript">
 	eye_open();
 	</script>
 </div>  <!-- end of eyeballs -->
-
+<div id="nose">
+	<embed id="nose_3" class="nose" src="../static/nose-3.svg" >
+<embed id="nose_2" class="nose" src="../static/nose-2.svg" >
+<embed id="nose_1" class="nose" src="../static/nose-1.svg" >
+<embed id="nose_0" class="nose" src="../static/nose-0.svg" >
+</div>
 </body>
 </html>

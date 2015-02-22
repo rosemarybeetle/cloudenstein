@@ -41,6 +41,13 @@ window.fade_f=.2; // amount of fade
 window.fade_inc=10; // increments of fade
 
 function eye_open(){
+  // next 6 lines needed to put pupils in right place if window gets resized
+  var ww = window.innerWidth;
+  console.log('ww = window.innerWidth = '+ww)
+  lll=String((ww*.25)+'px')
+  rrr=String((ww*.65)+'px')
+  document.getElementById('pupil_left').style.left=lll;
+  document.getElementById('pupil_right').style.left=rrr;
   document.getElementById('eye_left_0').style.opacity=1;
   for (x=1;x<=3;x++)
     {
@@ -53,7 +60,22 @@ document.getElementById('eye_right_0').style.opacity=1;
       obj='eye_right_'+String(x);
   document.getElementById(obj).style.opacity=0;
 }
-}
+window.eeel = document.getElementById('pupil_left').offsetLeft;
+window.eeer = document.getElementById('pupil_right').offsetLeft;
+console.log('eee LEFT = '+eeel+'eeeRIGHT = '+eeer);
+eye_blink_both();
+eye_blink_both();
+} // =============================================
+
+$( window ).resize(function() {
+  // var sy = document.getElementById('eye_slider');//.value=50;
+  // sy.value=50;
+  // console.log('slidey = '+ sy);
+  eye_open();
+  console.log('resizing');
+});
+
+// ===============================================
 function eye_blink_left (){
   coont=0;
   console.log('inside eyeblink()');
@@ -126,6 +148,30 @@ console.log('delayfinal= '+delay)
 window.setTimeout(function(){document.getElementById('eye_right_0').style.opacity=1;document.getElementById('eye_right_3').style.opacity=0;},delay);
 
 } // =================end blink right 
+
+// =========== eye controlling input slider ===================
+function mirror() {
+  var ss = document.getElementById('eye_slider').value;
+  document.getElementById('output').innerHTML=ss;
+}
+
+function move_eyes() {
+  var gg = document.getElementById('eye_slider').value;
+if (gg <110) {
+  
+  //var eell = document.getElementById('pupil_left').offsetLeft;
+  //console.log ('eell = '+eell);
+  ggg=String((window.eeel)-(50-gg)+'px')
+  hhh=String((window.eeer)-(50-gg)+'px')
+  document.getElementById('pupil_left').style.left=ggg;
+  document.getElementById('pupil_right').style.left=hhh;
+  console.log ('ggg = '+ggg);
+ }
+} //=============================================
+
+
+// ==============================================
+
 
 function eye_blink_both () {
 eye_blink_left ();
