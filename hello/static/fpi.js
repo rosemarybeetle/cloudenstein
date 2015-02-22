@@ -43,9 +43,12 @@ window.fade_inc=10; // increments of fade
 function eye_open(){
   // next 6 lines needed to put pupils in right place if window gets resized
   var ww = window.innerWidth;
+  window.eyeball_rf=.07*ww; // radius of eyeball scaled to sceen width
   console.log('ww = window.innerWidth = '+ww)
-  lll=String((ww*.25)+'px')
-  rrr=String((ww*.65)+'px')
+  lll=String((ww*.12)+'px')
+  window.llll = lll;
+  rrr=String((ww*.33)+'px')
+  window.rrrr=rrr;
   document.getElementById('pupil_left').style.left=lll;
   document.getElementById('pupil_right').style.left=rrr;
   document.getElementById('eye_left_0').style.opacity=1;
@@ -65,7 +68,17 @@ window.eeer = document.getElementById('pupil_right').offsetLeft;
 console.log('eee LEFT = '+eeel+'eeeRIGHT = '+eeer);
 eye_blink_both();
 eye_blink_both();
-} // =============================================
+} // ============================================= end open eyes ======================
+
+// ====================== noses ======================
+function nose_init() {document.getElementById('nose_0').style.opacity=1;
+  for (x=1;x<=3;x++)
+    {
+      obj='nose_'+String(x);
+  document.getElementById(obj).style.opacity=0;
+}
+}
+// ===================== end noses ===================
 
 $( window ).resize(function() {
   // var sy = document.getElementById('eye_slider');//.value=50;
@@ -156,17 +169,21 @@ function mirror() {
 }
 
 function move_eyes() {
-  var gg = document.getElementById('eye_slider').value;
-if (gg <110) {
-  
-  //var eell = document.getElementById('pupil_left').offsetLeft;
-  //console.log ('eell = '+eell);
-  ggg=String((window.eeel)-(50-gg)+'px')
-  hhh=String((window.eeer)-(50-gg)+'px')
+  var gag = document.getElementById('eye_slider').value;
+   var xx = window.innerWidth;
+   console.log('for screen width = '+xx+' , pupil.left = '+window.llll+' , pupil.right = '+window.rrrr)
+   adj=((gag-50)/100)*window.eyeball_rf; // this is teh adjustment factor based on slide of range 0 - 50
+   
+  //  var llll = document.getElementById('pupil_left').style.left;
+  // var rrrr = document.getElementById('pupil_right').style.left;
+  //ggg=String(((parseFloat(window.llll))-((eb_w/2)-gg))+'px')
+  //hhh=String(((parseFloat(window.rrrr))-((eb_w/2)-gg))+'px')
+  ggg = String (((parseFloat(window.llll)+adj))+'px');
+  hhh = String (((parseFloat(window.rrrr)+adj))+'px');
   document.getElementById('pupil_left').style.left=ggg;
   document.getElementById('pupil_right').style.left=hhh;
-  console.log ('ggg = '+ggg);
- }
+  console.log('slider value = '+gag+' , setting pupil.left to: '+ggg+' , and pupil right to be: '+hhh);
+ 
 } //=============================================
 
 
