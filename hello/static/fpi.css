@@ -26,7 +26,7 @@ top: -10px;
   }
 
 /* ====================  range sliders - respect to http://danielstern.ca/range.css/#/ ===============*/
-@media only screen and (min-width: 1100px)  { 
+@media only screen and (min-width: 980px)  { 
 input[type=range] {
   -webkit-appearance: none;
   width: 15%;
@@ -205,7 +205,7 @@ float: left;
 /*========================@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=====================*/
 
 /*------------------------ start of media query for screens <979 ----------------*/
-@media only screen and (max-width: 1099px)  { 
+@media only screen and (max-width: 979px)  { 
   input[type=range] {
   -webkit-appearance: none;
   width: 100px;
