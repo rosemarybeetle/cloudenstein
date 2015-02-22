@@ -17,9 +17,9 @@
 </head>
 <body>
 	<h1>fpi: face programming interface -  an interactive SVG face. </h1> 
-<button onClick="eye_blink_left()">blink left</button>
-<button onClick="eye_blink_both()">wink both</button>
-<button onClick="eye_blink_right()">blink right</button>
+<button onClick="eye_blink_left()" id="blink_left">wink left</button>
+<button onClick="eye_blink_both()" id="blink_right">blink both</button>
+<button onClick="eye_blink_right()" id="blink_both">wink right</button>
 
 <input id="eye_slider" class="slidey" type="range" value=50 min=0 max=100 oninput=" move_eyes()" ><!-- (add in mirror();to oninput for testing)<span id="output"></span> -->
 

@@ -43,14 +43,25 @@ window.fade_inc=10; // increments of fade
 function eye_open(){
   // next 6 lines needed to put pupils in right place if window gets resized
   var ww = window.innerWidth;
-  window.eyeball_rf=.07*ww; // radius of eyeball scaled to sceen width
-  console.log('ww = window.innerWidth = '+ww)
+  if (
+  ww>=980){window.eyeball_rf=.07*ww; // radius of eyeball scaled to sceen width
+  console.log('window size is greater than 980 - ww = window.innerWidth = '+ww)
   lll=String((ww*.12)+'px')
   window.llll = lll;
   rrr=String((ww*.33)+'px')
   window.rrrr=rrr;
   document.getElementById('pupil_left').style.left=lll;
   document.getElementById('pupil_right').style.left=rrr;
+} else if (ww<980)
+{
+  console.log('window size is greater than 980 - ww = window.innerWidth = '+ww)
+  lll=String((ww*.22)+'px')
+  window.llll = lll;
+  rrr=String((ww*.60)+'px')
+  window.rrrr=rrr;
+  document.getElementById('pupil_left').style.left=lll;
+  document.getElementById('pupil_right').style.left=rrr;
+}
   document.getElementById('eye_left_0').style.opacity=1;
   for (x=1;x<=3;x++)
     {
