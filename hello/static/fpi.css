@@ -9,9 +9,18 @@ h1{
 	font-weight: 120%;
 }
 
+.controller {
+  position: relative;
+  left: 25%;
+}
 .slidey {
 	cursor: pointer;
 	color:black;
+}
+
+.slidey {
+  cursor: pointer;
+  color:black;
 }
 
 #blink_left , #blink_right, #blink_both {
@@ -126,6 +135,7 @@ input[type=range]:focus::-ms-fill-upper {
 #pupil_left{
   position: absolute;
   left:65%;
+  top:5%;
   float: left;
   /*top:50%;
   width:10%;
@@ -135,6 +145,7 @@ input[type=range]:focus::-ms-fill-upper {
 #pupil_right{
   
   position: absolute;
+  top:5%;
   left:65%;
   float: left;
 }
@@ -307,7 +318,7 @@ input[type=range]:focus::-ms-fill-upper {
 	position: absolute;
 	left:65%;
 	float: left;
-	/*top:50%;
+	top:-50%;
 	width:10%;
 	height:100%;*/
 	

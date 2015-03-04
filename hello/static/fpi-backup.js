@@ -43,10 +43,8 @@ window.fade_inc=10; // increments of fade
 function eye_open(){
   // next 6 lines needed to put pupils in right place if window gets resized
   var ww = window.innerWidth;
-  window.eyeball_rf=.07*ww; // radius of eyeball scaled to sceen width (horizontal play)
-  window.eyeball_rf_up=.03*ww; // vertical play for eyeball
-  if (ww>=980){
-    
+  if (
+  ww>=980){window.eyeball_rf=.07*ww; // radius of eyeball scaled to sceen width
   console.log('window size is greater than 980 - ww = window.innerWidth = '+ww)
   lll=String((ww*.12)+'px')
   window.llll = lll;
@@ -54,29 +52,15 @@ function eye_open(){
   window.rrrr=rrr;
   document.getElementById('pupil_left').style.left=lll;
   document.getElementById('pupil_right').style.left=rrr;
-  lll_up=String((ww*.01));
- rrr_up=String((ww*.01));
-  window.llll_up=lll_up;
-  window.rrrr_up=rrr_up;
-  document.getElementById('pupil_left').style.top=lll_up;
-  document.getElementById('pupil_right').style.top=rrr_up;
-  
-  
-} else if (ww<980) {
-  console.log('window size is less than 980 - ww = window.innerWidth = '+ww);
-  lll=String((ww*.22)+'px');
+} else if (ww<980)
+{
+  console.log('window size is greater than 980 - ww = window.innerWidth = '+ww)
+  lll=String((ww*.22)+'px')
   window.llll = lll;
-  rrr=String((ww*.60)+'px');
+  rrr=String((ww*.60)+'px')
   window.rrrr=rrr;
   document.getElementById('pupil_left').style.left=lll;
   document.getElementById('pupil_right').style.left=rrr;
-lll_up=String((ww*.05));
- rrr_up=String((ww*.05));
-  window.llll_up=lll_up;
-  window.rrrr_up=rrr_up;
-  document.getElementById('pupil_left').style.top=lll_up;
-  document.getElementById('pupil_right').style.top=rrr_up;
-  
 }
   document.getElementById('eye_left_0').style.opacity=1;
   for (x=1;x<=3;x++)
@@ -90,9 +74,6 @@ document.getElementById('eye_right_0').style.opacity=1;
       obj='eye_right_'+String(x);
   document.getElementById(obj).style.opacity=0;
 }
-window.eeel_up = document.getElementById('pupil_left').offsetTop;
-window.eeer_up = document.getElementById('pupil_right').offsetTop;
-console.log('window.llll_up = '+ String(window.llll_up)+' , and window.rrrr_up = '+String(window.rrrr_up));
 window.eeel = document.getElementById('pupil_left').offsetLeft;
 window.eeer = document.getElementById('pupil_right').offsetLeft;
 console.log('eee LEFT = '+eeel+'eeeRIGHT = '+eeer);
@@ -216,26 +197,6 @@ function move_eyes() {
  
 } //=============================================
 
-
-function move_eyes_up() {
-  var gag_up = document.getElementById('eye_slider_up').value;
-   var yy = window.innerWidth;
-   console.log('for screen width = '+yy+' , pupil.left = '+window.llll_up+' , pupil.right = '+window.rrrr_up)
-   adj_up=((gag_up-50)/100)*window.eyeball_rf_up; // this is teh adjustment factor based on slide of range 0 - 50
-   
-  //  var llll = document.getElementById('pupil_left').style.left;
-  // var rrrr = document.getElementById('pupil_right').style.left;
-  //ggg=String(((parseFloat(window.llll))-((eb_w/2)-gg))+'px')
-  //hhh=String(((parseFloat(window.rrrr))-((eb_w/2)-gg))+'px')
-  ggg_up = String (((parseFloat(window.llll_up)-adj_up))+'px');
-  hhh_up = String (((parseFloat(window.rrrr_up)-adj_up))+'px');
-  document.getElementById('pupil_left').style.top=ggg_up;
-  document.getElementById('pupil_right').style.top=hhh_up;
-  console.log('slider value _up = '+gag_up+' , setting pupil.left vertical to: '+ggg_up+' , and pupil right vertical to be: '+hhh_up);
- 
-} 
-
-//  ===================================================
 
 // ==============================================
 
