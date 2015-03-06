@@ -98,6 +98,7 @@ window.eeer = document.getElementById('pupil_right').offsetLeft;
 console.log('eee LEFT = '+eeel+'eeeRIGHT = '+eeer);
 eye_blink_both();
 eye_blink_both();
+eye_blink_both();
 } // ============================================= end open eyes ======================
 
 // ====================== noses ======================

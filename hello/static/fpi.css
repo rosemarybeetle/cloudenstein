@@ -318,7 +318,7 @@ input[type=range]:focus::-ms-fill-upper {
 	position: absolute;
 	left:65%;
 	float: left;
-	top:-50%;
+	/*top:-5%;*/
 	width:10%;
 	height:100%;*/
 	
