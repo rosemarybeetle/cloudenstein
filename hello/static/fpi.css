@@ -9,10 +9,7 @@ h1{
 	font-weight: 120%;
 }
 
-.controller {
-  position: relative;
-  left: 25%;
-}
+
 .slidey {
 	cursor: pointer;
 	color:black;
@@ -36,6 +33,11 @@ top: -10px;
 
 /* ====================  range sliders - respect to http://danielstern.ca/range.css/#/ ===============*/
 @media only screen and (min-width: 980px)  { 
+
+  .controller {
+  position: relative;
+  left: 25%;
+}
 input[type=range] {
   -webkit-appearance: none;
   width: 15%;
@@ -217,6 +219,11 @@ float: left;
 
 /*------------------------ start of media query for screens <979 ----------------*/
 @media only screen and (max-width: 979px)  { 
+
+  .controller {
+  position: relative;
+  left: 2%;
+}
   input[type=range] {
   -webkit-appearance: none;
   width: 100px;
