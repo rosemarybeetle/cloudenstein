@@ -44,7 +44,7 @@ function eye_open(){
   // next 6 lines needed to put pupils in right place if window gets resized
   var ww = window.innerWidth;
   window.eyeball_rf=.07*ww; // radius of eyeball scaled to sceen width (horizontal play)
-  window.eyeball_rf_up=.03*ww; // vertical play for eyeball
+  window.eyeball_rf_up=.04*ww; // vertical play for eyeball
   if (ww>=980){
     
   console.log('window size is greater than 980 - ww = window.innerWidth = '+ww)
