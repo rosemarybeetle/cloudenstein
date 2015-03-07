@@ -21,12 +21,12 @@
 <button onClick="eye_blink_left()" id="blink_left">wink left</button>
 <button onClick="eye_blink_both()" id="blink_right">blink both</button>
 <button onClick="eye_blink_right()" id="blink_both">wink right</button>
-
 <input id="eye_slider" class="slidey" type="range" value=50 min=0 max=100 oninput=" move_eyes()" >
 <input id="eye_slider_up" class="slidey_up" type="range" value=50 min=0 max=100 oninput=" move_eyes_up()" >
+<button onClick="blush()" id="blush_butt">blush</button>
 </div>  <!-- end of face controls div -->
 <!-- (add in mirror();to oninput for testing) !-- (add in mirror();to oninput for testing)<span id="output"></span> -->
-
+<div class="face" id="face">
 <div id="eyes" class="eyes" >
 <embed id="pupil_left" class="pupil" src="../static/pupil_left.svg" >
 <embed id="eye_left_3" class="eyesocket eye_left" src="../static/eyeball-left-3.svg" >
@@ -39,10 +39,7 @@
 <embed id="eye_right_1" class="eyesocket eye_right" src="../static/eyeball-right-1.svg" >
 <embed id="eye_right_0" class="eyesocket eye_right" src="../static/eyeball-right-0.svg" >
 <!-- <embed id="eye_right" class="eyesocket eye_right" src="../static/eyeball-right.svg" > -->
-	<script type="text/javascript">
-	eye_open();
 	
-	</script>
 </div>  <!-- end of eyeballs -->
 <div id="nose">
 <embed id="nose_3" class="nose" src="../static/nose-3.svg" >
@@ -53,5 +50,14 @@
 <script type="text/javascript">{nose_init();
 	}
 	</script>
+	<div id="cheeks">
+<embed id="cheek_left" class="cheek" src="../static/blush-left.svg" >
+<embed id="cheek_right" class="cheek" src="../static/blush-right.svg" >
+	<script type="text/javascript">
+	refresh_face();
+	
+	</script>
+</div> 
+</div>
 </body>
 </html>

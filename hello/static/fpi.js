@@ -1,4 +1,15 @@
 eye_toggle=0;
+window.fade_blush_t_d= 60; // rate of fade decay in milliseconds
+window.fade_blush_f_d=.2; // amount of fade
+window.fade_blush_inc_d=20; // increments of fade
+// blush fade parameters
+window.blush_base=0.21;
+window.blusher_factor= 1; /// starting blusher
+window.blusher_denom=30;
+window.fade_blush_t= 155; // rate of fade decay in milliseconds
+window.fade_blush_f=.03; // amount of fade
+window.fade_blush_inc=30; // increments of fade
+// end f blushing
 function blink2(target){
 	console.log('blink2 presssed');
   try {
@@ -40,66 +51,8 @@ window.fade_t=5; // rate of fade decay in milliseconds
 window.fade_f=.2; // amount of fade
 window.fade_inc=10; // increments of fade
 
-function eye_open(){
-  // next 6 lines needed to put pupils in right place if window gets resized
-  var ww = window.innerWidth;
-  window.eyeball_rf=.07*ww; // radius of eyeball scaled to sceen width (horizontal play)
-  window.eyeball_rf_up=.04*ww; // vertical play for eyeball
-  if (ww>=980){
-    
-  console.log('window size is greater than 980 - ww = window.innerWidth = '+ww)
-  lll=String((ww*.12)+'px')
-  window.llll = lll;
-  rrr=String((ww*.33)+'px')
-  window.rrrr=rrr;
-  document.getElementById('pupil_left').style.left=lll;
-  document.getElementById('pupil_right').style.left=rrr;
-  lll_up=String((ww*.01));
- rrr_up=String((ww*.01));
-  window.llll_up=lll_up;
-  window.rrrr_up=rrr_up;
-  document.getElementById('pupil_left').style.top=lll_up;
-  document.getElementById('pupil_right').style.top=rrr_up;
-  
-  
-} else if (ww<980) {
-  console.log('window size is less than 980 - ww = window.innerWidth = '+ww);
-  lll=String((ww*.22)+'px');
-  window.llll = lll;
-  rrr=String((ww*.60)+'px');
-  window.rrrr=rrr;
-  document.getElementById('pupil_left').style.left=lll;
-  document.getElementById('pupil_right').style.left=rrr;
-lll_up=String((ww*.05));
- rrr_up=String((ww*.05));
-  window.llll_up=lll_up;
-  window.rrrr_up=rrr_up;
-  document.getElementById('pupil_left').style.top=lll_up;
-  document.getElementById('pupil_right').style.top=rrr_up;
-  
-}
-  document.getElementById('eye_left_0').style.opacity=1;
-  for (x=1;x<=3;x++)
-    {
-      obj='eye_left_'+String(x);
-  document.getElementById(obj).style.opacity=0;
-}
-document.getElementById('eye_right_0').style.opacity=1;
-  for (x=1;x<=3;x++)
-    {
-      obj='eye_right_'+String(x);
-  document.getElementById(obj).style.opacity=0;
-}
-window.eeel_up = document.getElementById('pupil_left').offsetTop;
-window.eeer_up = document.getElementById('pupil_right').offsetTop;
-console.log('window.llll_up = '+ String(window.llll_up)+' , and window.rrrr_up = '+String(window.rrrr_up));
-window.eeel = document.getElementById('pupil_left').offsetLeft;
-window.eeer = document.getElementById('pupil_right').offsetLeft;
-console.log('eee LEFT = '+eeel+'eeeRIGHT = '+eeer);
-eye_blink_both();
-eye_blink_both();
-eye_blink_both();
-} // ============================================= end open eyes ======================
+
+
 
 // ====================== noses ======================
 function nose_init() {document.getElementById('nose_0').style.opacity=1;
@@ -115,7 +68,7 @@ $( window ).resize(function() {
   // var sy = document.getElementById('eye_slider');//.value=50;
   // sy.value=50;
   // console.log('slidey = '+ sy);
-  eye_open();
+  refresh_face();
   console.log('resizing');
 });
 
@@ -192,6 +145,61 @@ console.log('delayfinal= '+delay)
 window.setTimeout(function(){document.getElementById('eye_right_0').style.opacity=1;document.getElementById('eye_right_3').style.opacity=0;},delay);
 
 } // =================end blink right 
+
+
+// ========================== blush ===========================
+function setblush_opac(){
+  
+  window.blusher_factor++;
+  var opj=window.blusher_factor/window.blusher_denom;
+  document.getElementById('cheek_left').style.opacity=opj;
+  document.getElementById('cheek_right').style.opacity=opj;
+  console.log('cheek_left opacity (opj) = '+opj);
+  if (opj==1){
+  console.log("bingo");
+  blush_down();
+  }
+
+}
+
+
+function blush (){
+// document.getElementById('cheek_left').style.opacity=1;
+// document.getElementById('cheek_right').style.opacity=1;
+for (x=0;x<window.fade_blush_inc;x++) {
+delay_b=(1+x)*window.fade_blush_t;
+blusher_up =window.setTimeout(function(){if ((window.blusher_factor/window.blusher_denom)<1){setblush_opac();}},delay_b);
+console.log('cheek_left opacity = '+document.getElementById('cheek_left').style.opacity);
+console.log('blush delay1= '+delay_b);
+  }
+}
+
+
+
+function setblush_opac_2(){ 
+  window.blusher_factor--;
+  console.log('window.blusher_factor = '+window.blusher_factor);
+  var opj_d=window.blusher_factor/window.blusher_denom;
+  document.getElementById('cheek_left').style.opacity=opj_d;
+  document.getElementById('cheek_right').style.opacity=opj_d;
+  console.log('cheek_left opacity (opj_d) = '+opj_d);  
+}
+
+function blush_down (){
+window.clearTimeout(blusher_up);
+console.log('tringo');
+console.log('window.blusher_factor/window.blusher_denom = '+window.blusher_factor/window.blusher_denom);
+// document.getElementById('cheek_left').style.opacity=1;
+// document.getElementById('cheek_right').style.opacity=1;
+for (y=0;y<window.fade_blush_inc_d;y++) {
+delay_bd=(1+y)*window.fade_blush_t_d;
+blusher_down =window.setTimeout(function(){if ((window.blusher_factor)>window.blush_base){setblush_opac_2();}},delay_bd);
+console.log('cheek_left opacity down = '+document.getElementById('cheek_left').style.opacity);
+console.log('blush delay down= '+delay_bd);
+  }
+}
+
+// ========================= end blush ========================
 
 // =========== eye controlling input slider ===================
 function mirror() {
@@ -274,3 +282,83 @@ function toggle_harvesting (){
     }
 
 } 
+
+
+function refresh_face(){
+  document.getElementById('cheek_left').style.opacity=window.blush_base;
+  document.getElementById('cheek_right').style.opacity=window.blush_base;
+  // next 6 lines needed to put pupils in right place if window gets resized
+  var ww = window.innerWidth;
+  window.eyeball_rf=.07*ww; // radius of eyeball scaled to sceen width (horizontal play)
+  window.eyeball_rf_up=.04*ww; // vertical play for eyeball
+  if (ww>=980){
+    
+  console.log('window size is greater than 980 - ww = window.innerWidth = '+ww)
+  lll=String((ww*.12)+'px')
+  window.llll = lll;
+  rrr=String((ww*.33)+'px')
+  window.rrrr=rrr;
+  document.getElementById('pupil_left').style.left=lll;
+  document.getElementById('pupil_right').style.left=rrr;
+  lll_up=String((ww*.01));
+ rrr_up=String((ww*.01));
+  window.llll_up=lll_up;
+  window.rrrr_up=rrr_up;
+  document.getElementById('pupil_left').style.top=lll_up;
+  document.getElementById('pupil_right').style.top=rrr_up;
+  document.getElementById('cheek_left').style.opacity=window.blush_base;
+  document.getElementById('cheek_right').style.opacity=window.blush_base;
+  chk_top=String((ww*.085)+'px')
+  document.getElementById('cheek_left').style.top=chk_top;
+  document.getElementById('cheek_right').style.top=chk_top;
+  
+
+  // cheeks next >>>>>>>>>>>>
+  
+} else if (ww<980) {
+  console.log('window size is less than 980 - ww = window.innerWidth = '+ww);
+  lll=String((ww*.22)+'px');
+  window.llll = lll;
+  rrr=String((ww*.60)+'px');
+  window.rrrr=rrr;
+  document.getElementById('pupil_left').style.left=lll;
+  document.getElementById('pupil_right').style.left=rrr;
+lll_up=String((ww*.05));
+ rrr_up=String((ww*.05));
+  window.llll_up=lll_up;
+  window.rrrr_up=rrr_up;
+  document.getElementById('pupil_left').style.top=lll_up;
+  document.getElementById('pupil_right').style.top=rrr_up;
+  //  >>>>>>>>>>>>>>>> cheeks >>>>>>>>>>>>>>>>>>>>>>  //
+document.getElementById('cheek_left').style.opacity=window.blush_base;
+  document.getElementById('cheek_right').style.opacity=window.blush_base;
+  chk_top=String((ww*.14)+'px')
+  document.getElementById('cheek_left').style.top=chk_top;
+  document.getElementById('cheek_right').style.top=chk_top;
+//  <<<<<<<<<<<<<<<< cheeks <<<<<<<<<<<<<<<<<<<<<<<<  //
+  
+}
+  document.getElementById('eye_left_0').style.opacity=1;
+  for (x=1;x<=3;x++)
+    {
+      obj='eye_left_'+String(x);
+  document.getElementById(obj).style.opacity=0;
+}
+document.getElementById('eye_right_0').style.opacity=1;
+  for (x=1;x<=3;x++)
+    {
+      obj='eye_right_'+String(x);
+  document.getElementById(obj).style.opacity=0;
+}
+window.eeel_up = document.getElementById('pupil_left').offsetTop;
+window.eeer_up = document.getElementById('pupil_right').offsetTop;
+console.log('window.llll_up = '+ String(window.llll_up)+' , and window.rrrr_up = '+String(window.rrrr_up));
+window.eeel = document.getElementById('pupil_left').offsetLeft;
+window.eeer = document.getElementById('pupil_right').offsetLeft;
+
+
+console.log('eee LEFT = '+eeel+'eeeRIGHT = '+eeer);
+eye_blink_both();
+eye_blink_both();
+eye_blink_both();
+} // ============================================= end refresh face ======================

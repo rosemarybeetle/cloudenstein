@@ -11,6 +11,7 @@ h1{
 }
 
 
+
 .slidey {
 	cursor: pointer;
 	color:black;
@@ -33,7 +34,14 @@ top: -10px;
   }
 
 /* ====================  range sliders - respect to http://danielstern.ca/range.css/#/ ===============*/
+/* ===================================================================================================*/
+/* =================================== BREAK POINT    ================================================*/
+/* ===================================================================================================*/
 @media only screen and (min-width: 980px)  { 
+  .face{
+  position: relative;
+  padding-top: 4%
+}
 
   .controller {
   position: relative;
@@ -214,13 +222,45 @@ float: left;
   float: left;
   
  }
-}  /* --------------------------- end of media query screens >980 --------- */
 
+ 
+.cheek {
+  /*opacity: .75; /* standard pale flush*/
+  z-index: 2;
+position: absolute;
+
+padding-top: 2%;
+
+ }
+ #cheek_left {
+  opacity: .05;
+  position: absolute;
+left: 28%;
+width:17%;
+ }
+ #cheek_right {
+  opacity: .05;
+  position: absolute;
+left: 56%;
+width:16%;
+ }
+
+}  
+/* --------------------------- end of media query screens >980 --------- */
 /*========================@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=====================*/
-
 /*------------------------ start of media query for screens <979 ----------------*/
+/* ====================  range sliders - respect to http://danielstern.ca/range.css/#/ ===============*/
+/* ===================================================================================================*/
+/* =================================== BREAK POINT    ================================================*/
+/* ===================================================================================================*/
+
 @media only screen and (max-width: 979px)  { 
 
+.face{
+  position: relative;
+  top:20%;
+  padding-top: 10%
+}
   .controller {
   position: relative;
   left: 2%;
@@ -399,8 +439,32 @@ float: left;
  	float: left;
  	
  }
+ .cheek {
+  /*opacity: .75; /* standard pale flush*/
+  z-index: 2;
+position: absolute;
+padding-top: 8%
+
+ }
+ #cheek_left {
+  opacity: .05;
+  position: absolute;
+left: 8%;
+width:33%;
+ }
+ #cheek_right {
+  opacity: .05;
+  position: absolute;
+left: 62%;
+width:32%;
+ }
 
  } /* -------------------- enbd of media query for screens <979 -----------------------*/
+ /* ====================  range sliders - respect to http://danielstern.ca/range.css/#/ ===============*/
+/* ===================================================================================================*/
+/* =================================== BREAK POINT    ================================================*/
+/* ===================================================================================================*/
+
 @media only screen and (min-width: 800px)  { 
 
 
