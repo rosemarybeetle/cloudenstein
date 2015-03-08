@@ -64,6 +64,103 @@ function nose_init() {document.getElementById('nose_0').style.opacity=1;
 }
 // ===================== end noses ===================
 
+
+// ========================================================================================
+// ===================== START WRINKLES ======================
+// ========================================================================================
+function nose_wrinkle() {
+  console.log('');
+  console.log('Inside nose_wrinkle ()...');
+  console.log('');
+  wrink_inc=3; // n where n=number of nose states in wrinkle
+  wrink_t=40; // standard delay period
+
+
+delay_w=window.wrink_t;
+wrink0=window.setTimeout(function(){nose_wrinks(0);},delay_w);
+delay_w=2*window.wrink_t;
+wrink1=window.setTimeout(function(){nose_wrinks(1);},delay_w);
+delay_w=3*window.wrink_t;
+wrink2=window.setTimeout(function(){nose_wrinks(2);},delay_w);
+delay_w=4*window.wrink_t;
+wrink3=window.setTimeout(function(){nose_wrinks(3);},delay_w);
+
+}
+
+function nose_wrinks(wrk){
+  console.log('');
+  console.log('Inside nose_wrinks('+wrk+')...');
+  console.log('');
+  gg='nose_'+String(wrk); //generate current nose state name based on wrk argument passed to nose_wrinks
+  console.log("Processing nose_wrinks()"+gg+' inside nose_wrinks()');
+  document.getElementById(gg).style.opacity=1;
+  for (x=0;x<wrk;x++)
+    {
+      if (x!=wrk) {
+        obj='nose_'+String(x);
+  document.getElementById(obj).style.opacity=0;
+      } 
+  }    
+  if (wrk==3){
+    nose_wrinkle_2 ();
+  }
+  nose_opacity_test();
+}
+// ----------------- the 2 functions above start it ------------
+// --------------- the two below retrun it to normal -----------
+function nose_wrinkle_2 ()   {
+  console.log('');
+  console.log('Inside nose_wrinkle_2 ()...');
+  console.log('');
+wrink_inc=3; // n where n=number of nose states in wrinkle
+  wrink_t=100; // standard delay period
+
+  delay_w=window.wrink_t;
+wrink0=window.setTimeout(function(){nose_wrinks_return(3);},delay_w);
+delay_w=2*window.wrink_t;
+wrink1=window.setTimeout(function(){nose_wrinks_return(2);},delay_w);
+delay_w=3*window.wrink_t;
+wrink2=window.setTimeout(function(){nose_wrinks_return(1);},delay_w);
+delay_w=4*window.wrink_t;
+wrink3=window.setTimeout(function(){nose_wrinks_return(0);},delay_w);
+delay_w=4*window.wrink_t;
+wrink4=window.setTimeout(function(){nose_init();},delay_w);
+}
+
+function nose_wrinks_return (wrk){
+  console.log('');
+  console.log('Inside nose_wrinks('+wrk+')...');
+  console.log('');
+  gg='nose_'+String(wrk); //generate current nose state name based on wrk argument passed to nose_wrinks
+  console.log("Processing nose_wrinks()"+gg+' inside nose_wrinks()');
+  document.getElementById(gg).style.opacity=1;
+  for (x=0;x<wrk;x++)
+    {
+      if (x!=wrk) {
+        obj='nose_'+String(x);
+  document.getElementById(obj).style.opacity=0;
+      } 
+  }    
+  if (wrk==0){
+    console.log('stop');
+  }
+  nose_opacity_test();
+}
+
+function nose_opacity_test(){
+  console.log("finally, let's test what is visible");
+  for (x=0;x<=3;x++)
+    {
+  obj='nose_'+String(x);
+  console.log('opacity of '+obj+' = '+ document.getElementById(obj).style.opacity);
+    }
+    console.log('end test');
+}
+
+// ========================================================================================
+// ===================== START WRINKLES ======================
+// ========================================================================================
+
 $( window ).resize(function() {
   // var sy = document.getElementById('eye_slider');//.value=50;
   // sy.value=50;
@@ -338,6 +435,7 @@ document.getElementById('cheek_left').style.opacity=window.blush_base;
 //  <<<<<<<<<<<<<<<< cheeks <<<<<<<<<<<<<<<<<<<<<<<<  //
   
 }
+nose_init();
   document.getElementById('eye_left_0').style.opacity=1;
   for (x=1;x<=3;x++)
     {
@@ -350,6 +448,7 @@ document.getElementById('eye_right_0').style.opacity=1;
       obj='eye_right_'+String(x);
   document.getElementById(obj).style.opacity=0;
 }
+
 window.eeel_up = document.getElementById('pupil_left').offsetTop;
 window.eeer_up = document.getElementById('pupil_right').offsetTop;
 console.log('window.llll_up = '+ String(window.llll_up)+' , and window.rrrr_up = '+String(window.rrrr_up));

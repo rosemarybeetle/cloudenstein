@@ -21,8 +21,11 @@ h1{
   cursor: pointer;
   color:black;
 }
-
-#blink_left , #blink_right, #blink_both {
+#blush_butt,  #wrinkle_butt {
+  position: relative;
+top: -2px;
+}
+button {
 position: relative;
 top: -10px;
   height: 38px;
