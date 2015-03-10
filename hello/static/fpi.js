@@ -306,7 +306,7 @@ console.log('frown delay1= '+delay_b);
 
 function frown_unshader (){
   clearTimeout(window.frown_shade_dwn);
-  //window.frown_factor=0; // initialise frown increment
+  window.frown_factor=0; // initialise frown increment
 document.getElementById('nose_frown').style.opacity=0;
 }
 
@@ -354,7 +354,7 @@ window.frown_toggle=1;
   //   document.getElementById('cheek_left').style.opacity=window.blush_base;
   // document.getElementById('cheek_right').style.opacity=window.blush_base;
     
-      //frown_unshader();
+      frown_unshader();
     
     delay=(window.fade_t);
 console.log('delayfinal= '+delay)
