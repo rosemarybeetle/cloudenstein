@@ -23,12 +23,23 @@
 <button onClick="eye_blink_right()" id="blink_both">wink right</button>
 <button onClick="blush()" id="blush_butt">blush</button>
 <button onClick="nose_wrinkle()" id="wrinkle_butt">Wrinkle</button>
+<button onClick="frown_toggler()" id="frown_butt">Fr-tog</button>
+<button onClick="frown(1)" id="frown_butt">Fr-dwn</button>
+<button onClick="frown(0)" id="frown_butt">Fr-up</button>
 <input id="eye_slider" class="slidey" type="range" value=50 min=0 max=100 oninput=" move_eyes()" >
 <input id="eye_slider_up" class="slidey_up" type="range" value=50 min=0 max=100 oninput=" move_eyes_up()" >
 
 </div>  <!-- end of face controls div -->
 <!-- (add in mirror();to oninput for testing) !-- (add in mirror();to oninput for testing)<span id="output"></span> -->
 <div class="face" id="face">
+<div class="eyebrows">
+<embed id="eyebrow_left_0" class="eyebrow" src="../static/eyebrow_left.svg" >
+<embed id="eyebrow_left_1" class="eyebrow" src="../static/eyebrow_left_d1.svg" >
+<embed id="eyebrow_left_2" class="eyebrow" src="../static/eyebrow_left_d2.svg" >
+<embed id="eyebrow_right_0" class="eyebrow" src="../static/eyebrow_right.svg" >
+<embed id="eyebrow_right_1" class="eyebrow" src="../static/eyebrow_right_d1.svg" >
+<embed id="eyebrow_right_2" class="eyebrow" src="../static/eyebrow_right_d2.svg" >
+</div>
 <div id="eyes" class="eyes" >
 <embed id="pupil_left" class="pupil" src="../static/pupil_left.svg" >
 <embed id="eye_left_3" class="eyesocket eye_left" src="../static/eyeball-left-3.svg" >
@@ -43,7 +54,9 @@
 <!-- <embed id="eye_right" class="eyesocket eye_right" src="../static/eyeball-right.svg" > -->
 	
 </div>  <!-- end of eyeballs -->
+<embed id="nose_frown" class="nose" src="../static/frown_shading.svg" >
 <div id="nose">
+
 <embed id="nose_3" class="nose" src="../static/nose-3.svg" >
 <embed id="nose_2" class="nose" src="../static/nose-2.svg" >
 <embed id="nose_1" class="nose" src="../static/nose-1.svg" >

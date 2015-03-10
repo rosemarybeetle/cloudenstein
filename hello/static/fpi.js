@@ -1,3 +1,8 @@
+var random_checker=0;
+window.fade_t=5; // rate of fade decay in milliseconds
+window.fade_f=.2; // amount of fade
+window.fade_inc=10; // increments of fade
+
 eye_toggle=0;
 window.fade_blush_t_d= 60; // rate of fade decay in milliseconds
 window.fade_blush_f_d=.2; // amount of fade
@@ -10,6 +15,14 @@ window.fade_blush_t= 155; // rate of fade decay in milliseconds
 window.fade_blush_f=.03; // amount of fade
 window.fade_blush_inc=30; // increments of fade
 // end f blushing
+// frown parameters
+window.frown_toggle=0; //default is no frowning
+window.frown_factor=0; // initialise frown increment
+window.frown_denom=4;
+window.frown_fade_t= 45; // rate of frown fade decay in milliseconds
+window.frown_blush_inc=6; // increments of frown
+
+// end frown
 function blink2(target){
 	console.log('blink2 presssed');
   try {
@@ -46,10 +59,7 @@ obj.style.opacity=0.2;
 
 //==========================  backup  ======================================
 //var vari;
-var random_checker=0;
-window.fade_t=5; // rate of fade decay in milliseconds
-window.fade_f=.2; // amount of fade
-window.fade_inc=10; // increments of fade
+
 
 
 
@@ -61,6 +71,7 @@ function nose_init() {document.getElementById('nose_0').style.opacity=1;
       obj='nose_'+String(x);
   document.getElementById(obj).style.opacity=0;
 }
+document.getElementById('nose_frown').style.opacity=0; // frown lines
 }
 // ===================== end noses ===================
 
@@ -73,7 +84,7 @@ function nose_wrinkle() {
   console.log('Inside nose_wrinkle ()...');
   console.log('');
   wrink_inc=3; // n where n=number of nose states in wrinkle
-  wrink_t=40; // standard delay period
+  wrink_t=70; // standard delay period
 
 
 delay_w=window.wrink_t;
@@ -91,16 +102,28 @@ function nose_wrinks(wrk){
   console.log('');
   console.log('Inside nose_wrinks('+wrk+')...');
   console.log('');
+  var wrk_fade
+  if (wrk ==0){
+    wrk_fade=3;
+  } else {
+    wrk_fade=wrk-1;
+  }
   gg='nose_'+String(wrk); //generate current nose state name based on wrk argument passed to nose_wrinks
+  gg_fade='nose_'+String(wrk_fade);
   console.log("Processing nose_wrinks()"+gg+' inside nose_wrinks()');
-  document.getElementById(gg).style.opacity=1;
+  document.getElementById(gg).style.opacity=.4;
   for (x=0;x<wrk;x++)
     {
       if (x!=wrk) {
+        if (x=wrk_fade){
+          obj='nose_'+String(x);
+  document.getElementById(obj).style.opacity=.2;
+        } else {
         obj='nose_'+String(x);
   document.getElementById(obj).style.opacity=0;
+        }
       } 
-  }    
+  } 
   if (wrk==3){
     nose_wrinkle_2 ();
   }
@@ -113,7 +136,7 @@ function nose_wrinkle_2 ()   {
   console.log('Inside nose_wrinkle_2 ()...');
   console.log('');
 wrink_inc=3; // n where n=number of nose states in wrinkle
-  wrink_t=100; // standard delay period
+  wrink_t=80; // standard delay period
 
   delay_w=window.wrink_t;
 wrink0=window.setTimeout(function(){nose_wrinks_return(3);},delay_w);
@@ -131,20 +154,30 @@ function nose_wrinks_return (wrk){
   console.log('');
   console.log('Inside nose_wrinks('+wrk+')...');
   console.log('');
-  gg='nose_'+String(wrk); //generate current nose state name based on wrk argument passed to nose_wrinks
+  var wrk_fade
+  if (wrk ==0){
+    wrk_fade=3;
+  } else {
+    wrk_fade=wrk-1;
+  }
+  gg2='nose_'+String(wrk); //generate current nose state name based on wrk argument passed to nose_wrinks
   console.log("Processing nose_wrinks()"+gg+' inside nose_wrinks()');
-  document.getElementById(gg).style.opacity=1;
+  document.getElementById(gg2).style.opacity=.6;
   for (x=0;x<wrk;x++)
-    {
+    { obj2='nose_'+String(x);
       if (x!=wrk) {
-        obj='nose_'+String(x);
-  document.getElementById(obj).style.opacity=0;
+        if (x=wrk_fade){
+  document.getElementById(obj2).style.opacity=.2;
+        } else {
+        document.getElementById(obj2).style.opacity=0;
+      }
       } 
-  }    
+  }  
+  
   if (wrk==0){
     console.log('stop');
   }
-  nose_opacity_test();
+  nose_opacity_test(); // this is a test script function
 }
 
 function nose_opacity_test(){
@@ -243,8 +276,96 @@ window.setTimeout(function(){document.getElementById('eye_right_0').style.opacit
 
 } // =================end blink right 
 
+// ======================== frown =============================
+// ============================================================
 
-// ========================== blush ===========================
+//
+function frown_shade(){
+  
+  window.frown_factor++;
+  var opj=window.frown_factor/window.frown_denom;
+  document.getElementById('nose_frown').style.opacity=opj;
+  console.log('nose_frown opacity (opj) = '+opj);
+  if (opj==1){
+  console.log("bingo");
+   }
+
+}
+
+
+function frown_shader (){
+  var opj=53*(window.frown_factor/window.frown_denom);
+  document.getElementById('nose_frown').style.opacity=opj;
+for (x=0;x<window.frown_blush_inc;x++) {
+delay_b=(1+x)*window.fade_blush_t;
+window.frown_shade_dwn =window.setTimeout(function(){if ((window.frown_factor/window.frown_denom)<1){frown_shade();}},delay_b);
+console.log('frown_shade opacity = '+document.getElementById('nose_frown').style.opacity);
+console.log('frown delay1= '+delay_b);
+  }
+}
+
+function frown_unshader (){
+  clearTimeout(window.frown_shade_dwn);
+  //window.frown_factor=0; // initialise frown increment
+document.getElementById('nose_frown').style.opacity=0;
+}
+
+//
+function frown_toggler () {
+  if (window.frown_toggle==0) {// toggles depending if they are down aleady
+  x=1;
+  frown(x); 
+  } 
+  else if (window.frown_toggle==1){
+  x=0;
+  frown(x); 
+  }
+}
+function frown (up_dwn){
+  
+  if (up_dwn==1){
+    // blush();
+    frown_shader();
+  coont=0;
+  console.log('inside frown()');
+  document.getElementById('eyebrow_left_1').style.opacity=1;
+  document.getElementById('eyebrow_right_1').style.opacity=1;
+for (x=0;x<window.fade_inc;x++) {
+
+delay=(1+x)*window.frown_fade_t;
+fade0 =window.setTimeout(function(){document.getElementById('eyebrow_left_0').style.opacity-=window.fade_f;document.getElementById('eyebrow_right_0').style.opacity-=window.fade_f;},delay);
+coont++;
+console.log('delay0= '+delay)
+}
+
+document.getElementById('eyebrow_left_2').style.opacity=1;
+  document.getElementById('eyebrow_right_2').style.opacity=1;
+for (x=0;x<window.fade_inc;x++) {
+delay=(1+x)*window.fade_t;
+fade1 ==window.setTimeout(function(){document.getElementById('eyebrow_left_1').style.opacity-=window.fade_f;document.getElementById('eyebrow_right_1').style.opacity-=window.fade_f;},delay);
+coont++;
+console.log('delay1= '+delay)
+    } // end for 
+window.frown_toggle=1;
+  } // end if toggle 
+  else if (up_dwn==0){
+  //   window.blusher_factor= 1; /// starting blusher
+
+  //   document.getElementById('cheek_left').style.opacity=window.blush_base;
+  // document.getElementById('cheek_right').style.opacity=window.blush_base;
+    
+      //frown_unshader();
+    
+    delay=(window.fade_t);
+console.log('delayfinal= '+delay)
+window.setTimeout(function(){document.getElementById('eyebrow_left_0').style.opacity=1;document.getElementById('eyebrow_right_0').style.opacity=1;document.getElementById('eyebrow_left_2').style.opacity=0;document.getElementById('eyebrow_right_2').style.opacity=0;},delay);
+window.frown_toggle=0;
+  }
+}
+//========================== end frown ================================
+//=====================================================================
+
+// ========================== blush ===================================
 function setblush_opac(){
   
   window.blusher_factor++;
@@ -447,6 +568,16 @@ document.getElementById('eye_right_0').style.opacity=1;
     {
       obj='eye_right_'+String(x);
   document.getElementById(obj).style.opacity=0;
+}
+document.getElementById('eyebrow_left_0').style.opacity=1;
+document.getElementById('eyebrow_right_0').style.opacity=1;
+
+  for (x=1;x<=2;x++)
+    {
+      objl='eyebrow_right_'+String(x);
+  document.getElementById(objl).style.opacity=0;
+  objr='eyebrow_left_'+String(x);
+  document.getElementById(objr).style.opacity=0;
 }
 
 window.eeel_up = document.getElementById('pupil_left').offsetTop;

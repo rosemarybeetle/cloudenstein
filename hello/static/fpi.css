@@ -21,6 +21,10 @@ h1{
   cursor: pointer;
   color:black;
 }
+
+
+
+
 #blush_butt,  #wrinkle_butt {
   position: relative;
 top: -2px;
@@ -43,7 +47,7 @@ top: -10px;
 @media only screen and (min-width: 980px)  { 
   .face{
   position: relative;
-  padding-top: 4%
+  padding-top:6%
 }
 
   .controller {
@@ -135,6 +139,41 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: rgba(255, 255, 255, 0);
 }
+
+/* ============================== eyebrows =============================*/
+.eyebrows {
+  z-index: 25;
+  float: top;
+padding:-12%;
+  /*background-color: blue;*/
+  position: absolute;
+  left: 10%;
+  top:0%;
+  margin-top: 0%;
+  width:70%;
+
+/*z-index: 22;
+    position: absolute;
+ bottom: 40%
+  width:20%;*/
+}
+.eyebrow {
+
+width:30%;
+
+}
+#eyebrow_left_0, #eyebrow_left_1, #eyebrow_left_2 {
+  position: absolute;
+ left:23%;
+}
+
+#eyebrow_right_0, #eyebrow_right_1, #eyebrow_right_2 {
+position: absolute;
+  left:62%;
+}
+
+/* =========================== end eyebrows ========================== */
+
 /*============================ eyes vvvvvvvvvvvvv ======================*/
 .pupil{
   z-index: 0;
@@ -206,6 +245,15 @@ input[type=range]:focus::-ms-fill-upper {
  }
 /* =====================================*/
 
+#nose_frown {
+  z-index: 40;
+  width:8%;
+  position: absolute;
+  left:46.5%;
+  top:28%;
+  float: left;
+ }
+
 #nose{
   width:40%;
   z-index: 4;
@@ -232,7 +280,7 @@ float: left;
   z-index: 2;
 position: absolute;
 
-padding-top: 2%;
+padding-top: 4%;
 
  }
  #cheek_left {
@@ -353,7 +401,39 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: rgba(255, 255, 255, 0);
 } /* -------------- end of inputs ------------------*/
+/* ============================== eyebrows =============================*/
+.eyebrows {
+  z-index: 25;
+  float: top;
+padding:-12%;
+  /*background-color: blue;*/
+  position: absolute;
+  left: 10%;
+  top:0%;
+  margin-top: 0%;
+  width:70%;
 
+/*z-index: 22;
+    position: absolute;
+ bottom: 40%
+  width:20%;*/
+}
+.eyebrow {
+
+width:50%;
+
+}
+#eyebrow_left_0, #eyebrow_left_1, #eyebrow_left_2 {
+position: absolute;
+ left:1%;
+}
+
+#eyebrow_right_0, #eyebrow_right_1, #eyebrow_right_2 {
+position: absolute;
+  left:65%;
+}
+
+/* =========================== end eyebrows ========================== */
 /*============================ eyes vvvvvvvvvvvvv ======================*/
 .pupil{
 	z-index: 0;
@@ -442,6 +522,18 @@ float: left;
  	float: left;
  	
  }
+
+ #nose_frown {
+  z-index: 40;
+  width:13%;
+  position: absolute;
+  left:44.5%;
+  top:33%;
+  float: left;
+ }
+
+
+
  .cheek {
   /*opacity: .75; /* standard pale flush*/
   z-index: 2;
