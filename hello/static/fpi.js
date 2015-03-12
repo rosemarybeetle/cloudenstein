@@ -509,7 +509,9 @@ function refresh_face(){
   var ww = window.innerWidth;
   window.eyeball_rf=.07*ww; // radius of eyeball scaled to sceen width (horizontal play)
   window.eyeball_rf_up=.04*ww; // vertical play for eyeball
-  if (ww>=980){
+
+  // -----------------------------------------------------------------
+  if (ww>=980){ // -------------------- 980px break point ------------
     
   console.log('window size is greater than 980 - ww = window.innerWidth = '+ww)
   lll=String((ww*.12)+'px')
@@ -526,10 +528,12 @@ function refresh_face(){
   document.getElementById('pupil_right').style.top=rrr_up;
   document.getElementById('cheek_left').style.opacity=window.blush_base;
   document.getElementById('cheek_right').style.opacity=window.blush_base;
-  chk_top=String((ww*.085)+'px')
+  chk_top=String((ww*.085)+'px');
   document.getElementById('cheek_left').style.top=chk_top;
   document.getElementById('cheek_right').style.top=chk_top;
-  
+  mouth_top=String((ww*.28)+'px');
+  document.getElementById('mouth').style.top=mouth_top;
+ 
 
   // cheeks next >>>>>>>>>>>>
   
@@ -554,9 +558,13 @@ document.getElementById('cheek_left').style.opacity=window.blush_base;
   document.getElementById('cheek_left').style.top=chk_top;
   document.getElementById('cheek_right').style.top=chk_top;
 //  <<<<<<<<<<<<<<<< cheeks <<<<<<<<<<<<<<<<<<<<<<<<  //
-  
+  mouth_top=String((ww*.28)+'px');
+  document.getElementById('mouth').style.top=mouth_top;
+ 
 }
 nose_init();
+// ----------------- hide extra eyes ------------------
+
   document.getElementById('eye_left_0').style.opacity=1;
   for (x=1;x<=3;x++)
     {
@@ -569,6 +577,10 @@ document.getElementById('eye_right_0').style.opacity=1;
       obj='eye_right_'+String(x);
   document.getElementById(obj).style.opacity=0;
 }
+// ---------------------------------------------------
+
+
+// ----------------- hide extra eyebrows ------------------
 document.getElementById('eyebrow_left_0').style.opacity=1;
 document.getElementById('eyebrow_right_0').style.opacity=1;
 
@@ -579,6 +591,16 @@ document.getElementById('eyebrow_right_0').style.opacity=1;
   objr='eyebrow_left_'+String(x);
   document.getElementById(objr).style.opacity=0;
 }
+// ---------------------------------------------------
+// ----------------- hide extra mouths ------------------
+document.getElementById('mouth_0').style.opacity=1;
+  for (x=1;x<=13;x++)
+    {
+      objm='mouth_'+String(x);
+  document.getElementById(objm).style.opacity=0;
+}
+// ---------------------------------------------------
+
 
 window.eeel_up = document.getElementById('pupil_left').offsetTop;
 window.eeer_up = document.getElementById('pupil_right').offsetTop;

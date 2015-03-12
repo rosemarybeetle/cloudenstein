@@ -296,6 +296,14 @@ left: 56%;
 width:16%;
  }
 
+
+ .mouth {
+  width:23%;
+  position: absolute;
+  left: 40%;
+  padding-top:15%;
+ }
+
 }  
 /* --------------------------- end of media query screens >980 --------- */
 /*========================@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=====================*/
@@ -554,17 +562,25 @@ left: 62%;
 width:32%;
  }
 
+ .mouth {
+  width:40%;
+  position: absolute;
+  left: 32%;
+
+  padding-top:35%;
+ }
+
  } /* -------------------- enbd of media query for screens <979 -----------------------*/
  /* ====================  range sliders - respect to http://danielstern.ca/range.css/#/ ===============*/
 /* ===================================================================================================*/
 /* =================================== BREAK POINT    ================================================*/
 /* ===================================================================================================*/
 
-@media only screen and (min-width: 800px)  { 
+/*@media only screen and (min-width: 800px)  { 
 
 
 
-
+/*
 
  #mouth{
  	width:70%;
@@ -586,8 +602,8 @@ height: 90%;
 
 
 /*============================ screens with width less than 800px*/
-@media only screen and (max-width: 799px)  {
-/*#face{
+/*@media only screen and (max-width: 799px)  {
+#face{
 	position: absolute;
 	margin-top: 10%;
 	margin-left:15%;
@@ -595,14 +611,14 @@ height: 90%;
 	width: auto;
 	height: 70%;
 	background-color: yellow;
-}*/
+}
 
 body {
     /*background-color: lightblue;*/
-    padding: 0%;
+ /*   padding: 0%;
     margin:0%;
 }
-
+*/
 
 /*#eyes{
 	
@@ -616,7 +632,7 @@ body {
 }*/
 
 
- #mouth{
+ /*#mouth{
  	width:60%;
  	float: center;
 position: relative;
@@ -625,7 +641,7 @@ margin-left:20%;
 height: 90%;
 
  }
-}
+}*/
 /*============================*/
  
  /*============================*/
@@ -669,4 +685,4 @@ height: 100%;
  
  /*============================*/
 
- 
+/* //*/
