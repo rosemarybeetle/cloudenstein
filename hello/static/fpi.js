@@ -21,8 +21,71 @@ window.frown_factor=0; // initialise frown increment
 window.frown_denom=4;
 window.frown_fade_t= 45; // rate of frown fade decay in milliseconds
 window.frown_blush_inc=6; // increments of frown
-
 // end frown
+
+// speech 
+window.mouthTimer=110; // speech animation rate (period (ms) for mouth-swap speed)
+window.mouthStop=0; // termination counter needed by swapMouth
+window.mouthNumber=13; // determines how many mouth images can be swapped
+window.default_mouth='mouth_5'; // the mouth shown on load and at rest
+
+// end speech setup
+
+// end setup
+
+// ================================  speaky stuff ================================
+// ===============================================================================
+
+function swapMouth(le)
+{
+
+console.log ('le- '+le)
+console.log ('mouthStop = '+window.mouthStop);
+if (le > window.mouthStop)
+{
+console.log('if is working'); 
+window.ran2= Math.floor((Math.random()*window.mouthNumber)+1);  // used to randomly retrieve one of the swappable mouths 
+console.log ('random number = '+ran2)
+mouth_id_now = 'mouth_'+ran2; // dynamically create a outh id between zero and window.mouthStop
+show_mouth(mouth_id_now);
+  
+//
+mouthStop+=1;
+} else { 
+console.log('if ELSE is working ');
+mouthStop=0; // reset counter
+clearInterval(gobo)
+window.lock=0; //reset lock variable
+}
+console.log('inside swapMouth');
+
+
+}
+function mouthoff(le) // animates the mouth during speech - duration based on argument 'le'
+{
+window.gobo = setInterval(function(){swapMouth(le)},mouthTimer); //redraws a backgound to make the text visible
+
+}
+
+
+function speak(){
+ var textyspeech=document.getElementById('speak_text').value;
+ text_len=textyspeech.length;
+ choop='http://translate.google.com/translate_tts?tl=en_au&q='+textyspeech; // pretty responive - google power behind it
+ mouthoff(text_len);
+ document.getElementById('framer').src=choop;
+ 
+}
+// function speak2(){ // works, but nowhere near responsive enough
+//  var textyspeech=document.getElementById('speak_text2').value;
+//  choop='http://tts-api.com/tts.mp3?q='+textyspeech;
+//  document.getElementById('framer').src=choop;
+ 
+// }
+// ================================  speaky stuff ================================
+// ===============================================================================
+
+
 function blink2(target){
 	console.log('blink2 presssed');
   try {
@@ -501,6 +564,18 @@ function toggle_harvesting (){
 
 } 
 
+// selective mouth display function
+function show_mouth(mo) {
+// hide all mouths first...
+  for (x=0;x<=13;x++)
+    {
+      objm='mouth_'+String(x);
+  document.getElementById(objm).style.opacity=0;
+}
+// then display the mouth passed as parameter 'mo' 
+document.getElementById(mo).style.opacity=1;
+}
+
 
 function refresh_face(){
   document.getElementById('cheek_left').style.opacity=window.blush_base;
@@ -531,7 +606,7 @@ function refresh_face(){
   chk_top=String((ww*.085)+'px');
   document.getElementById('cheek_left').style.top=chk_top;
   document.getElementById('cheek_right').style.top=chk_top;
-  mouth_top=String((ww*.28)+'px');
+  mouth_top=String((ww*.27)+'px');
   document.getElementById('mouth').style.top=mouth_top;
  
 
@@ -558,7 +633,7 @@ document.getElementById('cheek_left').style.opacity=window.blush_base;
   document.getElementById('cheek_left').style.top=chk_top;
   document.getElementById('cheek_right').style.top=chk_top;
 //  <<<<<<<<<<<<<<<< cheeks <<<<<<<<<<<<<<<<<<<<<<<<  //
-  mouth_top=String((ww*.28)+'px');
+  mouth_top=String((ww*.27)+'px');
   document.getElementById('mouth').style.top=mouth_top;
  
 }
@@ -593,12 +668,8 @@ document.getElementById('eyebrow_right_0').style.opacity=1;
 }
 // ---------------------------------------------------
 // ----------------- hide extra mouths ------------------
-document.getElementById('mouth_0').style.opacity=1;
-  for (x=1;x<=13;x++)
-    {
-      objm='mouth_'+String(x);
-  document.getElementById(objm).style.opacity=0;
-}
+show_mouth(window.default_mouth);
+
 // ---------------------------------------------------
 
 

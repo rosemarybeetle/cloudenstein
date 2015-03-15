@@ -10,7 +10,11 @@ h1{
 	font-weight: 120%;
 }
 
-
+#framer {
+  visibility: hidden;
+  width:.01px;
+  height: .01px;
+}
 
 .slidey {
 	cursor: pointer;
@@ -22,7 +26,32 @@ h1{
   color:black;
 }
 
+.iframer {
+  float: left;
+  position:absolute;
+  left:1%;
+ top:60%;
+ padding-left: -50%;
+ width:25%;
+}
 
+#speak_butt{
+  float: left;
+  margin-top: :10%;
+}
+
+
+.iframer2 {
+  float: left;
+  position:absolute;
+  left:1%;
+ top:80%;
+ padding-left: -50%;
+ width:25%;
+}
+#speak_text {
+  
+}
 
 
 #blush_butt,  #wrinkle_butt {
