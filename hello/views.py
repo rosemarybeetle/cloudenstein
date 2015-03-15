@@ -432,7 +432,7 @@ def recent_mentions(request):
 		responsetext+=temptext+']}'
 	else:
 		responsetext='{"message":"No new mentions since last check.","count":"0"}'
-	send_tweet(tobbo)
+	# send_tweet(tobbo) turn on again to tweet - needs DEBUGGING - RATE LIMITING AT THE MOMENT
 	# --responsetext=j
 	men_response = HttpResponse(responsetext)
 	return men_response
