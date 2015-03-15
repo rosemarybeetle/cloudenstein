@@ -423,7 +423,8 @@ def recent_mentions(request):
 			if lt_mn_id < int(ting[y]['id']): #ting[y]['text']
 				temptext+='{"status_id":"'+str(ting[y]['id'])+'","name":"'+str(ting[y]['user']['name'])+'","screen_name":"'+str(ting[y]['user']['screen_name'])+'"}'
 				raa=randint(0,12000)
-				global tobbo='@'+str(ting[y]['user']['screen_name'])+' hey, hello world@'+str(raa)
+				global tobbo
+				tobbo='@'+str(ting[y]['user']['screen_name'])+' hey, hello world@'+str(raa)
 			
 				if h>y+1:
 					temptext+=","
