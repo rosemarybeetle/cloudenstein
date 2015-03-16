@@ -1,39 +1,98 @@
 <!DOCTYPE html>
+<!-- {% load staticfiles %}
+{% load static %} -->
 <html>
 <head>
-<!-- link to google-hosted jquery 
-<script src="jquery-1.11.0.js" ></script>
-<!--[if lt IE 9]>
-	<script src="jquery-1.11.0.js"></script>
-<![endif]-->
-<script src="jquery-1.11.0.js" ></script>
+<link rel="stylesheet" href="../static/fpi.css" type="text/css"/>
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, initial-scale=1">
+<script src="../static/jquery-1.11.0.js" ></script>
+<script src="../static/fpi.js" ></script>
 
-<link rel="stylesheet" href="face.css">
-<link rel="stylesheet" href="styler.css">
-  <title>face</title>
-   <script src="modernizr.min.js"></script>
-  <script src="ai.js"></script>  
+
+<title>cloudenstein</title>
+
+ <style type="text/css">
+ 
+
+</style>
 </head>
 <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KG5FWD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KG5FWD');</script>
+<!-- End Google Tag Manager -->
 
-<div class="face" id="facechunk">
+
+
+<div class='iframer'>
 <iframe class="hideFrame" id="framer" src=""></iframe>
-<div class="eyes">
-<img id="eye-left" src="/images/faces/1/eye-left.png" />
-<img id="eye-right" src="/images/faces/1/eye-right.png" />
 </div>
-<div class="mouth" id="mouthchunk">
-<img id="mouthy" src="/mouth-1.jpg" />
-</div>
-<div class="nose" id="nosechunk">
-<img id="nosey" src="/images/faces/1/nose.png" />
-</div>
-</div>
-<script>
 
-</script>
 
+<div class="face" id="face">
+<div class="eyebrows">
+<embed id="eyebrow_left_0" class="eyebrow" src="../static/eyebrow_left.svg" >
+<embed id="eyebrow_left_1" class="eyebrow" src="../static/eyebrow_left_d1.svg" >
+<embed id="eyebrow_left_2" class="eyebrow" src="../static/eyebrow_left_d2.svg" >
+<embed id="eyebrow_right_0" class="eyebrow" src="../static/eyebrow_right.svg" >
+<embed id="eyebrow_right_1" class="eyebrow" src="../static/eyebrow_right_d1.svg" >
+<embed id="eyebrow_right_2" class="eyebrow" src="../static/eyebrow_right_d2.svg" >
+</div>
+<div id="eyes" class="eyes" >
+<embed id="pupil_left" class="pupil" src="../static/pupil_left.svg" >
+<embed id="eye_left_3" class="eyesocket eye_left" src="../static/eyeball-left-3.svg" >
+<embed id="eye_left_2" class="eyesocket eye_left" src="../static/eyeball-left-2.svg" >
+<embed id="eye_left_1" class="eyesocket eye_left" src="../static/eyeball-left-1.svg" >
+<embed id="eye_left_0" class="eyesocket eye_left" src="../static/eyeball-left-0.svg" >
+<embed id="pupil_right" class="pupil" src="../static/pupil_right.svg" >
+<embed id="eye_right_3" class="eyesocket eye_right" src="../static/eyeball-right-3.svg" >
+<embed id="eye_right_2" class="eyesocket eye_right" src="../static/eyeball-right-2.svg" >
+<embed id="eye_right_1" class="eyesocket eye_right" src="../static/eyeball-right-1.svg" >
+<embed id="eye_right_0" class="eyesocket eye_right" src="../static/eyeball-right-0.svg" >
+<!-- <embed id="eye_right" class="eyesocket eye_right" src="../static/eyeball-right.svg" > -->
 	
-  
+</div>  <!-- end of eyeballs -->
+<embed id="nose_frown" class="nose" src="../static/frown_shading.svg" >
+<div id="nose">
+
+<embed id="nose_3" class="nose" src="../static/nose-3.svg" >
+<embed id="nose_2" class="nose" src="../static/nose-2.svg" >
+<embed id="nose_1" class="nose" src="../static/nose-1.svg" >
+<embed id="nose_0" class="nose" src="../static/nose-0.svg" > 
+</div> 
+<script type="text/javascript">{nose_init();
+	}
+	</script>
+	<div id="cheeks">
+<embed id="cheek_left" class="cheek" src="../static/blush-left.svg" >
+<embed id="cheek_right" class="cheek" src="../static/blush-right.svg" >
+	
+	
+</div> 
+<div id="mouth">
+<embed id="mouth_0" class="mouth" src="../static/mouth-0.svg" >
+<embed id="mouth_1" class="mouth" src="../static/mouth-1.svg" >
+<embed id="mouth_2" class="mouth" src="../static/mouth-2.svg" >
+<embed id="mouth_3" class="mouth" src="../static/mouth-3.svg" >
+<embed id="mouth_4" class="mouth" src="../static/mouth-4.svg" >
+<embed id="mouth_5" class="mouth" src="../static/mouth-5.svg" >
+<embed id="mouth_6" class="mouth" src="../static/mouth-6.svg" >
+<embed id="mouth_7" class="mouth" src="../static/mouth-7.svg" >
+<embed id="mouth_8" class="mouth" src="../static/mouth-8.svg" >
+<embed id="mouth_9" class="mouth" src="../static/mouth-9.svg" >
+<embed id="mouth_10" class="mouth" src="../static/mouth-10.svg" >
+<embed id="mouth_11" class="mouth" src="../static/mouth-11.svg" >
+<embed id="mouth_12" class="mouth" src="../static/mouth-12.svg" >
+<embed id="mouth_13" class="mouth" src="../static/mouth-13.svg" >
+	</div>
+</div>
+<script type="text/javascript">
+refresh_face();
+</script>
 </body>
 </html>
