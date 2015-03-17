@@ -40,15 +40,48 @@ h1{
   margin-top: :10%;
 }
 
-.mask {
-  width:50%;
-  z-index: 50;
+#brain_div {
+  position: absolute;
+  float: left;
+  left:30%;
+  width: 60%;
+
+
+}
+
+.face {
+  z-index: 29;
+}
+
+.brain {
+  z-index:33;
   float:left;
   position: absolute;
-  left:0%;
+  padding-top: -3%
   top:0%;
-  padding-left:-200%;
+  width:70%; 
 }
+
+#brain-mask-upper {
+  position: relative;
+  z-index: 32;
+  /*top:0%;*/
+  padding-top: 0%;
+  left:-5%;
+  width:75%;
+}
+#brain-mask-lower {
+  position: absolute;
+  z-index: 28;
+  top:67%;
+  /*padding-top: -80%;*/
+  left:-12%;
+  width:90%;
+}
+
+
+
+
 
 .iframer2 {
   float: left;
@@ -84,8 +117,9 @@ top: -10px;
 /* ===================================================================================================*/
 @media only screen and (min-width: 980px)  { 
   .face{
+    z-index: 33;
   position: relative;
-  padding-top:6%
+  padding-top:19%
 }
 
   .controller {
@@ -177,16 +211,19 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: rgba(255, 255, 255, 0);
 }
+.eyes{
+  z-index: 30;
+  }
 
 /* ============================== eyebrows =============================*/
 .eyebrows {
-  z-index: 25;
+  z-index: 60;
   float: top;
-padding:-12%;
+padding:-18%;
   /*background-color: blue;*/
   position: absolute;
   left: 10%;
-  top:0%;
+  top:20%;
   margin-top: 0%;
   width:70%;
 
@@ -241,7 +278,7 @@ position: absolute;
   float: left;
 }
  .eyesocket {
-  z-index: 1;
+  z-index: 29;
 
 
   width:50%;
@@ -249,12 +286,14 @@ position: absolute;
 }
 
 .eye_left {
+  z-index: 4;
   position: absolute;
   left:0%;
   top:2%;
   width:50%;
 }
 .eye_right {
+   z-index: 2;
   position: absolute;
   left:50%;
   top:2%;
@@ -262,21 +301,24 @@ position: absolute;
 }
 
 .eyes{
+  z-index:29;
   padding:5%;
   /*background-color: blue;*/
-  position: relative;
+  position: absolute;
   left: 25%;
-  top:0%;
+  top:30%;
   margin-top: 0%;
   width:40%;
 }
 
 #eyeleft {
+  z-index: 2;
  width:50%;
  float: left;
  }
  /*============================*/
  #eyeright {
+  z-index: 2;
  width:50%;
  float: right;
 
@@ -305,8 +347,9 @@ float: left;
 
  .nose {
   position: absolute;
-  top:0%;
+  top:12%;
   width: 75%;
+  padding-top: 10%;
   left:15%;
   float: left;
   
@@ -318,7 +361,7 @@ float: left;
   z-index: 2;
 position: absolute;
 
-padding-top: 4%;
+padding-top: 15%;
 
  }
  #cheek_left {
@@ -355,8 +398,8 @@ width:16%;
 
 .face{
   position: relative;
-  top:20%;
-  padding-top: 10%
+  top:0%;
+  padding-top: -5%
 }
   .controller {
   position: relative;
@@ -455,7 +498,7 @@ padding:-12%;
   /*background-color: blue;*/
   position: absolute;
   left: 10%;
-  top:0%;
+  top:20%;
   margin-top: 0%;
   width:70%;
 
@@ -521,6 +564,7 @@ position: absolute;
 	width:50%;
 }
 .eye_right {
+  z-index:2;
 	position: absolute;
   left:50%;
 	top:2%;
@@ -543,6 +587,7 @@ position: absolute;
  }
  /*============================*/
  #eyeright {
+  z-index:2;
  width:50%;
  float: right;
 

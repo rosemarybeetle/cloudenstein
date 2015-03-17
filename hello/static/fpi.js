@@ -31,6 +31,13 @@ window.default_mouth='mouth_5'; // the mouth shown on load and at rest
 
 // end speech setup
 
+// brain setup
+window.throb_timer=50; // setshalf-period of brain throb cycle
+window.throb_flag=1;
+window.throb_default=1; // starting opacity for pink brain mass 
+window.throb_inc=.050;
+window.throb_inc2=-.050;
+// brain setup end
 // end setup
 
 // ================================  speaky stuff ================================
@@ -685,3 +692,37 @@ eye_blink_both();
 eye_blink_both();
 eye_blink_both();
 } // ============================================= end refresh face ======================
+
+function brain_pulse () {
+
+document.getElementById('brain_mass').style.opacity=1;
+  window.brainthrob=setInterval(function(){throb()},window.throb_timer);
+
+}
+
+function throb () {
+  brainiac=document.getElementById('brain_mass').style.opacity;
+  if (window.throb_flag == 1){
+     console.log ('brainiac.opacity = ' + brainiac);
+      if (brainiac >0)
+      {
+        console.log (' (brainiac >0) ');
+        document.getElementById('brain_mass').style.opacity-=window.throb_inc;
+      } else if (brainiac==0) 
+      { 
+        window.throb_flag=0;
+        console.log('window.throb_flag=0;')
+      }
+  }
+  if (window.throb_flag == 0){
+    if (brainiac <window.throb_default)
+    {
+      console.log (' (brainiac <window.throb_default) '+brainiac);
+    document.getElementById('brain_mass').style.opacity-=window.throb_inc2;
+    } else if (brainiac==1)
+    {
+    window.throb_flag=1;
+    }
+}
+//console.log('brainiac = '+brainiac)
+}

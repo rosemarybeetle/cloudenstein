@@ -27,14 +27,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-KG5FWD');</script>
 <!-- End Google Tag Manager -->
 
+<div class="controller" id ="face_controller">
 
+<button onClick="eye_blink_left()" id="blink_left">wink left</button>
+<button onClick="eye_blink_both()" id="blink_right">blink both</button>
+<button onClick="eye_blink_right()" id="blink_both">wink right</button>
+<button onClick="blush()" id="blush_butt">blush</button>
+<button onClick="nose_wrinkle()" id="wrinkle_butt">Wrinkle</button>
+<button onClick="frown_toggler()" id="frown_butt">Fr-tog</button>
+<button onClick="frown(1)" id="frown_butt">Fr-dwn</button>
+<button onClick="frown(0)" id="frown_butt">Fr-up</button>
+<input id="eye_slider" class="slidey" type="range" value=50 min=0 max=100 oninput=" move_eyes()" >
+<input id="eye_slider_up" class="slidey_up" type="range" value=50 min=0 max=100 oninput=" move_eyes_up()" >
+
+
+</div>  <!-- end of face controls div -->
 
 <div class='iframer'>
 <iframe class="hideFrame" id="framer" src=""></iframe>
+<input id="speak_text" type ="textarea"  placeholder="type here">
+<br />
+<br />
+<button onClick="speak()" id="speak_butt">
+
+</div>
+<div id="brain_div">
+<embed id="brain_mass" class="brain" src="../static/brain-mass.svg" >
+<embed id="brain" class="brain" src="../static/brain.svg" >
+<embed id="brain-mask-upper" class="brain-mask" src="../static/brainmask-upper.svg" >
+<embed id="brain-mask-lower" class="brain-mask" src="../static/brainmask-lower.svg" >
 </div>
 
-
-<div class="face" id="face">
 <div class="eyebrows">
 <embed id="eyebrow_left_0" class="eyebrow" src="../static/eyebrow_left.svg" >
 <embed id="eyebrow_left_1" class="eyebrow" src="../static/eyebrow_left_d1.svg" >
@@ -43,6 +66,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <embed id="eyebrow_right_1" class="eyebrow" src="../static/eyebrow_right_d1.svg" >
 <embed id="eyebrow_right_2" class="eyebrow" src="../static/eyebrow_right_d2.svg" >
 </div>
+
+
 <div id="eyes" class="eyes" >
 <embed id="pupil_left" class="pupil" src="../static/pupil_left.svg" >
 <embed id="eye_left_3" class="eyesocket eye_left" src="../static/eyeball-left-3.svg" >
@@ -57,6 +82,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- <embed id="eye_right" class="eyesocket eye_right" src="../static/eyeball-right.svg" > -->
 	
 </div>  <!-- end of eyeballs -->
+<div class="face" id="face">
 <embed id="nose_frown" class="nose" src="../static/frown_shading.svg" >
 <div id="nose">
 
@@ -93,6 +119,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <script type="text/javascript">
 refresh_face();
+brain_pulse();
 </script>
 </body>
 </html>
