@@ -14,21 +14,18 @@ var urly
 function getAuthed() 
   {
     var un = document.getElementById("unam").value;
-var pw = document.getElementById("pawd").value;
-urly='http://cloudenstein.rosemarybeetle.org/autho/?un='+un+'&pw='+pw
+    var pw = document.getElementById("pawd").value;
+    urly='http://cloudenstein.rosemarybeetle.org/autho/?un='+un+'&pw='+pw
     $.getJSON( urly, function(mens) {
-try {
-  
-    getDate();
-
-document.getElementById("contentarea").innerHTML=mens.bodey;
-document.getElementById("auth_status").innerHTML=mens.response;
-document.getElementById("unam").value='';
-document.getElementById("pawd").value='';
- 
+    try {
+      getDate();
+      document.getElementById("contentarea").innerHTML=mens.bodey;
+      document.getElementById("auth_status").innerHTML=mens.response;
+      document.getElementById("unam").value='';
+      document.getElementById("pawd").value='';
     }
-catch (err){
-  console.log('error on loading JSON = '+err)
+    catch (err){
+      console.log('error on loading JSON = '+err)
     }
   });
 }
@@ -88,16 +85,16 @@ catch (err){
 
 window.periody={{period}}*1000;
 window.toggler=1;
-function harvest (){
-  document.getElementById("framer").src = "http://cloudenstein.rosemarybeetle.org/recent_mentions";
-  console.log('inside harvest')
+function harvester (){
+  document.getElementById("harvest_frame").src = "http://cloudenstein.rosemarybeetle.org/home";
+  console.log('inside harvester')
 }
 var vari; // global variable
 function toggle_harvesting (){
 
   if (window.toggler==1){
     console.log('inside toggle_harvesting() toggler=1')
-      vari = setInterval(function(){ mentions()},window.periody);
+      vari = setInterval(function(){ harvester()},window.periody);
       document.getElementById("heado").innerHTML='Mentionising...';
       getDate();
       document.getElementById("foam").innerHTML+=datetime+': Logs started...<br />';
@@ -110,9 +107,9 @@ function toggle_harvesting (){
     {
       clearInterval(vari);
       console.log('inside toggle_harvesting() toggler=0')
-      document.getElementById("heado").innerHTML='Mentionising paused<br />';
+      document.getElementById("heado").innerHTML='Harvesting paused<br />';
       getDate();
-      document.getElementById("foam").innerHTML+=datetime+': Logs paused...';
+      document.getElementById("foam").innerHTML+=datetime+': Paused...';
 
 
       window.toggler=1;
@@ -130,6 +127,7 @@ function toggle_harvesting (){
   <div class="righten"><span id="auth_status">log... on... </span><input type="text" id="unam"> <input type="password" id="pawd"><button  onClick="getAuthed()" >Go</button></div>
 </div>
 <div id="contentarea"></div>
+<iframe id="harvest_frame"></iframe>
 </div>
 
 </body>

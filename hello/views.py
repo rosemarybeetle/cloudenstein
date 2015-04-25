@@ -312,6 +312,7 @@ def home(request):
 	home_response = HttpResponse(homeText)
 	return home_response
  #----------------------
+ 
 
 def retrieveGoogleAdmin (url):
 	try:
