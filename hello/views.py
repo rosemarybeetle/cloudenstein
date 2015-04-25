@@ -556,9 +556,9 @@ def logon (request):
 	loadAdminSettings()
 	return render (request, 'logon.html',{'period':t_hp_ad})
 
-def harvester (request):
-	loadAdminSettings()
-	return render (request, 'harvester.html',{'period':t_hp_ad})
+# def harvester (request):
+# 	loadAdminSettings()
+# 	return render (request, 'harvester.html',{'period':t_hp_ad})
 	
 
 def fpi (request):
