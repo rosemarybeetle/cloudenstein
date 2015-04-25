@@ -49,39 +49,6 @@ datetime += currentdate.getHours() + ":";
 datetime += currentdate.getMinutes() + ":" ;
 datetime += currentdate.getSeconds();
 }
-function mentions() 
-  {
-    $.getJSON( "http://cloudenstein.rosemarybeetle.org/recent_mentions", function(mens) {
-try {
-  var cont=mens.count;
-  if (cont>0){
-    mention_text=''; // clear mention_text
-
-  for ( var i = 0; i < cont; i++ ) {
-    getDate();
-mention_text=datetime+': - New mention number '+String(i)+ 'with id:'+mens.mentions[i].status_id+' from user: @'+mens.mentions[i].screen_name+'('+mens.mentions[i].name+').<br />';
-document.getElementById("foam").innerHTML+=mention_text;
-  console.log('username '+String(i)+ '= '+mens.mentions[0].screen_name);
-  console.log('id '+String(i)+ '= '+mens.mentions[0].status_id);
-  console.log('name '+String(i)+ '= '+mens.mentions[0].name);
-  
-  
-   }
-  } else {
-    getDate();
-    mention_text=''; // clear mention_text
-    document.getElementById("foam").innerHTML+=datetime+': '+mens.message+'<br />';
-   console.log('no new mentions');
-  }
-  
-  //speakTest(textu);
-  
-    }
-catch (err){
-  console.log('error on loading JSON = '+err);
-    }
-  });
-}
 
 window.periody={{period}}*1000;
 window.toggler=1;
@@ -95,7 +62,7 @@ function toggle_harvesting (){
   if (window.toggler==1){
     console.log('inside toggle_harvesting() toggler=1')
       vari = setInterval(function(){ harvester()},window.periody);
-      document.getElementById("heado").innerHTML='Mentionising...';
+      document.getElementById("heado").innerHTML='Harvesting...';
       getDate();
       document.getElementById("foam").innerHTML+=datetime+': Logs started...<br />';
 
@@ -129,6 +96,6 @@ function toggle_harvesting (){
 <div id="contentarea"></div>
 
 </div>
-<iframe id="harvest_frame" style="width:100%;height:90%;margin-top:200px;"></iframe>
+<iframe id="harvest_frame" style="width:90%;height:90%;margin-top:200px;"></iframe>
 </body>
 </html>
