@@ -313,7 +313,7 @@ def home(request):
 	return home_response
 	#----------------------
 
- def subharvester(request):
+def subharvester(request):
 	# times = int(os.environ.get('TIMES',3))
 	homeText='<h2>harvested from twitter..</h2>'
 	loadAdminSettings ()
