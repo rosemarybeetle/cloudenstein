@@ -312,7 +312,32 @@ def home(request):
 	home_response = HttpResponse(homeText)
 	return home_response
  #----------------------
- 
+
+ def subharvester(request):
+	# times = int(os.environ.get('TIMES',3))
+	homeText='<h2>harvested from twitter..</h2>'
+	loadAdminSettings ()
+	t_st=t_st_ad
+	t_sn=t_sn_ad
+	#responsetext=''
+	
+	try:
+		search_tweets(t_st,t_sn)
+	except Exception as e:
+		homeText+='Uh-oh. Something broke = '+str(e)
+	# try:
+	# 	lass = lt(lt_id=laztwt,position=0)
+	# 	lass.save()
+	# 	responsetext+='<br />tweet just saved = '+str(laztwt)
+	# except Exception as e:
+	# 	responsetext+='lass save failed'+str(laztwt)
+	
+	homeText+=responsetext+'</body></html>'
+	
+	home_response = HttpResponse(homeText)
+	return home_response
+ #----------------------
+
 
 def retrieveGoogleAdmin (url):
 	try:
